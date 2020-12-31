@@ -1,0 +1,86 @@
+{
+    "lastPlayTime": "2020-12-31 PM 9:26:45",
+    "potList": [
+        {
+            "name": "test",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "jointPosition": [
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                }
+            ],
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2020-12-31 PM 9:26:45",
+            "isSprotued": true,
+            "rotation": 0.0
+        },
+        {
+            "name": "test",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "jointPosition": [
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                }
+            ],
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2020-12-31 PM 9:26:45",
+            "isSprotued": true,
+            "rotation": 0.0
+        },
+        {
+            "name": "test",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "jointPosition": [
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                }
+            ],
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2020-12-31 PM 9:26:45",
+            "isSprotued": true,
+            "rotation": 0.0
+        }
+    ],
+    "characterList": [
+        {
+            "components": []
+        },
+        {
+            "components": []
+        },
+        {
+            "components": []
+        }
+    ],
+    "coin": 0
+}
