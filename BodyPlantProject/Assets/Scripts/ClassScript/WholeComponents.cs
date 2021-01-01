@@ -6,17 +6,17 @@ using UnityEngine;
 [System.Serializable]
 public class WholeComponents
 {
-    public List<ComponentClass> componentList;
+    public List<ComponentDataClass> componentList;
     
     //이거는 기획자가 만들어준 json파일을 받아오는 역할입니다.
 
     //이거도 테스트용 생성자
     public WholeComponents()
     {
-        componentList = new List<ComponentClass>();
+        componentList = new List<ComponentDataClass>();
         for(int i = 0; i < 10; i++)
         {
-            componentList.Add(new ComponentClass());
+            componentList.Add(new ComponentDataClass());
         }
     }
 }
