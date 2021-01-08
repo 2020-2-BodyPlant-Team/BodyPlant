@@ -178,6 +178,8 @@ public class FlowerPotManager : MonoBehaviour
         //버튼은 비활
         nameText.gameObject.SetActive(false);
         //텍스트 비활
+        gameManager.Save();
+        //세이브해준다.
     }
 
     //상점에서 호출할거 
@@ -237,7 +239,7 @@ public class FlowerPotManager : MonoBehaviour
         componentsInPot[availablePlace].isSprotued = false;
         componentsInPot[availablePlace].isHarvested = false;
         //변수들도 다 false로 해준다.
-
+        gameManager.Save();
         StartCoroutine(SproutingCoroutine(availablePlace));
         //코루틴을 시작해준다.
     }
