@@ -24,7 +24,7 @@
             "sprite": {
                 "instanceID": 0
             },
-            "plantedTime": "2021-01-08 PM 5:11:49",
+            "plantedTime": "2021-01-08 PM 11:02:09",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": 90.0,
@@ -35,7 +35,7 @@
         },
         {
             "componentData": {
-                "name": "null",
+                "name": "mouth",
                 "jointPosition": [
                     {
                         "x": 0.0,
@@ -56,18 +56,18 @@
             "sprite": {
                 "instanceID": 0
             },
-            "plantedTime": "2021-01-08 PM 5:12:30",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-01-08 PM 11:01:57",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": 90.0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -2800
             },
             "isHarvested": false
         },
         {
             "componentData": {
-                "name": "null",
+                "name": "mouth",
                 "jointPosition": [
                     {
                         "x": 0.0,
@@ -88,12 +88,12 @@
             "sprite": {
                 "instanceID": 0
             },
-            "plantedTime": "2021-01-08 PM 5:12:34",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-01-08 PM 11:01:57",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": 90.0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -2808
             },
             "isHarvested": false
         }
@@ -3770,6 +3770,134 @@
             "rotation": 90.0,
             "realGameobject": {
                 "instanceID": -15364
+            },
+            "isHarvested": false
+        },
+        {
+            "componentData": {
+                "name": "arm",
+                "jointPosition": [
+                    {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                ],
+                "price": 10,
+                "sproutSeconds": 10.0,
+                "sproutingPosition": {
+                    "x": 0.0,
+                    "y": 5.0
+                }
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2021-01-08 PM 10:58:48",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": 90.0,
+            "realGameobject": {
+                "instanceID": -2728
+            },
+            "isHarvested": false
+        },
+        {
+            "componentData": {
+                "name": "leg",
+                "jointPosition": [
+                    {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                ],
+                "price": 10,
+                "sproutSeconds": 10.0,
+                "sproutingPosition": {
+                    "x": 0.0,
+                    "y": 5.0
+                }
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2021-01-08 PM 10:58:51",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": 90.0,
+            "realGameobject": {
+                "instanceID": -2736
+            },
+            "isHarvested": false
+        },
+        {
+            "componentData": {
+                "name": "nose",
+                "jointPosition": [
+                    {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                ],
+                "price": 10,
+                "sproutSeconds": 10.0,
+                "sproutingPosition": {
+                    "x": 0.0,
+                    "y": 5.0
+                }
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2021-01-08 PM 10:58:51",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": 90.0,
+            "realGameobject": {
+                "instanceID": -2744
+            },
+            "isHarvested": false
+        },
+        {
+            "componentData": {
+                "name": "mouth",
+                "jointPosition": [
+                    {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                ],
+                "price": 10,
+                "sproutSeconds": 10.0,
+                "sproutingPosition": {
+                    "x": 0.0,
+                    "y": 5.0
+                }
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "sprite": {
+                "instanceID": 0
+            },
+            "plantedTime": "2021-01-08 PM 11:01:57",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": 90.0,
+            "realGameobject": {
+                "instanceID": -2792
             },
             "isHarvested": false
         }

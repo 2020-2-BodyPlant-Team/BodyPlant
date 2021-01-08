@@ -71,6 +71,11 @@ public class FlowerPotManager : MonoBehaviour
                 continue;
             }
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[i].plantedTime, DateTime.Now.ToString());
+            componentsInPot[i].percentage = elapsedTime / componentsInPot[i].componentData.sproutSeconds;
+            if (componentsInPot[i].percentage > 1)
+            {
+                componentsInPot[i].percentage = 1;
+            }
             //지난 시간을 구해주고 그것이 건설시간보다 큰지 체크해준다.
             if(elapsedTime > componentsInPot[i].componentData.sproutSeconds)
             {
