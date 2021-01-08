@@ -16,18 +16,32 @@ public class FlowerPotManager : MonoBehaviour
     SaveDataClass saveData;         //게임매니저를 통해 가져올 세이브 데이터
     /// <summary>
     /// 이 세이브데이터를 왜 가져와요? 그냥 gameManager.saveData로 쓰면 되죠?? 하실 분들을 위한 설명
-    /// saveData를 나중에 gameManager로 굳이 넘겨줄 필요는 없다.다만 gameManager.saveData = saveData로 넘겨줄 수 있을 수도 있으니까 나중을 위하여 이렇게 쓴다.
+    /// 첫번쨰로는 gameManager.를 쓰기 일일히 귀찮아서 그렇다;;;
+    /// saveData를 나중에 gameManager로 굳이 넘겨줄 필요는 없다. 어차피 참조에 의한 호출이어서 여기서 값을 변경해도 gameManager에 있는 값이 변경된다.
+    /// 그.런.데. 가끔가다가 그게 안되는 경우가 있다. 나도 모른다. 왜 안되는지 모른다.
+    /// 그래서 gameManager.saveData = saveData로 넘겨줄 수 있을 수도 있으니까 나중을 위하여 이렇게 쓴다.
     /// </summary>
     WholeComponents wholeComponents;    //전체 컴포넌트 리스트
 
     ComponentClass[] componentsInPot;   //화분에 들어가있는 부위들이다.
     public GameObject[] flowerPotArray; //이거는 에디터에서 드래그앤드롭해준다.
+    public GameObject[] magnifierArray; //에디터에서 드래그앤드롭, 돋보기 오브젝트입니다.
 
     GameObject touchedObject;               //터치한 오브젝트
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
+    public int potNumber = 3;               //화분 개수
 
-    public int potNumber = 3;
+    public GameObject cameraObject;         //카메라 무빙쳐야돼서
+    Vector3 originCameraPos;                //카메라가 원래 있는 자리. 그 자리를 알아야 확대 애니메이션 하고 뒤로가기 했을 때 돌아옵니다.
+    int nowMagnifiedPotIndex = -1;               //현재 확대해서 보고있는 화분. 평소에는 -1. 확대했을 때는 index값
+
+    public GameObject magnifiedUIObject;     //확대했을 때의 UI를 통쨰로 껐다 켰다 해줘야해요.
+    bool nowMagnified = false;              //현재 확대되어있는 상태인지.
+
+    public GameObject progressBar;          //확대했을 때 성장도 오브젝트
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +50,16 @@ public class FlowerPotManager : MonoBehaviour
         saveData = gameManager.saveData;
         componentsInPot = saveData.potList;
         wholeComponents = gameManager.wholeComponents;
+        originCameraPos = cameraObject.transform.position;
+        magnifiedUIObject.SetActive(false);
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
 
         //화분에 있는 부위들을 먼저 가져온다.
         for(int i = 0; i < potNumber; i++)
         {
+            //돋보기 오브젝트 꺼주기
+            magnifierArray[i].SetActive(false);
+
             int elapsedTime = 0;
             //만약 화분이 비어있다면 다음 인덱스로 넘기기
             if(componentsInPot[i].componentData.name == "null")
@@ -89,8 +108,6 @@ public class FlowerPotManager : MonoBehaviour
 
     IEnumerator SproutingCoroutine(int index)
     {
-        //지나간 시간
-
         //꽃피지 않을때만 돌아간다.
         while(componentsInPot[index].isSprotued == false)
         {
@@ -98,7 +115,7 @@ public class FlowerPotManager : MonoBehaviour
             //몇퍼센트 완성인지.
             float percentage = 0;
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString());
             if (componentsInPot[index].componentData.sproutSeconds < elapsedTime)
             {
@@ -106,8 +123,20 @@ public class FlowerPotManager : MonoBehaviour
                 //만약 시간이 지났다면 싹틔워준다.
             }
             percentage = elapsedTime / componentsInPot[index].componentData.sproutSeconds;
+            //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
+            if(percentage >= 1)
+            {
+                percentage = 1;
+            }
+            if (index == nowMagnifiedPotIndex)
+            {
+                //만약 현재 확대한 pot하고 코루틴돌아가는 index하고 일치한다면 progressBar를 계속 업데이트 해준다.
+                progressBar.transform.localScale = new Vector3(1, percentage, 1);
+            }
+            componentsInPot[index].percentage = percentage;
             componentsInPot[index].realGameobject.transform.localPosition = percentage * componentsInPot[index].componentData.sproutingPosition;
-            //   1초에 한번씩 업데이트를 해준다.
+
+            
            
         }
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
@@ -134,7 +163,7 @@ public class FlowerPotManager : MonoBehaviour
     }
 
     //상점에서 호출할거 
-    public void PlantComponent(string name)
+    void PlantComponent(string name)
     {
         //자리가 있는지부터 체크해준다.
         bool isPlaceAvailable = false;
@@ -195,10 +224,142 @@ public class FlowerPotManager : MonoBehaviour
         //코루틴을 시작해준다.
     }
 
+    //화분 돋보기 애니메이션 켜주고, 돋보기 켜주고.
+    void ActiveMagnifier(int index)
+    {
+        magnifierArray[index].SetActive(true);          //돋보기 켜주고
+        StartCoroutine(MagnifierAnimation(index));      //애니메이션 켜주고
+    }
+
+    IEnumerator MagnifierAnimation(int index)
+    {
+        float timer = 0;        //애니메이션 타이머
+        SpriteRenderer renderer = magnifierArray[index].GetComponent<SpriteRenderer>(); //스프라이트 색 조정해줘야돼서 렌더러 가져오고
+        while(timer < 2)    //타이머가 돌아갑니다
+        {
+            timer += Time.deltaTime;    //타이머
+            renderer.color = new Color(1, 1, 1, (2 - timer)/2f);     //페이드아웃 애니메이션
+            yield return null;
+        }
+        renderer.color = new Color(1, 1, 1, 1); //색 원상복구
+        magnifierArray[index].SetActive(false);     //다시 꺼준다
+    }
+
+    //돋보기가 생긴 후 한 번 더 클릭했을 때 카메라가 이동하는 함수.
+    void CameraMove(int index,bool goBack)
+    {
+
+        if (goBack)
+        {
+            nowMagnifiedPotIndex = -1;
+            nowMagnified = false;
+            //뒤로가기 눌러서 원상복구할 때.
+            magnifiedUIObject.SetActive(false);
+            for (int i = 0; i < potNumber; i++)
+            {
+                flowerPotArray[i].SetActive(true);
+            }
+        }
+        else
+        {
+            //뒤로가기가 아닐때. 화분 확대를 할 때.
+            nowMagnifiedPotIndex = index;           //현재 확대된 화분 인덱스 저장
+            magnifiedUIObject.SetActive(true);      //UI켜주고
+            nowMagnified = true;                    //현재 확대되었음을 알려주고(사실 안해도됨, 그냥 magnifiedObject.activeSelf로 받아와도 댐)
+            
+            //만약 화분이 비어있다면.
+            if(componentsInPot[index].componentData.name == "null")
+            {
+                //화분이 비면 없어.
+                progressBar.transform.localScale = new Vector3(1, 0, 1);
+            }
+            else
+            {
+                //화분이 차있으면 프로그레스 바 초기화
+                progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
+            }
+
+            for (int i = 0; i < potNumber; i++)
+            {
+                if (i == index)
+                {
+                    flowerPotArray[i].SetActive(true);
+                }
+                else
+                {
+                    flowerPotArray[i].SetActive(false);
+                }
+            }
+        }
+        //코루틴 시작.
+        StartCoroutine(CameraAnimation(index, goBack));
+    }
+
+    //확대했다가 뒤로가기버튼 누르면 실행하는 함수.
+    public void MagnifyBackButton()
+    {
+        CameraMove(nowMagnifiedPotIndex, true);
+    }
+
+    //취소할때도 이거쓴다
+    IEnumerator CameraAnimation(int index,bool goBack)
+    {
+        float timer = 0;    //타이머
+        Vector3 startPosition;
+        //카메라 시작점
+        Vector3 endPosition;
+        //카메라의 최종 목적지
+        Vector3 potScaleStart;
+        //화분이 커질지 작아질지도 lerp로 할거다. 화분의 시작 scale
+        Vector3 potScaleEnd;
+        //화분의 끝 scale;
+
+
+        if (goBack)
+        {
+            //화분에서 원래위치로 돌아온다.
+            startPosition = cameraObject.transform.position;   
+            //카메라 시작점
+            endPosition = originCameraPos;
+            //끝점
+            potScaleStart = new Vector3(1.5f, 1.5f, 1);
+            potScaleEnd = new Vector3(1, 1, 1);
+            //큰 스케일에서 작아진다.
+        }
+        else
+        {
+            //화분위로 카메라가 올라간다.
+            startPosition = originCameraPos;
+            //카메라 시작점
+            endPosition = new Vector3(flowerPotArray[index].transform.position.x, flowerPotArray[index].transform.position.y, originCameraPos.z);
+            //끝점.
+
+            potScaleStart = new Vector3(1, 1, 1);
+            potScaleEnd = new Vector3(1.5f, 1.5f, 1);
+            //작은 스케일에서 커진다.
+
+        }
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime;
+            cameraObject.transform.position = Vector3.Lerp(startPosition, endPosition, timer);
+            //Lerp는 startPosition하고 endPosition사이 지점 중,timer 값이 0은 startpos, 1은 endpos, 0.5는 그 중간지점. 그런식으로 값이 나오는 함수다.
+            flowerPotArray[index].transform.localScale = Vector3.Lerp(potScaleStart, potScaleEnd, timer);
+            yield return null;
+        }
+
+        cameraObject.transform.position = endPosition;
+        flowerPotArray[index].transform.localScale = potScaleEnd;
+        //lerp애니메이션이 끝날 떄 timer가 정확히 1값이 아니어서 살짝의 오차가 발생한다. 그래서 최종값으로 맞춰주어야한다.
+
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
+        //abcd눌렀을 때 식물을 심는ㄴ다.
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlantComponent("mouth");
@@ -215,6 +376,7 @@ public class FlowerPotManager : MonoBehaviour
         {
             PlantComponent("nose");
         }
+                //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
         if (Input.GetMouseButtonDown(0))    //터치!
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
@@ -235,6 +397,28 @@ public class FlowerPotManager : MonoBehaviour
                             }
                         }
                     }
+
+                    //확대되어있지 않다면 확대를 할 수 있다.
+                    if (!nowMagnified)
+                    {
+                        if (touchedObject == flowerPotArray[i])
+                        {
+
+                            //만약 터치한게 화분이라면
+                            if (magnifierArray[i].activeSelf)
+                            {
+                                //화분의 돋보기가 켜져있다면 바로 카메라 무브 무브
+                                CameraMove(i, false);
+
+                            }
+                            else
+                            {
+                                //돋보기가 안켜져있다면 돋보기부터 켜준다.
+                                ActiveMagnifier(i);
+                            }
+                        }
+                    }
+                   
                 }
             }
         }

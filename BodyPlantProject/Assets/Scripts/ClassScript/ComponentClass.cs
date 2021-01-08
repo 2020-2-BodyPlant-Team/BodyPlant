@@ -23,6 +23,7 @@ public class ComponentClass
     public Sprite sprite;               //스프라이트 이미지
     public string plantedTime;         //심어진 시간
     public bool isSprotued;             //화분에서 전부 자랐는지
+    public float percentage;            //성장도
     public float rotation;            //얼마나 돌아갔는지.
 
 

@@ -26,7 +26,7 @@ public class DragAttach : MonoBehaviour
         {
             Debug.Log("Hit");
             transform.parent = other.transform;    //따로 떨어진 신체부위들을 한 오브젝트의 자식으로 들어가게 했습니다
-            isDrag = false;    //합체가 되면 더 이상 드래그가 안 되도록 했습니다
+            isDrag = false;                        //합체가 되면 더 이상 드래그가 안 되도록 했습니다
         }
     }
 }
