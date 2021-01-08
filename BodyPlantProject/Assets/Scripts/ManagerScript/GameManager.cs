@@ -61,6 +61,12 @@ public class GameManager : MonoBehaviour
         //그러게요....혹시나 뭐가 늘어날지도 모르잖아요.
         saveData = jsonManager.LoadSaveData();
     }
+    
+    //합성 씬 로드. flowerPotManager의 ComposeSceneLoad에서 호출-> 합성버튼에서 호출
+    public void ComposeSceneLoad()
+    {
+        SceneManager.LoadScene("ComposeScene");
+    }
    
 
     //시간계산기입니다. 예전시간과 현재시간을 넣으면 그 사이의 초가 나와요.
@@ -85,43 +91,5 @@ public class GameManager : MonoBehaviour
         return seconds;
     }
 
-    /*
-    //함수중복입니다.
-    public int TimeSubtractionToSeconds(string pastTime, DateTime latestTime)
-    {
-        DateTime past = DateTime.Parse(pastTime);
-        DateTime latest = latestTime;
-        //string to datetime
-        if (past == null || latest == null)
-        {
 
-            Application.Quit();
-            return 0;
-        }
-
-        TimeSpan span = latest - past;
-        int seconds = (int)span.TotalSeconds;
-        //Debug.Log("subtraction is " + seconds);
-
-        return seconds;
-    }
-
-    public int TimeSubtractionToSeconds(DateTime pastTime, string latestTime)
-    {
-        DateTime past = pastTime;
-        DateTime latest = DateTime.Parse(latestTime);
-        //string to datetime
-        if (past == null || latest == null)
-        {
-
-            Application.Quit();
-            return 0;
-        }
-
-        TimeSpan span = latest - past;
-        int seconds = (int)span.TotalSeconds;
-        //Debug.Log("subtraction is " + seconds);
-
-        return seconds;
-    }*/
 }

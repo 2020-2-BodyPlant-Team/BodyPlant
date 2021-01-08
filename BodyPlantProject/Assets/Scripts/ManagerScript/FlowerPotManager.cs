@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 //화분을 키우는 스크립트.
 /// <summary>
 /// 화분을 키우는데는 어떻게 하느냐.
@@ -32,6 +32,7 @@ public class FlowerPotManager : MonoBehaviour
     public Camera cam;                      //레이캐스트를 위한 카메라.
     public int potNumber = 3;               //화분 개수
 
+    //확대와 관련된 변수들
     public GameObject cameraObject;         //카메라 무빙쳐야돼서
     Vector3 originCameraPos;                //카메라가 원래 있는 자리. 그 자리를 알아야 확대 애니메이션 하고 뒤로가기 했을 때 돌아옵니다.
     int nowMagnifiedPotIndex = -1;               //현재 확대해서 보고있는 화분. 평소에는 -1. 확대했을 때는 index값
@@ -40,7 +41,10 @@ public class FlowerPotManager : MonoBehaviour
     bool nowMagnified = false;              //현재 확대되어있는 상태인지.
 
     public GameObject progressBar;          //확대했을 때 성장도 오브젝트
-
+    public GameObject harvestButton;        //수확버튼이 수확 가능할 때 떠야한다;
+    public Text nameText;
+    public GameObject harvestCanvas;        //수확버튼 누르면 뜨는 캔버스
+    
 
 
     // Start is called before the first frame update
@@ -106,6 +110,7 @@ public class FlowerPotManager : MonoBehaviour
 
     }
 
+    //꽃피워올리는 코루틴. 
     IEnumerator SproutingCoroutine(int index)
     {
         //꽃피지 않을때만 돌아간다.
@@ -135,31 +140,44 @@ public class FlowerPotManager : MonoBehaviour
             }
             componentsInPot[index].percentage = percentage;
             componentsInPot[index].realGameobject.transform.localPosition = percentage * componentsInPot[index].componentData.sproutingPosition;
-
-            
-           
         }
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
         componentsInPot[index].isHarvested = false;
+        //만약 현재 확대된 상태면 수확버튼 활성화.
+        if (nowMagnified)
+        {
+            harvestButton.SetActive(true);
+        }
+            
     }
 
+    //게임 끌 때 저장
     private void OnApplicationQuit()
     {
         gameManager.Save();
     }
 
-    //심은걸 수확하는거. 터치해서 수확. update에서 호출됨
-    void HarvestSprout(int index)
+
+
+    //심은걸 수확하는거. 터치해서 수확. 버튼에서 호출
+    public void HarvestSprout()
     {
+        int index = nowMagnifiedPotIndex;   //어차피 확대된 거에서만 호출하니까 확대된 index를 불러온다.
         Debug.Log("이거 되긴 하냐" + index);
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
         //수확이 되었다는거를 세이브해줘야하니까 세이브데이터에 넣어주고
         saveData.owningComponentList.Add(componentsInPot[index]);
         //수확이 된 거는 아무것도 없는 빈 객체를 넣는다.
+        //왜냐하면 ㅡㅡ componentsInPot[index] = null을하니까 new ComponentClass()가 생겨버리드라 ㅎㅎ 화나게...null이 안들어간다ㅣ...
         componentsInPot[index] = new ComponentClass();
-        //지워준 정보도 savedata에 저장을 한다
-        //saveData.potList = componentsInPot;
+        //지워준 정보도 savedata에 저장을 안해도 자동저장이 된다. saveData에서 참조로 가져온 값이라 된다.
+        progressBar.transform.localScale = new Vector3(1, 0, 1);
+        //로딩바 0으로.
+        harvestButton.SetActive(false);
+        //버튼은 비활
+        nameText.gameObject.SetActive(false);
+        //텍스트 비활
     }
 
     //상점에서 호출할거 
@@ -171,7 +189,7 @@ public class FlowerPotManager : MonoBehaviour
         for(int i = 0; i < potNumber; i++)
         {
 
-            //아무것도 심어져있지 않으면 null이다.
+            //아무것도 심어져있지 않으면 null이다. 이름이 null이다. 나이렇게 코딩하는거 싫어요 ㅠㅠ
             if(componentsInPot[i].componentData.name == "null")
             {
 
@@ -198,9 +216,9 @@ public class FlowerPotManager : MonoBehaviour
                 break;
             }
         }
-        if(component == null)
+        if(component.componentData.name == "null")
         {
-            Debug.Log("부위가 없다");
+            Debug.LogError("화분의 이름을 사전에서 못찾았다");
             return;
         }
         Debug.Log(availablePlace);
@@ -254,7 +272,6 @@ public class FlowerPotManager : MonoBehaviour
             nowMagnifiedPotIndex = -1;
             nowMagnified = false;
             //뒤로가기 눌러서 원상복구할 때.
-            magnifiedUIObject.SetActive(false);
             for (int i = 0; i < potNumber; i++)
             {
                 flowerPotArray[i].SetActive(true);
@@ -262,23 +279,10 @@ public class FlowerPotManager : MonoBehaviour
         }
         else
         {
-            //뒤로가기가 아닐때. 화분 확대를 할 때.
+            //뒤로가기가 아닐때. 화분 확대를 할 때. UI켜주는건 코루틴에서 한다. 다 움직이고 나서 해야되기 때문에
             nowMagnifiedPotIndex = index;           //현재 확대된 화분 인덱스 저장
-            magnifiedUIObject.SetActive(true);      //UI켜주고
             nowMagnified = true;                    //현재 확대되었음을 알려주고(사실 안해도됨, 그냥 magnifiedObject.activeSelf로 받아와도 댐)
             
-            //만약 화분이 비어있다면.
-            if(componentsInPot[index].componentData.name == "null")
-            {
-                //화분이 비면 없어.
-                progressBar.transform.localScale = new Vector3(1, 0, 1);
-            }
-            else
-            {
-                //화분이 차있으면 프로그레스 바 초기화
-                progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
-            }
-
             for (int i = 0; i < potNumber; i++)
             {
                 if (i == index)
@@ -325,6 +329,8 @@ public class FlowerPotManager : MonoBehaviour
             potScaleStart = new Vector3(1.5f, 1.5f, 1);
             potScaleEnd = new Vector3(1, 1, 1);
             //큰 스케일에서 작아진다.
+            magnifiedUIObject.SetActive(false);
+            //UI도 꺼준다
         }
         else
         {
@@ -348,11 +354,56 @@ public class FlowerPotManager : MonoBehaviour
             flowerPotArray[index].transform.localScale = Vector3.Lerp(potScaleStart, potScaleEnd, timer);
             yield return null;
         }
+        if (!goBack)
+        {
+            //뒤로가기가 아니라면 UI를 지금 켜준다.
+            magnifiedUIObject.SetActive(true);
+            harvestCanvas.SetActive(false); //수확하시겠습니까 캔버스는 꺼준다.
+            //만약 화분이 비어있다면.
+            if (componentsInPot[index].componentData.name == "null")
+            {
+                //화분이 비면 프로그레스바가 없어.
+                progressBar.transform.localScale = new Vector3(1, 0, 1);
+                //이름도없어
+                nameText.gameObject.SetActive(false);
+            }
+            else
+            {
+                //화분이 차있으면 프로그레스 바 percentage값 받아온다.
+                progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
+                
+                nameText.gameObject.SetActive(true);
+                nameText.text = componentsInPot[index].componentData.name;
+                //이름텍스트도 켜주고 이름도 넣어준다.
+            }
+
+            Debug.Log(componentsInPot[index].isSprotued + " " + componentsInPot[index].isHarvested);
+            //만약 수확 가능하다면 == 피워났고 수확은 안했다면
+            if (componentsInPot[index].isSprotued == true && componentsInPot[index].isHarvested == false)
+            {
+                //버튼 활성화
+                harvestButton.SetActive(true);
+            }
+            else
+            {
+                //버튼 없애.
+                harvestButton.SetActive(false);
+            }
+
+
+
+        }
 
         cameraObject.transform.position = endPosition;
         flowerPotArray[index].transform.localScale = potScaleEnd;
         //lerp애니메이션이 끝날 떄 timer가 정확히 1값이 아니어서 살짝의 오차가 발생한다. 그래서 최종값으로 맞춰주어야한다.
 
+    }
+
+    //합성 씬 로드.
+    public void ComposeSceneLoad()
+    {
+        gameManager.ComposeSceneLoad();
     }
 
 
@@ -385,6 +436,8 @@ public class FlowerPotManager : MonoBehaviour
                 touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
                 for(int i = 0; i < 3; i++)
                 {
+                    /*
+                     *아까운코드ㅠㅠ 이제 터치가 아니라 버튼이 나온다.
                     if(componentsInPot[i] != null)
                     {
                         if(touchedObject == componentsInPot[i].realGameobject)
@@ -396,7 +449,7 @@ public class FlowerPotManager : MonoBehaviour
                                 break;
                             }
                         }
-                    }
+                    }*/
 
                     //확대되어있지 않다면 확대를 할 수 있다.
                     if (!nowMagnified)
