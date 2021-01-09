@@ -10,9 +10,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -25,9 +28,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -40,9 +46,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -55,9 +64,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -70,9 +82,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -85,9 +100,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -100,9 +118,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -115,9 +136,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -130,9 +154,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         },
         {
@@ -145,9 +172,12 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSprite": {
+                "instanceID": 0
+            },
             "sproutingPosition": {
                 "x": 0.0,
-                "y": 5.0
+                "y": 2.0
             }
         }
     ]

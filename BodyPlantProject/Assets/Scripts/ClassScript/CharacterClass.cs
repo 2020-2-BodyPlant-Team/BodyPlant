@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,5 +19,18 @@ public class CharacterClass
     public float loveNess;                  //애정도
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
 
+    public CharacterClass()
+    {
+        name = "null";
 
+        createdDate = DateTime.Now.ToString();
+        workedTime = new int[3];
+        for(int i = 0; i < 3; i++)
+        {
+            workedTime[i] = 0;
+        }
+        loveNess = 0;
+
+
+    }
 }

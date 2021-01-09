@@ -6,7 +6,14 @@ using System.Text;
 
 public class JsonManager
 {
-    
+    public void DataInitialize()
+    {
+        SaveWholeComponent();
+        SaveDataClass data = new SaveDataClass();
+        SaveJson(data);
+    }
+
+
     public void SaveJson(SaveDataClass saveData)
     {
         string jsonText;
@@ -82,6 +89,10 @@ public class JsonManager
     {
         TextAsset text = Resources.Load<TextAsset>("JsonData/ComponentsData");
         WholeComponents components = JsonUtility.FromJson<WholeComponents>(text.ToString());
+        foreach(ComponentDataClass data in components.componentList)
+        {
+            data.componentSprite = Resources.Load<Sprite>("Components/" + data.name);
+        }
         return components;
 
     }

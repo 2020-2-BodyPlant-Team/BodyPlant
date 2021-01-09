@@ -59,25 +59,33 @@ public class FlowerPotManager : MonoBehaviour
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
 
         //화분에 있는 부위들을 먼저 가져온다.
-        for(int i = 0; i < potNumber; i++)
+        for (int i = 0; i < potNumber; i++)
         {
             //돋보기 오브젝트 꺼주기
             magnifierArray[i].SetActive(false);
-
             int elapsedTime = 0;
+
             //만약 화분이 비어있다면 다음 인덱스로 넘기기
-            if(componentsInPot[i].componentData.name == "null")
+            if (componentsInPot[i].name == "null")
             {
+                Debug.Log("이름이 null이니까 컨티뉴");
                 continue;
             }
+            ComponentDataClass componentData = FindData(componentsInPot[i].name);
+            if (componentData == null)
+            {
+                Debug.LogError("data가 null이다");
+                return;
+            }
+
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[i].plantedTime, DateTime.Now.ToString());
-            componentsInPot[i].percentage = elapsedTime / componentsInPot[i].componentData.sproutSeconds;
+            componentsInPot[i].percentage = elapsedTime / componentData.sproutSeconds;
             if (componentsInPot[i].percentage > 1)
             {
                 componentsInPot[i].percentage = 1;
             }
             //지난 시간을 구해주고 그것이 건설시간보다 큰지 체크해준다.
-            if(elapsedTime > componentsInPot[i].componentData.sproutSeconds)
+            if(elapsedTime > componentData.sproutSeconds)
             {
                 componentsInPot[i].isSprotued = true;//크면은 트류
             }
@@ -88,26 +96,26 @@ public class FlowerPotManager : MonoBehaviour
             //만약 false라면 자라나고있는 상태니까 건물을 올려주어야겠죠?
             if(componentsInPot[i].isSprotued == false)
             {
-                GameObject prefab = Resources.Load<GameObject>("Components/" + componentsInPot[i].componentData.name);
-                Debug.Log(componentsInPot[i].componentData.name);
+                GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
+                Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
                 //여기서 유의할 점은 나중에 components in pot이 savedata로 다시 들어갈 텐데, 그 때는 gameobject는 저장이 안된다
                 //따라서 savedata를 load할 때마다 gameobject를 프리팹에서 꺼내서 새로 만들어주어야한다.
                 componentsInPot[i].realGameobject = obj;
-                StartCoroutine(SproutingCoroutine(i));
+                StartCoroutine(SproutingCoroutine(i, componentData));
                 //코루틴을 시작해준다.
             }
             else if(componentsInPot[i].isHarvested == false)
             {
                 //만약 자라긴 자랐는데 수확이 안된 경우.
-                GameObject prefab = Resources.Load<GameObject>("Components/" + componentsInPot[i].componentData.name);
+                GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 //위와 같다. 다만 코루틴 작동을 하지 않는다.
                 componentsInPot[i].realGameobject = obj;
-                obj.transform.localPosition = componentsInPot[i].componentData.sproutingPosition;
+                obj.transform.localPosition = componentData.sproutingPosition;
             }
 
         }
@@ -115,8 +123,20 @@ public class FlowerPotManager : MonoBehaviour
 
     }
 
+    ComponentDataClass FindData(string name)
+    {
+        foreach(ComponentDataClass data in wholeComponents.componentList)
+        {
+            if (name == data.name)
+            {
+                return data;
+            }
+        }
+        return null;
+    }
+
     //꽃피워올리는 코루틴. 
-    IEnumerator SproutingCoroutine(int index)
+    IEnumerator SproutingCoroutine(int index,ComponentDataClass componentData)
     {
         //꽃피지 않을때만 돌아간다.
         while(componentsInPot[index].isSprotued == false)
@@ -127,12 +147,12 @@ public class FlowerPotManager : MonoBehaviour
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
             yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString());
-            if (componentsInPot[index].componentData.sproutSeconds < elapsedTime)
+            if (componentData.sproutSeconds < elapsedTime)
             {
                 componentsInPot[index].isSprotued = true;
                 //만약 시간이 지났다면 싹틔워준다.
             }
-            percentage = elapsedTime / componentsInPot[index].componentData.sproutSeconds;
+            percentage = elapsedTime / componentData.sproutSeconds;
             //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
             if(percentage >= 1)
             {
@@ -144,7 +164,7 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, percentage, 1);
             }
             componentsInPot[index].percentage = percentage;
-            componentsInPot[index].realGameobject.transform.localPosition = percentage * componentsInPot[index].componentData.sproutingPosition;
+            componentsInPot[index].realGameobject.transform.localPosition = percentage * componentData.sproutingPosition;
         }
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
         componentsInPot[index].isHarvested = false;
@@ -172,6 +192,7 @@ public class FlowerPotManager : MonoBehaviour
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
         //수확이 되었다는거를 세이브해줘야하니까 세이브데이터에 넣어주고
+        componentsInPot[index].isHarvested = true;
         saveData.owningComponentList.Add(componentsInPot[index]);
         //수확이 된 거는 아무것도 없는 빈 객체를 넣는다.
         //왜냐하면 ㅡㅡ componentsInPot[index] = null을하니까 new ComponentClass()가 생겨버리드라 ㅎㅎ 화나게...null이 안들어간다ㅣ...
@@ -197,7 +218,7 @@ public class FlowerPotManager : MonoBehaviour
         {
 
             //아무것도 심어져있지 않으면 null이다. 이름이 null이다. 나이렇게 코딩하는거 싫어요 ㅠㅠ
-            if(componentsInPot[i].componentData.name == "null")
+            if(componentsInPot[i].name == "null")
             {
 
                 //아무것도 심어져있지않은 화분이 있으면 거기다가 심기.
@@ -215,15 +236,17 @@ public class FlowerPotManager : MonoBehaviour
 
         //이제 전체 컴포넌트중에서 이름을통해 특정 컴포넌트를 찾는다. 이름은 파라미터로 받았따.
         ComponentClass component = new ComponentClass();
+        ComponentDataClass componentData = null;
         foreach(ComponentDataClass com in wholeComponents.componentList)
         {
             if(com.name == name)
             {
-                component.componentData = com;
+                component.name = name;
+                componentData = com;
                 break;
             }
         }
-        if(component.componentData.name == "null")
+        if(component.name == "null")
         {
             Debug.LogError("화분의 이름을 사전에서 못찾았다");
             return;
@@ -231,7 +254,7 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log(availablePlace);
         componentsInPot[availablePlace] = component;
         //이 아래부터는 start에 있는거랑 똑같다.
-        GameObject prefab = Resources.Load<GameObject>("Components/" + componentsInPot[availablePlace].componentData.name);
+        GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
@@ -245,7 +268,7 @@ public class FlowerPotManager : MonoBehaviour
         componentsInPot[availablePlace].isHarvested = false;
         //변수들도 다 false로 해준다.
         gameManager.Save();
-        StartCoroutine(SproutingCoroutine(availablePlace));
+        StartCoroutine(SproutingCoroutine(availablePlace,componentData));
         //코루틴을 시작해준다.
     }
 
@@ -367,7 +390,7 @@ public class FlowerPotManager : MonoBehaviour
             magnifiedUIObject.SetActive(true);
             harvestCanvas.SetActive(false); //수확하시겠습니까 캔버스는 꺼준다.
             //만약 화분이 비어있다면.
-            if (componentsInPot[index].componentData.name == "null")
+            if (componentsInPot[index].name == "null")
             {
                 //화분이 비면 프로그레스바가 없어.
                 progressBar.transform.localScale = new Vector3(1, 0, 1);
@@ -380,7 +403,7 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
                 
                 nameText.gameObject.SetActive(true);
-                nameText.text = componentsInPot[index].componentData.name;
+                nameText.text = componentsInPot[index].name;
                 //이름텍스트도 켜주고 이름도 넣어준다.
             }
 

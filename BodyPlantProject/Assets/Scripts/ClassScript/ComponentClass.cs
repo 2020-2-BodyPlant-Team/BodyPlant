@@ -16,11 +16,10 @@ using UnityEngine;
 [System.Serializable]
 public class ComponentClass
 {
-    public ComponentDataClass componentData;
-
+    //public ComponentDataClass componentData;
+    public string name;
     public Vector2 position;           //캐릭터 내에서의 상대적 위치     
 
-    public Sprite sprite;               //스프라이트 이미지
     public string plantedTime;         //심어진 시간
     public bool isSprotued;             //화분에서 전부 자랐는지
     public float percentage;            //성장도
@@ -34,9 +33,8 @@ public class ComponentClass
     //테스트용으로 만든거. 디버그 위해서 객체를 만들어야하니까 생성자가 그냥 있습니다.
     public ComponentClass()
     {
-        componentData = new ComponentDataClass();
+        name = "null";
         position = Vector2.zero;
-        sprite = null;
         plantedTime = DateTime.Now.ToString();
         isSprotued = false;
         isHarvested = false;

@@ -18,20 +18,23 @@ public class SaveDataClass
         //테스트용 생성자. 그냥 3개씩 다 만들어준ㄴ겁니다.
         lastPlayTime = DateTime.Now.ToString();
         potList = new ComponentClass[3];
+        /*
         for(int i = 0; i < 3; i++)
         {
             potList[i] = new ComponentClass();
-        }
+        }*/
         characterList = new List<CharacterClass>();
+        /*
         for (int i = 0; i < 3; i++)
         {
             characterList.Add(new CharacterClass());
-        }
+        }*/
         owningComponentList = new List<ComponentClass>();
+        /*
         for (int i = 0; i < 3; i++)
         {
             owningComponentList.Add(new ComponentClass());
-        }
+        }*/
 
     }
 }

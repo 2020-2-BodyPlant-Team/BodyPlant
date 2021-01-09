@@ -44,7 +44,9 @@ public class GameManager : MonoBehaviour
         //saveData = new SaveDataClass();
         //Save();  // 이거는 필요할 때만 있는 코드. 디버그용
         Load();
+        
     }
+
 
     
     //세이브데이터 세이브
@@ -66,6 +68,10 @@ public class GameManager : MonoBehaviour
     public void ComposeSceneLoad()
     {
         SceneManager.LoadScene("ComposeScene");
+    }
+    public void PotSceneLoad()
+    {
+        SceneManager.LoadScene("PotScene");
     }
    
 
