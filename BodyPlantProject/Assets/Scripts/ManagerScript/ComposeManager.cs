@@ -152,10 +152,14 @@ public class ComposeManager : MonoBehaviour
             foreach (ComponentClass component in activedComponent)
             {
                 component.position = component.realGameobject.transform.localPosition;
+                component.realGameobject.SetActive(false);
             }
             saveData.characterList.Add(character);
             gameManager.Save();
             //저장.
+
+            activedComponent = new List<ComponentClass>();  //초기화;
+
         }
         else
         {

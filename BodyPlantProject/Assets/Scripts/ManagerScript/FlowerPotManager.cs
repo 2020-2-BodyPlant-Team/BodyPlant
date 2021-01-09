@@ -39,6 +39,7 @@ public class FlowerPotManager : MonoBehaviour
 
     public GameObject magnifiedUIObject;     //확대했을 때의 UI를 통쨰로 껐다 켰다 해줘야해요.
     bool nowMagnified = false;              //현재 확대되어있는 상태인지.
+    public GameObject buttonBundle;         //버튼모음집 껐다켰따.
 
     public GameObject progressBar;          //확대했을 때 성장도 오브젝트
     public GameObject harvestButton;        //수확버튼이 수확 가능할 때 떠야한다;
@@ -299,6 +300,7 @@ public class FlowerPotManager : MonoBehaviour
 
         if (goBack)
         {
+            buttonBundle.SetActive(true);
             nowMagnifiedPotIndex = -1;
             nowMagnified = false;
             //뒤로가기 눌러서 원상복구할 때.
@@ -309,6 +311,8 @@ public class FlowerPotManager : MonoBehaviour
         }
         else
         {
+            buttonBundle.SetActive(false);
+            magnifierArray[index].SetActive(false);
             //뒤로가기가 아닐때. 화분 확대를 할 때. UI켜주는건 코루틴에서 한다. 다 움직이고 나서 해야되기 때문에
             nowMagnifiedPotIndex = index;           //현재 확대된 화분 인덱스 저장
             nowMagnified = true;                    //현재 확대되었음을 알려주고(사실 안해도됨, 그냥 magnifiedObject.activeSelf로 받아와도 댐)
@@ -436,6 +440,10 @@ public class FlowerPotManager : MonoBehaviour
         gameManager.ComposeSceneLoad();
     }
 
+    public void HouseSceneLoad()
+    {
+        gameManager.HouseSceneLoad();
+    }
 
     // Update is called once per frame
     void Update()

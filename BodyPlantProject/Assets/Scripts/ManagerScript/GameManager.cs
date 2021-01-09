@@ -73,6 +73,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("PotScene");
     }
+
+    public void HouseSceneLoad()
+    {
+        SceneManager.LoadScene("HouseScene");
+    }
    
 
     //시간계산기입니다. 예전시간과 현재시간을 넣으면 그 사이의 초가 나와요.
