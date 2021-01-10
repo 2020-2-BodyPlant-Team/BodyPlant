@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f1263b44a9fa793469f101097583fe8a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - unSproutedSprite: {instanceID: 0}
+  - sproutedSprite: {instanceID: 0}
+  - realGameObject: {instanceID: 0}
+  - spriteRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
