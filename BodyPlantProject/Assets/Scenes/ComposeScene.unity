@@ -1181,6 +1181,8 @@ MonoBehaviour:
   NamingObject: {fileID: 136952311}
   NameAskingObject: {fileID: 1032907835}
   NameAskingText: {fileID: 532029116}
+  jointObject: {fileID: 1332311371957204961, guid: 50a9aa6d9df83ac4fb06c7974b415f7d,
+    type: 3}
 --- !u!4 &672835489
 Transform:
   m_ObjectHideFlags: 0
@@ -2441,7 +2443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00005430443, y: 0.000045776367}
+  m_AnchoredPosition: {x: 0.000017270762, y: 0.000030517578}
   m_SizeDelta: {x: -596.99976, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1714757284

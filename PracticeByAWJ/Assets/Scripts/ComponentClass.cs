@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComponentClass
+public class ComponentClass : MonoBehaviour
 {
     public string name;         //이름
     public Vector2 position;             //부위의 위치     

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     List<ComponentClass> componentList;
     public GameObject imageObject;
     int NumberOfPlants = 0;
+    public Sprite unSproutedSprite;
+    public Sprite sproutedSprite;
     
 
     // Start is called before the first frame update

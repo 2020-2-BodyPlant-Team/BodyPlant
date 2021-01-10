@@ -11,6 +11,7 @@ public class ComposeManager : MonoBehaviour
     List<ComponentClass> harvestedComponent;//버튼형태로 있는 부위.
     [SerializeField]
     List<ComponentClass> activedComponent;  //단상위에 올라가있는 부위
+    List<List<GameObject>> jointObjectList;
     WholeComponents wholeComponents;
     public RectTransform contentRect;       //시작값 700. 하나 늘어날떄마다 -400
     public GameObject buttonObject;         //시작값  0,-74f/  하나늘어날때마다 x만 +400
@@ -25,6 +26,9 @@ public class ComposeManager : MonoBehaviour
     public GameObject NameAskingObject;
     public Text NameAskingText;            //""(이)가 맞나요?
 
+    public GameObject jointObject;         //관절 오브젝트
+
+
     private void Start()
     {
         NamingObject.SetActive(false);
@@ -33,6 +37,7 @@ public class ComposeManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         harvestedComponent = gameManager.saveData.owningComponentList;
+        jointObjectList = new List<List<GameObject>>();
         //초기화
         contentRect.anchoredPosition = new Vector2(0, 0);
         contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
@@ -72,8 +77,19 @@ public class ComposeManager : MonoBehaviour
     {
         Debug.Log(name + buttonIndex);
         int changedIndex = buttonIndex;
+        ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
+        List<GameObject> objectList = new List<GameObject>();
+        jointObjectList.Add(objectList);
+        for(int i = 0; i< data.jointPosition.Count; i++)
+        {
+            GameObject jointInst = Instantiate(jointObject, inst.transform);
+            objectList.Add(jointInst);
+            jointInst.transform.localPosition = new Vector3(data.jointPosition[i].x, data.jointPosition[i].y, 5);
+        }
+        
+
         inst.transform.position = new Vector3(0, 0, 10);
         inst.AddComponent<DragAttach>();
         //유닛 만들고
@@ -165,7 +181,42 @@ public class ComposeManager : MonoBehaviour
         {
             //기획나오면 추가될거
         }
+    }
 
+    void AdjustJoint()
+    {
+        for(int i = 0; i < activedComponent.Count-1; i++)
+        {
+            GameObject realObjectI = activedComponent[i].realGameobject;
+            List<GameObject> jointListI = jointObjectList[i];
+            for(int j = i+1;j < activedComponent.Count; j++)
+            {
+                List<GameObject> jointListJ = jointObjectList[j];
+
+                foreach(GameObject objI in jointListI)
+                {
+                    foreach(GameObject objJ in jointListJ)
+                    {
+                        Vector3 delta = objI.transform.position - objJ.transform.position;
+                        if (delta.magnitude < 0.5f)
+                        {
+                            realObjectI.transform.position = realObjectI.transform.position - delta;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            //뗄 때마다 조인트를 찾아줘야한다.
+            //어떤 거를 떼는지부터 알아야한다.
+            AdjustJoint();
+        }
     }
 
 }

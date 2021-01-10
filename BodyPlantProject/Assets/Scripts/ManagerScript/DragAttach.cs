@@ -24,6 +24,10 @@ public class DragAttach : MonoBehaviour
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition) + offset;
             transform.position = objPosition;
         }
+    }
+
+    private void OnMouseExit()
+    {
         
     }
 
