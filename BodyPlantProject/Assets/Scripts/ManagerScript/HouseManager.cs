@@ -38,6 +38,8 @@ public class HouseManager : MonoBehaviour
                 GameObject componentObj = Resources.Load<GameObject>("Components/" + component.name);
                 GameObject inst = Instantiate(componentObj, parent.transform);
                 inst.transform.localPosition = component.position;
+                inst.transform.eulerAngles = component.rotation;
+
             }
             characterObjectList.Add(parent);
         }

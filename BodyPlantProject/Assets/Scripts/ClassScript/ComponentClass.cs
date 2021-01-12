@@ -23,8 +23,8 @@ public class ComponentClass
     public string plantedTime;         //심어진 시간
     public bool isSprotued;             //화분에서 전부 자랐는지
     public float percentage;            //성장도
-    public float rotation;            //얼마나 돌아갔는지.
-    public bool flipped;
+    public Vector3 rotation;            //얼마나 돌아갔는지.
+    
 
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
@@ -39,6 +39,6 @@ public class ComponentClass
         plantedTime = DateTime.Now.ToString();
         isSprotued = false;
         isHarvested = false;
-        rotation = 90;
+        rotation = Vector3.zero;
     }
 }

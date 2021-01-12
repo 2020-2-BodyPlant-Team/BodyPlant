@@ -28,6 +28,13 @@ public class ComposeManager : MonoBehaviour
 
     public GameObject jointObject;         //관절 오브젝트
 
+    GameObject touchedObject;               //터치한 오브젝트
+    RaycastHit2D hit;                         //터치를 위한 raycastHit
+    public Camera cam;                      //레이캐스트를 위한 카메라.
+
+    public bool rotationMode;
+    public bool flipMode;
+
 
     private void Start()
     {
@@ -38,12 +45,16 @@ public class ComposeManager : MonoBehaviour
         wholeComponents = gameManager.wholeComponents;
         harvestedComponent = gameManager.saveData.owningComponentList;
         jointObjectList = new List<List<GameObject>>();
-        //초기화
-        contentRect.anchoredPosition = new Vector2(0, 0);
-        contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
-        //contentRect 사이즈 조정을 해줘야 좌우로 움직일 수 있다.
         buttonList = new List<GameObject>();
         removedButtonList = new List<int>();
+        rotationMode = false;
+        //초기화
+
+        contentRect.anchoredPosition = new Vector2(0, 0);   //자꾸 이거 움직임;; 위치 고정 안해주면 지맘대로 위치가 바껴요
+        contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
+        //contentRect 사이즈 조정을 해줘야 좌우로 움직일 수 있다.
+        
+        
         for(int i = 0; i< harvestedComponent.Count; i++)
         {
             ComponentDataClass componentData = FindData(harvestedComponent[i].name);
@@ -55,12 +66,14 @@ public class ComposeManager : MonoBehaviour
             Text text = inst.GetComponentInChildren<Text>();
             text.text = componentData.name;
             string name = componentData.name;
-            int index = i;
+            int index = i;      //delegate에 그냥 i를 넣으면 되는데, 이상하게 int가 callbyRef로 넘어간다.
             Button button = inst.GetComponent<Button>();
             button.onClick.AddListener(delegate { SpawnComponent(name, index); });
+            //버튼만드는 for문
         }
     }
 
+    //이름으로 data찾아주는 함수
     ComponentDataClass FindData(string name)
     {
         foreach (ComponentDataClass data in wholeComponents.componentList)
@@ -73,6 +86,7 @@ public class ComposeManager : MonoBehaviour
         return null;
     }
 
+    //버튼을 누를 때 
     public void SpawnComponent(string name,int buttonIndex)
     {
         Debug.Log(name + buttonIndex);
@@ -80,18 +94,21 @@ public class ComposeManager : MonoBehaviour
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
+        inst.transform.eulerAngles = Vector3.zero;
         List<GameObject> objectList = new List<GameObject>();
         jointObjectList.Add(objectList);
         for(int i = 0; i< data.jointPosition.Count; i++)
         {
             GameObject jointInst = Instantiate(jointObject, inst.transform);
             objectList.Add(jointInst);
-            jointInst.transform.localPosition = new Vector3(data.jointPosition[i].x, data.jointPosition[i].y, 5);
+            jointInst.transform.localPosition = new Vector3(data.jointPosition[i].x, data.jointPosition[i].y, 0);
         }
         
 
         inst.transform.position = new Vector3(0, 0, 10);
-        inst.AddComponent<DragAttach>();
+        DragAttach drag =  inst.AddComponent<DragAttach>();
+        drag.composeManager = this;
+        
         //유닛 만들고
 
         for(int i = 0; i < removedButtonList.Count; i++)
@@ -105,10 +122,10 @@ public class ComposeManager : MonoBehaviour
         buttonList[changedIndex].SetActive(false);
         buttonList.Remove(buttonList[changedIndex]);
 
-        ComponentClass component = harvestedComponent[changedIndex];
+        ComponentClass component = harvestedComponent[buttonIndex];
         component.realGameobject = inst;
         activedComponent.Add(component);
-        harvestedComponent.Remove(component);
+        //harvestedComponent.Remove(component);
 
         contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
 
@@ -157,10 +174,22 @@ public class ComposeManager : MonoBehaviour
         gameManager.PotSceneLoad();
     }
 
+    public void RotationButton()
+    {
+        rotationMode = !rotationMode;
+        flipMode = false;
+    }
+    public void FlipButton()
+    {
+        flipMode = !flipMode;
+        rotationMode = false;
+    }
+
     public void SaveCharacter(bool isNew)
     {
         if (isNew)
         {
+            //새로만든 캐릭터라면 이름까지 저장해야해.
             CharacterClass character = new CharacterClass();
             character.components = activedComponent;
             character.name = nameInput;
@@ -168,7 +197,9 @@ public class ComposeManager : MonoBehaviour
             foreach (ComponentClass component in activedComponent)
             {
                 component.position = component.realGameobject.transform.localPosition;
+                component.rotation = component.realGameobject.transform.eulerAngles;
                 component.realGameobject.SetActive(false);
+                harvestedComponent.Remove(component);
             }
             saveData.characterList.Add(character);
             gameManager.Save();
@@ -183,6 +214,7 @@ public class ComposeManager : MonoBehaviour
         }
     }
 
+    /*
     void AdjustJoint()
     {
         for(int i = 0; i < activedComponent.Count-1; i++)
@@ -207,15 +239,78 @@ public class ComposeManager : MonoBehaviour
 
             }
         }
+    }*/
+
+
+    void AdjustJoint(int index)
+    {
+        //이제 가장 가까운 관절을 찾아줘야해.
+        GameObject componentObject = activedComponent[index].realGameobject;
+        List<GameObject> jointListMain = jointObjectList[index];
+        Vector3 leastDelta = Vector3.zero;
+        for (int i = 0; i < activedComponent.Count; i++)
+        {
+            if (i == index)
+            {
+                continue;
+            }
+            List<GameObject> jointListJ = jointObjectList[i];
+
+            foreach (GameObject objI in jointListMain)
+            {
+                foreach (GameObject objJ in jointListJ)
+                {
+                    
+                    Vector3 delta = objI.transform.position - objJ.transform.position;
+                    Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
+                    Vector2 leastDeltaVector2 = new Vector2(leastDelta.x, leastDelta.y);
+                    if (leastDelta == Vector3.zero)
+                    {
+                        leastDelta = delta;
+                    }
+                    if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
+                    {
+                        leastDelta = delta;
+                    }
+                }
+            }
+
+        }
+        Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
+        if(convert.sqrMagnitude < 2.0f)
+        {
+            componentObject.transform.position = componentObject.transform.position - leastDelta;
+        }
+
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))    //터치끝났을 때 adjustJoint
         {
-            //뗄 때마다 조인트를 찾아줘야한다.
-            //어떤 거를 떼는지부터 알아야한다.
-            AdjustJoint();
+            if(!flipMode && !rotationMode)
+            {
+                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
+                if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
+                {
+
+
+                    touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
+                    Debug.Log(touchedObject);
+                    for (int i = 0; i < activedComponent.Count; i++)
+                    {
+
+                        if (activedComponent[i].realGameobject == touchedObject)
+                        {
+                            Debug.Log("몇번 실행되나 " + i);
+                            AdjustJoint(i);
+                            break;
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 
