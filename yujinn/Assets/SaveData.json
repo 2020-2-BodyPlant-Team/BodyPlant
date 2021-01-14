@@ -1,0 +1,144 @@
+{
+    "componentList": [
+        {
+            "name": "김예현",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "안우진",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "안우진",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "김예현",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "안우진",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "안우진",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "김예현",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "unSproutedSprite": {
+                "instanceID": 0
+            },
+            "sproutedSprite": {
+                "instanceID": 0
+            },
+            "realGameobject": {
+                "instanceID": 0
+            },
+            "sproutTime": 10.0,
+            "spriteRenderer": {
+                "instanceID": 0
+            }
+        }
+    ]
+}
