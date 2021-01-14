@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < wrapper.componentList.Count; i++)
         {
             yield return new WaitForSeconds(1);
-            nameChange.text = wrapper.componentList[i].name.ToString();
+            nameChange.text = wrapper.componentList[i].name;
         }
     }
 

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         if(singleTon == null)
         {
             singleTon = this;
+            DontDestroyOnLoad(gameObject);
             //싱글톤이 지정되어있지 않다면. 이 객체(this)를 지정;
         }
         else
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             //싱글톤이 이미 지정되어있다면,(한번이라도 위의 코드가 발동했다는 의미) 게임오브젝트 파괴
         }
-
+        
         //제이슨매니저 할당.
         jsonManager = new JsonManager();
         //wholeComponents는 전체 부위인데, 이걸 로딩해준다. 기획자가 만든 데이터 로딩.

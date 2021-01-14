@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
+
             Print();
         }
     }
@@ -92,16 +93,22 @@ public class GameManager : MonoBehaviour
 
     void Print()
     {
-        for(int i = 0; i < index; i++)
-        {
-            Text.text = wrapper.componentList[index].name;
-            StartCoroutine(WaitCoroutine());
-        }
-        
+
+        StartCoroutine(WaitCoroutine());
+
     }
 
     IEnumerator WaitCoroutine()
     {
-        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < wrapper.componentList.Count; i++)
+        {
+            Text.text = wrapper.componentList[i].name;
+
+            yield return new WaitForSeconds(1);
+        }
+
+
     }
+
 }

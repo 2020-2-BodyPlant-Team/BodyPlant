@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         //update한번 돌아갈 때 걸리는 시간.
         
         for(int i = 0; i < index; i++)
+
         {
             timerList[i] += Time.deltaTime;
             if(timerList[i] > componentsList[i].sproutTime)
@@ -52,6 +54,11 @@ public class GameManager : MonoBehaviour
             index++;
             //10초가 지나면 sproutedSprite로 sprite가 바뀐다
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("SecondScene");
         }
 
         

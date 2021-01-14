@@ -501,7 +501,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1591879848}
+      objectReference: {fileID: 2039371416}
     - target: {fileID: 3529634899689160046, guid: 04b30f4df1ab9a543875e6cb2ede5036,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -648,7 +648,7 @@ MonoBehaviour:
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
-      rotation: 90
+      rotation: {x: 0, y: 0, z: 0}
       realGameobject: {fileID: 0}
       isHarvested: 0
     - name: null
@@ -656,7 +656,7 @@ MonoBehaviour:
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
-      rotation: 90
+      rotation: {x: 0, y: 0, z: 0}
       realGameobject: {fileID: 0}
       isHarvested: 0
     - name: null
@@ -664,7 +664,7 @@ MonoBehaviour:
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
-      rotation: 90
+      rotation: {x: 0, y: 0, z: 0}
       realGameobject: {fileID: 0}
       isHarvested: 0
     characterList: []

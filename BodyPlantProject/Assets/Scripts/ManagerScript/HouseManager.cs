@@ -14,6 +14,11 @@ public class HouseManager : MonoBehaviour
     List<Vector3> randomPosList;
     List<Vector3> startPosList;
 
+    public void PotSceneLoad()
+    {
+        gameManager.PotSceneLoad();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
