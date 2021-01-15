@@ -28,6 +28,7 @@ public class ComponentClass
 
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
+    //public GameObject rollingObject;    //씨발...씨발 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 
     public bool isHarvested;            //수확이 되었는지.
 

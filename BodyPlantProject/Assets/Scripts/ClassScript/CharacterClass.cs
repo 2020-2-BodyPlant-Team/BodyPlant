@@ -30,7 +30,7 @@ public class CharacterClass
             workedTime[i] = 0;
         }
         loveNess = 0;
-
-
     }
+
+    
 }

@@ -11,7 +11,7 @@ public class ComposeManager : MonoBehaviour
     List<ComponentClass> harvestedComponent;//버튼형태로 있는 부위.
     [SerializeField]
     List<ComponentClass> activedComponent;  //단상위에 올라가있는 부위
-    List<List<GameObject>> jointObjectList;
+    List<List<GameObject>> attachObjectList;
     WholeComponents wholeComponents;
     public RectTransform contentRect;       //시작값 700. 하나 늘어날떄마다 -400
     public GameObject buttonObject;         //시작값  0,-74f/  하나늘어날때마다 x만 +400
@@ -26,7 +26,7 @@ public class ComposeManager : MonoBehaviour
     public GameObject NameAskingObject;
     public Text NameAskingText;            //""(이)가 맞나요?
 
-    public GameObject jointObject;         //관절 오브젝트
+    public GameObject attachObject;         //관절 오브젝트
 
     GameObject touchedObject;               //터치한 오브젝트
     RaycastHit2D hit;                         //터치를 위한 raycastHit
@@ -44,7 +44,7 @@ public class ComposeManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         harvestedComponent = gameManager.saveData.owningComponentList;
-        jointObjectList = new List<List<GameObject>>();
+        attachObjectList = new List<List<GameObject>>();
         buttonList = new List<GameObject>();
         removedButtonList = new List<int>();
         rotationMode = false;
@@ -62,7 +62,7 @@ public class ComposeManager : MonoBehaviour
             buttonList.Add(inst);
             inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400*harvestedComponent.Count/2+ i * 400, -74f);
             Image image = inst.GetComponent<Image>();
-            image.sprite = componentData.componentSprite;
+            image.sprite = componentData.componentSpriteArray[0];
             Text text = inst.GetComponentInChildren<Text>();
             text.text = componentData.name;
             string name = componentData.name;
@@ -89,19 +89,18 @@ public class ComposeManager : MonoBehaviour
     //버튼을 누를 때 
     public void SpawnComponent(string name,int buttonIndex)
     {
-        Debug.Log(name + buttonIndex);
         int changedIndex = buttonIndex;
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
         inst.transform.eulerAngles = Vector3.zero;
         List<GameObject> objectList = new List<GameObject>();
-        jointObjectList.Add(objectList);
-        for(int i = 0; i< data.jointPosition.Count; i++)
+        attachObjectList.Add(objectList);
+        for(int i = 0; i< data.attachPosition.Count; i++)
         {
-            GameObject jointInst = Instantiate(jointObject, inst.transform);
-            objectList.Add(jointInst);
-            jointInst.transform.localPosition = new Vector3(data.jointPosition[i].x, data.jointPosition[i].y, 0);
+            GameObject attachInst = Instantiate(attachObject, inst.transform);
+            objectList.Add(attachInst);
+            attachInst.transform.localPosition = new Vector3(data.attachPosition[i].x, data.attachPosition[i].y, 0);
         }
         
 
@@ -215,19 +214,19 @@ public class ComposeManager : MonoBehaviour
     }
 
     /*
-    void AdjustJoint()
+    void Adjustattach()
     {
         for(int i = 0; i < activedComponent.Count-1; i++)
         {
             GameObject realObjectI = activedComponent[i].realGameobject;
-            List<GameObject> jointListI = jointObjectList[i];
+            List<GameObject> attachListI = attachObjectList[i];
             for(int j = i+1;j < activedComponent.Count; j++)
             {
-                List<GameObject> jointListJ = jointObjectList[j];
+                List<GameObject> attachListJ = attachObjectList[j];
 
-                foreach(GameObject objI in jointListI)
+                foreach(GameObject objI in attachListI)
                 {
-                    foreach(GameObject objJ in jointListJ)
+                    foreach(GameObject objJ in attachListJ)
                     {
                         Vector3 delta = objI.transform.position - objJ.transform.position;
                         if (delta.magnitude < 0.5f)
@@ -242,11 +241,11 @@ public class ComposeManager : MonoBehaviour
     }*/
 
 
-    void AdjustJoint(int index)
+    void Adjustattach(int index)
     {
         //이제 가장 가까운 관절을 찾아줘야해.
         GameObject componentObject = activedComponent[index].realGameobject;
-        List<GameObject> jointListMain = jointObjectList[index];
+        List<GameObject> attachListMain = attachObjectList[index];
         Vector3 leastDelta = Vector3.zero;
         for (int i = 0; i < activedComponent.Count; i++)
         {
@@ -254,11 +253,11 @@ public class ComposeManager : MonoBehaviour
             {
                 continue;
             }
-            List<GameObject> jointListJ = jointObjectList[i];
+            List<GameObject> attachListJ = attachObjectList[i];
 
-            foreach (GameObject objI in jointListMain)
+            foreach (GameObject objI in attachListMain)
             {
-                foreach (GameObject objJ in jointListJ)
+                foreach (GameObject objJ in attachListJ)
                 {
                     
                     Vector3 delta = objI.transform.position - objJ.transform.position;
@@ -286,7 +285,7 @@ public class ComposeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))    //터치끝났을 때 adjustJoint
+        if (Input.GetMouseButtonUp(0))    //터치끝났을 때 adjustattach
         {
             if(!flipMode && !rotationMode)
             {
@@ -303,7 +302,7 @@ public class ComposeManager : MonoBehaviour
                         if (activedComponent[i].realGameobject == touchedObject)
                         {
                             Debug.Log("몇번 실행되나 " + i);
-                            AdjustJoint(i);
+                            Adjustattach(i);
                             break;
                         }
                     }

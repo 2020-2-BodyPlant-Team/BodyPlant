@@ -91,7 +91,7 @@ public class JsonManager
         WholeComponents components = JsonUtility.FromJson<WholeComponents>(text.ToString());
         foreach(ComponentDataClass data in components.componentList)
         {
-            data.componentSprite = Resources.Load<Sprite>("Components/" + data.name);
+            data.componentSpriteArray = Resources.LoadAll<Sprite>("Components/" + data.name);
         }
         return components;
 

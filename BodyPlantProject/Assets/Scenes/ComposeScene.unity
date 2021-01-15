@@ -1339,7 +1339,7 @@ MonoBehaviour:
   NamingObject: {fileID: 136952311}
   NameAskingObject: {fileID: 1032907835}
   NameAskingText: {fileID: 532029116}
-  jointObject: {fileID: 1332311371957204961, guid: 50a9aa6d9df83ac4fb06c7974b415f7d,
+  attachObject: {fileID: 1332311371957204961, guid: 50a9aa6d9df83ac4fb06c7974b415f7d,
     type: 3}
   cam: {fileID: 2102946691}
   rotationMode: 0

@@ -2,18 +2,20 @@
     "componentList": [
         {
             "name": "arm",
-            "jointPosition": [
+            "isJoint": true,
+            "attachPosition": [
                 {
-                    "x": 0.0,
-                    "y": -1.0
+                    "x": 2.0,
+                    "y": 0.0
                 },
-                                {
-                    "x": 0.0,
-                    "y": 1.0
+                {
+                    "x": -2.0,
+                    "y": 0.0
                 }
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
@@ -21,29 +23,20 @@
         },
         {
             "name": "leg",
-            "jointPosition": [
+            "isJoint": true,
+            "attachPosition": [
                 {
-                    "x": 0.0,
-                    "y": -1.0
+                    "x": 2.0,
+                    "y": 0.0
+                },
+                {
+                    "x": -2.0,
+                    "y": 0.0
                 }
             ],
             "price": 10,
             "sproutSeconds": 10.0,
-            "sproutingPosition": {
-                "x": 0.0,
-                "y": 2.0
-            }
-        },
-        {
-            "name": "nose",
-            "jointPosition": [
-                {
-                    "x": 1.0,
-                    "y": 1.0
-                }
-            ],
-            "price": 10,
-            "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
@@ -51,22 +44,42 @@
         },
         {
             "name": "mouth",
-            "jointPosition": [
+            "isJoint": false,
+            "attachPosition": [
                 {
-                    "x": -1.0,
-                    "y": 0.0
+                    "x": 1.0,
+                    "y": 1.0
                 }
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "nose",
+            "isJoint": false,
+            "attachPosition": [
+                {
+                    "x": 1.0,
+                    "y": -1.0
+                }
+            ],
+            "price": 10,
+            "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
+            "sproutingPosition": {
+                "x": 0.0,
+                "y": 2.0
+            }
+        },
+        {
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -74,14 +87,16 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -89,14 +104,16 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -104,14 +121,16 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -119,14 +138,16 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -134,14 +155,16 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
             }
         },
         {
-            "name": "arm",
-            "jointPosition": [
+            "name": "null",
+            "isJoint": false,
+            "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
@@ -149,6 +172,7 @@
             ],
             "price": 10,
             "sproutSeconds": 10.0,
+            "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
