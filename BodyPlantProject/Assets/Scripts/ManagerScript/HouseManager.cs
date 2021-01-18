@@ -70,18 +70,18 @@ public class HouseManager : MonoBehaviour
                 GameObject componentObj = Resources.Load<GameObject>("Components/" + component.name);
                 GameObject inst = Instantiate(componentObj, parent.transform);
                 component.realGameobject = inst;
-                if (FindData(component.name).isJoint)
+                if (FindData(component.name).isChild)
                 {
                     
                     rotationList.Add(0);
                     randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, Random.Range(0, 180)));
+                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30)));
                     startAngleList.Add(Vector3.zero);
                     rotatingObjectList.Add(component.realGameobject);
 
                     rotationList.Add(0);
                     randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, Random.Range(0, 180)));
+                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30)));
                     startAngleList.Add(Vector3.zero);
                     rotatingObjectList.Add(component.realGameobject.transform.GetChild(0).gameObject);
                 }
@@ -118,7 +118,7 @@ public class HouseManager : MonoBehaviour
                 rotationList[i] = 0;
                 randomRotateTimeList[i] = Random.Range(1f, 2f);
                 startAngleList[i] = randomAngleList[i];
-                randomAngleList[i] = new Vector3(0, 0, Random.Range(0, 180));
+                randomAngleList[i] = new Vector3(0, 0, Random.Range(-30, 30));
             }
         }
     }

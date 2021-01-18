@@ -240,6 +240,11 @@ public class ComposeManager : MonoBehaviour
         }
     }*/
 
+    public void FindWholeJoint()
+    {
+
+    }
+
 
     void Adjustattach(int index)
     {
@@ -247,20 +252,24 @@ public class ComposeManager : MonoBehaviour
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
         Vector3 leastDelta = Vector3.zero;
+        int attachedComponent = -1;
+        int attachedOriginJoint = -1;
+        int attachedOtherJoint = -1;
+
         for (int i = 0; i < activedComponent.Count; i++)
         {
             if (i == index)
             {
                 continue;
             }
-            List<GameObject> attachListJ = attachObjectList[i];
+            List<GameObject> attachListK = attachObjectList[i];
 
-            foreach (GameObject objI in attachListMain)
+
+            for(int j = 0; j<attachListMain.Count; j++)
             {
-                foreach (GameObject objJ in attachListJ)
+                for(int k = 0; k < attachListK.Count; k++)
                 {
-                    
-                    Vector3 delta = objI.transform.position - objJ.transform.position;
+                    Vector3 delta = attachListMain[j].transform.position - attachListK[k].transform.position;
                     Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
                     Vector2 leastDeltaVector2 = new Vector2(leastDelta.x, leastDelta.y);
                     if (leastDelta == Vector3.zero)
@@ -269,6 +278,9 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
+                        attachedComponent = i;
+                        attachedOriginJoint = j;
+                        attachedOtherJoint = k;
                         leastDelta = delta;
                     }
                 }
@@ -278,9 +290,19 @@ public class ComposeManager : MonoBehaviour
         Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
         if(convert.sqrMagnitude < 2.0f)
         {
+            if(attachedOriginJoint == 0)
+            {
+                activedComponent[index].childIndexList.Add(attachedComponent);
+                activedComponent[index].childJointList.Add(attachedOtherJoint);
+            }
+            else
+            {
+
+                activedComponent[index].childChildIndexList.Add(attachedComponent);
+                activedComponent[index].childChildJointList.Add(attachedOtherJoint);
+            }
             componentObject.transform.position = componentObject.transform.position - leastDelta;
         }
-
     }
 
     private void Update()

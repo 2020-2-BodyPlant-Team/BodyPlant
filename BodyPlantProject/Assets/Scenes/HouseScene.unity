@@ -571,74 +571,104 @@ MonoBehaviour:
   wholeComponents:
     componentList:
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
     - name: null
+      isChild: 0
+      attachPosition:
+      - {x: 0, y: 0}
       jointPosition:
       - {x: 0, y: 0}
       price: 10
       sproutSeconds: 10
-      componentSprite: {fileID: 0}
+      componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
   saveData:
     lastPlayTime: 2021-01-09 PM 2:58:24
@@ -649,7 +679,12 @@ MonoBehaviour:
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      childIndexList: 
+      childJointList: 
+      childChildIndexList: 
+      childChildJointList: 
       realGameobject: {fileID: 0}
+      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -657,7 +692,12 @@ MonoBehaviour:
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      childIndexList: 
+      childJointList: 
+      childChildIndexList: 
+      childChildJointList: 
       realGameobject: {fileID: 0}
+      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -665,7 +705,12 @@ MonoBehaviour:
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      childIndexList: 
+      childJointList: 
+      childChildIndexList: 
+      childChildJointList: 
       realGameobject: {fileID: 0}
+      childObject: {fileID: 0}
       isHarvested: 0
     characterList: []
     owningComponentList: []

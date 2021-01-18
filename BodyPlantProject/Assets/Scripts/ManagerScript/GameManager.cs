@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public WholeComponents wholeComponents;    //테스트용
     public SaveDataClass saveData;             //세이브데이터
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
+    
 
     void Awake()
     {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         //load는 세이브데이터 로드다.
         //saveData = new SaveDataClass();
         //Save();  // 이거는 필요할 때만 있는 코드. 디버그용
+        jsonManager.SaveWholeComponent();
         Load();
         
     }

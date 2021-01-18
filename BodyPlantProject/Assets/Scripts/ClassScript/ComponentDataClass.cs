@@ -8,12 +8,15 @@ using UnityEngine;
 public class ComponentDataClass
 {
     public string name;                 //이름                              
-    public bool isJoint;            //관절이 돌아가는 건지 (팔, 다리인지)
+    //public bool isJoint;            //관절이 돌아가는 건지 (팔, 다리인지)
+    public bool isChild;            //차일드가 있는지.
     public List<Vector2> attachPosition;    //붙이는곳의 위치.
+    public List<Vector2> jointPosition;
     public int price;                   //얼마에 사는지
     public float sproutSeconds;         //피워나는데 몇초 걸리는지
     public Sprite[] componentSpriteArray;      //스프라이트
     public Vector2 sproutingPosition;   //다 자라났을 떄의 위치.
+    public float timer;
 
     public ComponentDataClass()
     {

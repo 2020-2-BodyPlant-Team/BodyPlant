@@ -24,11 +24,16 @@ public class ComponentClass
     public bool isSprotued;             //화분에서 전부 자랐는지
     public float percentage;            //성장도
     public Vector3 rotation;            //얼마나 돌아갔는지.
-    
+
+    public List<int> childIndexList;              //차일드에 붙어있는 인덱스.
+    public List<int> childJointList;
+
+    public List<int> childChildIndexList;         //차일드의 차일드에 붙어있는 인덱스
+    public List<int> childChildJointList;
 
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
-    //public GameObject rollingObject;    //씨발...씨발 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+    public GameObject childObject;      //차일드..
 
     public bool isHarvested;            //수확이 되었는지.
 

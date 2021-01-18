@@ -12,17 +12,9 @@ public class TestManager : MonoBehaviour
     //언제 출력할지.
     private void Start()
     {
-        componentList = new List<ComponentClass>();
-        componentList.Add(new ComponentClass("정상훈"));
-        componentList.Add(new ComponentClass("김예현"));
-        componentList.Add(new ComponentClass("안우진"));
-        componentList.Add(new ComponentClass("문유진"));
-        componentList.Add(new ComponentClass("이하영"));
-        for(int i = 0; i < 5; i++)
-        {
-            Debug.Log(componentList[i].name);
-        }
-
+        ComponentClass myComponent;
+        myComponent = new ComponentClass();
+        myComponent.memberVoid();
     }
 
     private void Update()

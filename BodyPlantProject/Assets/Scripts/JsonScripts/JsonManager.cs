@@ -6,6 +6,7 @@ using System.Text;
 
 public class JsonManager
 {
+
     public void DataInitialize()
     {
         SaveWholeComponent();

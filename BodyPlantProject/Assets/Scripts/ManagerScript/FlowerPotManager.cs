@@ -52,6 +52,7 @@ public class FlowerPotManager : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.singleTon;    //싱글톤을하면 이런식으로 가져올 수 있다. 편하다.
+        //saveData = GameManager.saveData;
         saveData = gameManager.saveData;
         componentsInPot = saveData.potList;
         wholeComponents = gameManager.wholeComponents;
@@ -73,6 +74,7 @@ public class FlowerPotManager : MonoBehaviour
                 continue;
             }
             ComponentDataClass componentData = FindData(componentsInPot[i].name);
+            //이쪽 데이터에 arm이 들어갈거에요
             if (componentData == null)
             {
                 Debug.LogError("data가 null이다");
@@ -98,6 +100,7 @@ public class FlowerPotManager : MonoBehaviour
             if(componentsInPot[i].isSprotued == false)
             {
                 GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
+                //Resources/Components/arm 
                 Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
@@ -126,8 +129,9 @@ public class FlowerPotManager : MonoBehaviour
 
     ComponentDataClass FindData(string name)
     {
-        foreach(ComponentDataClass data in wholeComponents.componentList)
+        for(int i = 0; i < wholeComponents.componentList.Count; i++)
         {
+            ComponentDataClass data = wholeComponents.componentList[i];
             if (name == data.name)
             {
                 return data;
@@ -146,7 +150,9 @@ public class FlowerPotManager : MonoBehaviour
             //몇퍼센트 완성인지.
             float percentage = 0;
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
+
             yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
+
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString());
             if (componentData.sproutSeconds < elapsedTime)
             {
@@ -192,6 +198,7 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log("이거 되긴 하냐" + index);
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
+
         //수확이 되었다는거를 세이브해줘야하니까 세이브데이터에 넣어주고
         componentsInPot[index].isHarvested = true;
         saveData.owningComponentList.Add(componentsInPot[index]);

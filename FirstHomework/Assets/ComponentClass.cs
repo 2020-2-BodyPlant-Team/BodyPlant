@@ -13,13 +13,9 @@ public class ComponentClass
     public float sproutTime;         //피워나는데 걸리는 시간
     public SpriteRenderer spriteRenderer;   //스프라이트 렌더러 component. 나중에 realGameObject.GetComponent<SpriteRenderer>()해야함.
     public float timer;
+    public float memberFloat;
 
-    public static void PrintStage()
-    {
-        Debug.Log(stage);
-    }
-
-    public void PrintName()
+    public void memberVoid()
     {
         Debug.Log(name);
     }

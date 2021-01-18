@@ -2,173 +2,193 @@
     "componentList": [
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
                     "y": 0.0
                 }
             ],
+            "jointPosition": [],
             "price": 10,
             "sproutSeconds": 10.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
                 "y": 2.0
-            }
+            },
+            "timer": 0.0
         }
     ]
 }
