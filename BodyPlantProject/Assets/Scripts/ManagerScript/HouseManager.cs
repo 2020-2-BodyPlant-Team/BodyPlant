@@ -20,6 +20,7 @@ public class HouseManager : MonoBehaviour
     List<GameObject> rotatingObjectList;
     List<Vector3> randomAngleList;
     List<Vector3> startAngleList;
+    List<float> originAngleList;
 
     public void PotSceneLoad()
     {
@@ -52,6 +53,7 @@ public class HouseManager : MonoBehaviour
         randomRotateTimeList = new List<float>();
         randomAngleList = new List<Vector3>();
         startAngleList = new List<Vector3>();
+        originAngleList = new List<float>();
         timerList = new List<float>();
         randomTimeList = new List<float>();
         rotationList = new List<float>();
@@ -75,21 +77,51 @@ public class HouseManager : MonoBehaviour
                     
                     rotationList.Add(0);
                     randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30)));
-                    startAngleList.Add(Vector3.zero);
+                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
+                    startAngleList.Add(component.rotation);
+                    originAngleList.Add(component.rotation.z);
                     rotatingObjectList.Add(component.realGameobject);
 
+                    component.childObject = component.realGameobject.transform.GetChild(0).gameObject;
                     rotationList.Add(0);
                     randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30)));
-                    startAngleList.Add(Vector3.zero);
-                    rotatingObjectList.Add(component.realGameobject.transform.GetChild(0).gameObject);
+                    randomAngleList.Add(new Vector3(0, 0, component.rotation.z + Random.Range(-30, 30)));
+                    startAngleList.Add(component.rotation);
+                    originAngleList.Add(component.rotation.z);
+                    rotatingObjectList.Add(component.childObject);
                 }
                 inst.transform.localPosition = component.position;
                 inst.transform.eulerAngles = component.rotation;
 
             }
             characterObjectList.Add(parent);
+        }
+
+
+        for(int i = 0; i < characterList.Count; i++)
+        {
+            for(int k = 0; k < characterList[i].components.Count; k++)
+            {
+                GameObject componentObj = characterList[i].components[k].realGameobject;
+                GameObject childObj = characterList[i].components[k].childObject;
+                for (int n = 0; n<characterList[i].components[k].childIndexList.Count; n++)
+                {
+                    if(characterList[i].components[k].childJointList[n] == 0)
+                    {
+                        characterList[i].components[k].realGameobject.transform.SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].realGameobject.transform);
+                    }
+                    else
+                    {
+                        characterList[i].components[k].realGameobject.transform.SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].childObject.transform);
+                    }
+                    
+                }
+                for (int n = 0; n < characterList[i].components[k].childChildIndexList.Count; n++)
+                {
+                    characterList[i].components[characterList[i].components[k].childChildIndexList[n]].realGameobject.transform.SetParent(childObj.transform);
+                }
+
+            }
         }
     }
 
@@ -118,7 +150,7 @@ public class HouseManager : MonoBehaviour
                 rotationList[i] = 0;
                 randomRotateTimeList[i] = Random.Range(1f, 2f);
                 startAngleList[i] = randomAngleList[i];
-                randomAngleList[i] = new Vector3(0, 0, Random.Range(-30, 30));
+                randomAngleList[i] = new Vector3(0, 0, originAngleList[i]+ Random.Range(-30, 30));
             }
         }
     }

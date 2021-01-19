@@ -22,9 +22,9 @@ public class ComposeManager : MonoBehaviour
     string nameInput;                       //이름 넣은거
     public GameObject parentObject;         //부위들의 Parent가 되는 오브젝트
 
-    public GameObject NamingObject;
-    public GameObject NameAskingObject;
-    public Text NameAskingText;            //""(이)가 맞나요?
+    public GameObject namingObject;
+    public GameObject nameAskingObject;
+    public Text nameAskingText;            //""(이)가 맞나요?
 
     public GameObject attachObject;         //관절 오브젝트
 
@@ -38,8 +38,8 @@ public class ComposeManager : MonoBehaviour
 
     private void Start()
     {
-        NamingObject.SetActive(false);
-        NameAskingObject.SetActive(false);
+        namingObject.SetActive(false);
+        nameAskingObject.SetActive(false);
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
@@ -143,29 +143,29 @@ public class ComposeManager : MonoBehaviour
         }
         else
         {
-            NamingObject.SetActive(true);
+            namingObject.SetActive(true);
         }
     }
 
     public void NameButton()
     {
-        NamingObject.SetActive(false);
-        NameAskingObject.SetActive(true);
+        namingObject.SetActive(false);
+        nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
-        NameAskingText.text = "\"" + nameInputField.text + "\"(이)가 맞나요?";
+        nameAskingText.text = "\"" + nameInputField.text + "\"(이)가 맞나요?";
     }
 
     public void YesButton()
     {
         SaveCharacter(true);
-        NamingObject.SetActive(false);
-        NameAskingObject.SetActive(false);
+        namingObject.SetActive(false);
+        nameAskingObject.SetActive(false);
     }
 
     public void NoButton()
     {
-        NamingObject.SetActive(true);
-        NameAskingObject.SetActive(false);
+        namingObject.SetActive(true);
+        nameAskingObject.SetActive(false);
     }
 
     public void BackButton()
@@ -189,6 +189,7 @@ public class ComposeManager : MonoBehaviour
         if (isNew)
         {
             //새로만든 캐릭터라면 이름까지 저장해야해.
+            FindWholeJoint();
             CharacterClass character = new CharacterClass();
             character.components = activedComponent;
             character.name = nameInput;
@@ -213,36 +214,51 @@ public class ComposeManager : MonoBehaviour
         }
     }
 
-    /*
-    void Adjustattach()
+    public void FindWholeJoint()
     {
-        for(int i = 0; i < activedComponent.Count-1; i++)
+        for(int i = 0; i<activedComponent.Count; i++)
         {
-            GameObject realObjectI = activedComponent[i].realGameobject;
             List<GameObject> attachListI = attachObjectList[i];
-            for(int j = i+1;j < activedComponent.Count; j++)
+            ComponentClass componentI = activedComponent[i];
+            for(int k = 0; k < activedComponent.Count; k++)
             {
-                List<GameObject> attachListJ = attachObjectList[j];
-
-                foreach(GameObject objI in attachListI)
+                if(i==k)
                 {
-                    foreach(GameObject objJ in attachListJ)
+                    continue;
+                }
+                List<GameObject> attachListK = attachObjectList[k];
+                ComponentClass componentK = activedComponent[k];
+
+                for (int n = 0; n < attachListI.Count; n++)
+                {
+                    for (int m = 0; m < attachListK.Count; m++)
                     {
-                        Vector3 delta = objI.transform.position - objJ.transform.position;
-                        if (delta.magnitude < 0.5f)
+                        Vector3 delta = attachListI[n].transform.position - attachListK[m].transform.position;
+                        Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
+
+                        if (deltaVector2.magnitude < 1.0f)
                         {
-                            realObjectI.transform.position = realObjectI.transform.position - delta;
+                            if (n == 0)
+                            {
+                                //어깨에 붙을 경우
+                                componentI.childIndexList.Add(k);
+                                componentI.childJointList.Add(m);
+                            }
+                            else
+                            {
+                                //팔끝에 붙을 경우.
+                                componentI.childChildIndexList.Add(k);
+                                componentI.childChildJointList.Add(m);
+
+                            }
                         }
+                        
+
                     }
                 }
 
             }
         }
-    }*/
-
-    public void FindWholeJoint()
-    {
-
     }
 
 
@@ -252,9 +268,6 @@ public class ComposeManager : MonoBehaviour
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
         Vector3 leastDelta = Vector3.zero;
-        int attachedComponent = -1;
-        int attachedOriginJoint = -1;
-        int attachedOtherJoint = -1;
 
         for (int i = 0; i < activedComponent.Count; i++)
         {
@@ -278,9 +291,6 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
-                        attachedComponent = i;
-                        attachedOriginJoint = j;
-                        attachedOtherJoint = k;
                         leastDelta = delta;
                     }
                 }
@@ -290,17 +300,6 @@ public class ComposeManager : MonoBehaviour
         Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
         if(convert.sqrMagnitude < 2.0f)
         {
-            if(attachedOriginJoint == 0)
-            {
-                activedComponent[index].childIndexList.Add(attachedComponent);
-                activedComponent[index].childJointList.Add(attachedOtherJoint);
-            }
-            else
-            {
-
-                activedComponent[index].childChildIndexList.Add(attachedComponent);
-                activedComponent[index].childChildJointList.Add(attachedOtherJoint);
-            }
             componentObject.transform.position = componentObject.transform.position - leastDelta;
         }
     }

@@ -46,5 +46,9 @@ public class ComponentClass
         isSprotued = false;
         isHarvested = false;
         rotation = Vector3.zero;
+        childIndexList = new List<int>();
+        childJointList = new List<int>();
+        childChildIndexList = new List<int>();
+        childChildJointList = new List<int>();
     }
 }

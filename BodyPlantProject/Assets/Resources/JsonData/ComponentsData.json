@@ -2,19 +2,19 @@
     "componentList": [
         {
             "name": "arm",
-            "isJoint": true,
+            "isChild": true,
             "attachPosition": [
                 {
-                    "x": 2.0,
+                    "x": 0.0,
                     "y": 0.0
                 },
                 {
-                    "x": -2.0,
+                    "x": 4.7,
                     "y": 0.0
                 }
             ],
             "price": 10,
-            "sproutSeconds": 30.0,
+            "sproutSeconds": 5.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
@@ -23,19 +23,19 @@
         },
         {
             "name": "leg",
-            "isJoint": true,
+            "isChild": true,
             "attachPosition": [
                 {
-                    "x": 2.0,
+                    "x": 0.0,
                     "y": 0.0
                 },
                 {
-                    "x": -2.0,
-                    "y": 0.0
+                    "x": 0.0,
+                    "y": -7.0
                 }
             ],
             "price": 10,
-            "sproutSeconds": 30.0,
+            "sproutSeconds": 5.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
@@ -44,7 +44,7 @@
         },
         {
             "name": "mouth",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 1.0,
@@ -52,7 +52,7 @@
                 }
             ],
             "price": 10,
-            "sproutSeconds": 30.0,
+            "sproutSeconds": 5.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
@@ -61,7 +61,7 @@
         },
         {
             "name": "nose",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 1.0,
@@ -69,7 +69,7 @@
                 }
             ],
             "price": 10,
-            "sproutSeconds": 30.0,
+            "sproutSeconds": 5.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
                 "x": 0.0,
@@ -78,7 +78,24 @@
         },
         {
             "name": "eye",
-            "isJoint": false,
+            "isChild": false,
+            "attachPosition": [
+                {
+                    "x": 0.0,
+                    "y": 0.0
+                }
+            ],
+            "price": 10,
+            "sproutSeconds": 5.0,
+            "componentSpriteArray": [],
+            "sproutingPosition": {
+                "x": 0.0,
+                "y": 2.0
+            }
+        },
+        {
+            "name": "null",
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
@@ -95,7 +112,7 @@
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
@@ -112,7 +129,7 @@
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
@@ -129,7 +146,7 @@
         },
         {
             "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
@@ -146,24 +163,7 @@
         },
         {
             "name": "null",
-            "isJoint": false,
-            "attachPosition": [
-                {
-                    "x": 0.0,
-                    "y": 0.0
-                }
-            ],
-            "price": 10,
-            "sproutSeconds": 10.0,
-            "componentSpriteArray": [],
-            "sproutingPosition": {
-                "x": 0.0,
-                "y": 2.0
-            }
-        },
-        {
-            "name": "null",
-            "isJoint": false,
+            "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,

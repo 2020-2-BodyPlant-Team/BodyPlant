@@ -1,5 +1,5 @@
 {
-    "lastPlayTime": "2021-01-15 AM 10:36:26",
+    "lastPlayTime": "2021-01-19 AM 9:51:37",
     "potList": [
         {
             "name": "null",
@@ -7,7 +7,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-18 PM 7:40:00",
+            "plantedTime": "2021-01-19 AM 9:54:41",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": {
@@ -28,14 +28,14 @@
             "isHarvested": false
         },
         {
-            "name": "leg",
+            "name": "null",
             "position": {
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-18 PM 7:34:32",
-            "isSprotued": true,
-            "percentage": 1.0,
+            "plantedTime": "2021-01-19 AM 9:54:44",
+            "isSprotued": false,
+            "percentage": 0.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -46,7 +46,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "realGameobject": {
-                "instanceID": -4524
+                "instanceID": 0
             },
             "childObject": {
                 "instanceID": 0
@@ -54,14 +54,14 @@
             "isHarvested": false
         },
         {
-            "name": "nose",
+            "name": "null",
             "position": {
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-18 PM 7:34:33",
-            "isSprotued": true,
-            "percentage": 1.0,
+            "plantedTime": "2021-01-19 AM 9:54:47",
+            "isSprotued": false,
+            "percentage": 0.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -72,7 +72,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "realGameobject": {
-                "instanceID": -4538
+                "instanceID": 0
             },
             "childObject": {
                 "instanceID": 0
@@ -82,9 +82,9 @@
     ],
     "characterList": [
         {
-            "name": "이상해",
-            "personality": 1,
-            "createdDate": "2021-01-15 AM 10:40:14",
+            "name": "z",
+            "personality": 2,
+            "createdDate": "2021-01-19 AM 9:52:14",
             "workedTime": [
                 0,
                 0,
@@ -95,10 +95,10 @@
                 {
                     "name": "arm",
                     "position": {
-                        "x": 1.8595826625823975,
-                        "y": 1.6508537530899048
+                        "x": -0.6273586750030518,
+                        "y": 0.2607436180114746
                     },
-                    "plantedTime": "2021-01-15 AM 10:36:41",
+                    "plantedTime": "2021-01-19 AM 9:51:45",
                     "isSprotued": true,
                     "percentage": 1.0,
                     "rotation": {
@@ -106,25 +106,63 @@
                         "y": 0.0,
                         "z": 0.0
                     },
-                    "childIndexList": [],
-                    "childJointList": [],
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        1
+                    ],
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "realGameobject": {
-                        "instanceID": -4348
+                        "instanceID": -20286
                     },
                     "childObject": {
-                        "instanceID": 0
+                        "instanceID": -20294
                     },
                     "isHarvested": true
                 },
                 {
-                    "name": "leg",
+                    "name": "arm",
                     "position": {
-                        "x": -2.1404173374176027,
-                        "y": 1.6508537530899048
+                        "x": -0.17895770072937013,
+                        "y": 2.5675673484802248
                     },
-                    "plantedTime": "2021-01-15 AM 10:36:41",
+                    "plantedTime": "2021-01-19 AM 9:51:45",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 259.0
+                    },
+                    "childIndexList": [
+                        2
+                    ],
+                    "childJointList": [
+                        1
+                    ],
+                    "childChildIndexList": [
+                        0
+                    ],
+                    "childChildJointList": [
+                        0
+                    ],
+                    "realGameobject": {
+                        "instanceID": -20300
+                    },
+                    "childObject": {
+                        "instanceID": -20308
+                    },
+                    "isHarvested": true
+                },
+                {
+                    "name": "arm",
+                    "position": {
+                        "x": -2.5289576053619386,
+                        "y": 2.5675673484802248
+                    },
+                    "plantedTime": "2021-01-19 AM 9:51:46",
                     "isSprotued": true,
                     "percentage": 1.0,
                     "rotation": {
@@ -134,10 +172,57 @@
                     },
                     "childIndexList": [],
                     "childJointList": [],
+                    "childChildIndexList": [
+                        1
+                    ],
+                    "childChildJointList": [
+                        0
+                    ],
+                    "realGameobject": {
+                        "instanceID": -20314
+                    },
+                    "childObject": {
+                        "instanceID": -20322
+                    },
+                    "isHarvested": true
+                }
+            ]
+        },
+        {
+            "name": "asdf",
+            "personality": 0,
+            "createdDate": "2021-01-19 AM 9:54:57",
+            "workedTime": [
+                0,
+                0,
+                0
+            ],
+            "loveNess": 0.0,
+            "components": [
+                {
+                    "name": "mouth",
+                    "position": {
+                        "x": -1.5057916641235352,
+                        "y": -2.430501937866211
+                    },
+                    "plantedTime": "2021-01-19 AM 9:54:29",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "childIndexList": [
+                        2
+                    ],
+                    "childJointList": [
+                        1
+                    ],
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "realGameobject": {
-                        "instanceID": -4362
+                        "instanceID": -20592
                     },
                     "childObject": {
                         "instanceID": 0
@@ -147,10 +232,10 @@
                 {
                     "name": "nose",
                     "position": {
-                        "x": -1.1404173374176026,
-                        "y": 2.6508536338806154
+                        "x": -1.5057916641235352,
+                        "y": 3.069498062133789
                     },
-                    "plantedTime": "2021-01-15 AM 10:36:41",
+                    "plantedTime": "2021-01-19 AM 9:54:32",
                     "isSprotued": true,
                     "percentage": 1.0,
                     "rotation": {
@@ -158,12 +243,50 @@
                         "y": 0.0,
                         "z": 0.0
                     },
-                    "childIndexList": [],
-                    "childJointList": [],
+                    "childIndexList": [
+                        2
+                    ],
+                    "childJointList": [
+                        0
+                    ],
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "realGameobject": {
-                        "instanceID": -4376
+                        "instanceID": -20608
+                    },
+                    "childObject": {
+                        "instanceID": 0
+                    },
+                    "isHarvested": true
+                },
+                {
+                    "name": "leg",
+                    "position": {
+                        "x": -0.5057916641235352,
+                        "y": 2.069498062133789
+                    },
+                    "plantedTime": "2021-01-19 AM 9:54:34",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [
+                        0
+                    ],
+                    "childChildJointList": [
+                        0
+                    ],
+                    "realGameobject": {
+                        "instanceID": -20624
                     },
                     "childObject": {
                         "instanceID": 0
@@ -173,111 +296,6 @@
             ]
         }
     ],
-    "owningComponentList": [
-        {
-            "name": "arm",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-01-18 PM 7:23:47",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "realGameobject": {
-                "instanceID": -3564
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        },
-        {
-            "name": "leg",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-01-18 PM 7:23:47",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "realGameobject": {
-                "instanceID": -3578
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        },
-        {
-            "name": "nose",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-01-18 PM 7:23:48",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "realGameobject": {
-                "instanceID": -3592
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        },
-        {
-            "name": "arm",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-01-18 PM 7:34:32",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "realGameobject": {
-                "instanceID": -4510
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        }
-    ],
+    "owningComponentList": [],
     "coin": 0
 }
