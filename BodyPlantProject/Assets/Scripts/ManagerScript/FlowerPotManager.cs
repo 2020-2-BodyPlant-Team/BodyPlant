@@ -99,7 +99,15 @@ public class FlowerPotManager : MonoBehaviour
             //만약 false라면 자라나고있는 상태니까 건물을 올려주어야겠죠?
             if(componentsInPot[i].isSprotued == false)
             {
-                GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
+                GameObject prefab;
+                if (componentsInPot[i].percentage > 0.5)
+                {
+                    prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+                }
+                else
+                {
+                    prefab = Resources.Load<GameObject>("Components/Growing1/" + componentData.name);
+                }
                 //Resources/Components/arm 
                 Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
@@ -114,7 +122,7 @@ public class FlowerPotManager : MonoBehaviour
             else if(componentsInPot[i].isHarvested == false)
             {
                 //만약 자라긴 자랐는데 수확이 안된 경우.
-                GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
+                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 //위와 같다. 다만 코루틴 작동을 하지 않는다.
@@ -143,6 +151,7 @@ public class FlowerPotManager : MonoBehaviour
     //꽃피워올리는 코루틴. 
     IEnumerator SproutingCoroutine(int index,ComponentDataClass componentData)
     {
+        float lastPercentage = 0;
         //꽃피지 않을때만 돌아간다.
         while(componentsInPot[index].isSprotued == false)
         {
@@ -150,6 +159,7 @@ public class FlowerPotManager : MonoBehaviour
             //몇퍼센트 완성인지.
             float percentage = 0;
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
+            lastPercentage = percentage;
 
             yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
 
@@ -160,6 +170,14 @@ public class FlowerPotManager : MonoBehaviour
                 //만약 시간이 지났다면 싹틔워준다.
             }
             percentage = elapsedTime / componentData.sproutSeconds;
+            if(percentage >=0.5 && lastPercentage < 0.5)
+            {
+                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+                GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+                obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
+                componentsInPot[index].realGameobject.SetActive(false);
+                componentsInPot[index].realGameobject = obj;
+            }
             //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
             if(percentage >= 1)
             {
@@ -262,7 +280,7 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log(availablePlace);
         componentsInPot[availablePlace] = component;
         //이 아래부터는 start에 있는거랑 똑같다.
-        GameObject prefab = Resources.Load<GameObject>("Components/" + componentData.name);
+        GameObject prefab = Resources.Load<GameObject>("Components/Growing1/" + componentData.name);
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.

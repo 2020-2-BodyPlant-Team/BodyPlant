@@ -580,6 +580,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -590,6 +591,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -600,6 +602,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -610,6 +613,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -620,6 +624,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -630,6 +635,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -640,6 +646,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -650,6 +657,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -660,6 +668,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
     - name: null
       isChild: 0
       attachPosition:
@@ -670,6 +679,7 @@ MonoBehaviour:
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
+      timer: 0
   saveData:
     lastPlayTime: 2021-01-09 PM 2:58:24
     potList:

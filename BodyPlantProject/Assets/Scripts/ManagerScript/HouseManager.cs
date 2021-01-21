@@ -69,7 +69,7 @@ public class HouseManager : MonoBehaviour
             GameObject parent = new GameObject();
             foreach (ComponentClass component in characterList[i].components)
             {
-                GameObject componentObj = Resources.Load<GameObject>("Components/" + component.name);
+                GameObject componentObj = Resources.Load<GameObject>("Components/Complete/" + component.name);
                 GameObject inst = Instantiate(componentObj, parent.transform);
                 component.realGameobject = inst;
                 if (FindData(component.name).isChild)

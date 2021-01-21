@@ -61,8 +61,8 @@ public class ComposeManager : MonoBehaviour
             GameObject inst = Instantiate(buttonObject, contentRect.transform);
             buttonList.Add(inst);
             inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400*harvestedComponent.Count/2+ i * 400, -74f);
-            Image image = inst.GetComponent<Image>();
-            image.sprite = componentData.componentSpriteArray[0];
+            //Image image = inst.GetComponent<Image>();
+            //image.sprite = componentData.componentSpriteArray[0];
             Text text = inst.GetComponentInChildren<Text>();
             text.text = componentData.name;
             string name = componentData.name;
@@ -91,7 +91,7 @@ public class ComposeManager : MonoBehaviour
     {
         int changedIndex = buttonIndex;
         ComponentDataClass data = FindData(name);
-        GameObject obj = Resources.Load<GameObject>("Components/" + name);
+        GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
         inst.transform.eulerAngles = Vector3.zero;
         List<GameObject> objectList = new List<GameObject>();
