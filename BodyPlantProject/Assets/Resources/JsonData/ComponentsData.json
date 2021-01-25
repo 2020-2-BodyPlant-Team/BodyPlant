@@ -9,8 +9,8 @@
                     "y": 0.0
                 },
                 {
-                    "x": 4.7,
-                    "y": 0.0
+                    "x": -0.48f,
+                    "y": -2.37f
                 }
             ],
             "price": 10,
@@ -30,8 +30,8 @@
                     "y": 0.0
                 },
                 {
-                    "x": 0.0,
-                    "y": -7.0
+                    "x": -0.216f,
+                    "y": -2.853f
                 }
             ],
             "price": 10,
@@ -47,8 +47,8 @@
             "isChild": false,
             "attachPosition": [
                 {
-                    "x": 1.0,
-                    "y": 1.0
+                    "x": 0.0,
+                    "y": 0.0
                 }
             ],
             "price": 10,
@@ -64,8 +64,8 @@
             "isChild": false,
             "attachPosition": [
                 {
-                    "x": 1.0,
-                    "y": -1.0
+                    "x": 0.0,
+                    "y": 0.0
                 }
             ],
             "price": 10,
@@ -94,12 +94,16 @@
             }
         },
         {
-            "name": "null",
+            "name": "hair",
             "isChild": false,
             "attachPosition": [
                 {
                     "x": 0.0,
-                    "y": 0.0
+                    "y": 0.5
+                },
+                {
+                    "x": 0.0,
+                    "y": -0.5
                 }
             ],
             "price": 10,
@@ -111,12 +115,12 @@
             }
         },
         {
-            "name": "null",
+            "name": "foot",
             "isChild": false,
             "attachPosition": [
                 {
-                    "x": 0.0,
-                    "y": 0.0
+                    "x": 0.275,
+                    "y": 0.571
                 }
             ],
             "price": 10,
@@ -128,12 +132,12 @@
             }
         },
         {
-            "name": "null",
+            "name": "hand",
             "isChild": false,
             "attachPosition": [
                 {
-                    "x": 0.0,
-                    "y": 0.0
+                    "x": 0.127,
+                    "y": 0.627
                 }
             ],
             "price": 10,

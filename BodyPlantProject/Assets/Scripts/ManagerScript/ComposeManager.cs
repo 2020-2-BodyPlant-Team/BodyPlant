@@ -268,7 +268,8 @@ public class ComposeManager : MonoBehaviour
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
         Vector3 leastDelta = Vector3.zero;
-
+        int componentIndex = 0;
+        int attachingIndex = 0;
         for (int i = 0; i < activedComponent.Count; i++)
         {
             if (i == index)
@@ -291,6 +292,8 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
+                        componentIndex = i;
+                        attachingIndex = k;
                         leastDelta = delta;
                     }
                 }
@@ -303,6 +306,8 @@ public class ComposeManager : MonoBehaviour
             componentObject.transform.position = componentObject.transform.position - leastDelta;
         }
     }
+
+
 
     private void Update()
     {
