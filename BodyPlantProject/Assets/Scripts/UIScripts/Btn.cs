@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoreBtn : MonoBehaviour
+public class Btn : MonoBehaviour
 {
     [SerializeField] GameObject PopUp;  // 열고 닫을 팝업창
     [SerializeField] bool isOpenBtn;  // 팝업창을 여는 버튼일 경우 true로, 아닌 경우 false로
