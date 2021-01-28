@@ -280,7 +280,7 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log(availablePlace);
         componentsInPot[availablePlace] = component;
         //이 아래부터는 start에 있는거랑 똑같다.
-        GameObject prefab = Resources.Load<GameObject>("Components/Growing1/" + componentData.name);
+        GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
