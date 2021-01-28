@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BookManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BookManager : MonoBehaviour
     List<CharacterClass> characterList;
     public GameObject DiaryPrefab;
     public List<GameObject> ButtonList;
+    List<GameObject> prefabList;
 
 
     // Start is called before the first frame update
@@ -20,8 +22,12 @@ public class BookManager : MonoBehaviour
 
         for(int i = 0; i < characterList.Count; i++)
         {
-            Instantiate(DiaryPrefab);
-            
+            if(characterList[i].name != null)
+            {
+                prefabList[i] = Instantiate(DiaryPrefab);
+                ButtonList[i].SetActive(true);
+                
+            }            
         }
     }
 
@@ -31,5 +37,18 @@ public class BookManager : MonoBehaviour
         
     }
 
+    public void ButtonFunction()
+    {
+        for(int i = 0; i < characterList.Count; i++)
+        {
+            if(Input.GetKeyDown(KeyCode.Mouse0) == ButtonList[i])
+            {
+                if(prefabList[i] == false)
+                {
+                    prefabList[i].SetActive(true);
+                }
+            }
+        }
+    }
     
 }

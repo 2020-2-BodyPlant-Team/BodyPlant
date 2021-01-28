@@ -1,5 +1,5 @@
 {
-    "lastPlayTime": "2021-01-21 AM 9:53:22",
+    "lastPlayTime": "2021-01-09 PM 2:58:24",
     "potList": [
         {
             "name": "null",
@@ -7,7 +7,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-21 AM 10:20:17",
+            "plantedTime": "2021-01-09 PM 2:58:24",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": {
@@ -33,7 +33,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-21 AM 10:20:20",
+            "plantedTime": "2021-01-09 PM 2:58:24",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": {
@@ -59,7 +59,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-01-21 AM 10:20:23",
+            "plantedTime": "2021-01-09 PM 2:58:24",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": {
@@ -80,228 +80,7 @@
             "isHarvested": false
         }
     ],
-    "characterList": [
-        {
-            "name": "bb",
-            "personality": 1,
-            "createdDate": "2021-01-21 AM 10:31:55",
-            "workedTime": [
-                0,
-                0,
-                0
-            ],
-            "loveNess": 0.0,
-            "components": [
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -1.601489782333374,
-                        "y": 2.216015100479126
-                    },
-                    "plantedTime": "2021-01-21 AM 9:53:35",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "childIndexList": [
-                        1,
-                        2,
-                        3,
-                        4
-                    ],
-                    "childJointList": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "realGameobject": {
-                        "instanceID": -35210
-                    },
-                    "childObject": {
-                        "instanceID": 0
-                    },
-                    "isHarvested": true
-                },
-                {
-                    "name": "leg",
-                    "position": {
-                        "x": -1.601489782333374,
-                        "y": 2.216015100479126
-                    },
-                    "plantedTime": "2021-01-21 AM 9:53:35",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 268.0
-                    },
-                    "childIndexList": [
-                        0,
-                        2,
-                        3,
-                        4
-                    ],
-                    "childJointList": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "realGameobject": {
-                        "instanceID": -35242
-                    },
-                    "childObject": {
-                        "instanceID": 0
-                    },
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -1.601489782333374,
-                        "y": 2.216015100479126
-                    },
-                    "plantedTime": "2021-01-21 AM 10:20:07",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 61.999996185302737
-                    },
-                    "childIndexList": [
-                        0,
-                        1,
-                        3,
-                        4
-                    ],
-                    "childJointList": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "realGameobject": {
-                        "instanceID": -35270
-                    },
-                    "childObject": {
-                        "instanceID": 0
-                    },
-                    "isHarvested": true
-                },
-                {
-                    "name": "leg",
-                    "position": {
-                        "x": -1.601489782333374,
-                        "y": 2.216015100479126
-                    },
-                    "plantedTime": "2021-01-21 AM 10:20:07",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 182.0
-                    },
-                    "childIndexList": [
-                        0,
-                        1,
-                        2,
-                        4
-                    ],
-                    "childJointList": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "realGameobject": {
-                        "instanceID": -35298
-                    },
-                    "childObject": {
-                        "instanceID": 0
-                    },
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": -2.601489782333374,
-                        "y": 3.216015100479126
-                    },
-                    "plantedTime": "2021-01-21 AM 10:20:07",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "childIndexList": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "childJointList": [
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "realGameobject": {
-                        "instanceID": -35326
-                    },
-                    "childObject": {
-                        "instanceID": 0
-                    },
-                    "isHarvested": true
-                }
-            ]
-        }
-    ],
-    "owningComponentList": [
-        {
-            "name": "nose",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-01-21 AM 9:53:35",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "realGameobject": {
-                "instanceID": -34078
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        }
-    ],
+    "characterList": [],
+    "owningComponentList": [],
     "coin": 0
 }
