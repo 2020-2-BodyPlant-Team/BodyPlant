@@ -32,6 +32,11 @@ public class HouseManager : MonoBehaviour
         gameManager.WorkMineSceneLoad();
     }
 
+    public void StoreSceneLoad()
+    {
+        gameManager.StoreSceneLoad();
+    }
+
     ComponentDataClass FindData(string name)
     {
         foreach (ComponentDataClass data in wholeComponents.componentList)
