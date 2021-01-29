@@ -25,6 +25,7 @@ public class ComposeManager : MonoBehaviour
     public GameObject namingObject;
     public GameObject nameAskingObject;
     public Text nameAskingText;            //""(이)가 맞나요?
+    public GameObject saveButton;           //저장가능하면 켜주기.
 
     public GameObject attachObject;         //관절 오브젝트
 
@@ -132,6 +133,7 @@ public class ComposeManager : MonoBehaviour
         {
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(-400 * harvestedComponent.Count / 2 + i * 400, -74f);
         }
+        saveButton.SetActive(false);
     }
 
     public void SaveButton()
@@ -214,13 +216,87 @@ public class ComposeManager : MonoBehaviour
         }
     }
 
+    //저장가능한지 판별.
+    public bool CanSave()
+    {
+        bool[] boolArray = new bool[activedComponent.Count];
+        for (int i = 0; i < boolArray.Length; i++)
+        {
+            boolArray[i] = false;
+        }
+        Stack<int> indexStack = new Stack<int>();
+        indexStack.Push(0);     //0을 넣고 0부터 시작.
+        boolArray[0] = true;
+        while (indexStack.Count != 0)
+        {
+            int nowIndex = indexStack.Pop();
+            for (int i = 0; i < activedComponent[nowIndex].childIndexList.Count; i++)
+            {
+                if (!boolArray[activedComponent[nowIndex].childIndexList[i]])
+                {
+                    indexStack.Push(activedComponent[nowIndex].childIndexList[i]);
+                    boolArray[activedComponent[nowIndex].childIndexList[i]] = true;
+
+                }
+            }
+
+            for (int i = 0; i < activedComponent[nowIndex].childChildIndexList.Count; i++)
+            {
+                if (!boolArray[activedComponent[nowIndex].childChildIndexList[i]])
+                {
+                    indexStack.Push(activedComponent[nowIndex].childChildIndexList[i]);
+                    boolArray[activedComponent[nowIndex].childChildIndexList[i]] = true;
+                }
+
+            }
+        }
+
+        for (int i = 0; i < boolArray.Length; i++)
+        {
+            if (boolArray[i] == false)
+            {
+                return false;
+            }
+        }
+
+     
+        for (int i = 0; i < activedComponent.Count; i++)
+        {
+            string nowName = activedComponent[i].name;
+            for (int k = i + 1; k < activedComponent.Count; k++)
+            {
+                if (nowName != activedComponent[k].name)
+                {
+                    continue;
+                }
+                if ((activedComponent[i].realGameobject.transform.position - activedComponent[k].realGameobject.transform.position).magnitude < 1.0f)
+                {
+                    if((activedComponent[i].realGameobject.transform.eulerAngles - activedComponent[k].realGameobject.transform.eulerAngles).magnitude < 1.0f)
+                    {
+                        return false;
+                    }
+                }
+        }
+        }
+      
+
+        return true;
+
+        
+      
+    }
+
     public void FindWholeJoint()
     {
         for(int i = 0; i<activedComponent.Count; i++)
         {
             List<GameObject> attachListI = attachObjectList[i];
             ComponentClass componentI = activedComponent[i];
-            for(int k = 0; k < activedComponent.Count; k++)
+            componentI.childIndexList.Clear();
+            componentI.childJointList.Clear();
+            componentI.childChildIndexList.Clear();
+            componentI.childChildJointList.Clear();
+            for (int k = 0; k < activedComponent.Count; k++)
             {
                 if(i==k)
                 {
@@ -283,6 +359,10 @@ public class ComposeManager : MonoBehaviour
             {
                 for(int k = 0; k < attachListK.Count; k++)
                 {
+                    if(i==1 && k == 1)
+                    {
+                        continue;
+                    }
                     Vector3 delta = attachListMain[j].transform.position - attachListK[k].transform.position;
                     Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
                     Vector2 leastDeltaVector2 = new Vector2(leastDelta.x, leastDelta.y);
@@ -329,6 +409,8 @@ public class ComposeManager : MonoBehaviour
                         {
                             Debug.Log("몇번 실행되나 " + i);
                             Adjustattach(i);
+                            FindWholeJoint();
+                            saveButton.SetActive(CanSave());
                             break;
                         }
                     }

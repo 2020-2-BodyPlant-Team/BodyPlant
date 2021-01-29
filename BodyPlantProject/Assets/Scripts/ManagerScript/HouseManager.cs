@@ -64,6 +64,7 @@ public class HouseManager : MonoBehaviour
         rotationList = new List<float>();
         rotatingObjectList = new List<GameObject>();
 
+        //캐릭터들 불러오는칸
         for(int i = 0; i < characterList.Count; i++)
         {
             Debug.Log(characterList[i].name);
@@ -77,22 +78,34 @@ public class HouseManager : MonoBehaviour
                 GameObject componentObj = Resources.Load<GameObject>("Components/Complete/" + component.name);
                 GameObject inst = Instantiate(componentObj, parent.transform);
                 component.realGameobject = inst;
+
+                rotationList.Add(0);
+                randomRotateTimeList.Add(Random.Range(1f, 2f));
+                randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
+                startAngleList.Add(component.rotation);
+                originAngleList.Add(component.rotation.z);
+                rotatingObjectList.Add(component.realGameobject);
+
                 if (FindData(component.name).isChild)
                 {
-                    
-                    rotationList.Add(0);
-                    randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
-                    startAngleList.Add(component.rotation);
-                    originAngleList.Add(component.rotation.z);
-                    rotatingObjectList.Add(component.realGameobject);
+                    Vector3 angle;
+
+                    if (component.rotation.z >270 || component.rotation.z < 90)
+                    {
+                        
+                        angle = Vector3.zero;
+                    }
+                    else
+                    {
+                        angle = component.rotation;
+                    }
 
                     component.childObject = component.realGameobject.transform.GetChild(0).gameObject;
                     rotationList.Add(0);
                     randomRotateTimeList.Add(Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, component.rotation.z + Random.Range(-30, 30)));
-                    startAngleList.Add(component.rotation);
-                    originAngleList.Add(component.rotation.z);
+                    randomAngleList.Add(new Vector3(0, 0, angle.z + Random.Range(-30, 30)));
+                    startAngleList.Add(angle);
+                    originAngleList.Add(angle.z);
                     rotatingObjectList.Add(component.childObject);
                 }
                 inst.transform.localPosition = component.position;
