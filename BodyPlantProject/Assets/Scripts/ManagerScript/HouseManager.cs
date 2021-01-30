@@ -36,6 +36,11 @@ public class HouseManager : MonoBehaviour
     {
         gameManager.StoreSceneLoad();
     }
+    
+    public void BookSceneLoad()
+    {
+        gameManager.BookSceneLoad();
+    }
 
     ComponentDataClass FindData(string name)
     {

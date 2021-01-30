@@ -93,6 +93,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("StoreScene");
     }
 
+    public void BookSceneLoad()
+    {
+        SceneManager.LoadScene("BookScene");
+    }
+
     //시간계산기입니다. 예전시간과 현재시간을 넣으면 그 사이의 초가 나와요.
     //초를 알아야 얼마나 지났는지 아니까 그거에 맞게 방치가 되어있다는 걸 깨닫고 화분을 싹틔우던 하겠죠?
     //게임이 켜져있지 않을 때 시간이 얼마나 지났는지 체크하기 위한 함수입니다.
