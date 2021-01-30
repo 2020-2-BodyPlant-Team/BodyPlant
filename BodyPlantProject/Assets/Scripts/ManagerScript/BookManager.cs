@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BookManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BookManager : MonoBehaviour
     List<CharacterClass> characterList;
     public GameObject diaryPrefab;
     public GameObject buttonPrefab;
-    List<GameObject> prefabList;
+    List<GameObject> diaryList;
     List<GameObject> buttonList;
     List<int> passedTime;
     int buttonXgap = 300;
@@ -21,28 +22,50 @@ public class BookManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {        
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         characterList = saveData.characterList;
 
-        prefabList = new List<GameObject>();
+        diaryList = new List<GameObject>();
         buttonList = new List<GameObject>();
 
         for(int i = 0; i < characterList.Count; i++)
         { 
-            prefabList.Add(Instantiate(diaryPrefab, parent.transform));                   
+            diaryList.Add(Instantiate(diaryPrefab, parent.transform));                   
             buttonList.Add(Instantiate(buttonPrefab, parent.transform));
-            buttonList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2((buttonStartPoint.x + (i % 3) * buttonXgap), (buttonStartPoint.y  + (int)(i / 3) * buttonYgap));
-            Button button = buttonList[i].GetComponent<Button>();
-            button.onClick.AddListener(delegate { ButtonFunction(); });
 
-            prefabList[i].transform.GetChild(1).GetComponent<Text>().text = characterList[i].createdDate;
-            //prefabList[i].transform.GetChild(2).GetComponent<Text>().text = characterList[i].personality;
-            prefabList[i].transform.GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
-            prefabList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;              
+            Vector2 buttonPosition = new Vector2((buttonStartPoint.x + (i % 3) * buttonXgap), (buttonStartPoint.y  + (int)(i / 3) * buttonYgap));
+            buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
+            buttonList[i].GetComponent<Button>().onClick.AddListener(delegate { ButtonFunction(); });
+
+            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = characterList[i].createdDate;
+            
+            if(characterList[i].personality == CharacterClass.Personality.Mongsil)
+            {
+                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "몽실몽실";
+            }
+            if(characterList[i].personality == CharacterClass.Personality.Dugun)
+            {
+                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "두근두근";
+            }
+            if(characterList[i].personality == CharacterClass.Personality.Ussuk)
+            {
+                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "으쓱으쓱";
+            }
+            if(characterList[i].personality == CharacterClass.Personality.Nunsil)
+            {
+                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "는실는실";
+            }
+            
+            diaryList[i].transform.GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
+            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;              
         }
+
+        for(int i = 0; i < characterList.Count; i++)
+        {
+            diaryList[i].GetComponent<RectTransform>().SetAsLastSibling();
+        }    
     }
 
     // Update is called once per frame
@@ -52,12 +75,13 @@ public class BookManager : MonoBehaviour
     }
 
     public void ButtonFunction()
-    {
+    {      
         for(int i = 0; i < characterList.Count; i++)
         {
-            if(prefabList[i] == false)
+            GameObject button = EventSystem.current.currentSelectedGameObject;
+            if(button == buttonList[i])
             {
-                prefabList[i].SetActive(true);
+                diaryList[i].SetActive(true);
             }
         }
     }
