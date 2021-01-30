@@ -80,7 +80,7 @@ public class HouseManager : MonoBehaviour
             Debug.Log(characterList[i].name);
             timerList.Add(0);
             randomTimeList.Add(Random.Range(1f, 2f));
-            randomPosList.Add(new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 4f), 0));
+            randomPosList.Add(new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0));
             startPosList.Add(Vector3.zero);
             GameObject parent = new GameObject();
             foreach (ComponentClass component in characterList[i].components)
@@ -165,9 +165,10 @@ public class HouseManager : MonoBehaviour
                 timerList[i] = 0;
                 randomTimeList[i] = Random.Range(1f, 2f);
                 startPosList[i] = randomPosList[i];
-                randomPosList[i] = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 4f), 0);
+                randomPosList[i] = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0);
             }
         }
+        //-2.5~2.5, 0~-3
 
         for(int i = 0; i< rotationList.Count; i++)
         {

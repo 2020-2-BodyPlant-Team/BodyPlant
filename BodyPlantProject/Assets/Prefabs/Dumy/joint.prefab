@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6111642533255512756}
   - component: {fileID: 3767741915065113560}
   m_Layer: 0
-  m_Name: magnifier
+  m_Name: joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7fb8af5ec8345c644b91659779ba7940, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fba2b5e64beecd41990ae89d35a5fec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

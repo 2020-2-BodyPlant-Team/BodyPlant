@@ -309,24 +309,38 @@ public class ComposeManager : MonoBehaviour
                 {
                     for (int m = 0; m < attachListK.Count; m++)
                     {
+                        if(n>=1 && m >= 1)
+                        {
+                            continue;
+                        }
                         Vector3 delta = attachListI[n].transform.position - attachListK[m].transform.position;
                         Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
 
-                        if (deltaVector2.magnitude < 1.0f)
+                        if (deltaVector2.magnitude < 0.5f)
                         {
-                            if (n == 0)
+                            if(componentI.name == "body")
                             {
-                                //어깨에 붙을 경우
                                 componentI.childIndexList.Add(k);
                                 componentI.childJointList.Add(m);
                             }
                             else
                             {
-                                //팔끝에 붙을 경우.
-                                componentI.childChildIndexList.Add(k);
-                                componentI.childChildJointList.Add(m);
+                                if (n == 1)
+                                {
+                                    //팔끝에 붙을 경우.
+                                    componentI.childChildIndexList.Add(k);
+                                    componentI.childChildJointList.Add(m);
 
+                                }
+                                else
+                                {
+                                    //어깨에 붙을 경우
+                                    componentI.childIndexList.Add(k);
+                                    componentI.childJointList.Add(m);
+                                }
                             }
+                           
+  
                         }
                         
 
@@ -344,8 +358,6 @@ public class ComposeManager : MonoBehaviour
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
         Vector3 leastDelta = Vector3.zero;
-        int componentIndex = 0;
-        int attachingIndex = 0;
         for (int i = 0; i < activedComponent.Count; i++)
         {
             if (i == index)
@@ -359,7 +371,7 @@ public class ComposeManager : MonoBehaviour
             {
                 for(int k = 0; k < attachListK.Count; k++)
                 {
-                    if(i==1 && k == 1)
+                    if(j==1 && k == 1)
                     {
                         continue;
                     }
@@ -372,8 +384,6 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
-                        componentIndex = i;
-                        attachingIndex = k;
                         leastDelta = delta;
                     }
                 }

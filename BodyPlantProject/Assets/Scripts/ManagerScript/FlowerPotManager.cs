@@ -112,6 +112,7 @@ public class FlowerPotManager : MonoBehaviour
                 Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
+                
                 //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
                 //여기서 유의할 점은 나중에 components in pot이 savedata로 다시 들어갈 텐데, 그 때는 gameobject는 저장이 안된다
                 //따라서 savedata를 load할 때마다 gameobject를 프리팹에서 꺼내서 새로 만들어주어야한다.
@@ -125,9 +126,10 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
+                obj.transform.localPosition = new Vector3(0, 0, -5);
                 //위와 같다. 다만 코루틴 작동을 하지 않는다.
                 componentsInPot[i].realGameobject = obj;
-                obj.transform.localPosition = componentData.sproutingPosition;
+                obj.transform.localPosition = new Vector3(componentData.sproutingPosition.x, componentData.sproutingPosition.y,-5);
             }
 
         }
@@ -189,7 +191,7 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, percentage, 1);
             }
             componentsInPot[index].percentage = percentage;
-            componentsInPot[index].realGameobject.transform.localPosition = percentage * componentData.sproutingPosition;
+            componentsInPot[index].realGameobject.transform.localPosition = new Vector3(percentage * componentData.sproutingPosition.x, percentage * componentData.sproutingPosition.y,-5);
         }
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
         componentsInPot[index].isHarvested = false;
@@ -490,7 +492,28 @@ public class FlowerPotManager : MonoBehaviour
         {
             PlantComponent("nose");
         }
-                //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlantComponent("hand");
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            PlantComponent("foot");
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            PlantComponent("hair");
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            PlantComponent("eye");
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            PlantComponent("body");
+        }
+
+        //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
         if (Input.GetMouseButtonDown(0))    //터치!
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
