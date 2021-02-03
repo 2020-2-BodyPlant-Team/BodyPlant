@@ -83,9 +83,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("HouseScene");
     }
 
-    public void WorkMineSceneLoad()
+    public void WorkMineSceneLoad() //일하기 광산
     {
         SceneManager.LoadScene("WorkMineScene");
+    }
+
+    public void WorkHuntSceneLoad() //일하기 사냥
+    {
+        SceneManager.LoadScene("WorkHuntScene");
     }
 
     public void StoreSceneLoad()
@@ -96,6 +101,11 @@ public class GameManager : MonoBehaviour
     public void BookSceneLoad()
     {
         SceneManager.LoadScene("BookScene");
+    }
+
+    public void SecretRoomSceneLoad()
+    {
+        SceneManager.LoadScene("SecretRoomScene");
     }
 
     //시간계산기입니다. 예전시간과 현재시간을 넣으면 그 사이의 초가 나와요.

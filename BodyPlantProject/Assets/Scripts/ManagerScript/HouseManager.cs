@@ -32,6 +32,11 @@ public class HouseManager : MonoBehaviour
         gameManager.WorkMineSceneLoad();
     }
 
+    public void WorkHuntSceneLoad() //일하기 사냥
+    {
+        gameManager.WorkHuntSceneLoad();
+    }
+
     public void StoreSceneLoad()
     {
         gameManager.StoreSceneLoad();

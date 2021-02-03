@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BookScene.unity
     guid: a73388b1cc979f04b94d713e292da873
+  - enabled: 1
+    path: Assets/Scenes/SecretRoomScene.unity
+    guid: 56ca850cfe660e344877aaddd453ad1b
+  - enabled: 1
+    path: Assets/Scenes/WorkHuntScene.unity
+    guid: 2409100f8c37f5440b6427977bcf0cf4
   m_configObjects: {}
