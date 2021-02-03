@@ -15,6 +15,7 @@ public class CharacterClass
     public string name;                     //이름;
     public Personality personality;         //성격
     public string createdDate;              //만들어진 날짜
+    public DateTime createdDateTime;        //년월일 쓰기 위해서 만듦
     public int[] workedTime;                //int[3]배열. 낚시 사냥 광질 얼마나 했는지.
     public float loveNess;                  //애정도
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
@@ -24,6 +25,7 @@ public class CharacterClass
         name = "null";
 
         createdDate = DateTime.Now.ToString();
+        createdDateTime = DateTime.Now;
         personality = (Personality)UnityEngine.Random.Range(0,3);
         workedTime = new int[3];
         for(int i = 0; i < 3; i++)

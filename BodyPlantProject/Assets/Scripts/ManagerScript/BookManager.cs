@@ -42,7 +42,7 @@ public class BookManager : MonoBehaviour
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
             buttonList[i].GetComponent<Button>().onClick.AddListener(delegate { ButtonFunction(); });
 
-            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = characterList[i].createdDate;
+            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = characterList[i].createdDateTime.ToString("yyyy년 M월 d일");
             
             if(characterList[i].personality == CharacterClass.Personality.Mongsil)
             {
@@ -62,7 +62,7 @@ public class BookManager : MonoBehaviour
             }
             
             diaryList[i].transform.GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
-            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;
+            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name + " 와(과) 지낸지";
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
             int days = elapsedTime / (60 * 60 * 24);
