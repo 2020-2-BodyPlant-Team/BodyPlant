@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class BookManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class BookManager : MonoBehaviour
 
         for(int i = 0; i < characterList.Count; i++)
         { 
+            int elapsedTime;
+
             diaryList.Add(Instantiate(diaryPrefab, parent.transform));                   
             buttonList.Add(Instantiate(buttonPrefab, parent.transform));
 
@@ -59,7 +62,11 @@ public class BookManager : MonoBehaviour
             }
             
             diaryList[i].transform.GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
-            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;              
+            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;
+
+            elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
+            int days = elapsedTime / (60 * 60 * 24);
+            diaryList[i].transform.GetChild(5).GetComponent<Text>().text = days.ToString() + " 일이 지났어";              
         }
 
         for(int i = 0; i < characterList.Count; i++)
