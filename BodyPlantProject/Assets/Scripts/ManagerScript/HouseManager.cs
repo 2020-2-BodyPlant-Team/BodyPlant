@@ -27,12 +27,25 @@ public class HouseManager : MonoBehaviour
         gameManager.PotSceneLoad();
     }
 
+    public GameObject panel;
+    public void PanelLoad()
+    {
+        if(panel.activeSelf == false)
+        {
+            panel.SetActive(true);
+        }
+        else
+        {
+            panel.SetActive(false);
+        }
+    }
+
     public void WorkMineSceneLoad()
     {
         gameManager.WorkMineSceneLoad();
     }
 
-    public void WorkHuntSceneLoad() //일하기 사냥
+    public void WorkHuntSceneLoad()
     {
         gameManager.WorkHuntSceneLoad();
     }

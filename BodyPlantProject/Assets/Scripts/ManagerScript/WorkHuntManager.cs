@@ -72,11 +72,13 @@ public class WorkHuntManager : MonoBehaviour
                     {
                         Debug.Log("힘겨루기 승리");
                         frontDeer.SetActive(false);
+                        count = 0;
                     }
                     else
                     {
                         Debug.Log("힘겨루기 패배");
                         frontDeer.SetActive(false);
+                        count = 0;
                     }
                     StartCoroutine("DeerOut");
                 }

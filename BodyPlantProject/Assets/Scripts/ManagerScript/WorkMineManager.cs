@@ -53,10 +53,12 @@ public class WorkMineManager : MonoBehaviour
     public void FillingBar()
     {
         barAmount += 10f;
+        aim.SetActive(false);
     }
 
     void SpawnAim()
     {
+        Debug.Log("move");
         aim.SetActive(true);
         float posX = Random.Range(-1.0f, 1.5f);
         float posY = Random.Range(-4.0f, -1.0f);
