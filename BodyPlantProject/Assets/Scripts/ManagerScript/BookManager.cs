@@ -42,8 +42,11 @@ public class BookManager : MonoBehaviour
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
             buttonList[i].GetComponent<Button>().onClick.AddListener(delegate { ButtonFunction(); });
 
-            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = characterList[i].createdDateTime.ToString("yyyy년 M월 d일");
+            DateTime date = DateTime.Parse(characterList[i].createdDate);
+            Debug.Log(characterList[i].createdDate);
+            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = date.ToString("yyyy년 M월 d일");
             
+
             if(characterList[i].personality == CharacterClass.Personality.Mongsil)
             {
                 diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "몽실몽실";
