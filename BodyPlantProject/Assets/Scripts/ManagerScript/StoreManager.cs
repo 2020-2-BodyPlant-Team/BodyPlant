@@ -17,6 +17,8 @@ public class StoreManager : MonoBehaviour
     int isSeed8Sold;
     int isSeed9Sold;
     int isSeed10Sold;
+    int isSeed11Sold;
+    int isSeed12Sold;
     int isToySold;
     int isBeanBagSold;
 
@@ -31,6 +33,8 @@ public class StoreManager : MonoBehaviour
     public Text seed8Price;
     public Text seed9Price;
     public Text seed10Price;
+    public Text seed11Price;
+    public Text seed12Price;
     public Text toyPrice;
     public Text beanBagPrice;
 
@@ -44,6 +48,8 @@ public class StoreManager : MonoBehaviour
     public Button buySeed8Button;
     public Button buySeed9Button;
     public Button buySeed10Button;
+    public Button buySeed11Button;
+    public Button buySeed12Button;
     public Button buyToyButton;
     public Button buyBeanBagButton;
 
@@ -55,7 +61,7 @@ public class StoreManager : MonoBehaviour
 
     void Update()
     {
-        coinAmountText.text = "코인: " + coinAmount.ToString() + "코인";
+        coinAmountText.text = coinAmount.ToString() ;
 
         isSeed1Sold = PlayerPrefs.GetInt("IsSeed1Sold");
         if (coinAmount >= 10 && isSeed1Sold == 0)
@@ -116,6 +122,20 @@ public class StoreManager : MonoBehaviour
             buySeed10Button.interactable = true;
         else
             buySeed10Button.interactable = false;
+
+        isSeed11Sold = PlayerPrefs.GetInt("IsSeed11Sold");
+        if (coinAmount >= 10 && isSeed11Sold == 0)
+            buySeed11Button.interactable = true;
+        else
+            buySeed11Button.interactable = false;
+
+        isSeed12Sold = PlayerPrefs.GetInt("IsSeed12Sold");
+        if (coinAmount >= 10 && isSeed12Sold == 0)
+            buySeed12Button.interactable = true;
+        else
+            buySeed12Button.interactable = false;
+
+
 
 
 
@@ -204,6 +224,22 @@ public class StoreManager : MonoBehaviour
         buySeed10Button.gameObject.SetActive(true);
     }
 
+    public void buySeed11()
+    {
+        coinAmount -= 10;
+        PlayerPrefs.SetInt("IsSeed11Sold", 1);
+        seed11Price.text = "구매가 완료되었습니다!";
+        buySeed11Button.gameObject.SetActive(true);
+    }    
+
+    public void buySeed12()
+    {
+        coinAmount -= 10;
+        PlayerPrefs.SetInt("IsSeed12Sold", 1);
+        seed12Price.text = "구매가 완료되었습니다!";
+        buySeed12Button.gameObject.SetActive(true);
+    }
+
     public void buyToy()
     {
         coinAmount -= 20;
@@ -223,8 +259,8 @@ public class StoreManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("CoinAmount", coinAmount);
         SceneManager.LoadScene("HouseScene");
-
     }
+
     public void resetPlayerPrefs()
     {
         coinAmount = 0;
@@ -238,6 +274,8 @@ public class StoreManager : MonoBehaviour
         buySeed8Button.gameObject.SetActive(true);
         buySeed9Button.gameObject.SetActive(true);
         buySeed10Button.gameObject.SetActive(true);
+        buySeed11Button.gameObject.SetActive(true);
+        buySeed12Button.gameObject.SetActive(true);
         buyToyButton.gameObject.SetActive(true);
         buyBeanBagButton.gameObject.SetActive(true);
 
@@ -251,6 +289,8 @@ public class StoreManager : MonoBehaviour
         seed8Price.text = "10코인";
         seed9Price.text = "10코인";
         seed10Price.text = "10코인";
+        seed11Price.text = "10코인";
+        seed12Price.text = "10코인";
 
         toyPrice.text = "20코인";
         beanBagPrice.text = "20코인";
