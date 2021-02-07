@@ -292,6 +292,7 @@ public class ComposeManager : MonoBehaviour
         {
             List<GameObject> attachListI = attachObjectList[i];
             ComponentClass componentI = activedComponent[i];
+            activedComponent[i].cover = false;
             componentI.childIndexList.Clear();
             componentI.childJointList.Clear();
             componentI.childChildIndexList.Clear();
@@ -330,7 +331,13 @@ public class ComposeManager : MonoBehaviour
                                     //팔끝에 붙을 경우.
                                     componentI.childChildIndexList.Add(k);
                                     componentI.childChildJointList.Add(m);
-
+                                    if(componentI.name == "arm" || componentI.name == "leg")
+                                    {
+                                        if(componentK.name == "hand" || componentK.name == "foot")
+                                        {
+                                            componentI.cover = true;
+                                        }
+                                    }
                                 }
                                 else
                                 {
@@ -357,6 +364,7 @@ public class ComposeManager : MonoBehaviour
         //이제 가장 가까운 관절을 찾아줘야해.
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
+        ComponentClass indexComponent = activedComponent[index];
         Vector3 leastDelta = Vector3.zero;
         for (int i = 0; i < activedComponent.Count; i++)
         {
@@ -365,13 +373,17 @@ public class ComposeManager : MonoBehaviour
                 continue;
             }
             List<GameObject> attachListK = attachObjectList[i];
-
+            ComponentClass nowComponent = activedComponent[i];
 
             for(int j = 0; j<attachListMain.Count; j++)
             {
                 for(int k = 0; k < attachListK.Count; k++)
                 {
                     if(j==1 && k == 1)
+                    {
+                        continue;
+                    }
+                    if(indexComponent.cover || nowComponent.cover)
                     {
                         continue;
                     }
@@ -390,6 +402,7 @@ public class ComposeManager : MonoBehaviour
             }
 
         }
+
         Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
         if(convert.sqrMagnitude < 2.0f)
         {

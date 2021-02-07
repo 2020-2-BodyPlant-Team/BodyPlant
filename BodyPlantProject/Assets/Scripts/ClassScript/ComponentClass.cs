@@ -31,6 +31,8 @@ public class ComponentClass
     public List<int> childChildIndexList;         //차일드의 차일드에 붙어있는 인덱스
     public List<int> childChildJointList;
 
+    public bool cover;  //뚜껑.
+
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
     public GameObject childObject;      //차일드..
