@@ -288,11 +288,14 @@ public class ComposeManager : MonoBehaviour
 
     public void FindWholeJoint()
     {
-        for(int i = 0; i<activedComponent.Count; i++)
+        for (int i = 0; i < activedComponent.Count; i++)
+        {
+            activedComponent[i].cover = false;
+        }
+        for (int i = 0; i<activedComponent.Count; i++)
         {
             List<GameObject> attachListI = attachObjectList[i];
             ComponentClass componentI = activedComponent[i];
-            activedComponent[i].cover = false;
             componentI.childIndexList.Clear();
             componentI.childJointList.Clear();
             componentI.childChildIndexList.Clear();
@@ -317,7 +320,7 @@ public class ComposeManager : MonoBehaviour
                         Vector3 delta = attachListI[n].transform.position - attachListK[m].transform.position;
                         Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
 
-                        if (deltaVector2.magnitude < 0.5f)
+                        if (deltaVector2.magnitude <0.1f)
                         {
                             if(componentI.name == "body")
                             {
@@ -335,6 +338,7 @@ public class ComposeManager : MonoBehaviour
                                     {
                                         if(componentK.name == "hand" || componentK.name == "foot")
                                         {
+                                            componentK.cover = true;
                                             componentI.cover = true;
                                         }
                                     }
@@ -364,7 +368,9 @@ public class ComposeManager : MonoBehaviour
         //이제 가장 가까운 관절을 찾아줘야해.
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
+        ComponentClass attachedComponent = null;
         ComponentClass indexComponent = activedComponent[index];
+        indexComponent.attached = false;
         Vector3 leastDelta = Vector3.zero;
         for (int i = 0; i < activedComponent.Count; i++)
         {
@@ -383,9 +389,22 @@ public class ComposeManager : MonoBehaviour
                     {
                         continue;
                     }
-                    if(indexComponent.cover || nowComponent.cover)
+                    if(indexComponent.cover)
                     {
                         continue;
+                    }
+                    if(nowComponent.cover)
+                    {
+                        if(attachListK.Count == 2)
+                        {
+                            if(k==1)
+                                continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    
                     }
                     Vector3 delta = attachListMain[j].transform.position - attachListK[k].transform.position;
                     Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
@@ -396,6 +415,7 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
+                        attachedComponent = nowComponent;
                         leastDelta = delta;
                     }
                 }
@@ -406,6 +426,11 @@ public class ComposeManager : MonoBehaviour
         Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
         if(convert.sqrMagnitude < 2.0f)
         {
+            if(leastDelta != Vector3.zero)
+            {
+                attachedComponent.attached = true;
+                indexComponent.attached = true;
+            }
             componentObject.transform.position = componentObject.transform.position - leastDelta;
         }
     }

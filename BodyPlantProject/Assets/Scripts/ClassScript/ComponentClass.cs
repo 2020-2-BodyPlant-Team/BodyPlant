@@ -32,6 +32,7 @@ public class ComponentClass
     public List<int> childChildJointList;
 
     public bool cover;  //뚜껑.
+    public bool attached;   //붙어있는지
 
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
@@ -52,5 +53,7 @@ public class ComponentClass
         childJointList = new List<int>();
         childChildIndexList = new List<int>();
         childChildJointList = new List<int>();
+        cover = false;
+        attached = false;
     }
 }
