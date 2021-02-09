@@ -54,7 +54,13 @@ public class HouseManager : MonoBehaviour
     {
         gameManager.StoreSceneLoad();
     }
-    
+
+    public static int coinAmount;   //상점에서 가구샀을때 불러오기
+    int isToySold;
+    int isBeanBagSold;
+    public GameObject toy;
+    public GameObject beanBag;
+
     public void BookSceneLoad()
     {
         gameManager.BookSceneLoad();
@@ -169,6 +175,20 @@ public class HouseManager : MonoBehaviour
 
             }
         }
+
+        coinAmount = PlayerPrefs.GetInt ("CoinAmount"); //상점에서 가구 샀을 때 불러오기
+        isToySold = PlayerPrefs.GetInt ("IsToySold");
+        isBeanBagSold = PlayerPrefs.GetInt ("IsBeanBagSold");
+        
+        if (isToySold == 1)
+            toy.SetActive (true);
+        else
+            toy.SetActive(false);
+
+        if (isBeanBagSold == 1)
+            beanBag.SetActive(true);
+        else
+            beanBag.SetActive(false);
     }
 
     // Update is called once per frame

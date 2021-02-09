@@ -20,6 +20,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": 0
             },
@@ -47,6 +48,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": 0
             },
@@ -74,6 +76,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": 0
             },
@@ -118,8 +121,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2178
+                        "instanceID": -2956
                     },
                     "childObject": {
                         "instanceID": 0
@@ -153,11 +157,12 @@
                         0
                     ],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2186
+                        "instanceID": -2964
                     },
                     "childObject": {
-                        "instanceID": -2194
+                        "instanceID": -2972
                     },
                     "isHarvested": true
                 },
@@ -188,11 +193,12 @@
                         0
                     ],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2198
+                        "instanceID": -2976
                     },
                     "childObject": {
-                        "instanceID": -2206
+                        "instanceID": -2984
                     },
                     "isHarvested": true
                 },
@@ -219,11 +225,12 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2210
+                        "instanceID": -2988
                     },
                     "childObject": {
-                        "instanceID": -2218
+                        "instanceID": -2996
                     },
                     "isHarvested": true
                 }
@@ -269,8 +276,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2226
+                        "instanceID": -3004
                     },
                     "childObject": {
                         "instanceID": 0
@@ -300,8 +308,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2234
+                        "instanceID": -3012
                     },
                     "childObject": {
                         "instanceID": 0
@@ -331,8 +340,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2242
+                        "instanceID": -3020
                     },
                     "childObject": {
                         "instanceID": 0
@@ -364,8 +374,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2250
+                        "instanceID": -3028
                     },
                     "childObject": {
                         "instanceID": 0
@@ -404,8 +415,9 @@
                     "childChildIndexList": [],
                     "childChildJointList": [],
                     "cover": false,
+                    "attached": false,
                     "realGameobject": {
-                        "instanceID": -2264
+                        "instanceID": -3042
                     },
                     "childObject": {
                         "instanceID": 0
@@ -439,6 +451,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -3074
             },
@@ -466,6 +479,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -2402
             },
@@ -497,6 +511,7 @@
                 0
             ],
             "cover": true,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -3090
             },
@@ -524,6 +539,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -3118
             },
@@ -551,6 +567,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -2876
             },
@@ -578,6 +595,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -2884
             },
@@ -605,6 +623,7 @@
             "childChildIndexList": [],
             "childChildJointList": [],
             "cover": false,
+            "attached": false,
             "realGameobject": {
                 "instanceID": -2926
             },
