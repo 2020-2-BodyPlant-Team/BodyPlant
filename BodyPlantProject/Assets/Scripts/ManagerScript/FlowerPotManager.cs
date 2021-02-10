@@ -100,16 +100,34 @@ public class FlowerPotManager : MonoBehaviour
             if(componentsInPot[i].isSprotued == false)
             {
                 GameObject prefab;
-                if (componentsInPot[i].percentage > 0.5)
+                if (componentsInPot[i].percentage == 1)
                 {
                     prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 }
+                else if(componentsInPot[i].percentage >= 0.5)
+                {
+                    prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
+                }
                 else
                 {
-                    prefab = Resources.Load<GameObject>("Components/Growing1/" + componentData.name);
+                    string seedName = "seed1";
+                    string name = componentData.name;
+                    if (name == "arm" || name == "leg" || name == "hand" || name == "foot")
+                    {
+                        seedName = "seed2";
+                    }
+                    if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+                    {
+                        seedName = "seed3";
+                    }
+                    if (name == "hair")
+                    {
+                        seedName = "hair";
+                    }
+                    prefab = Resources.Load<GameObject>("Components/Growing1/" + seedName);
                 }
-                //Resources/Components/arm 
-                Debug.Log(componentData.name);
+                    //Resources/Components/arm 
+                    Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 
@@ -155,11 +173,12 @@ public class FlowerPotManager : MonoBehaviour
     {
         float lastPercentage = 0;
         //꽃피지 않을때만 돌아간다.
-        while(componentsInPot[index].isSprotued == false)
+        float percentage = 0;
+        while (componentsInPot[index].isSprotued == false)
         {
             int elapsedTime = 0;
             //몇퍼센트 완성인지.
-            float percentage = 0;
+
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
             lastPercentage = percentage;
 
@@ -169,12 +188,19 @@ public class FlowerPotManager : MonoBehaviour
             if (componentData.sproutSeconds < elapsedTime)
             {
                 componentsInPot[index].isSprotued = true;
+                Debug.Log("스프라이트 바꿔주는거");
+                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+                GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+                obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
+                componentsInPot[index].realGameobject.SetActive(false);
+                componentsInPot[index].realGameobject = obj;
                 //만약 시간이 지났다면 싹틔워준다.
             }
             percentage = elapsedTime / componentData.sproutSeconds;
             if(percentage >=0.5 && lastPercentage < 0.5)
             {
-                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+                Debug.Log(percentage + " 라스트" + lastPercentage);
+                GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
                 componentsInPot[index].realGameobject.SetActive(false);
@@ -282,7 +308,21 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log(availablePlace);
         componentsInPot[availablePlace] = component;
         //이 아래부터는 start에 있는거랑 똑같다.
-        GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
+        //GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
+        string seedName = "seed1";
+        if (name == "arm" || name == "leg"|| name == "hand" || name == "foot")
+        {
+            seedName = "seed2";
+        }
+        if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+        {
+            seedName = "seed3";
+        }
+        if (name == "hair")
+        {
+            seedName = "hair";
+        }
+        GameObject prefab = Resources.Load<GameObject>("Components/Growing1/" + seedName);
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.

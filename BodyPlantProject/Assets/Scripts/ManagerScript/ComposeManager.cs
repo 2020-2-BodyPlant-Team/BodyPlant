@@ -36,6 +36,14 @@ public class ComposeManager : MonoBehaviour
     public bool rotationMode;
     public bool flipMode;
 
+    int bodyNumber = 0;
+    int armLegNumber = 0;
+    int handFootNumber = 0;
+    int earEyeNumber = 0;   //이목구비
+    int hairNumber = 0;
+
+    bool notAttached = true;
+
 
     private void Start()
     {
@@ -49,6 +57,7 @@ public class ComposeManager : MonoBehaviour
         buttonList = new List<GameObject>();
         removedButtonList = new List<int>();
         rotationMode = false;
+        saveButton.SetActive(false);
         //초기화
 
         contentRect.anchoredPosition = new Vector2(0, 0);   //자꾸 이거 움직임;; 위치 고정 안해주면 지맘대로 위치가 바껴요
@@ -62,8 +71,8 @@ public class ComposeManager : MonoBehaviour
             GameObject inst = Instantiate(buttonObject, contentRect.transform);
             buttonList.Add(inst);
             inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400*harvestedComponent.Count/2+ i * 400, -74f);
-            //Image image = inst.GetComponent<Image>();
-            //image.sprite = componentData.componentSpriteArray[0];
+            Image image = inst.GetComponent<Image>();
+            image.sprite = componentData.componentSpriteArray[0];
             Text text = inst.GetComponentInChildren<Text>();
             text.text = componentData.name;
             string name = componentData.name;
@@ -72,6 +81,7 @@ public class ComposeManager : MonoBehaviour
             button.onClick.AddListener(delegate { SpawnComponent(name, index); });
             //버튼만드는 for문
         }
+        
     }
 
     //이름으로 data찾아주는 함수
@@ -95,6 +105,34 @@ public class ComposeManager : MonoBehaviour
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
         inst.transform.eulerAngles = Vector3.zero;
+        Vector3 localPos = Vector3.zero;
+        if(name == "body")
+        {
+            localPos = new Vector3(0, 0, 4f+ bodyNumber * 0.01f);
+            bodyNumber++;
+        }
+        if (name == "arm" || name == "leg")
+        {
+            localPos = new Vector3(0, 0, 3f+ armLegNumber * 0.01f);
+            armLegNumber++;
+        }
+        if (name == "hand" || name == "foot")
+        {
+            localPos = new Vector3(0, 0, 2f+ handFootNumber * 0.01f);
+            handFootNumber++;
+        }
+        if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+        {
+            localPos = new Vector3(0, 0,1f+ earEyeNumber * 0.01f);
+            earEyeNumber++;
+        }
+        if (name == "hair")
+        {
+            localPos = new Vector3(0, 0, hairNumber * 0.01f);
+            hairNumber++;
+        }
+        inst.transform.localPosition = localPos;
+
         List<GameObject> objectList = new List<GameObject>();
         attachObjectList.Add(objectList);
         for(int i = 0; i< data.attachPosition.Count; i++)
@@ -105,7 +143,6 @@ public class ComposeManager : MonoBehaviour
         }
         
 
-        inst.transform.position = new Vector3(0, 0, 10);
         DragAttach drag =  inst.AddComponent<DragAttach>();
         drag.composeManager = this;
         
@@ -219,6 +256,10 @@ public class ComposeManager : MonoBehaviour
     //저장가능한지 판별.
     public bool CanSave()
     {
+        if (notAttached)
+        {
+            return false;
+        }
         bool[] boolArray = new bool[activedComponent.Count];
         for (int i = 0; i < boolArray.Length; i++)
         {
@@ -368,10 +409,10 @@ public class ComposeManager : MonoBehaviour
         //이제 가장 가까운 관절을 찾아줘야해.
         GameObject componentObject = activedComponent[index].realGameobject;
         List<GameObject> attachListMain = attachObjectList[index];
-        ComponentClass attachedComponent = null;
         ComponentClass indexComponent = activedComponent[index];
         indexComponent.attached = false;
         Vector3 leastDelta = Vector3.zero;
+        notAttached = true;
         for (int i = 0; i < activedComponent.Count; i++)
         {
             if (i == index)
@@ -415,7 +456,6 @@ public class ComposeManager : MonoBehaviour
                     }
                     if (deltaVector2.sqrMagnitude < leastDeltaVector2.sqrMagnitude)
                     {
-                        attachedComponent = nowComponent;
                         leastDelta = delta;
                     }
                 }
@@ -423,15 +463,14 @@ public class ComposeManager : MonoBehaviour
 
         }
 
-        Vector2 convert = new Vector2(leastDelta.x, leastDelta.y);
+        Vector3 convert = new Vector3(leastDelta.x, leastDelta.y,0);
         if(convert.sqrMagnitude < 2.0f)
         {
-            if(leastDelta != Vector3.zero)
+            componentObject.transform.position = componentObject.transform.position - convert;
+            if (convert != Vector3.zero)
             {
-                attachedComponent.attached = true;
-                indexComponent.attached = true;
+                notAttached = false;
             }
-            componentObject.transform.position = componentObject.transform.position - leastDelta;
         }
     }
 
@@ -446,8 +485,6 @@ public class ComposeManager : MonoBehaviour
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
                 if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
                 {
-
-
                     touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
                     Debug.Log(touchedObject);
                     for (int i = 0; i < activedComponent.Count; i++)

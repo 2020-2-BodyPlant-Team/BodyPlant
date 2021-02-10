@@ -14,7 +14,7 @@ public class DragAttach : MonoBehaviour
     private void OnMouseDown()
     {
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        offset = new Vector3(offset.x, offset.y, 0);
+        offset = new Vector3(offset.x, offset.y, transform.position.z);
         mouseStartPoint = Input.mousePosition;
         //z축 0으로 맞추기.
         //이걸 안하면 마우스가 클릭했을 때 오브젝트가 마우스에 자석처럼 달라붙는다.

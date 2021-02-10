@@ -22,6 +22,7 @@ public class HouseManager : MonoBehaviour
     List<Vector3> startAngleList;
     List<float> originAngleList;
 
+
     public void PotSceneLoad()
     {
         gameManager.PotSceneLoad();
@@ -107,11 +108,47 @@ public class HouseManager : MonoBehaviour
             randomPosList.Add(new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0));
             startPosList.Add(Vector3.zero);
             GameObject parent = new GameObject();
+
+            int bodyNumber = 0;
+            int armLegNumber = 0;
+            int handFootNumber = 0;
+            int earEyeNumber = 0;   //이목구비
+            int hairNumber = 0;
             foreach (ComponentClass component in characterList[i].components)
             {
                 GameObject componentObj = Resources.Load<GameObject>("Components/Complete/" + component.name);
                 GameObject inst = Instantiate(componentObj, parent.transform);
+                string name = component.name;
+
+                Vector3 localPos = Vector3.zero;
+                if (name == "body")
+                {
+                    localPos = new Vector3(0, 0,i * 10 +4f + bodyNumber * 0.01f);
+                    bodyNumber++;
+                }
+                if (name == "arm" || name == "leg")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 3f + armLegNumber * 0.01f);
+                    armLegNumber++;
+                }
+                if (name == "hand" || name == "foot")
+                {
+                    localPos = new Vector3(0, 0,i * 10 + 2f + handFootNumber * 0.01f);
+                    handFootNumber++;
+                }
+                if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 1f + earEyeNumber * 0.01f);
+                    earEyeNumber++;
+                }
+                if (name == "hair")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + hairNumber * 0.01f);
+                    hairNumber++;
+                }
+
                 component.realGameobject = inst;
+
 
                 rotationList.Add(0);
                 randomRotateTimeList.Add(Random.Range(1f, 2f));
@@ -143,6 +180,7 @@ public class HouseManager : MonoBehaviour
                     rotatingObjectList.Add(component.childObject);
                 }
                 inst.transform.localPosition = component.position;
+                inst.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y, localPos.z);
                 inst.transform.eulerAngles = component.rotation;
 
             }
@@ -160,17 +198,20 @@ public class HouseManager : MonoBehaviour
                 {
                     if(characterList[i].components[k].childJointList[n] == 0)
                     {
-                        characterList[i].components[k].realGameobject.transform.SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].realGameobject.transform);
+                        characterList[i].components[k].realGameobject.transform.
+                            SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].realGameobject.transform);
                     }
                     else
                     {
-                        characterList[i].components[k].realGameobject.transform.SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].childObject.transform);
+                        characterList[i].components[k].realGameobject.transform.
+                            SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].childObject.transform);
                     }
                     
                 }
                 for (int n = 0; n < characterList[i].components[k].childChildIndexList.Count; n++)
                 {
-                    characterList[i].components[characterList[i].components[k].childChildIndexList[n]].realGameobject.transform.SetParent(childObj.transform);
+                    characterList[i].components[characterList[i].components[k].childChildIndexList[n]].realGameobject.
+                        transform.SetParent(childObj.transform);
                 }
 
             }
