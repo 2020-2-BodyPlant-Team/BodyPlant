@@ -1210,8 +1210,8 @@ MonoBehaviour:
   seed8Price: {fileID: 150203160}
   seed9Price: {fileID: 1483981007}
   seed10Price: {fileID: 2061088726}
-  seed11Price: {fileID: 0}
-  seed12Price: {fileID: 0}
+  seed11Price: {fileID: 199577783}
+  seed12Price: {fileID: 1383687582}
   toyPrice: {fileID: 1050320654}
   beanBagPrice: {fileID: 2125242663}
   buySeed1Button: {fileID: 1786474275}
@@ -1224,8 +1224,8 @@ MonoBehaviour:
   buySeed8Button: {fileID: 720530511}
   buySeed9Button: {fileID: 649306664}
   buySeed10Button: {fileID: 1241839198}
-  buySeed11Button: {fileID: 0}
-  buySeed12Button: {fileID: 0}
+  buySeed11Button: {fileID: 345541785}
+  buySeed12Button: {fileID: 62513517}
   buyToyButton: {fileID: 1171299571}
   buyBeanBagButton: {fileID: 294411037}
 --- !u!1 &649306660
@@ -4223,12 +4223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
