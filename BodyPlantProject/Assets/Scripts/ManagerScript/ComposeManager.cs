@@ -628,6 +628,7 @@ public class ComposeManager : MonoBehaviour
     {
         if (notAttached)
         {
+            Debug.Log("낫 어태치드");
             return false;
         }
         bool[] boolArray = new bool[activedComponent.Count];
@@ -666,6 +667,7 @@ public class ComposeManager : MonoBehaviour
         {
             if (boolArray[i] == false)
             {
+                Debug.Log("불 어레이" + i);
                 return false;
             }
         }
@@ -680,16 +682,16 @@ public class ComposeManager : MonoBehaviour
                 {
                     continue;
                 }
-                if ((activedComponent[i].realGameobject.transform.position - activedComponent[k].realGameobject.transform.position).magnitude < 1.0f)
+                if ((activedComponent[i].realGameobject.transform.position - activedComponent[k].realGameobject.transform.position).magnitude < 0.2f)
                 {
                     if((activedComponent[i].realGameobject.transform.eulerAngles - activedComponent[k].realGameobject.transform.eulerAngles).magnitude < 1.0f)
                     {
+                        Debug.Log("겹치기");
                         return false;
                     }
                 }
         }
         }
-      
 
         return true;
 
@@ -726,17 +728,24 @@ public class ComposeManager : MonoBehaviour
                     {
                         if(n>=1 && m >= 1)
                         {
-                            continue;
+                            if(componentI.name != "body" && componentK.name != "body")
+                            {
+                                continue;
+                            }
+                            
                         }
                         Vector3 delta = attachListI[n].transform.position - attachListK[m].transform.position;
                         Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
 
-                        if (deltaVector2.magnitude <0.1f)
+                        if (deltaVector2.magnitude <1f)
                         {
                             if(componentI.name == "body")
                             {
-                                componentI.childIndexList.Add(k);
-                                componentI.childJointList.Add(m);
+                                if (!componentI.childIndexList.Contains(k))
+                                {
+                                    componentI.childIndexList.Add(k);
+                                    componentI.childJointList.Add(m);
+                                }
                             }
                             else
                             {
@@ -859,7 +868,6 @@ public class ComposeManager : MonoBehaviour
 
                         if (activedComponent[i].realGameobject == touchedObject)
                         {
-                            Debug.Log("몇번 실행되나 " + i);
                             Adjustattach(i);
                             FindWholeJoint();
                             saveButton.SetActive(CanSave());
