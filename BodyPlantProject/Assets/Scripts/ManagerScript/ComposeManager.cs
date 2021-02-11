@@ -11,13 +11,13 @@ public class ComposeManager : MonoBehaviour
     List<ComponentClass> harvestedComponent;//버튼형태로 있는 부위.
     [SerializeField]
     List<ComponentClass> activedComponent;  //단상위에 올라가있는 부위
+    int addedComponentNumber = 0;
     List<List<GameObject>> attachObjectList;
     WholeComponents wholeComponents;
     public RectTransform contentRect;       //시작값 700. 하나 늘어날떄마다 -400
     public GameObject buttonObject;         //시작값  0,-74f/  하나늘어날때마다 x만 +400
     List<GameObject> buttonList;
     List<int> removedButtonList;        //사라진 버튼의 인덱스 리스트
-    CharacterClass loadedCharacter;     //나중에 생길 기존캐릭터에 요소 붙이늰거
     public InputField nameInputField;       //이름 인풋필드
     string nameInput;                       //이름 넣은거
     public GameObject parentObject;         //부위들의 Parent가 되는 오브젝트
@@ -39,6 +39,8 @@ public class ComposeManager : MonoBehaviour
     public GameObject modifyPanel;
     bool isModifiedCharacter;   //수정된 캐릭터인지 최초로 만드는 캐릭터인지.
     int modifyingIndex;
+    public GameObject modifyButtonObject;
+    public Text modifyPanelText;
 
     [SerializeField]
     List<CharacterClass> characterList;
@@ -63,6 +65,8 @@ public class ComposeManager : MonoBehaviour
 
     bool notAttached = true;
 
+    
+
 
     private void Start()
     {
@@ -72,6 +76,7 @@ public class ComposeManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         harvestedComponent = gameManager.saveData.owningComponentList;
+        activedComponent = new List<ComponentClass>();
         attachObjectList = new List<List<GameObject>>();
         buttonList = new List<GameObject>();
         removedButtonList = new List<int>();
@@ -170,7 +175,6 @@ public class ComposeManager : MonoBehaviour
                     localPos = new Vector3(0, 0, i * 10 + hairNumber * 0.01f);
                     hairNumber++;
                 }
-
                 component.realGameobject = inst;
 
 
@@ -238,7 +242,6 @@ public class ComposeManager : MonoBehaviour
                     characterList[i].components[characterList[i].components[k].childChildIndexList[n]].realGameobject.
                         transform.SetParent(childObj.transform);
                 }
-
             }
         }
 
@@ -262,6 +265,11 @@ public class ComposeManager : MonoBehaviour
     public void SpawnComponent(string name,int buttonIndex)
     {
         int changedIndex = buttonIndex;
+        if (modifyButtonObject.activeSelf)
+        {
+            modifyButtonObject.SetActive(false);
+        }
+
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
@@ -337,6 +345,7 @@ public class ComposeManager : MonoBehaviour
     public void SpawnModifyComponent(ComponentClass component)
     {
         string name = component.name;
+        addedComponentNumber++;
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj, parentObject.transform);
@@ -382,7 +391,6 @@ public class ComposeManager : MonoBehaviour
             attachInst.transform.localPosition = new Vector3(data.attachPosition[i].x, data.attachPosition[i].y, 0);
         }
 
-
         DragAttach drag = inst.AddComponent<DragAttach>();
         drag.composeManager = this;
 
@@ -391,15 +399,19 @@ public class ComposeManager : MonoBehaviour
 
     public void SaveButton()
     {
-        if(loadedCharacter != null)
+        if (isModifiedCharacter)
         {
-            SaveCharacter(false);
-            return;
+            nameAskingObject.SetActive(true);
+            nameInput = characterList[modifyingIndex].name;
+            string productedName = GetCompleteWorld(nameInput, "\"이가", "\"가");
+            nameAskingText.text = "\"" + productedName + " 맞나요?";
         }
         else
         {
             namingObject.SetActive(true);
         }
+            
+        
     }
 
     public void NameButton()
@@ -407,12 +419,55 @@ public class ComposeManager : MonoBehaviour
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
-        nameAskingText.text = "\"" + nameInputField.text + "\"(이)가 맞나요?";
+        string productedName = GetCompleteWorld(nameInput, "\"이가", "\"가");
+        nameAskingText.text = "\"" + productedName + " 맞나요?";
+    }
+
+    
+    public void NameInputChanging()
+    {
+        if(nameInputField.text.Length > 10)
+        {
+            nameInputField.text = nameInputField.text.Remove(10);
+            if (!inputCorRunning)
+            {
+                StartCoroutine(NameInputShake());
+            }
+        }
+    }
+
+    bool inputCorRunning = false;
+    IEnumerator NameInputShake()
+    {
+        inputCorRunning = true;
+        Text inputText = nameInputField.textComponent;
+        GameObject inputObject = nameInputField.gameObject;
+        RectTransform rect = inputObject.GetComponent<RectTransform>();
+        Vector2 originPos = rect.anchoredPosition;
+
+        float x1 = -50;
+        float x2 = -22;
+        float y1 = 36;
+        float y2 = 86;
+
+        inputText.color = new Color(0.8f, 0, 0, 1);
+        float timer = 0;
+        while(timer < 0.3f)
+        {
+            timer += Time.deltaTime;
+            float xRandom = UnityEngine.Random.Range(x1, x2);
+            float yRandom = UnityEngine.Random.Range(y1, y2);
+            rect.anchoredPosition = new Vector3(xRandom, yRandom);
+            yield return null;
+        }
+        inputCorRunning = false;
+        rect.anchoredPosition = originPos;
+        inputText.color = new Color(0,0,0, 1);
     }
 
     public void YesButton()
     {
-        SaveCharacter(true);
+        SaveCharacter(!isModifiedCharacter);
         namingObject.SetActive(false);
         nameAskingObject.SetActive(false);
     }
@@ -448,6 +503,7 @@ public class ComposeManager : MonoBehaviour
     {
         cam.gameObject.transform.position = new Vector3(0, 0, -10);
         modifyPanel.SetActive(false);
+        modifyButtonObject.SetActive(false);
         isModifiedCharacter = true;
 
         foreach (ComponentClass data in characterList[modifyingIndex].components)
@@ -458,7 +514,10 @@ public class ComposeManager : MonoBehaviour
 
     public void ModifyBackButton()
     {
+        cam.gameObject.transform.position = new Vector3(0, 0, -10);
 
+        isModifiedCharacter = false;
+        modifyMode = false;
     }
 
     public void ModifyNoButton()
@@ -491,7 +550,24 @@ public class ComposeManager : MonoBehaviour
         Debug.Log(characterList[characterIndex].name);
         modifyingIndex = characterIndex;
         modifyMode = false;
+        string productedName = GetCompleteWorld(characterList[characterIndex].name, "\"이를", "\"를");
+        modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
         modifyPanel.SetActive(true);
+    }
+
+    public string GetCompleteWorld(string name, string firstVal, string secondVal)
+    {
+        //char lastName = name.ElementAt(name.Length - 1);
+        char lastName = name[name.Length - 1];
+        int index = (lastName - 0xAC00) % 28; Console.WriteLine(index); 
+        //한글의 제일 처음과 끝의 범위 밖일경우 에러
+        if (lastName < 0xAC00 || lastName > 0xD7A3) 
+        { 
+            return name + secondVal; 
+        }
+        string selectVal = (lastName - 0xAC00) % 28 > 0 ? firstVal : secondVal; 
+        return name + selectVal;
+
     }
 
     public void SaveCharacter(bool isNew)
@@ -521,8 +597,31 @@ public class ComposeManager : MonoBehaviour
         else
         {
             //기획나오면 추가될거
+            FindWholeJoint();
+            CharacterClass character = characterList[modifyingIndex];
+            character.components = activedComponent;
+
+            for (int i = addedComponentNumber; i < activedComponent.Count; i++)
+            {
+                harvestedComponent.Remove(activedComponent[i]);
+            }
+            foreach (ComponentClass component in character.components)
+            {
+                component.position = component.realGameobject.transform.localPosition;
+                component.rotation = component.realGameobject.transform.eulerAngles;
+                component.realGameobject.SetActive(false); 
+            }
+           
+            gameManager.Save();
+            //저장.
+
+            activedComponent = new List<ComponentClass>();  //초기화;
         }
     }
+
+
+
+
 
     //저장가능한지 판별.
     public bool CanSave()

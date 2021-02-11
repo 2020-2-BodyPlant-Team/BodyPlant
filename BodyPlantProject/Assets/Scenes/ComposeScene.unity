@@ -321,7 +321,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 672835488}
-        m_MethodName: BackButton
+        m_MethodName: ModifyBackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1440,7 +1440,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "~~\uAC00 \uB9DE\uB098\uC694?"
@@ -1799,6 +1799,8 @@ MonoBehaviour:
   rotationMode: 0
   flipMode: 0
   modifyPanel: {fileID: 106907130}
+  modifyButtonObject: {fileID: 2134544761}
+  modifyPanelText: {fileID: 1914868723}
   characterList: []
 --- !u!4 &672835489
 Transform:
@@ -2437,7 +2439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1032907836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3149,7 +3151,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672835488}
+        m_MethodName: NameInputChanging
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -3611,7 +3624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000671377, y: 0.000030517578}
+  m_AnchoredPosition: {x: -0.0000671377, y: 0.000045776367}
   m_SizeDelta: {x: -596.99976, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1601268733
@@ -3824,7 +3837,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "~\uC774\uB97C \uB370\uB824\uAC08\uAE4C\uC694?"

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public WholeComponents wholeComponents;    //테스트용
     public SaveDataClass saveData;             //세이브데이터
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
-    
+    public bool fromPotScene;
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             //싱글톤이 이미 지정되어있다면,(한번이라도 위의 코드가 발동했다는 의미) 게임오브젝트 파괴
         }
-        
+        fromPotScene = false;
         //제이슨매니저 할당.
         jsonManager = new JsonManager();
         //wholeComponents는 전체 부위인데, 이걸 로딩해준다. 기획자가 만든 데이터 로딩.
@@ -71,15 +71,18 @@ public class GameManager : MonoBehaviour
     //합성 씬 로드. flowerPotManager의 ComposeSceneLoad에서 호출-> 합성버튼에서 호출
     public void ComposeSceneLoad()
     {
+        fromPotScene = false;
         SceneManager.LoadScene("ComposeScene");
     }
     public void PotSceneLoad()
     {
+        fromPotScene = true;
         SceneManager.LoadScene("PotScene");
     }
 
     public void HouseSceneLoad()
     {
+        fromPotScene = false;
         SceneManager.LoadScene("HouseScene");
     }
 
