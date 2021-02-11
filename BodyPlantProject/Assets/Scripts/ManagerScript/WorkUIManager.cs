@@ -36,7 +36,6 @@ public class WorkUIManager : MonoBehaviour
                     panel.SetActive(true);
                 }   
             }
-            
         }
     }
 

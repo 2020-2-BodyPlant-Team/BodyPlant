@@ -19,6 +19,7 @@ public class CharacterClass
     public int[] workedTime;                //int[3]배열. 낚시 사냥 광질 얼마나 했는지.
     public float loveNess;                  //애정도
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
+    public GameObject realGameobject;
 
     public CharacterClass()
     {

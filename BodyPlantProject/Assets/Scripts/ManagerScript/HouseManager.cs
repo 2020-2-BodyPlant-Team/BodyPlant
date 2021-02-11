@@ -56,6 +56,11 @@ public class HouseManager : MonoBehaviour
         gameManager.StoreSceneLoad();
     }
 
+    public void ComposeSceneLoad()
+    {
+        gameManager.ComposeSceneLoad();
+    }
+
     public static int coinAmount;   //상점에서 가구샀을때 불러오기
     int isToySold;
     int isBeanBagSold;
