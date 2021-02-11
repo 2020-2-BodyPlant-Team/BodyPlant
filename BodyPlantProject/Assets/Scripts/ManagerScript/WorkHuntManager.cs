@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorkHuntManager : MonoBehaviour
 {
@@ -40,7 +41,9 @@ public class WorkHuntManager : MonoBehaviour
 
         sideAni = sideDeer.GetComponent<Animation>();
         waitSec = Random.Range(3.0f, 5.0f);
-        
+
+        gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         StartCoroutine("DeerOut");
     }
 

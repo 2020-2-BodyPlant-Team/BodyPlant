@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public WholeComponents wholeComponents;    //테스트용
     public SaveDataClass saveData;             //세이브데이터
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
-    
+
+    public int workSceneIndex;  //일하기 <-> 캐릭터 데려오기 씬 이동용입니다
 
     void Awake()
     {
@@ -91,6 +92,11 @@ public class GameManager : MonoBehaviour
     public void WorkHuntSceneLoad() //일하기 사냥
     {
         SceneManager.LoadScene("WorkHuntScene");
+    }
+
+    public void WorkFishingSceneLoad() //일하기 낚시
+    {
+        SceneManager.LoadScene("WorkFishingScene");
     }
 
     public void StoreSceneLoad()

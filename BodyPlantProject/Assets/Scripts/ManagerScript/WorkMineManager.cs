@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WorkMineManager : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class WorkMineManager : MonoBehaviour
         barImage = GameObject.Find("Bar").GetComponent<Image>();
         barAmount = 0f;
 
+        gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         aim.SetActive(false);
         InvokeRepeating("SpawnAim", 2, 1);
     }
@@ -58,7 +61,7 @@ public class WorkMineManager : MonoBehaviour
 
     void SpawnAim()
     {
-        Debug.Log("move");
+        //Debug.Log("move");
         aim.SetActive(true);
         float posX = Random.Range(-1.0f, 1.5f);
         float posY = Random.Range(-4.0f, -1.0f);

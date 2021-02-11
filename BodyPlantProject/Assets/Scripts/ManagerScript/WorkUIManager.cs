@@ -41,8 +41,8 @@ public class WorkUIManager : MonoBehaviour
 
     public void YesBtn()
     {
-        //touchedObject의 정보를 받아 밑에 씬으로 넘기고 싶습니다
-        gameManager.WorkMineSceneLoad();
+        //touchedObject에 들어간 캐릭터를 밑에 씬으로 이동시키고 싶습니다
+        SceneManager.LoadScene(gameManager.workSceneIndex);
     }
 
     public void NoBtn()
