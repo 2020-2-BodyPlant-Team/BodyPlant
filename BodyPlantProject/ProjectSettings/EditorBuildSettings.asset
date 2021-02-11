@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkHuntScene.unity
     guid: 2409100f8c37f5440b6427977bcf0cf4
+  - enabled: 1
+    path: Assets/Scenes/WorkFishingScene.unity
+    guid: e01a8f25182d68e4ba716d32723421ed
   m_configObjects: {}

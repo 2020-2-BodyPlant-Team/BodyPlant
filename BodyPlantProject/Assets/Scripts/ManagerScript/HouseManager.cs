@@ -29,7 +29,7 @@ public class HouseManager : MonoBehaviour
     }
 
     public GameObject panel;
-    public void PanelLoad()
+    public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
     {
         if(panel.activeSelf == false)
         {
@@ -49,6 +49,11 @@ public class HouseManager : MonoBehaviour
     public void WorkHuntSceneLoad()
     {
         gameManager.WorkHuntSceneLoad();
+    }
+
+    public void WorkFishingSceneLoad()
+    {
+        gameManager.WorkFishingSceneLoad();
     }
 
     public void StoreSceneLoad()

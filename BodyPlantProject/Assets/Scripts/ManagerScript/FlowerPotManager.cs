@@ -512,6 +512,34 @@ public class FlowerPotManager : MonoBehaviour
         gameManager.HouseSceneLoad();
     }
 
+    public GameObject panel;
+    public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
+    {
+        if (panel.activeSelf == false)
+        {
+            panel.SetActive(true);
+        }
+        else
+        {
+            panel.SetActive(false);
+        }
+    }
+
+    public void WorkMineSceneLoad()
+    {
+        gameManager.WorkMineSceneLoad();
+    }
+
+    public void WorkHuntSceneLoad()
+    {
+        gameManager.WorkHuntSceneLoad();
+    }
+
+    public void WorkFishingSceneLoad()
+    {
+        gameManager.WorkFishingSceneLoad();
+    }
+
     // Update is called once per frame
     void Update()
     {
