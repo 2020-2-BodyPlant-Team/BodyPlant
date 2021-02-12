@@ -924,6 +924,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &779907203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779907204}
+  m_Layer: 0
+  m_Name: toy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779907204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779907203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15126254, y: 0.577701, z: -0.083602205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1235536336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1178,6 +1208,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04b30f4df1ab9a543875e6cb2ede5036, type: 3}
+--- !u!1 &1358894878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358894879}
+  m_Layer: 0
+  m_Name: beanBag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358894879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358894878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15126254, y: 0.577701, z: -0.083602205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435115110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,10 +1540,15 @@ MonoBehaviour:
     potList:
     - name: null
       position: {x: 0, y: 0}
+      secondPosition: {x: 0, y: 0}
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      secondRotation: {x: 0, y: 0, z: 0}
+      parentComponentIndex: 0
+      parentJointIndex: 0
+      secondSwitch: 0
       childIndexList: 
       childJointList: 
       childChildIndexList: 
@@ -1495,10 +1560,15 @@ MonoBehaviour:
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
+      secondPosition: {x: 0, y: 0}
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      secondRotation: {x: 0, y: 0, z: 0}
+      parentComponentIndex: 0
+      parentJointIndex: 0
+      secondSwitch: 0
       childIndexList: 
       childJointList: 
       childChildIndexList: 
@@ -1510,10 +1580,15 @@ MonoBehaviour:
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
+      secondPosition: {x: 0, y: 0}
       plantedTime: 2021-01-09 PM 2:58:24
       isSprotued: 0
       percentage: 0
       rotation: {x: 0, y: 0, z: 0}
+      secondRotation: {x: 0, y: 0, z: 0}
+      parentComponentIndex: 0
+      parentJointIndex: 0
+      secondSwitch: 0
       childIndexList: 
       childJointList: 
       childChildIndexList: 
@@ -1873,5 +1948,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList: []
   panel: {fileID: 1687917959}
-  toy: {fileID: 0}
-  beanBag: {fileID: 0}
+  toy: {fileID: 779907203}
+  beanBag: {fileID: 1358894878}

@@ -126,7 +126,233 @@ public class ComposeManager : MonoBehaviour
         randomTimeList = new List<float>();
         rotationList = new List<float>();
         rotatingObjectList = new List<GameObject>();
+        //트리를 만들건데, 가지가 제일 많은게 중앙 컴포넌트가 된다. 거기서 뻗어나간다.
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            ComponentClass centerComponent = characterList[i].components[0]; //중앙 기본값 넣어주고
+            CharacterClass character = characterList[i];
+            bool[] boolArray = new bool[characterList[i].components.Count];
+            int bestEdge = 0;
+            int centerIndex = 0;
 
+            for (int k = 0; k < boolArray.Length; k++)
+            {
+                boolArray[k] = false;
+            }
+            for (int k = 0; k < characterList[i].components.Count; k++)
+            {
+                if (characterList[i].components[k].childIndexList.Count + characterList[i].components[k].childChildIndexList.Count > bestEdge)
+                {
+                    bestEdge = characterList[i].components[k].childIndexList.Count + characterList[i].components[k].childChildIndexList.Count;
+                    centerComponent = characterList[i].components[k];
+                    centerIndex = k;
+                }
+            }
+            ComponentClass nowComponent = centerComponent;
+            int nowIndex = centerIndex;
+            nowComponent.parentComponentIndex = -1;
+            Stack<int> childStack = new Stack<int>();
+            boolArray[centerIndex] = true;
+            childStack.Push(centerIndex);
+
+            while (childStack.Count > 0)
+            {
+                nowIndex = childStack.Pop();    //시작할때 팝해야해.
+                nowComponent = character.components[nowIndex];
+                Debug.Log(nowIndex + " 팝하는 인덱스");
+                for (int k = 0; k < nowComponent.childIndexList.Count; k++)
+                {
+                    if (boolArray[nowComponent.childIndexList[k]] == false)
+                    {
+                        childStack.Push(nowComponent.childIndexList[k]);
+                        boolArray[nowComponent.childIndexList[k]] = true;
+
+                        ComponentClass opposeComponent = characterList[i].components[nowComponent.childIndexList[k]];
+                        opposeComponent.parentComponentIndex = nowIndex;
+                        opposeComponent.parentJointIndex = 0;
+                        if (nowComponent.childJointList[k] != 0)
+                        {
+                            //센터에 전완이 붙었을 때 스위치 해줘야해.
+                            opposeComponent.secondSwitch = true;
+
+                        }
+                    }
+                }
+
+                for (int k = 0; k < nowComponent.childChildIndexList.Count; k++)
+                {
+                    if (boolArray[nowComponent.childChildIndexList[k]] == false)
+                    {
+                        childStack.Push(nowComponent.childChildIndexList[k]);
+                        boolArray[nowComponent.childChildIndexList[k]] = true;
+
+                        ComponentClass opposeComponent = characterList[i].components[nowComponent.childChildIndexList[k]];
+                        opposeComponent.parentComponentIndex = nowIndex;
+                        opposeComponent.parentJointIndex = 1;
+                        Debug.Log(opposeComponent.name);
+                        if (nowComponent.childChildJointList[k] != 0)
+                        {
+                            //센터에 전완이 붙었을 때 스위치 해줘야해.
+                            opposeComponent.secondSwitch = true;
+
+                        }
+                    }
+                }
+
+
+
+
+
+            }
+        }
+
+        //캐릭터들 불러오는칸
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            Debug.Log(characterList[i].name);
+            timerList.Add(0);
+            randomTimeList.Add(UnityEngine.Random.Range(1f, 2f));
+            randomPosList.Add(new Vector3(UnityEngine.Random.Range(7.5f, 12.5f), UnityEngine.Random.Range(-3f, 0f), 0));
+            startPosList.Add(new Vector3(10, 0, 0));
+            GameObject parent = new GameObject();
+            characterList[i].realGameobject = parent;
+
+            int bodyNumber = 0;
+            int armLegNumber = 0;
+            int handFootNumber = 0;
+            int earEyeNumber = 0;   //이목구비
+            int hairNumber = 0;
+            foreach (ComponentClass component in characterList[i].components)
+            {
+                string path;
+                if (component.secondSwitch)
+                {
+                    path = "Components/Complete/" + component.name + "2";
+                }
+                else
+                {
+                    path = "Components/Complete/" + component.name;
+                }
+
+                GameObject componentObj = Resources.Load<GameObject>(path);
+                GameObject inst = Instantiate(componentObj, parent.transform);
+                string name = component.name;
+
+                Vector3 localPos = Vector3.zero;
+                if (name == "body")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 4f + bodyNumber * 0.01f);
+                    bodyNumber++;
+                }
+                if (name == "arm" || name == "leg")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 3f + armLegNumber * 0.01f);
+                    armLegNumber++;
+                }
+                if (name == "hand" || name == "foot")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 2f + handFootNumber * 0.01f);
+                    handFootNumber++;
+                }
+                if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + 1f + earEyeNumber * 0.01f);
+                    earEyeNumber++;
+                }
+                if (name == "hair")
+                {
+                    localPos = new Vector3(0, 0, i * 10 + hairNumber * 0.01f);
+                    hairNumber++;
+                }
+
+                component.realGameobject = inst;
+
+
+                rotationList.Add(0);
+                randomRotateTimeList.Add(UnityEngine.Random.Range(1f, 2f));
+                randomAngleList.Add(new Vector3(0, 0, UnityEngine.Random.Range(-30, 30) + component.rotation.z));
+                startAngleList.Add(component.rotation);
+                originAngleList.Add(component.rotation.z);
+                rotatingObjectList.Add(component.realGameobject);
+
+                if (FindData(component.name).isChild)
+                {
+                    Vector3 angle;
+
+                    if (component.rotation.z > 270 || component.rotation.z < 90)
+                    {
+
+                        angle = Vector3.zero;
+                    }
+                    else
+                    {
+                        angle = component.rotation;
+                    }
+
+                    component.childObject = component.realGameobject.transform.GetChild(0).gameObject;
+                    rotationList.Add(0);
+                    randomRotateTimeList.Add(UnityEngine.Random.Range(1f, 2f));
+                    randomAngleList.Add(new Vector3(0, 0, angle.z + UnityEngine.Random.Range(-30, 30)));
+                    startAngleList.Add(angle);
+                    originAngleList.Add(angle.z);
+                    rotatingObjectList.Add(component.childObject);
+                }
+                if (component.secondSwitch)
+                {
+                    inst.transform.position = new Vector3(component.secondPosition.x, component.secondPosition.y, localPos.z);
+                }
+                else
+                {
+                    inst.transform.position = new Vector3(component.position.x, component.position.y, localPos.z);
+                }
+                //inst.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y, localPos.z);
+                inst.transform.eulerAngles = component.rotation;
+            }
+
+
+            foreach (ComponentClass component in characterList[i].components)
+            {
+                if (component.parentComponentIndex == -1)
+                {
+                    continue;
+                }
+                if (component.parentJointIndex == 0)
+                {
+                    if (characterList[i].components[component.parentComponentIndex].secondSwitch)
+                    {
+                        component.realGameobject.transform.SetParent
+    (characterList[i].components[component.parentComponentIndex].childObject.transform);
+                    }
+                    else
+                    {
+                        component.realGameobject.transform.SetParent
+    (characterList[i].components[component.parentComponentIndex].realGameobject.transform);
+                    }
+
+                }
+                else
+                {
+                    if (characterList[i].components[component.parentComponentIndex].secondSwitch)
+                    {
+                        component.realGameobject.transform.SetParent
+(characterList[i].components[component.parentComponentIndex].realGameobject.transform);
+                    }
+                    else
+                    {
+                        component.realGameobject.transform.SetParent
+(characterList[i].components[component.parentComponentIndex].childObject.transform);
+                    }
+
+
+                }
+
+            }
+
+            characterObjectList.Add(parent);
+        }
+
+
+        /*
         //캐릭터들 불러오는칸
         for (int i = 0; i < characterList.Count; i++)
         {
@@ -244,7 +470,7 @@ public class ComposeManager : MonoBehaviour
                 }
             }
         }
-
+        */
 
     }
 
@@ -341,6 +567,7 @@ public class ComposeManager : MonoBehaviour
         }
         saveButton.SetActive(false);
     }
+
 
     public void SpawnModifyComponent(ComponentClass component)
     {
@@ -582,7 +809,12 @@ public class ComposeManager : MonoBehaviour
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
             foreach (ComponentClass component in activedComponent)
             {
-                component.position = component.realGameobject.transform.localPosition;
+                if (FindData(component.name).isChild)
+                {
+                    component.secondPosition = component.realGameobject.transform.GetChild(1).position;
+                    component.secondRotation = component.realGameobject.transform.GetChild(1).eulerAngles;
+                }
+                component.position = component.realGameobject.transform.position;
                 component.rotation = component.realGameobject.transform.eulerAngles;
                 component.realGameobject.SetActive(false);
                 harvestedComponent.Remove(component);
@@ -628,7 +860,6 @@ public class ComposeManager : MonoBehaviour
     {
         if (notAttached)
         {
-            Debug.Log("낫 어태치드");
             return false;
         }
         bool[] boolArray = new bool[activedComponent.Count];
@@ -726,6 +957,7 @@ public class ComposeManager : MonoBehaviour
                 {
                     for (int m = 0; m < attachListK.Count; m++)
                     {
+                        /*
                         if(n>=1 && m >= 1)
                         {
                             if(componentI.name != "body" && componentK.name != "body")
@@ -733,18 +965,23 @@ public class ComposeManager : MonoBehaviour
                                 continue;
                             }
                             
-                        }
+                        }*/
                         Vector3 delta = attachListI[n].transform.position - attachListK[m].transform.position;
                         Vector2 deltaVector2 = new Vector2(delta.x, delta.y);
-
-                        if (deltaVector2.magnitude <1f)
+                 
+                        if (deltaVector2.magnitude <0.1f)
                         {
+                            int joint = m;
+                            if (componentK.name == "body")
+                            {
+                                joint = 0;
+                            }
                             if(componentI.name == "body")
                             {
                                 if (!componentI.childIndexList.Contains(k))
                                 {
                                     componentI.childIndexList.Add(k);
-                                    componentI.childJointList.Add(m);
+                                    componentI.childJointList.Add(joint);
                                 }
                             }
                             else
@@ -753,7 +990,7 @@ public class ComposeManager : MonoBehaviour
                                 {
                                     //팔끝에 붙을 경우.
                                     componentI.childChildIndexList.Add(k);
-                                    componentI.childChildJointList.Add(m);
+                                    componentI.childChildJointList.Add(joint);
                                     if(componentI.name == "arm" || componentI.name == "leg")
                                     {
                                         if(componentK.name == "hand" || componentK.name == "foot")
@@ -767,7 +1004,7 @@ public class ComposeManager : MonoBehaviour
                                 {
                                     //어깨에 붙을 경우
                                     componentI.childIndexList.Add(k);
-                                    componentI.childJointList.Add(m);
+                                    componentI.childJointList.Add(joint);
                                 }
                             }
                            
@@ -802,10 +1039,6 @@ public class ComposeManager : MonoBehaviour
             {
                 for(int k = 0; k < attachListK.Count; k++)
                 {
-                    if(j==1 && k == 1)
-                    {
-                        continue;
-                    }
                     if(indexComponent.cover)
                     {
                         continue;

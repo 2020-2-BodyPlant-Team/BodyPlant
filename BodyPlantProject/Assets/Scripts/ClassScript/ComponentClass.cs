@@ -19,11 +19,17 @@ public class ComponentClass
     //public ComponentDataClass componentData;
     public string name;
     public Vector2 position;           //캐릭터 내에서의 상대적 위치     
+    public Vector2 secondPosition;      //팔, 헤어, 다리가 반대로 붙어있을 시 작동
 
     public string plantedTime;         //심어진 시간
     public bool isSprotued;             //화분에서 전부 자랐는지
     public float percentage;            //성장도
     public Vector3 rotation;            //얼마나 돌아갔는지.
+    public Vector3 secondRotation;      //팔, 헤어, 다리가 반대로 붙어있을 시 작동
+
+    public int parentComponentIndex;           //얘의 부모가 뭔지
+    public int parentJointIndex;               //얘의 조인트가 뭔지
+    public bool secondSwitch;
 
     public List<int> childIndexList;              //차일드에 붙어있는 인덱스.
     public List<int> childJointList;
@@ -45,10 +51,15 @@ public class ComponentClass
     {
         name = "null";
         position = Vector2.zero;
+        secondPosition = Vector2.zero;
         plantedTime = DateTime.Now.ToString();
+        parentJointIndex = 0;
+        parentComponentIndex = -1;
+        secondSwitch = false;
         isSprotued = false;
         isHarvested = false;
         rotation = Vector3.zero;
+        secondRotation = Vector3.zero;
         childIndexList = new List<int>();
         childJointList = new List<int>();
         childChildIndexList = new List<int>();
