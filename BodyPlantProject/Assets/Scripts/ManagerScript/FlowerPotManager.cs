@@ -149,7 +149,7 @@ public class FlowerPotManager : MonoBehaviour
                 componentsInPot[i].realGameobject = obj;
                 obj.transform.localPosition = new Vector3(componentData.sproutingPosition.x, componentData.sproutingPosition.y,-5);
             }
-
+            StartCoroutine(PlantShake(componentsInPot[i]));
         }
 
 
@@ -197,7 +197,7 @@ public class FlowerPotManager : MonoBehaviour
                 //만약 시간이 지났다면 싹틔워준다.
             }
             percentage = elapsedTime / componentData.sproutSeconds;
-            if(percentage >=0.5 && lastPercentage < 0.5)
+            if (percentage >= 0.5 && lastPercentage < 0.5)
             {
                 Debug.Log(percentage + " 라스트" + lastPercentage);
                 GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
@@ -207,7 +207,7 @@ public class FlowerPotManager : MonoBehaviour
                 componentsInPot[index].realGameobject = obj;
             }
             //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
-            if(percentage >= 1)
+            if (percentage >= 1)
             {
                 percentage = 1;
             }
@@ -217,8 +217,17 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, percentage, 1);
             }
             componentsInPot[index].percentage = percentage;
-            componentsInPot[index].realGameobject.transform.localPosition = new Vector3(percentage * componentData.sproutingPosition.x, percentage * componentData.sproutingPosition.y,-5);
+            if (componentsInPot[index].realGameobject.transform.localPosition.y == 1.2)
+            {
+                componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.0f, -5);
+            }
+            else
+            {
+                componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.2f, -5);
+            }
+            
         }
+        //1하고 1.2 왔다리 갔다리
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
         componentsInPot[index].isHarvested = false;
         //만약 현재 확대된 상태면 수확버튼 활성화.
@@ -226,7 +235,35 @@ public class FlowerPotManager : MonoBehaviour
         {
             harvestButton.SetActive(true);
         }
+    }
+
+    IEnumerator PlantShake(ComponentClass component)
+    {
+        float timer = 0;
+        bool plus = true;
+        while(component.isHarvested == false)
+        {
+            if(plus)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+            if (timer > 1)
+            {
+                plus = false;
+            }
+            if (timer < 0)
+            {
+                plus = true;
+            }
+
             
+            component.realGameobject.transform.localPosition =  new Vector3(0,1.0f +0.1f*timer, -5);
+            yield return null;
+        }
     }
 
     //게임 끌 때 저장
@@ -337,6 +374,7 @@ public class FlowerPotManager : MonoBehaviour
         //변수들도 다 false로 해준다.
         gameManager.Save();
         StartCoroutine(SproutingCoroutine(availablePlace,componentData));
+        StartCoroutine(PlantShake(component));
         //코루틴을 시작해준다.
     }
 

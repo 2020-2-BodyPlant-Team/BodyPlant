@@ -197,13 +197,84 @@ public class HouseManager : MonoBehaviour
             characterObjectList.Add(parent);
         }
 
-
+        //트리를 만들건데, 가지가 제일 많은게 중앙 컴포넌트가 된다. 거기서 뻗어나간다.
         for(int i = 0; i < characterList.Count; i++)
         {
-            for(int k = 0; k < characterList[i].components.Count; k++)
+            ComponentClass centerComponent = characterList[i].components[0]; //중앙 기본값 넣어주고
+            CharacterClass character = characterList[i];
+            bool[] boolArray = new bool[characterList[i].components.Count];
+            int bestEdge = 0;
+            int centerIndex = 0;
+            for(int k = 0; k < boolArray.Length; k++)
+            {
+                boolArray[k] = false;
+            }
+            for (int k = 0; k < characterList[i].components.Count; k++)
+            {
+                /*if(characterList[i].components[k].name == "body")
+                {
+                    centerComponent = characterList[i].components[k];
+                    centerIndex = k;
+                    boolArray[k] = true;
+                    break;
+                }*/
+                if(characterList[i].components[k].childIndexList.Count + characterList[i].components[k].childChildIndexList.Count > bestEdge)
+                {
+                    bestEdge = characterList[i].components[k].childIndexList.Count + characterList[i].components[k].childChildIndexList.Count;
+                    centerComponent = characterList[i].components[k];
+                    centerIndex = k;
+                }
+            }
+            ComponentClass nowComponent = centerComponent;
+            Stack<int> childStack = new Stack<int>();
+            boolArray[centerIndex] = true;
+
+            while (childStack.Count >0)
+            {
+
+                for (int k = 0; k < nowComponent.childIndexList.Count; k++)
+                {
+                    if(boolArray[nowComponent.childIndexList[k]] == false)
+                    {
+                        childStack.Push(nowComponent.childIndexList[k]);
+                        boolArray[nowComponent.childIndexList[k]] = true;
+
+                        if (characterList[i].components[k].childJointList[k] == 0)
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+
+                        characterList[i].components[k].realGameobject.transform.
+                            SetParent(nowComponent.realGameobject.transform);
+
+                    }
+                }
+
+                for (int k = 0; k < nowComponent.childChildIndexList.Count; k++)
+                {
+                    if (boolArray[nowComponent.childChildIndexList[k]] == false)
+                    {
+                        childStack.Push(nowComponent.childChildIndexList[k]);
+                        boolArray[nowComponent.childChildIndexList[k]] = true;
+                        characterList[i].components[k].realGameobject.transform.
+                            SetParent(nowComponent.childObject.transform);
+                    }
+                }
+                nowComponent = character.components[childStack.Pop()];
+
+
+            }
+            /*
+            for (int k = 0; k < characterList[i].components.Count; k++)
             {
                 GameObject componentObj = characterList[i].components[k].realGameobject;
                 GameObject childObj = characterList[i].components[k].childObject;
+
+
                 for (int n = 0; n<characterList[i].components[k].childIndexList.Count; n++)
                 {
                     if(characterList[i].components[k].childJointList[n] == 0)
@@ -224,7 +295,7 @@ public class HouseManager : MonoBehaviour
                         transform.SetParent(childObj.transform);
                 }
 
-            }
+            }*/
         }
 
         coinAmount = PlayerPrefs.GetInt ("CoinAmount"); //상점에서 가구 샀을 때 불러오기
