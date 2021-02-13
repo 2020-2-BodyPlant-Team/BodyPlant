@@ -75,11 +75,14 @@ public class BookManager : MonoBehaviour
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
             int days = elapsedTime / (60 * 60 * 24);
-            diaryList[i].transform.GetChild(5).GetComponent<Text>().text = days.ToString();             
-                GameObject parent = new GameObject();
-                parent.transform.SetParent(diaryList[i].transform);
-                parent.transform.localPosition = new Vector3(0,0,-1);
-            for(int k = 0;k<characterList[i].components.Count;k++){
+            diaryList[i].transform.GetChild(5).GetComponent<Text>().text = days.ToString();  
+
+            GameObject parent = new GameObject();
+            parent.transform.SetParent(diaryList[i].transform);
+            parent.transform.localPosition = new Vector3(0, 0, -1);
+
+            for(int k = 0; k < characterList[i].components.Count; k++)
+            {
                 ComponentClass component = characterList[i].components[k];
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + component.name);
                 GameObject inst = Instantiate(prefab,parent.transform);
