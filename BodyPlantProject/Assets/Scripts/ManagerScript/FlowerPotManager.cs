@@ -14,6 +14,8 @@ public class FlowerPotManager : MonoBehaviour
 {
     GameManager gameManager;        //게임매니저를 통해 세이브데이터를 참조해야 한다.
     SaveDataClass saveData;         //게임매니저를 통해 가져올 세이브 데이터
+    List<string> boughtNameList;
+    List<string> boughtDateList;
     /// <summary>
     /// 이 세이브데이터를 왜 가져와요? 그냥 gameManager.saveData로 쓰면 되죠?? 하실 분들을 위한 설명
     /// 첫번쨰로는 gameManager.를 쓰기 일일히 귀찮아서 그렇다;;;
@@ -57,6 +59,8 @@ public class FlowerPotManager : MonoBehaviour
         componentsInPot = saveData.potList;
         wholeComponents = gameManager.wholeComponents;
         originCameraPos = cameraObject.transform.position;
+        boughtDateList = saveData.boughtDateList;
+        boughtNameList = saveData.boughtNameList;
         magnifiedUIObject.SetActive(false);
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
 
@@ -152,6 +156,13 @@ public class FlowerPotManager : MonoBehaviour
             StartCoroutine(PlantShake(componentsInPot[i]));
         }
 
+        for(int i =0; i < boughtDateList.Count; i++)
+        {
+            PlantComponent(boughtNameList[i], boughtDateList[i]);
+        }
+
+        boughtNameList.Clear();
+        boughtDateList.Clear();
 
     }
 
@@ -300,11 +311,12 @@ public class FlowerPotManager : MonoBehaviour
     }
 
     //상점에서 호출할거 
-    void PlantComponent(string name)
+    void PlantComponent(string name,string boughtTime)
     {
         //자리가 있는지부터 체크해준다.
         bool isPlaceAvailable = false;
         int availablePlace = -1;
+        int elapsedTime = 0;
         for(int i = 0; i < potNumber; i++)
         {
 
@@ -342,24 +354,46 @@ public class FlowerPotManager : MonoBehaviour
             Debug.LogError("화분의 이름을 사전에서 못찾았다");
             return;
         }
-        Debug.Log(availablePlace);
         componentsInPot[availablePlace] = component;
         //이 아래부터는 start에 있는거랑 똑같다.
         //GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
-        string seedName = "seed1";
-        if (name == "arm" || name == "leg"|| name == "hand" || name == "foot")
+
+        string seedName = component.name;
+        GameObject prefab;
+
+        elapsedTime = gameManager.TimeSubtractionToSeconds(boughtTime, DateTime.Now.ToString());
+        component.percentage = elapsedTime / componentData.sproutSeconds;
+        if (component.percentage > 1)
         {
-            seedName = "seed2";
+            component.percentage = 1;
+            prefab = Resources.Load<GameObject>("Components/Complete/" + seedName);
+            //완성
         }
-        if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+        else if(component.percentage >= 0.5)
         {
-            seedName = "seed3";
+            prefab = Resources.Load<GameObject>("Components/Growing2/" + seedName);
+            //중간
         }
-        if (name == "hair")
+        else
         {
-            seedName = "hair";
+            seedName = "seed1";
+            if (name == "arm" || name == "leg" || name == "hand" || name == "foot")
+            {
+                seedName = "seed2";
+            }
+            if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+            {
+                seedName = "seed3";
+            }
+            if (name == "hair")
+            {
+                seedName = "hair";
+            }
+            prefab = Resources.Load<GameObject>("Components/Growing1/" + seedName);
+            //씨드
         }
-        GameObject prefab = Resources.Load<GameObject>("Components/Growing1/" + seedName);
+
+
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
@@ -367,13 +401,19 @@ public class FlowerPotManager : MonoBehaviour
         //따라서 savedata를 load할 때마다 gameobject를 프리팹에서 꺼내서 새로 만들어주어야한다.
         componentsInPot[availablePlace].realGameobject = obj;
 
-        //지금 막 심은거니까 심은시간을 지금으로 해준다.
-        componentsInPot[availablePlace].plantedTime = DateTime.Now.ToString();
-        componentsInPot[availablePlace].isSprotued = false;
+        //지금 막 심은거니까 심은시간을 산 시간으로 해준다.
+        componentsInPot[availablePlace].plantedTime = boughtTime;
         componentsInPot[availablePlace].isHarvested = false;
-        //변수들도 다 false로 해준다.
+        if (component.percentage >= 1)
+        {
+            componentsInPot[availablePlace].isSprotued = true;
+        }
+        else
+        {
+            StartCoroutine(SproutingCoroutine(availablePlace, componentData));
+            componentsInPot[availablePlace].isSprotued = false;
+        }
         gameManager.Save();
-        StartCoroutine(SproutingCoroutine(availablePlace,componentData));
         StartCoroutine(PlantShake(component));
         //코루틴을 시작해준다.
     }
@@ -581,42 +621,43 @@ public class FlowerPotManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //abcd눌렀을 때 식물을 심는ㄴ다.
         if (Input.GetKeyDown(KeyCode.A))
         {
-            PlantComponent("mouth");
+            PlantComponent("mouth", DateTime.Now.ToString()) ;
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            PlantComponent("arm");
+            PlantComponent("arm", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            PlantComponent("leg");
+            PlantComponent("leg", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            PlantComponent("nose");
+            PlantComponent("nose", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            PlantComponent("hand");
+            PlantComponent("hand", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            PlantComponent("foot");
+            PlantComponent("foot", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            PlantComponent("hair");
+            PlantComponent("hair", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            PlantComponent("eye");
+            PlantComponent("eye", DateTime.Now.ToString());
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            PlantComponent("body");
+            PlantComponent("body", DateTime.Now.ToString());
         }
 
         //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트

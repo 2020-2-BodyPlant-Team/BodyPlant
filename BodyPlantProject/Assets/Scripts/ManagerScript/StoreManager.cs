@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class StoreManager : MonoBehaviour
     SaveDataClass saveData;
     List<string> boughtNameList;
     List<string> boughtDateList;
+    ComponentClass[] potList;
+    int leftPot;
 
     int coinAmount;
     int isSeed1Sold;
@@ -56,107 +59,158 @@ public class StoreManager : MonoBehaviour
     public Button buySeed10Button;
     public Button buySeed11Button;
     public Button buySeed12Button;
+
+    List<Button> seedButtonList;
+
     public Button buyToyButton;
     public Button buyBeanBagButton;
 
+    /*
+     0 body
+     1 arm
+     2 leg
+     3 ear
+     4 eye
+     5 foot
+     6 hair
+     7 hand
+     8 mouth
+     9 nose
+    */
 
     void Start()
     {
-        coinAmount = saveData.coin;
+
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         boughtNameList = saveData.boughtNameList;
         boughtDateList = saveData.boughtDateList;
+        coinAmount = saveData.coin;
+        potList = saveData.potList;
+        leftPot = 0;
+        foreach(ComponentClass component in potList)
+        {
+            if(component.name == "null")
+            {
+                leftPot++;
+            }
+        }
+        leftPot -= boughtNameList.Count;
+
+        seedButtonList = new List<Button>();
+
+        seedButtonList.Add(buySeed1Button);
+        seedButtonList.Add(buySeed2Button);
+        seedButtonList.Add(buySeed3Button);
+        seedButtonList.Add(buySeed4Button);
+        seedButtonList.Add(buySeed5Button);
+        seedButtonList.Add(buySeed6Button);
+        seedButtonList.Add(buySeed7Button);
+        seedButtonList.Add(buySeed8Button);
+        seedButtonList.Add(buySeed9Button);
+        seedButtonList.Add(buySeed10Button);
+        seedButtonList.Add(buySeed11Button);
+        seedButtonList.Add(buySeed12Button);
+
     }
 
     void Update()
     {
-        coinAmountText.text = coinAmount.ToString() ;
+        coinAmountText.text = saveData.coin.ToString() ;
 
+
+
+        
         isSeed1Sold = PlayerPrefs.GetInt("IsSeed1Sold");
-        if (coinAmount >= 10 && isSeed1Sold == 0)
+        if (saveData.coin >= 10)
             buySeed1Button.interactable = true;
         else
             buySeed1Button.interactable = false;
 
         isSeed2Sold = PlayerPrefs.GetInt("IsSeed2Sold");
-        if (coinAmount >= 10 && isSeed2Sold == 0)
+        if (saveData.coin >= 10)
             buySeed2Button.interactable = true;
         else
             buySeed2Button.interactable = false;
 
         isSeed3Sold = PlayerPrefs.GetInt("IsSeed3Sold");
-        if (coinAmount >= 10 && isSeed3Sold == 0)
+        if (saveData.coin >= 10)
             buySeed3Button.interactable = true;
         else
             buySeed3Button.interactable = false;
 
         isSeed4Sold = PlayerPrefs.GetInt("IsSeed4Sold");
-        if (coinAmount >= 10 && isSeed4Sold == 0)
+        if (saveData.coin >= 10)
             buySeed4Button.interactable = true;
         else
             buySeed4Button.interactable = false;
 
         isSeed5Sold = PlayerPrefs.GetInt("IsSeed5Sold");
-        if (coinAmount >= 10 && isSeed5Sold == 0)
+        if (saveData.coin >= 10)
             buySeed5Button.interactable = true;
         else
             buySeed5Button.interactable = false;
 
         isSeed6Sold = PlayerPrefs.GetInt("IsSeed6Sold");
-        if (coinAmount >= 10 && isSeed6Sold == 0)
+        if (saveData.coin >= 10)
             buySeed6Button.interactable = true;
         else
             buySeed6Button.interactable = false;
 
         isSeed7Sold = PlayerPrefs.GetInt("IsSeed7Sold");
-        if (coinAmount >= 10 && isSeed7Sold == 0)
+        if (saveData.coin >= 10)
             buySeed7Button.interactable = true;
         else
             buySeed7Button.interactable = false;
 
         isSeed8Sold = PlayerPrefs.GetInt("IsSeed8Sold");
-        if (coinAmount >= 10 && isSeed8Sold == 0)
+        if (saveData.coin >= 10)
             buySeed8Button.interactable = true;
         else
             buySeed8Button.interactable = false;
 
         isSeed9Sold = PlayerPrefs.GetInt("IsSeed9Sold");
-        if (coinAmount >= 10 && isSeed9Sold == 0)
+        if (saveData.coin >= 10 )
             buySeed9Button.interactable = true;
         else
             buySeed9Button.interactable = false;
 
         isSeed10Sold = PlayerPrefs.GetInt("IsSeed10Sold");
-        if (coinAmount >= 10 && isSeed10Sold == 0)
+        if (saveData.coin >= 10)
             buySeed10Button.interactable = true;
         else
             buySeed10Button.interactable = false;
 
         isSeed11Sold = PlayerPrefs.GetInt("IsSeed11Sold");
-        if (coinAmount >= 10 && isSeed11Sold == 0)
+        if (saveData.coin >= 10)
             buySeed11Button.interactable = true;
         else
             buySeed11Button.interactable = false;
 
         isSeed12Sold = PlayerPrefs.GetInt("IsSeed12Sold");
-        if (coinAmount >= 10 && isSeed12Sold == 0)
+        if (saveData.coin >= 10)
             buySeed12Button.interactable = true;
         else
             buySeed12Button.interactable = false;
 
-
+        if (leftPot <= 0)
+        {
+            foreach (Button button in seedButtonList)
+            {
+                button.interactable = false;
+            }
+        }
 
 
 
         isToySold = PlayerPrefs.GetInt("IsToySold");
-        if (coinAmount >= 20 && isToySold == 0)
+        if (saveData.coin >= 20 && isToySold == 0)
             buyToyButton.interactable = true;
         else
             buyToyButton.interactable = false;
 
         isBeanBagSold = PlayerPrefs.GetInt("IsBeanBagSold");
-        if (coinAmount >= 20 && isBeanBagSold == 0)
+        if (saveData.coin >= 20 && isBeanBagSold == 0)
             buyBeanBagButton.interactable = true;
         else
             buyBeanBagButton.interactable = false;
@@ -164,102 +218,151 @@ public class StoreManager : MonoBehaviour
 
     public void buySeed1()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed1Sold", 1);
         seed1Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("body");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed1Button.gameObject.SetActive(true);
     }
 
     public void buySeed2()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed2Sold", 1);
         seed2Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("arm");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed2Button.gameObject.SetActive(true);
+
     }
     public void buySeed3()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed3Sold", 1);
         seed3Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("leg");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed3Button.gameObject.SetActive(true);
     }
     public void buySeed4()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed4Sold", 1);
         seed4Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("ear");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed4Button.gameObject.SetActive(true);
     }
     public void buySeed5()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed5Sold", 1);
         seed5Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("eye");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed5Button.gameObject.SetActive(true);
     }
     public void buySeed6()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed6Sold", 1);
         seed6Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("foot");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed6Button.gameObject.SetActive(true);
     }
     public void buySeed7()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed7Sold", 1);
         seed7Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("hair");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed7Button.gameObject.SetActive(true);
     }
     public void buySeed8()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed8Sold", 1);
         seed8Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("hand");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed8Button.gameObject.SetActive(true);
     }
     public void buySeed9()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed9Sold", 1);
         seed9Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("mouth");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed9Button.gameObject.SetActive(true);
     }
     public void buySeed10()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed10Sold", 1);
         seed10Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("nose");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed10Button.gameObject.SetActive(true);
     }
 
     public void buySeed11()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed11Sold", 1);
         seed11Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("body");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed11Button.gameObject.SetActive(true);
     }    
 
     public void buySeed12()
     {
-        coinAmount -= 10;
+        saveData.coin -= 10;
         PlayerPrefs.SetInt("IsSeed12Sold", 1);
         seed12Price.text = "구매가 완료되었습니다!";
+        boughtNameList.Add("body");
+        boughtDateList.Add(DateTime.Now.ToString());
+        leftPot--;
+        gameManager.Save();
         buySeed12Button.gameObject.SetActive(true);
     }
 
     public void buyToy()
     {
-        coinAmount -= 20;
+        saveData.coin -= 20;
         PlayerPrefs.SetInt("IsToySold", 1);
         toyPrice.text = "구매가 완료되었습니다!";
         buyToyButton.gameObject.SetActive(false);
     }
     public void buyBeanBag()
     {
-        coinAmount -= 20;
+        saveData.coin -= 20;
         PlayerPrefs.SetInt("IsBeanBagSold", 1);
         beanBagPrice.text = "구매가 완료되었습니다!";
         buyBeanBagButton.gameObject.SetActive(false);
