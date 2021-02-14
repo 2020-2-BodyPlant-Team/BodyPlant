@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class StoreManager : MonoBehaviour
 {
+
+    GameManager gameManager;
+    SaveDataClass saveData;
+    List<string> boughtNameList;
+    List<string> boughtDateList;
+
     int coinAmount;
     int isSeed1Sold;
     int isSeed2Sold;
@@ -56,7 +62,11 @@ public class StoreManager : MonoBehaviour
 
     void Start()
     {
-        coinAmount = PlayerPrefs.GetInt("CoinAmount");
+        coinAmount = saveData.coin;
+        gameManager = GameManager.singleTon;
+        saveData = gameManager.saveData;
+        boughtNameList = saveData.boughtNameList;
+        boughtDateList = saveData.boughtDateList;
     }
 
     void Update()

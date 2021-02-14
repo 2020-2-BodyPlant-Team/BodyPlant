@@ -12,6 +12,8 @@ public class SaveDataClass
     public List<CharacterClass> characterList;  //현재 내가 가지고있는 캐릭터의 리스트
     public List<ComponentClass> owningComponentList;    //현재 내가 수확을 끝마친 부위의 리스트
     public int coin;                            //현재 가지고있는 코인
+    public List<string> boughtNameList;         //내가 산거 이름리스트
+    public List<string> boughtDateList;         //내가 산거 데이트 리스트
 
     public SaveDataClass()
     {
