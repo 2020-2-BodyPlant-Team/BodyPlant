@@ -16,6 +16,22 @@ public class WorkUIManager : MonoBehaviour
     public GameObject panel;
     public bool isPanel = false;
 
+    [SerializeField]
+    List<CharacterClass> characterList;
+    List<GameObject> characterObjectList;
+    List<float> timerList;
+    List<float> randomTimeList;
+    List<Vector3> randomPosList;
+    List<Vector3> startPosList;
+
+    List<float> rotationList;
+    List<float> randomRotateTimeList;
+    List<GameObject> rotatingObjectList;
+    List<Vector3> randomAngleList;
+    List<Vector3> startAngleList;
+    List<float> originAngleList;
+
+
     void Start()
     {
         gameManager = GameManager.singleTon;

@@ -350,128 +350,6 @@ public class ComposeManager : MonoBehaviour
 
             characterObjectList.Add(parent);
         }
-
-
-        /*
-        //캐릭터들 불러오는칸
-        for (int i = 0; i < characterList.Count; i++)
-        {
-            Debug.Log(characterList[i].name);
-            timerList.Add(0);
-            randomTimeList.Add(UnityEngine.Random.Range(1f, 2f));
-            randomPosList.Add(new Vector3(UnityEngine.Random.Range(7.5f, 12.5f), UnityEngine.Random.Range(-3f, 0f), 0));
-            startPosList.Add(new Vector3(10,0,0));
-            GameObject parent = new GameObject();
-            characterList[i].realGameobject = parent;
-
-            int bodyNumber = 0;
-            int armLegNumber = 0;
-            int handFootNumber = 0;
-            int earEyeNumber = 0;   //이목구비
-            int hairNumber = 0;
-            foreach (ComponentClass component in characterList[i].components)
-            {
-                GameObject componentObj = Resources.Load<GameObject>("Components/Complete/" + component.name);
-                GameObject inst = Instantiate(componentObj, parent.transform);
-                string name = component.name;
-
-                Vector3 localPos = Vector3.zero;
-                if (name == "body")
-                {
-                    localPos = new Vector3(0, 0, i * 10 + 4f + bodyNumber * 0.01f);
-                    bodyNumber++;
-                }
-                if (name == "arm" || name == "leg")
-                {
-                    localPos = new Vector3(0, 0, i * 10 + 3f + armLegNumber * 0.01f);
-                    armLegNumber++;
-                }
-                if (name == "hand" || name == "foot")
-                {
-                    localPos = new Vector3(0, 0, i * 10 + 2f + handFootNumber * 0.01f);
-                    handFootNumber++;
-                }
-                if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
-                {
-                    localPos = new Vector3(0, 0, i * 10 + 1f + earEyeNumber * 0.01f);
-                    earEyeNumber++;
-                }
-                if (name == "hair")
-                {
-                    localPos = new Vector3(0, 0, i * 10 + hairNumber * 0.01f);
-                    hairNumber++;
-                }
-                component.realGameobject = inst;
-
-
-                rotationList.Add(0);
-                randomRotateTimeList.Add(UnityEngine.Random.Range(1f, 2f));
-                randomAngleList.Add(new Vector3(0, 0, UnityEngine.Random.Range(-30, 30) + component.rotation.z));
-                startAngleList.Add(component.rotation);
-                originAngleList.Add(component.rotation.z);
-                rotatingObjectList.Add(component.realGameobject);
-
-                if (FindData(component.name).isChild)
-                {
-                    Vector3 angle;
-
-                    if (component.rotation.z > 270 || component.rotation.z < 90)
-                    {
-
-                        angle = Vector3.zero;
-                    }
-                    else
-                    {
-                        angle = component.rotation;
-                    }
-
-                    component.childObject = component.realGameobject.transform.GetChild(0).gameObject;
-                    rotationList.Add(0);
-                    randomRotateTimeList.Add(UnityEngine.Random.Range(1f, 2f));
-                    randomAngleList.Add(new Vector3(0, 0, angle.z + UnityEngine.Random.Range(-30, 30)));
-                    startAngleList.Add(angle);
-                    originAngleList.Add(angle.z);
-                    rotatingObjectList.Add(component.childObject);
-                }
-                inst.transform.localPosition = component.position;
-                inst.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y, localPos.z);
-                inst.transform.eulerAngles = component.rotation;
-
-            }
-            characterObjectList.Add(parent);
-            
-        }
-
-
-        for (int i = 0; i < characterList.Count; i++)
-        {
-            for (int k = 0; k < characterList[i].components.Count; k++)
-            {
-                GameObject componentObj = characterList[i].components[k].realGameobject;
-                GameObject childObj = characterList[i].components[k].childObject;
-                for (int n = 0; n < characterList[i].components[k].childIndexList.Count; n++)
-                {
-                    if (characterList[i].components[k].childJointList[n] == 0)
-                    {
-                        characterList[i].components[k].realGameobject.transform.
-                            SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].realGameobject.transform);
-                    }
-                    else
-                    {
-                        characterList[i].components[k].realGameobject.transform.
-                            SetParent(characterList[i].components[characterList[i].components[k].childIndexList[n]].childObject.transform);
-                    }
-
-                }
-                for (int n = 0; n < characterList[i].components[k].childChildIndexList.Count; n++)
-                {
-                    characterList[i].components[characterList[i].components[k].childChildIndexList[n]].realGameobject.
-                        transform.SetParent(childObj.transform);
-                }
-            }
-        }
-        */
-
     }
 
     //이름으로 data찾아주는 함수
@@ -630,7 +508,7 @@ public class ComposeManager : MonoBehaviour
         {
             nameAskingObject.SetActive(true);
             nameInput = characterList[modifyingIndex].name;
-            string productedName = GetCompleteWorld(nameInput, "\"이가", "\"가");
+            string productedName = GetCompleteWord(nameInput, "\"이가", "\"가");
             nameAskingText.text = "\"" + productedName + " 맞나요?";
         }
         else
@@ -646,7 +524,7 @@ public class ComposeManager : MonoBehaviour
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
-        string productedName = GetCompleteWorld(nameInput, "\"이가", "\"가");
+        string productedName = GetCompleteWord(nameInput, "\"이가", "\"가");
         nameAskingText.text = "\"" + productedName + " 맞나요?";
     }
 
@@ -707,7 +585,15 @@ public class ComposeManager : MonoBehaviour
 
     public void BackButton()
     {
-        gameManager.PotSceneLoad();
+        if (gameManager.fromPotScene)
+        {
+            gameManager.PotSceneLoad();
+        }
+        else
+        {
+            gameManager.HouseSceneLoad();
+        }
+        
     }
 
     public void RotationButton()
@@ -750,7 +636,7 @@ public class ComposeManager : MonoBehaviour
     public void ModifyNoButton()
     {
         modifyPanel.SetActive(false);
-
+        modifyMode = true;
     }
 
     public void ChooseCharacter(GameObject touchedObject)
@@ -777,12 +663,12 @@ public class ComposeManager : MonoBehaviour
         Debug.Log(characterList[characterIndex].name);
         modifyingIndex = characterIndex;
         modifyMode = false;
-        string productedName = GetCompleteWorld(characterList[characterIndex].name, "\"이를", "\"를");
+        string productedName = GetCompleteWord(characterList[characterIndex].name, "\"이를", "\"를");
         modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
         modifyPanel.SetActive(true);
     }
 
-    public string GetCompleteWorld(string name, string firstVal, string secondVal)
+    public string GetCompleteWord(string name, string firstVal, string secondVal)
     {
         //char lastName = name.ElementAt(name.Length - 1);
         char lastName = name[name.Length - 1];
@@ -799,22 +685,32 @@ public class ComposeManager : MonoBehaviour
 
     public void SaveCharacter(bool isNew)
     {
+        Vector3 centerPosition = Vector3.zero;
         if (isNew)
         {
             //새로만든 캐릭터라면 이름까지 저장해야해.
+
             FindWholeJoint();
             CharacterClass character = new CharacterClass();
             character.components = activedComponent;
             character.name = nameInput;
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
+
+            foreach (ComponentClass component in activedComponent)
+            {
+                centerPosition = centerPosition + component.realGameobject.transform.position;
+            }
+            centerPosition = centerPosition / activedComponent.Count;
+
+
             foreach (ComponentClass component in activedComponent)
             {
                 if (FindData(component.name).isChild)
                 {
-                    component.secondPosition = component.realGameobject.transform.GetChild(1).position;
+                    component.secondPosition = component.realGameobject.transform.GetChild(1).position - centerPosition;
                     component.secondRotation = component.realGameobject.transform.GetChild(1).eulerAngles;
                 }
-                component.position = component.realGameobject.transform.position;
+                component.position = component.realGameobject.transform.position - centerPosition;
                 component.rotation = component.realGameobject.transform.eulerAngles;
                 component.realGameobject.SetActive(false);
                 harvestedComponent.Remove(component);
@@ -828,10 +724,19 @@ public class ComposeManager : MonoBehaviour
         }
         else
         {
+
             //기획나오면 추가될거
+            
             FindWholeJoint();
             CharacterClass character = characterList[modifyingIndex];
+            int componentNumber = activedComponent.Count;
             character.components = activedComponent;
+
+            foreach (ComponentClass component in activedComponent)
+            {
+                centerPosition = centerPosition + component.realGameobject.transform.position;
+            }
+            centerPosition = centerPosition / activedComponent.Count;
 
             for (int i = addedComponentNumber; i < activedComponent.Count; i++)
             {
@@ -839,7 +744,12 @@ public class ComposeManager : MonoBehaviour
             }
             foreach (ComponentClass component in character.components)
             {
-                component.position = component.realGameobject.transform.localPosition;
+                if (FindData(component.name).isChild)
+                {
+                    component.secondPosition = component.realGameobject.transform.GetChild(1).position - centerPosition ;
+                    component.secondRotation = component.realGameobject.transform.GetChild(1).eulerAngles;
+                }
+                component.position = component.realGameobject.transform.position - centerPosition;
                 component.rotation = component.realGameobject.transform.eulerAngles;
                 component.realGameobject.SetActive(false); 
             }
@@ -862,6 +772,7 @@ public class ComposeManager : MonoBehaviour
         {
             return false;
         }
+
         bool[] boolArray = new bool[activedComponent.Count];
         for (int i = 0; i < boolArray.Length; i++)
         {
@@ -879,7 +790,6 @@ public class ComposeManager : MonoBehaviour
                 {
                     indexStack.Push(activedComponent[nowIndex].childIndexList[i]);
                     boolArray[activedComponent[nowIndex].childIndexList[i]] = true;
-
                 }
             }
 
@@ -1017,6 +927,8 @@ public class ComposeManager : MonoBehaviour
     }
 
 
+
+
     void Adjustattach(int index)
     {
         //이제 가장 가까운 관절을 찾아줘야해.
@@ -1107,9 +1019,13 @@ public class ComposeManager : MonoBehaviour
                             break;
                         }
                     }
-
                 }
             }
+           
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
             if (modifyMode)
             {
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
@@ -1120,7 +1036,6 @@ public class ComposeManager : MonoBehaviour
 
                 }
             }
-
         }
 
         for (int i = 0; i < timerList.Count; i++)

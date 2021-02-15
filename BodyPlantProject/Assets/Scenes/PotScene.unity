@@ -998,7 +998,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 308057981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 644297187}
+        m_MethodName: ElementButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &308057981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,9 +1367,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1237051515}
-  - {fileID: 1577414487}
-  - {fileID: 308057979}
   - {fileID: 1829121804}
+  - {fileID: 308057979}
+  - {fileID: 1577414487}
   - {fileID: 642305059}
   - {fileID: 998956856}
   - {fileID: 1760747644}
@@ -2002,6 +2013,11 @@ MonoBehaviour:
   harvestButton: {fileID: 998956855}
   nameText: {fileID: 1370138508}
   harvestCanvas: {fileID: 166507016}
+  elementButtonArray:
+  - {fileID: 1829121805}
+  - {fileID: 308057980}
+  - {fileID: 1577414488}
+  elementTime: 0
   panel: {fileID: 157978030}
 --- !u!4 &644297188
 Transform:
@@ -3827,7 +3843,7 @@ RectTransform:
   m_Children:
   - {fileID: 309249843}
   m_Father: {fileID: 465722163}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3876,7 +3892,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1577414489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 644297187}
+        m_MethodName: ElementButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1577414489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4396,7 +4423,7 @@ RectTransform:
   m_Children:
   - {fileID: 19876201}
   m_Father: {fileID: 465722163}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -4445,7 +4472,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1829121806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 644297187}
+        m_MethodName: ElementButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1829121806
 MonoBehaviour:
   m_ObjectHideFlags: 0

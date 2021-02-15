@@ -9,11 +9,21 @@ public class SaveDataClass
 {
     public string lastPlayTime;             //마지막 플탐을 알아야 화분을 키운다
     public ComponentClass[] potList;    //화분 3개의 리스트. 화분이 무엇으로 채워져있는지.
-    public List<CharacterClass> characterList;  //현재 내가 가지고있는 캐릭터의 리스트
+    public List<CharacterClass> characterList;  //현재 비밀공간에 있는 캐릭터 리스트
+
+    public List<CharacterClass> huntCharacterList;
+    public List<CharacterClass> mineCharacterList;
+    public List<CharacterClass> fishCharacterList;
+
     public List<ComponentClass> owningComponentList;    //현재 내가 수확을 끝마친 부위의 리스트
     public int coin;                            //현재 가지고있는 코인
     public List<string> boughtNameList;         //내가 산거 이름리스트
     public List<string> boughtDateList;         //내가 산거 데이트 리스트
+
+    public int huntElement;
+    public int mineElement;
+    public int fishElement;                //보조성분. 
+         
 
     public SaveDataClass()
     {
@@ -22,23 +32,19 @@ public class SaveDataClass
         potList = new ComponentClass[3];
         boughtNameList = new List<string>();
         boughtDateList = new List<string>();
-        /*
-        for(int i = 0; i < 3; i++)
-        {
-            potList[i] = new ComponentClass();
-        }*/
+        huntCharacterList = new List<CharacterClass>();
+        mineCharacterList = new List<CharacterClass>();
+        fishCharacterList = new List<CharacterClass>();
+
+
         characterList = new List<CharacterClass>();
-        /*
-        for (int i = 0; i < 3; i++)
-        {
-            characterList.Add(new CharacterClass());
-        }*/
+
         owningComponentList = new List<ComponentClass>();
-        /*
-        for (int i = 0; i < 3; i++)
-        {
-            owningComponentList.Add(new ComponentClass());
-        }*/
+        fishElement = 0;
+        mineElement = 0;
+        huntElement = 0;
+        coin = 0;
+
 
     }
 }

@@ -40,6 +40,7 @@ public class ComponentClass
     public bool cover;  //뚜껑.
     public bool attached;   //붙어있는지
 
+    public int usedElement;     //내가 사용한 보조성분.
 
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
     public GameObject childObject;      //차일드..
@@ -66,5 +67,6 @@ public class ComponentClass
         childChildJointList = new List<int>();
         cover = false;
         attached = false;
+        usedElement = 0;
     }
 }

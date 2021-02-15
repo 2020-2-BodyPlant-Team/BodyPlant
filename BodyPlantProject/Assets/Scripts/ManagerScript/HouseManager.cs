@@ -193,11 +193,6 @@ public class HouseManager : MonoBehaviour
                         }
                     }
                 }
-
-
-
-
-
             }
         }
 
@@ -381,6 +376,7 @@ public class HouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         for(int i = 0; i < timerList.Count; i++)
         { 
             characterObjectList[i].transform.position = Vector3.Lerp(startPosList[i], randomPosList[i], timerList[i]/randomTimeList[i]);

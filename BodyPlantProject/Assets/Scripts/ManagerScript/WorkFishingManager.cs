@@ -38,7 +38,7 @@ public class WorkFishingManager : MonoBehaviour
         wholeComponents = gameManager.wholeComponents;
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        
+
         iconAnimator = icon.GetComponent<Animator>();
         canvas.SetActive(false);
         
@@ -67,7 +67,7 @@ public class WorkFishingManager : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
             if (b >= 1)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     //보조성분 추가할 곳
                     Debug.Log("보조성분 획득");

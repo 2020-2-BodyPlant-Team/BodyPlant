@@ -47,6 +47,9 @@ public class FlowerPotManager : MonoBehaviour
     public GameObject harvestButton;        //수확버튼이 수확 가능할 때 떠야한다;
     public Text nameText;
     public GameObject harvestCanvas;        //수확버튼 누르면 뜨는 캔버스
+
+    public Button[] elementButtonArray;     //보조성분 버튼. 켜고 꺼줘야 해서.
+    public int elementTime;   //보조성분 하나에 몇초가 까지는지.
     
 
 
@@ -62,8 +65,9 @@ public class FlowerPotManager : MonoBehaviour
         boughtDateList = saveData.boughtDateList;
         boughtNameList = saveData.boughtNameList;
         magnifiedUIObject.SetActive(false);
+        harvestButton.SetActive(false);
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
-
+        elementTime = 10;
         //화분에 있는 부위들을 먼저 가져온다.
         for (int i = 0; i < potNumber; i++)
         {
@@ -195,11 +199,10 @@ public class FlowerPotManager : MonoBehaviour
 
             yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
 
-            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString());
+            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString()) + elementTime * componentsInPot[index].usedElement;
             if (componentData.sproutSeconds < elapsedTime)
             {
                 componentsInPot[index].isSprotued = true;
-                Debug.Log("스프라이트 바꿔주는거");
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
@@ -208,9 +211,8 @@ public class FlowerPotManager : MonoBehaviour
                 //만약 시간이 지났다면 싹틔워준다.
             }
             percentage = elapsedTime / componentData.sproutSeconds;
-            if (percentage >= 0.5 && lastPercentage < 0.5)
+            if (percentage >= 0.5 && lastPercentage < 0.5 && percentage < 1)
             {
-                Debug.Log(percentage + " 라스트" + lastPercentage);
                 GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
@@ -228,14 +230,15 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, percentage, 1);
             }
             componentsInPot[index].percentage = percentage;
-            if (componentsInPot[index].realGameobject.transform.localPosition.y == 1.2)
+            
+            /*if (componentsInPot[index].realGameobject.transform.localPosition.y == 1.2)
             {
                 componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.0f, -5);
             }
             else
             {
                 componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.2f, -5);
-            }
+            }*/
             
         }
         //1하고 1.2 왔다리 갔다리
@@ -244,6 +247,10 @@ public class FlowerPotManager : MonoBehaviour
         //만약 현재 확대된 상태면 수확버튼 활성화.
         if (nowMagnified)
         {
+            for(int i = 0; i < elementButtonArray.Length; i++)
+            {
+                elementButtonArray[i].interactable = false;
+            }
             harvestButton.SetActive(true);
         }
     }
@@ -292,6 +299,10 @@ public class FlowerPotManager : MonoBehaviour
         Debug.Log("이거 되긴 하냐" + index);
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
+        for (int i = 0; i < elementButtonArray.Length; i++)
+        {
+            elementButtonArray[i].interactable = false;
+        }
 
         //수확이 되었다는거를 세이브해줘야하니까 세이브데이터에 넣어주고
         componentsInPot[index].isHarvested = true;
@@ -510,6 +521,12 @@ public class FlowerPotManager : MonoBehaviour
             //큰 스케일에서 작아진다.
             magnifiedUIObject.SetActive(false);
             //UI도 꺼준다
+
+            //버튼꺼쥑
+            for (int i = 0; i < elementButtonArray.Length; i++)
+            {
+                elementButtonArray[i].interactable = false;
+            }
         }
         else
         {
@@ -518,6 +535,24 @@ public class FlowerPotManager : MonoBehaviour
             //카메라 시작점
             endPosition = new Vector3(flowerPotArray[index].transform.position.x, flowerPotArray[index].transform.position.y, originCameraPos.z);
             //끝점.
+
+            for (int i = 0; i < elementButtonArray.Length; i++)
+            {
+                elementButtonArray[i].interactable = false;
+            }
+            //0 hunt, 1 mine, 2 fish
+            if (saveData.huntElement >= 0)
+            {
+                elementButtonArray[0].interactable = true;
+            }
+            if (saveData.mineElement >= 0)
+            {
+                elementButtonArray[1].interactable = true;
+            }
+            if (saveData.fishElement >= 0)
+            {
+                elementButtonArray[2].interactable = true;
+            }
 
             potScaleStart = new Vector3(1, 1, 1);
             potScaleEnd = new Vector3(1.5f, 1.5f, 1);
@@ -542,6 +577,10 @@ public class FlowerPotManager : MonoBehaviour
             if (componentsInPot[index].name == "null")
             {
                 //화분이 비면 프로그레스바가 없어.
+                for(int i = 0; i < elementButtonArray.Length; i++)
+                {
+                    elementButtonArray[i].interactable = false;
+                }
                 progressBar.transform.localScale = new Vector3(1, 0, 1);
                 //이름도없어
                 nameText.gameObject.SetActive(false);
@@ -549,6 +588,26 @@ public class FlowerPotManager : MonoBehaviour
             else
             {
                 //화분이 차있으면 프로그레스 바 percentage값 받아온다.
+
+                //만약 수확 가능하다면 == 피워났고 수확은 안했다면
+                if (componentsInPot[index].isSprotued == true && componentsInPot[index].isHarvested == false)
+                {
+                    for (int i = 0; i < elementButtonArray.Length; i++)
+                    {
+                        elementButtonArray[i].interactable = false;
+                    }
+                    //버튼 활성화
+                    Debug.Log("하베스트 버튼");
+                    harvestButton.SetActive(true);
+                }
+                else
+                {
+                    //버튼 없애.
+
+
+                    harvestButton.SetActive(false);
+                }
+
                 progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
                 
                 nameText.gameObject.SetActive(true);
@@ -556,18 +615,7 @@ public class FlowerPotManager : MonoBehaviour
                 //이름텍스트도 켜주고 이름도 넣어준다.
             }
 
-            Debug.Log(componentsInPot[index].isSprotued + " " + componentsInPot[index].isHarvested);
-            //만약 수확 가능하다면 == 피워났고 수확은 안했다면
-            if (componentsInPot[index].isSprotued == true && componentsInPot[index].isHarvested == false)
-            {
-                //버튼 활성화
-                harvestButton.SetActive(true);
-            }
-            else
-            {
-                //버튼 없애.
-                harvestButton.SetActive(false);
-            }
+
 
 
 
@@ -582,11 +630,13 @@ public class FlowerPotManager : MonoBehaviour
     //합성 씬 로드.
     public void ComposeSceneLoad()
     {
+        gameManager.fromPotScene = true;
         gameManager.ComposeSceneLoad();
     }
 
     public void HouseSceneLoad()
     {
+        gameManager.fromPotScene = false;
         gameManager.HouseSceneLoad();
     }
 
@@ -605,17 +655,90 @@ public class FlowerPotManager : MonoBehaviour
 
     public void WorkMineSceneLoad()
     {
+        gameManager.fromPotScene = true;
         gameManager.WorkMineSceneLoad();
     }
 
     public void WorkHuntSceneLoad()
     {
+        gameManager.fromPotScene = true;
         gameManager.WorkHuntSceneLoad();
     }
 
     public void WorkFishingSceneLoad()
     {
+        gameManager.fromPotScene = true;
         gameManager.WorkFishingSceneLoad();
+    }
+
+    //0 hunt, 1 mine, 2 fish
+    public void ElementButton(int element)
+    {
+        float lastPercentage = 0;
+        //꽃피지 않을때만 돌아간다.
+        float percentage = 0;
+        int index = nowMagnifiedPotIndex;
+        ComponentDataClass componentData = FindData(componentsInPot[nowMagnifiedPotIndex].name);
+        int elapsedTime = 0;
+        //몇퍼센트 완성인지.
+        if(element == 0)
+        {
+            saveData.huntElement--;
+        }
+        else if (element == 1)
+        {
+            saveData.mineElement--;
+        }
+        else
+        {
+            saveData.fishElement--;
+        }
+        
+        componentsInPot[index].usedElement++;
+
+        //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
+
+        elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString()) + elementTime * componentsInPot[index].usedElement;
+        if (componentData.sproutSeconds < elapsedTime)
+        {
+            componentsInPot[index].isSprotued = true;
+            Debug.Log("왜안바뀌는거?");
+            GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+            GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+            obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
+            componentsInPot[index].realGameobject.SetActive(false);
+            componentsInPot[index].realGameobject = obj;
+            for (int i = 0; i < elementButtonArray.Length; i++)
+            {
+                elementButtonArray[i].interactable = false;
+            }
+            //만약 시간이 지났다면 싹틔워준다.
+        }
+        percentage = elapsedTime / componentData.sproutSeconds;
+        if (percentage >= 0.5 && percentage < 1)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
+            GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+            obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
+            componentsInPot[index].realGameobject.SetActive(false);
+            componentsInPot[index].realGameobject = obj;
+        }
+        //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
+        if (percentage >= 1)
+        {
+            percentage = 1;
+        }
+        progressBar.transform.localScale = new Vector3(1, percentage, 1);
+        componentsInPot[index].percentage = percentage;
+
+        //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
+        
+        //만약 현재 확대된 상태면 수확버튼 활성화.
+        if (nowMagnified && componentsInPot[index].isSprotued)
+        {
+            harvestButton.SetActive(true);
+            componentsInPot[index].isHarvested = false;
+        }
     }
 
     // Update is called once per frame
