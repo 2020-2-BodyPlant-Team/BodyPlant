@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorkCharacterManager : MonoBehaviour
+public class CharacterMover : MonoBehaviour
 {
-
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
-    [SerializeField]
-    List<CharacterClass> characterList;
     List<GameObject> characterObjectList;
     List<float> timerList;
     List<float> randomTimeList;
+    List<Vector3> randomPosList;
+   List<Vector3> startPosList;
 
     List<float> rotationList;
     List<float> randomRotateTimeList;
@@ -21,15 +20,17 @@ public class WorkCharacterManager : MonoBehaviour
     List<Vector3> startAngleList;
     List<float> originAngleList;
 
-    // Start is called before the first frame update
+    public bool rotationBool;
+    public bool positionBool;
+
 
     void Start()
     {
         gameManager = GameManager.singleTon;
-        saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
-
         characterObjectList = new List<GameObject>();
+        randomPosList = new List<Vector3>();
+        startPosList = new List<Vector3>();
 
         randomRotateTimeList = new List<float>();
         randomAngleList = new List<Vector3>();
@@ -39,55 +40,20 @@ public class WorkCharacterManager : MonoBehaviour
         randomTimeList = new List<float>();
         rotationList = new List<float>();
         rotatingObjectList = new List<GameObject>();
+        rotationBool = true;
+        positionBool = true;
     }
 
-    //0 hunt, 1 mine, 2 fish
-    void WorkSceneStart(int sceneIndex)
-    {
-        if(sceneIndex == 0)
-        {
-            characterList = saveData.huntCharacterList;
-        }
-        else if (sceneIndex == 1)
-        {
-            characterList = saveData.mineCharacterList;
-        }
-        else
-        {
-            characterList = saveData.fishCharacterList;
-        }
-
-        if (characterList.Count == 0)
-        {
-            return;
-        }
-        //트리를 만들건데, 가지가 제일 많은게 중앙 컴포넌트가 된다. 거기서 뻗어나간다.
-       
-        foreach(CharacterClass character in characterList)
-        {
-            SpawnCharacter(character,sceneIndex);
-        }
-    }
-
-    //데려오기 하는거면 adding == true
-    public void SpawnCharacter(CharacterClass character,int sceneIndex)
+    //이제 다른 스크립트에서 요걸 쓸거에요.
+    public void SpawnCharacter(CharacterClass character,int characterIndex)
     {
         ComponentClass centerComponent = character.components[0]; //중앙 기본값 넣어주고
         bool[] boolArray = new bool[character.components.Count];
         int bestEdge = 0;
         int centerIndex = 0;
-        int characterIndex = 0;
-
-
-        for(int i = 0; i< characterList.Count; i++)
-        {
-            if(character == characterList[i])
-            {
-                characterIndex = i;
-                break;
-            }
-        }
-
+        randomTimeList.Add(Random.Range(1f, 2f));
+        randomPosList.Add(new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0));
+        startPosList.Add(Vector3.zero);
 
 
         for (int k = 0; k < boolArray.Length; k++)
@@ -154,7 +120,6 @@ public class WorkCharacterManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(character.name);
         timerList.Add(0);
         GameObject parent = new GameObject();
 
@@ -320,23 +285,39 @@ public class WorkCharacterManager : MonoBehaviour
         return null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PositionUpdate()
     {
-        if(characterList.Count > 0)
+        for (int i = 0; i < timerList.Count; i++)
         {
-            for (int i = 0; i < rotationList.Count; i++)
+            characterObjectList[i].transform.position = Vector3.Lerp(startPosList[i], randomPosList[i], timerList[i] / randomTimeList[i]);
+            timerList[i] += Time.deltaTime;
+            if (timerList[i] > randomTimeList[i])
             {
-                rotatingObjectList[i].transform.eulerAngles = Vector3.Lerp(startAngleList[i], randomAngleList[i], rotationList[i] / randomRotateTimeList[i]);
-                rotationList[i] += Time.deltaTime;
-                if (rotationList[i] > randomRotateTimeList[i])
-                {
-                    rotationList[i] = 0;
-                    randomRotateTimeList[i] = Random.Range(1f, 2f);
-                    startAngleList[i] = randomAngleList[i];
-                    randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-30, 30));
-                }
+                timerList[i] = 0;
+                randomTimeList[i] = Random.Range(1f, 2f);
+                startPosList[i] = randomPosList[i];
+                randomPosList[i] = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0);
+            }
+        }
+
+    }
+
+    public void RotationUpdate()
+    {
+        for (int i = 0; i < rotationList.Count; i++)
+        {
+            rotatingObjectList[i].transform.eulerAngles = Vector3.Lerp(startAngleList[i], randomAngleList[i], rotationList[i] / randomRotateTimeList[i]);
+            rotationList[i] += Time.deltaTime;
+            if (rotationList[i] > randomRotateTimeList[i])
+            {
+                rotationList[i] = 0;
+                randomRotateTimeList[i] = Random.Range(1f, 2f);
+                startAngleList[i] = randomAngleList[i];
+                randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-30, 30));
             }
         }
     }
+
+
+
 }

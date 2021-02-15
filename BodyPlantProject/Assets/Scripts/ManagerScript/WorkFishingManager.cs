@@ -20,6 +20,7 @@ public class WorkFishingManager : MonoBehaviour
     public GameObject panjung;
     float a = 0;
     public float b = 0;
+    public CharacterMover characterMover;
 
     public void HouseSceneLoad()
     {
@@ -43,6 +44,13 @@ public class WorkFishingManager : MonoBehaviour
         canvas.SetActive(false);
         
         StartCoroutine("Coloring");
+
+        for(int i = 0; i < saveData.fishCharacterList.Count; i++)
+        {
+            characterMover.SpawnCharacter(saveData.fishCharacterList[i],i);
+        }
+
+        
     }
     
 
