@@ -1237,11 +1237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0fda3e1feb3474f82ccc62343caf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterObjectList: []
-  timerList: []
-  randomTimeList: []
-  randomPosList: []
-  startPosList: []
   rotationBool: 0
   positionBool: 0
 --- !u!4 &1249576267

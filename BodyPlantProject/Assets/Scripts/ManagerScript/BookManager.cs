@@ -37,6 +37,8 @@ public class BookManager : MonoBehaviour
         contentRect.sizeDelta = new Vector2(0, (characterList.Count / 3) * (-buttonYgap));
         buttonStartPoint = new Vector2(-300, contentRect.sizeDelta.y / 2 - 180);
 
+        
+
         for(int i = 0; i < characterList.Count; i++)
         { 
             int elapsedTime;
@@ -48,38 +50,40 @@ public class BookManager : MonoBehaviour
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
             buttonList[i].GetComponent<Button>().onClick.AddListener(delegate { ButtonFunction(); });
 
+
             DateTime date = DateTime.Parse(characterList[i].createdDate);
             Debug.Log(characterList[i].createdDate);
-            diaryList[i].transform.GetChild(1).GetComponent<Text>().text = date.ToString("yyyy년 M월 d일");
+            diaryList[i].transform.GetChild(1).GetChild(1).GetComponent<Text>().text = date.ToString("yyyy년 M월 d일");
             
 
             if(characterList[i].personality == CharacterClass.Personality.Mongsil)
             {
-                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "몽실몽실";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "몽실몽실";
             }
             if(characterList[i].personality == CharacterClass.Personality.Dugun)
             {
-                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "두근두근";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "두근두근";
             }
             if(characterList[i].personality == CharacterClass.Personality.Ussuk)
             {
-                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "으쓱으쓱";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "으쓱으쓱";
             }
             if(characterList[i].personality == CharacterClass.Personality.Nunsil)
             {
-                diaryList[i].transform.GetChild(2).GetComponent<Text>().text = "는실는실";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "는실는실";
             }
             
-            diaryList[i].transform.GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
-            diaryList[i].transform.GetChild(4).GetComponent<Text>().text = characterList[i].name;
+            diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
+            diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
             int days = elapsedTime / (60 * 60 * 24);
-            diaryList[i].transform.GetChild(5).GetComponent<Text>().text = days.ToString();  
+            diaryList[i].transform.GetChild(1).GetChild(5).GetComponent<Text>().text = days.ToString();  
 
             GameObject parent = new GameObject();
             parent.transform.SetParent(diaryList[i].transform);
-            parent.transform.localPosition = new Vector3(0, 0, -1);
+            parent.transform.localPosition = new Vector3(0, 350, -1);
+            parent.transform.localScale = new Vector3(100, 100, 100);
 
             for(int k = 0; k < characterList[i].components.Count; k++)
             {
@@ -100,7 +104,7 @@ public class BookManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ButtonFunction()
