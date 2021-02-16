@@ -362,6 +362,7 @@ public class FlowerPotManager : MonoBehaviour
         }
         if(component.name == "null")
         {
+            Debug.Log(name);
             Debug.LogError("화분의 이름을 사전에서 못찾았다");
             return;
         }

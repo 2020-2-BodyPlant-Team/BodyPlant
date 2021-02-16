@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ComposeScene.unity
     guid: 5e0f3b1eaa625da418ed0a6d17b41fcc
   - enabled: 1
-    path: Assets/Scenes/WorkMineScene.unity
-    guid: 9b4a40b7c14f1374b8a1a7944a53efce
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/Scenes/StoreScene.unity
     guid: 5f4a41d5c8bfef94e87504ec84a4a292
   - enabled: 1
@@ -32,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkHuntScene.unity
     guid: 2409100f8c37f5440b6427977bcf0cf4
+  - enabled: 1
+    path: Assets/Scenes/WorkMineScene.unity
+    guid: 9b4a40b7c14f1374b8a1a7944a53efce
   - enabled: 1
     path: Assets/Scenes/WorkFishingScene.unity
     guid: e01a8f25182d68e4ba716d32723421ed

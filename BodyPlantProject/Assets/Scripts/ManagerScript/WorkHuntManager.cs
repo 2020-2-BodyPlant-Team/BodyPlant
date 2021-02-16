@@ -8,6 +8,7 @@ public class WorkHuntManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
+    List<CharacterClass> characterList;
 
     float waitSec;
     public GameObject sideDeer;
@@ -16,6 +17,7 @@ public class WorkHuntManager : MonoBehaviour
     public float limitTime = 2f;
     public GameObject frontDeer;
     public bool isFront = false;
+    public CharacterMover characterMover;
 
     GameObject touchedObject;
     RaycastHit2D hit;
@@ -38,17 +40,25 @@ public class WorkHuntManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
-
+        characterList = saveData.huntCharacterList;
+        
         sideAni = sideDeer.GetComponent<Animation>();
-        waitSec = Random.Range(3.0f, 5.0f);
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
+
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            characterMover.SpawnCharacter(characterList[i], i);
+        }
+
         StartCoroutine("DeerOut");
+
     }
 
     IEnumerator DeerOut()
     {
+        waitSec = Random.Range(3.0f, 5.0f);
         yield return new WaitForSeconds(waitSec);
         sideAni.Play("sideDeerMove");
         yield return new WaitForSeconds(2);
@@ -100,5 +110,7 @@ public class WorkHuntManager : MonoBehaviour
                 }
             }
         }
+
+        characterMover.RotationUpdate();
     }
 }

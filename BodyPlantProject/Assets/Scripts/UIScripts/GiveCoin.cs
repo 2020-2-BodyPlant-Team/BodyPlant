@@ -40,7 +40,7 @@ public class GiveCoin : MonoBehaviour
         now = DateTime.Now;
         nowString = now.ToString(); //체크 당시 시간 실시간으로 넣기
         sec = gameManager.TimeSubtractionToSeconds(endedString, nowString); //게임매니저 속 타이머 사용
-        Debug.Log(sec);
+        //Debug.Log(sec);
         bonus = sec / 60 * 1.67f;   //1분당 1.67코인 누적
 
         if (bonus > 30)
@@ -57,9 +57,11 @@ public class GiveCoin : MonoBehaviour
             bonus = 100;    //누적 코인이 100개 넘으면 == 1시간 이상이 지나면 누적량 100으로 고정
         }
         
+        /*
         Debug.Log((int)bonus);
         Debug.Log(now);
         Debug.Log(endedtime);   //확인용 로그 세 줄 나중에 날려도 됨
+        */
     }
 
     public void ClickBonus()
@@ -68,6 +70,6 @@ public class GiveCoin : MonoBehaviour
         //코인 변수에다 보너스 추가하기
         endedtime = DateTime.Now;
         endedString = endedtime.ToString(); //클릭 당시 시간을 새로운 누적 기준점으로 넣기
-        Debug.Log("클릭했음");
+        //Debug.Log("클릭했음");
     }
 }

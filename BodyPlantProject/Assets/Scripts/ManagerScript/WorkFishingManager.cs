@@ -9,9 +9,11 @@ public class WorkFishingManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
+    List<CharacterClass> characterList;
 
     public GameObject canvas;
     public GameObject icon;
+    public GameObject carryButton;
     Animator iconAnimator;
     public float posX;
     public float animSpeed;
@@ -21,6 +23,8 @@ public class WorkFishingManager : MonoBehaviour
     float a = 0;
     public float b = 0;
     public CharacterMover characterMover;
+
+    public GameObject[] boatObjectArray;
 
     public void HouseSceneLoad()
     {
@@ -37,6 +41,11 @@ public class WorkFishingManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
+        characterList = saveData.fishCharacterList;
+        if (characterList.Count > 5)
+        {
+            Application.Quit(); //몰라 꺼버려 ㅋㅋ
+        }
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -45,9 +54,15 @@ public class WorkFishingManager : MonoBehaviour
         
         StartCoroutine("Coloring");
 
-        for(int i = 0; i < saveData.fishCharacterList.Count; i++)
+        for(int i = 0; i < characterList.Count; i++)
         {
-            characterMover.SpawnCharacter(saveData.fishCharacterList[i],i);
+            GameObject characterObject;
+            characterMover.SpawnCharacter(characterList[i],i);
+            characterObject = characterList[i].realGameobject;
+            characterObject.transform.position = new Vector3(boatObjectArray[i].transform.position.x, boatObjectArray[i].transform.position.y,0);
+            characterObject.transform.localScale = boatObjectArray[i].transform.localScale;
+            boatObjectArray[i].transform.SetParent(characterObject.transform);
+
         }
 
         
@@ -87,5 +102,11 @@ public class WorkFishingManager : MonoBehaviour
         loopTime = Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(loopTime);
         StartCoroutine("Coloring");
+    }
+
+    void Update()
+    {
+        characterMover.FishingUpdate();
+    
     }
 }

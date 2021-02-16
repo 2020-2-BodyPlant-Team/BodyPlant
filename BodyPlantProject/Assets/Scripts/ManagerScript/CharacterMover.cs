@@ -7,6 +7,7 @@ public class CharacterMover : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
+    List<CharacterClass> characterList;
     List<GameObject> characterObjectList;
     List<float> timerList;
     List<float> randomTimeList;
@@ -24,11 +25,15 @@ public class CharacterMover : MonoBehaviour
     public bool positionBool;
 
 
+
+
     void Start()
     {
+
         gameManager = GameManager.singleTon;
         wholeComponents = gameManager.wholeComponents;
         characterObjectList = new List<GameObject>();
+        characterList = new List<CharacterClass>();
         randomPosList = new List<Vector3>();
         startPosList = new List<Vector3>();
 
@@ -43,6 +48,8 @@ public class CharacterMover : MonoBehaviour
         rotationBool = true;
         positionBool = true;
     }
+    
+
 
     //이제 다른 스크립트에서 요걸 쓸거에요.
     public void SpawnCharacter(CharacterClass character,int characterIndex)
@@ -51,6 +58,7 @@ public class CharacterMover : MonoBehaviour
         bool[] boolArray = new bool[character.components.Count];
         int bestEdge = 0;
         int centerIndex = 0;
+        characterList.Add(character);
         randomTimeList.Add(Random.Range(1f, 2f));
         randomPosList.Add(new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3f, 0f), 0));
         startPosList.Add(Vector3.zero);
@@ -80,7 +88,6 @@ public class CharacterMover : MonoBehaviour
         {
             nowIndex = childStack.Pop();    //시작할때 팝해야해.
             nowComponent = character.components[nowIndex];
-            Debug.Log(nowIndex + " 팝하는 인덱스");
             for (int k = 0; k < nowComponent.childIndexList.Count; k++)
             {
                 if (boolArray[nowComponent.childIndexList[k]] == false)
@@ -110,7 +117,6 @@ public class CharacterMover : MonoBehaviour
                     ComponentClass opposeComponent = character.components[nowComponent.childChildIndexList[k]];
                     opposeComponent.parentComponentIndex = nowIndex;
                     opposeComponent.parentJointIndex = 1;
-                    Debug.Log(opposeComponent.name);
                     if (nowComponent.childChildJointList[k] != 0)
                     {
                         //센터에 전완이 붙었을 때 스위치 해줘야해.
@@ -271,6 +277,14 @@ public class CharacterMover : MonoBehaviour
         character.realGameobject = parent;
         characterObjectList.Add(parent);
 
+        rotationList.Add(0);
+        randomRotateTimeList.Add(Random.Range(1f, 2f));
+        randomAngleList.Add(new Vector3(0, 0, Random.Range(-5, 5)));
+        startAngleList.Add(Vector3.zero);
+        originAngleList.Add(0);
+        rotatingObjectList.Add(parent);
+
+
     }
 
     ComponentDataClass FindData(string name)
@@ -316,6 +330,46 @@ public class CharacterMover : MonoBehaviour
                 randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-30, 30));
             }
         }
+    }
+
+    public void FishingUpdate()
+    {
+        for (int i = 0; i < rotationList.Count; i++)
+        {
+            rotatingObjectList[i].transform.eulerAngles = Vector3.Lerp(startAngleList[i], randomAngleList[i], rotationList[i] / randomRotateTimeList[i]);
+            rotationList[i] += Time.deltaTime;
+            if (rotationList[i] > randomRotateTimeList[i])
+            {
+                rotationList[i] = 0;
+                randomRotateTimeList[i] = Random.Range(1f, 2f);
+                startAngleList[i] = randomAngleList[i];
+                randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-5, 5));
+            }
+        }
+    }
+
+    public CharacterClass ChooseCharacter(GameObject touchedObject)
+    {
+        GameObject characterObject = touchedObject;
+        int characterIndex = -1;
+        while (characterObject.transform.parent != null)
+        {
+            characterObject = characterObject.transform.parent.gameObject;
+        }
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            if (characterObject == characterList[i].realGameobject)
+            {
+                characterIndex = i;
+                break;
+            }
+        }
+        if (characterIndex == -1)
+        {
+            Debug.Log("좆됐다 캐릭터를 못찾았다");
+            return null;
+        }
+        return characterList[characterIndex];
     }
 
 

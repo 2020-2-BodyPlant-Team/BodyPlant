@@ -88,7 +88,6 @@ public class HouseManager : MonoBehaviour
 
         for (int i = 0; i < characterList.Count; i++)
         {
-            Debug.Log("asdf");
             characterMover.SpawnCharacter(characterList[i],i);
         }
 

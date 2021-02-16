@@ -9,6 +9,10 @@ public class WorkMineManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
+    List<CharacterClass> characterList;
+
+    public CharacterMover characterMover;
+
 
     Image barImage;
     float maxBar = 100f;
@@ -32,11 +36,19 @@ public class WorkMineManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
+        characterList = saveData.mineCharacterList;
 
         barImage = GameObject.Find("Bar").GetComponent<Image>();
         barAmount = 0f;
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            characterMover.SpawnCharacter(characterList[i], i);
+        }
+
 
         aim.SetActive(false);
         InvokeRepeating("SpawnAim", 2, 1);
@@ -66,5 +78,7 @@ public class WorkMineManager : MonoBehaviour
         float posX = Random.Range(-1.0f, 1.5f);
         float posY = Random.Range(-4.0f, -1.0f);
         aim.transform.position = new Vector3(posX, posY, 0);
+
+        characterMover.RotationUpdate();
     }
 }

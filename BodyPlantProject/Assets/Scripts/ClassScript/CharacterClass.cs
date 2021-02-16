@@ -27,7 +27,7 @@ public class CharacterClass
 
         createdDate = DateTime.Now.ToString();
         createdDateTime = DateTime.Now;
-        personality = (Personality)UnityEngine.Random.Range(0,3);
+        //personality = (Personality)UnityEngine.Random.Range(0,3);
         workedTime = new int[3];
         for(int i = 0; i < 3; i++)
         {

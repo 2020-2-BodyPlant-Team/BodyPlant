@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -708,7 +708,7 @@ public class ComposeManager : MonoBehaviour
                 if (FindData(component.name).isChild)
                 {
                     component.secondPosition = component.realGameobject.transform.GetChild(1).position - centerPosition;
-                    component.secondRotation = component.realGameobject.transform.GetChild(1).eulerAngles;
+                    component.secondRotation = component.realGameobject.transform.GetChild(1).eulerAngles; 
                 }
                 component.position = component.realGameobject.transform.position - centerPosition;
                 component.rotation = component.realGameobject.transform.eulerAngles;
