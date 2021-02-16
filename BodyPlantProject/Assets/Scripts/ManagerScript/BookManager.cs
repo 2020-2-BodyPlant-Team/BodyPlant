@@ -42,6 +42,7 @@ public class BookManager : MonoBehaviour
         for(int i = 0; i < characterList.Count; i++)
         { 
             int elapsedTime;
+            
 
             diaryList.Add(Instantiate(diaryPrefab, diaryParent.transform));                   
             buttonList.Add(Instantiate(buttonPrefab, buttonParent.transform));
@@ -82,8 +83,8 @@ public class BookManager : MonoBehaviour
 
             GameObject parent = new GameObject();
             parent.transform.SetParent(diaryList[i].transform);
-            parent.transform.localPosition = new Vector3(0, 350, -1);
-            parent.transform.localScale = new Vector3(100, 100, 100);
+            parent.transform.localPosition = new Vector3(0, 400, -1);
+            //parent.transform.localScale = new Vector3(100, 100, 100);
 
             for(int k = 0; k < characterList[i].components.Count; k++)
             {
@@ -93,6 +94,69 @@ public class BookManager : MonoBehaviour
                 inst.transform.localPosition = component.position;
                 inst.transform.eulerAngles = component.rotation;
             } 
+
+            float Xmin = characterList[i].components[0].position.x;
+            float Xmax = characterList[i].components[0].position.x;
+            float Ymin = characterList[i].components[0].position.y;
+            float Ymax = characterList[i].components[0].position.y;
+
+            for(int j = 1; j < characterList[i].components.Count; j++)
+            {
+                if(Xmin > characterList[i].components[j].position.x)
+                {
+                    Xmin = characterList[i].components[j].position.x;
+                }
+                if(Xmax < characterList[i].components[j].position.x)
+                {
+                    Xmax = characterList[i].components[j].position.x;
+                }
+                if(Ymin > characterList[i].components[j].position.y)
+                {
+                    Ymin = characterList[i].components[j].position.y;
+                }
+                if(Ymax < characterList[i].components[j].position.y)
+                {
+                    Ymax = characterList[i].components[j].position.y;
+                }
+            }
+
+            float Xgap = Xmax - Xmin;
+            float Ygap = Ymax - Ymin;
+            float diaryWidth = 2;
+            float diaryHeight = 1.5f;
+
+            if(Xgap > diaryWidth && Ygap < diaryHeight)
+            {
+                float ratio = diaryWidth / Xgap;
+                parent.transform.localScale *= ratio;
+            }
+            if(Xgap < diaryWidth && Ygap > diaryHeight)
+            {
+                float ratio = diaryHeight / Ygap;
+                parent.transform.localScale *= ratio;
+            }
+            if(Xgap > diaryWidth && Ygap > diaryHeight)
+            {
+                float Xratio = diaryWidth / Xgap;
+                float Yratio = diaryHeight / Ygap;
+                if(Xratio >= Yratio)
+                {
+                    parent.transform.localScale *= Xratio;
+                }
+                if(Xratio < Yratio)
+                {
+                    parent.transform.localScale *= Yratio;
+                }
+            }
+
+            /*for(int k = 0; k < characterList[i].components.Count; k++)
+            {
+                ComponentClass component = characterList[i].components[k];
+                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + component.name);
+                GameObject inst = Instantiate(prefab,parent.transform);
+                inst.transform.localPosition = component.position;
+                inst.transform.eulerAngles = component.rotation;
+            } */
         }
 
         for(int i = 0; i < characterList.Count; i++)
