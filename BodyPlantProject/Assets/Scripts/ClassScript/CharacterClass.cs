@@ -16,7 +16,15 @@ public class CharacterClass
     public Personality personality;         //성격
     public string createdDate;              //만들어진 날짜
     public DateTime createdDateTime;        //년월일 쓰기 위해서 만듦
-    public int[] workedTime;                //int[3]배열. 낚시 사냥 광질 얼마나 했는지.
+    public string lastEarnedTime;         //최근에 수금한 날짜.
+    public string workEndTime;              //가장 마지막 일에서 나온 날짜.
+
+    public int huntTime;
+    public int fishTime;
+    public int mineTime;
+    public float huntWorkRatio;
+    public float fishWorkRatio;
+    public float mineWorkRatio;
     public float loveNess;                  //애정도
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
     public GameObject realGameobject;
@@ -27,12 +35,14 @@ public class CharacterClass
 
         createdDate = DateTime.Now.ToString();
         createdDateTime = DateTime.Now;
+        lastEarnedTime = DateTime.Now.ToString();
         //personality = (Personality)UnityEngine.Random.Range(0,3);
-        workedTime = new int[3];
-        for(int i = 0; i < 3; i++)
-        {
-            workedTime[i] = 0;
-        }
+        huntTime = 0;
+        fishTime = 0;
+        mineTime = 0;
+        huntWorkRatio = 1;
+        fishWorkRatio = 1;
+        mineWorkRatio = 1;
         loveNess = 0;
     }
 

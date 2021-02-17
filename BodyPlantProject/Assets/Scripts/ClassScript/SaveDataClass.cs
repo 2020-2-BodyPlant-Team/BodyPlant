@@ -40,10 +40,10 @@ public class SaveDataClass
         characterList = new List<CharacterClass>();
 
         owningComponentList = new List<ComponentClass>();
-        fishElement = 0;
-        mineElement = 0;
-        huntElement = 0;
-        coin = 0;
+        fishElement = 100;
+        mineElement = 100;
+        huntElement = 100;
+        coin = 5000;
 
 
     }

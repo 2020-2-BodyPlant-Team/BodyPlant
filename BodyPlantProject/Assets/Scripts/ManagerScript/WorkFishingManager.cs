@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,13 @@ public class WorkFishingManager : MonoBehaviour
 
     public GameObject canvas;
     public GameObject icon;
-    public GameObject carryButton;
+    public GameObject bringButton;
+    public GameObject coinButton;
+    public float wholeWorkingTime;
+    float timeCoinRatio = 0.0283f;
+    public float nowCoin;
+    DateTime startTime;
+
     Animator iconAnimator;
     public float posX;
     public float animSpeed;
@@ -25,6 +32,8 @@ public class WorkFishingManager : MonoBehaviour
     public CharacterMover characterMover;
 
     public GameObject[] boatObjectArray;
+    public Text coinText;
+
 
     public void HouseSceneLoad()
     {
@@ -42,9 +51,13 @@ public class WorkFishingManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.fishCharacterList;
-        if (characterList.Count > 5)
+        if (characterList.Count > 3)
         {
             Application.Quit(); //몰라 꺼버려 ㅋㅋ
+        }
+        if(characterList.Count == 3 || saveData.characterList.Count ==0)
+        {
+            bringButton.SetActive(false);
         }
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -53,7 +66,8 @@ public class WorkFishingManager : MonoBehaviour
         canvas.SetActive(false);
         
         StartCoroutine("Coloring");
-
+        coinButton.SetActive(false);
+        
         for(int i = 0; i < characterList.Count; i++)
         {
             GameObject characterObject;
@@ -63,16 +77,59 @@ public class WorkFishingManager : MonoBehaviour
             characterObject.transform.localScale = boatObjectArray[i].transform.localScale;
             boatObjectArray[i].transform.SetParent(characterObject.transform);
 
+            float workedTime = (float)gameManager.TimeSubtractionToSeconds(characterList[i].lastEarnedTime, DateTime.Now.ToString());
+            workedTime *= characterList[i].fishWorkRatio;
+            wholeWorkingTime += workedTime;
         }
-
-        
+        startTime = DateTime.Now;
+        nowCoin = wholeWorkingTime * timeCoinRatio;
+        if(nowCoin >= 50)
+        {
+            coinButton.SetActive(true);
+        }
+        StartCoroutine(CoinEarnCoroutine());
+        coinText.text = saveData.coin.ToString();
     }
-    
+
+    IEnumerator CoinEarnCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                float timePerSecond = characterList[i].fishWorkRatio;
+                characterList[i].workEndTime = DateTime.Now.ToString();
+                wholeWorkingTime += timePerSecond;
+                characterList[i].fishTime++;
+            }
+            nowCoin = wholeWorkingTime * timeCoinRatio;
+            if (nowCoin >= 50)
+            {
+                coinButton.SetActive(true);
+            }
+        }
+    }
+
+    public void CoinEarn()
+    {
+        saveData.coin += (int)nowCoin;
+        wholeWorkingTime = 0;
+        nowCoin = 0;
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            startTime = DateTime.Now;
+            characterList[i].lastEarnedTime = DateTime.Now.ToString();
+        }
+        coinButton.SetActive(false);
+        gameManager.Save();
+        coinText.text = saveData.coin.ToString();
+    }
 
     IEnumerator Coloring()
     {
         canvas.SetActive(true);
-        animSpeed = Random.Range(1f, 5f);
+        animSpeed = UnityEngine.Random.Range(1f, 5f);
         iconAnimator.SetFloat("fishingSpeed", animSpeed);
         iconAnimator.SetTrigger("isFishing");
         while (posX <= 0)
@@ -99,7 +156,7 @@ public class WorkFishingManager : MonoBehaviour
             //판정 바가 검정색으로 변하는 것 아직 구현x
         }
         canvas.SetActive(false);
-        loopTime = Random.Range(1.0f, 3.0f);
+        loopTime = UnityEngine.Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(loopTime);
         StartCoroutine("Coloring");
     }
@@ -107,6 +164,8 @@ public class WorkFishingManager : MonoBehaviour
     void Update()
     {
         characterMover.FishingUpdate();
+
+
     
     }
 }

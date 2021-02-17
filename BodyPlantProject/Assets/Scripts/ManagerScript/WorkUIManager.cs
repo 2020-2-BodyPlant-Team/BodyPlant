@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -89,7 +90,7 @@ public class WorkUIManager : MonoBehaviour
             saveData.characterList.Remove(chosenCharacter);
             characterList.Add(chosenCharacter);
         }
-        
+        chosenCharacter.lastEarnedTime = DateTime.Now.ToString();
 
 
         gameManager.Save();
