@@ -83,23 +83,69 @@ public class BookManager : MonoBehaviour
 
             GameObject parent = new GameObject();
             parent.transform.SetParent(diaryList[i].transform);
-            parent.transform.localPosition = new Vector3(0, 400, -1);
+            parent.transform.localPosition = new Vector3(0, 435, -1);
             //parent.transform.localScale = new Vector3(100, 100, 100);
 
             for(int k = 0; k < characterList[i].components.Count; k++)
             {
                 ComponentClass component = characterList[i].components[k];
-                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + component.name);
+                string path;
+                if (component.secondSwitch)
+                {
+                    path = "Components/Complete/" + component.name + "2";
+                }
+                else
+                {
+                    path = "Components/Complete/" + component.name;
+                }
+                
+                GameObject prefab = Resources.Load<GameObject>(path);
                 GameObject inst = Instantiate(prefab,parent.transform);
                 inst.transform.localPosition = component.position;
                 inst.transform.eulerAngles = component.rotation;
+                
+                string name = component.name;
+
+                int bodyNumber = 0;
+                int armLegNumber = 0;
+                int handFootNumber = 0;
+                int earEyeNumber = 0;   //이목구비
+                int hairNumber = 0;
+
+                if (name == "body")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -bodyNumber * 0.01f);
+                    bodyNumber++;
+                }
+                if (name == "arm" || name == "leg")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -armLegNumber * 0.01f);
+                    armLegNumber++;
+                }
+                if (name == "hand" || name == "foot")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -handFootNumber * 0.01f);
+                    handFootNumber++;
+                }
+                if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -earEyeNumber * 0.01f);
+                    earEyeNumber++;
+                }
+                if (name == "hair")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -hairNumber * 0.01f);
+                    hairNumber++;
+                }
             } 
 
+            // 다이어리에 생성되는 캐릭터의 x, y 위치 중에서 최댓값과 최솟값 초기값 설정 
             float Xmin = characterList[i].components[0].position.x;
             float Xmax = characterList[i].components[0].position.x;
             float Ymin = characterList[i].components[0].position.y;
             float Ymax = characterList[i].components[0].position.y;
 
+            // 최댓값 최솟값 구하기
             for(int j = 1; j < characterList[i].components.Count; j++)
             {
                 if(Xmin > characterList[i].components[j].position.x)
@@ -120,11 +166,33 @@ public class BookManager : MonoBehaviour
                 }
             }
 
+            // 팔, 다리, 머리카락의 경우 세컨드 포지션까지 최대 최소 구하는데 포함해준다.
+            for(int j = 0; j < characterList[i].components.Count; j++)
+            {
+                if(Xmin > characterList[i].components[j].secondPosition.x)
+                {
+                    Xmin = characterList[i].components[j].secondPosition.x;
+                }
+                if(Xmax < characterList[i].components[j].secondPosition.x)
+                {
+                    Xmax = characterList[i].components[j].secondPosition.x;
+                }
+                if(Ymin > characterList[i].components[j].secondPosition.y)
+                {
+                    Ymin = characterList[i].components[j].secondPosition.y;
+                }
+                if(Ymax < characterList[i].components[j].secondPosition.y)
+                {
+                    Ymax = characterList[i].components[j].secondPosition.y;
+                }
+            }
+
             float Xgap = Xmax - Xmin;
             float Ygap = Ymax - Ymin;
-            float diaryWidth = 2;
-            float diaryHeight = 1.5f;
+            float diaryWidth = 4.0f;
+            float diaryHeight = 3.4f;
 
+            // 크기 다이어리 페이지에 맞게 조정해주기
             if(Xgap > diaryWidth && Ygap < diaryHeight)
             {
                 float ratio = diaryWidth / Xgap;
@@ -146,6 +214,52 @@ public class BookManager : MonoBehaviour
                 if(Xratio < Yratio)
                 {
                     parent.transform.localScale *= Yratio;
+                }
+            }
+
+            float xMinDiaryPos = -2f;
+            float xMaxDiaryPos = 2.4f;
+            float yMinDiaryPos = -0.4f;
+            float yMaxDiaryPos = 3f;
+
+            //만약 크기를 조정하고나서 캐릭터가 범위에 벗어나게 생성되었을 때 위치 조정해주기
+            for(int j = 0; j < characterList[i].components.Count; j++)
+            {
+                if(characterList[i].components[j].position.x < xMinDiaryPos)
+                {
+                    characterList[i].components[j].position.x += (xMinDiaryPos -characterList[i].components[j].position.x);
+                }
+                if(characterList[i].components[j].position.x > xMaxDiaryPos)
+                {
+                    characterList[i].components[j].position.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                }
+                if(characterList[i].components[j].position.y < yMinDiaryPos)
+                {
+                    characterList[i].components[j].position.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                }
+                if(characterList[i].components[j].position.y > yMaxDiaryPos)
+                {
+                    characterList[i].components[j].position.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                }
+            }
+            // 여기도 마찬가지로 팔, 다리 ,머리카락의 세컨드 포지션까지 포함해줘
+            for(int j = 0; j < characterList[i].components.Count; j++)
+            {
+                if(characterList[i].components[j].secondPosition.x < xMinDiaryPos)
+                {
+                    characterList[i].components[j].secondPosition.x += (xMinDiaryPos -characterList[i].components[j].position.x);
+                }
+                if(characterList[i].components[j].secondPosition.x > xMaxDiaryPos)
+                {
+                    characterList[i].components[j].secondPosition.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                }
+                if(characterList[i].components[j].secondPosition.y < yMinDiaryPos)
+                {
+                    characterList[i].components[j].secondPosition.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                }
+                if(characterList[i].components[j].secondPosition.y > yMaxDiaryPos)
+                {
+                    characterList[i].components[j].secondPosition.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
                 }
             }
 
