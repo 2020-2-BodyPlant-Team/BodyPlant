@@ -2,7 +2,7 @@
     "lastPlayTime": "2021-02-18 AM 1:33:35",
     "potList": [
         {
-            "name": "null",
+            "name": "arm",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -11,9 +11,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-02-18 AM 1:36:40",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-02-18 AM 11:40:15",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -35,7 +35,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -1622
             },
             "childObject": {
                 "instanceID": 0
@@ -43,7 +43,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "leg",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -52,9 +52,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-02-18 AM 1:36:44",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-02-18 AM 11:40:16",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -76,7 +76,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -1650
             },
             "childObject": {
                 "instanceID": 0
@@ -84,7 +84,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "ear",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -93,9 +93,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-02-18 AM 1:36:48",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-02-18 AM 11:40:20",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -117,7 +117,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -1678
             },
             "childObject": {
                 "instanceID": 0
