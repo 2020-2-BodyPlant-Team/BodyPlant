@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399eff12fa36e94085e853d85128516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1317198551}
+  fishingBar: {fileID: 1317198551}
   icon: {fileID: 1283287836}
   bringButton: {fileID: 1938548568}
   coinButton: {fileID: 717491263}
@@ -241,6 +241,7 @@ MonoBehaviour:
   animSpeed: 0
   panjung: {fileID: 550619809}
   b: 0
+  touchforfish: 0
   characterMover: {fileID: 1091362339}
   boatObjectArray:
   - {fileID: 882132884}
@@ -494,8 +495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 236, y: -525}
-  m_SizeDelta: {x: 163.05101, y: 87}
+  m_AnchoredPosition: {x: 202, y: -524.39}
+  m_SizeDelta: {x: 144.74586, y: 89.437164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &636047103
 GameObject:
@@ -522,7 +523,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636047103}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -836,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -523.2999}
+  m_AnchoredPosition: {x: 204, y: -523.2999}
   m_SizeDelta: {x: 183, y: 183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283287838
@@ -922,7 +923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1317198552
 RectTransform:
   m_ObjectHideFlags: 0
