@@ -18,6 +18,10 @@ public class WorkHuntManager : MonoBehaviour
     public GameObject frontDeer;
     public bool isFront = false;
     public CharacterMover characterMover;
+    public GameObject[] parentObjectArray;
+    public GameObject deerObject;
+    float deerMaxX = 8;
+    float deerMinX = -8;
 
     GameObject touchedObject;
     RaycastHit2D hit;
@@ -50,9 +54,15 @@ public class WorkHuntManager : MonoBehaviour
         for (int i = 0; i < characterList.Count; i++)
         {
             characterMover.SpawnCharacter(characterList[i], i);
+            characterList[i].realGameobject.transform.SetParent(parentObjectArray[i].transform);
+            characterList[i].realGameobject.transform.localPosition = Vector3.zero;
+            characterList[i].realGameobject.transform.localScale = new Vector3(1, 1, 1);
         }
 
+        
+
         StartCoroutine("DeerOut");
+        StartCoroutine(DeerMove());
 
     }
 
@@ -65,6 +75,27 @@ public class WorkHuntManager : MonoBehaviour
         {
             isFront = true;
             frontDeer.SetActive(true);
+        }
+    }
+    
+
+    IEnumerator DeerMove()
+    {
+        float velocity = -0.015f;
+        while (true)
+        {
+            yield return null;
+            deerObject.transform.position = deerObject.transform.position + new Vector3(velocity, 0, 0);
+            if(deerObject.transform.position.x > deerMaxX)
+            {
+                velocity *= -1;
+                deerObject.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            if(deerObject.transform.position.x < deerMinX)
+            {
+                velocity *= -1;
+                deerObject.transform.eulerAngles = new Vector3(0, -180, 0);
+            }
         }
     }
     

@@ -240,7 +240,6 @@ MonoBehaviour:
   posX: 0
   animSpeed: 0
   panjung: {fileID: 550619809}
-  b: 0
   touchforfish: 0
   characterMover: {fileID: 1091362339}
   boatObjectArray:
@@ -1268,10 +1267,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -177
       objectReference: {fileID: 0}
+    - target: {fileID: 4005289974094894746, guid: 68244f40627a98b48bf622302291df30,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 230787225}
+    - target: {fileID: 4005289974094894746, guid: 68244f40627a98b48bf622302291df30,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CoinEarn
+      objectReference: {fileID: 0}
     - target: {fileID: 4898889979814805228, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6609018767551855400, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
@@ -1281,7 +1290,7 @@ PrefabInstance:
     - target: {fileID: 6761361459940119266, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6761361459940119266, guid: 68244f40627a98b48bf622302291df30,
         type: 3}

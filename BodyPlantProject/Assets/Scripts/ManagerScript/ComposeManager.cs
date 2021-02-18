@@ -198,11 +198,6 @@ public class ComposeManager : MonoBehaviour
                         }
                     }
                 }
-
-
-
-
-
             }
         }
 
@@ -696,11 +691,19 @@ public class ComposeManager : MonoBehaviour
             character.name = nameInput;
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
 
+            float count = 0;
+
             foreach (ComponentClass component in activedComponent)
             {
+                count++;
                 centerPosition = centerPosition + component.realGameobject.transform.position;
+                if (FindData(component.name).isChild)
+                {
+                    count++;
+                    centerPosition = centerPosition + component.realGameobject.transform.GetChild(1).position;
+                }
             }
-            centerPosition = centerPosition / activedComponent.Count;
+            centerPosition = centerPosition / count;
 
 
             foreach (ComponentClass component in activedComponent)
