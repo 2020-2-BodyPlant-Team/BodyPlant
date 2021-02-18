@@ -18,6 +18,7 @@ public class WorkFishingManager : MonoBehaviour
     public GameObject coinButton;
     public float wholeWorkingTime;
     float timeCoinRatio = 0.0283f;
+    float maxCoin = 100;
     public float nowCoin;
     DateTime startTime;
 
@@ -89,6 +90,10 @@ public class WorkFishingManager : MonoBehaviour
         {
             coinButton.SetActive(true);
         }
+        if(nowCoin > maxCoin)
+        {
+            nowCoin = maxCoin;
+        }
         StartCoroutine(CoinEarnCoroutine());
         coinText.text = saveData.coin.ToString();
     }
@@ -109,6 +114,10 @@ public class WorkFishingManager : MonoBehaviour
             if (nowCoin >= 50)
             {
                 coinButton.SetActive(true);
+            }
+            if (nowCoin > maxCoin)
+            {
+                nowCoin = maxCoin;
             }
         }
     }
