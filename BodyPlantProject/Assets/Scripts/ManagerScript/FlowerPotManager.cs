@@ -641,6 +641,13 @@ public class FlowerPotManager : MonoBehaviour
         gameManager.HouseSceneLoad();
     }
 
+
+    public void StoreSceneLoad()
+    {
+        gameManager.StoreSceneLoad();
+    }
+
+
     public GameObject panel;
     public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
     {

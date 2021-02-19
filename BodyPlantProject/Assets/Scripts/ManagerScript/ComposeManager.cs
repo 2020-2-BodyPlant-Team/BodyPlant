@@ -503,7 +503,7 @@ public class ComposeManager : MonoBehaviour
         {
             nameAskingObject.SetActive(true);
             nameInput = characterList[modifyingIndex].name;
-            string productedName = GetCompleteWord(nameInput, "\"이가", "\"가");
+            string productedName = gameManager.GetCompleteWord(nameInput, "\"이가", "\"가");
             nameAskingText.text = "\"" + productedName + " 맞나요?";
         }
         else
@@ -519,7 +519,7 @@ public class ComposeManager : MonoBehaviour
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
-        string productedName = GetCompleteWord(nameInput, "\"이가", "\"가");
+        string productedName = gameManager.GetCompleteWord(nameInput, "\"이가", "\"가");
         nameAskingText.text = "\"" + productedName + " 맞나요?";
     }
 
@@ -658,25 +658,12 @@ public class ComposeManager : MonoBehaviour
         Debug.Log(characterList[characterIndex].name);
         modifyingIndex = characterIndex;
         modifyMode = false;
-        string productedName = GetCompleteWord(characterList[characterIndex].name, "\"이를", "\"를");
+        string productedName = gameManager.GetCompleteWord(characterList[characterIndex].name, "\"이를", "\"를");
         modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
         modifyPanel.SetActive(true);
     }
 
-    public string GetCompleteWord(string name, string firstVal, string secondVal)
-    {
-        //char lastName = name.ElementAt(name.Length - 1);
-        char lastName = name[name.Length - 1];
-        int index = (lastName - 0xAC00) % 28; Console.WriteLine(index); 
-        //한글의 제일 처음과 끝의 범위 밖일경우 에러
-        if (lastName < 0xAC00 || lastName > 0xD7A3) 
-        { 
-            return name + secondVal; 
-        }
-        string selectVal = (lastName - 0xAC00) % 28 > 0 ? firstVal : secondVal; 
-        return name + selectVal;
 
-    }
 
     public void SaveCharacter(bool isNew)
     {
@@ -762,6 +749,8 @@ public class ComposeManager : MonoBehaviour
 
             activedComponent = new List<ComponentClass>();  //초기화;
         }
+
+        gameManager.HouseSceneLoad();
     }
 
 

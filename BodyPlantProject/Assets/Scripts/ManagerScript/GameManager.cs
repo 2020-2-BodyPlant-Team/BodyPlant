@@ -118,6 +118,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SecretRoomScene");
     }
 
+    public string GetCompleteWord(string name, string firstVal, string secondVal)
+    {
+        //char lastName = name.ElementAt(name.Length - 1);
+        char lastName = name[name.Length - 1];
+        int index = (lastName - 0xAC00) % 28; Console.WriteLine(index);
+        //한글의 제일 처음과 끝의 범위 밖일경우 에러
+        if (lastName < 0xAC00 || lastName > 0xD7A3)
+        {
+            return name + secondVal;
+        }
+        string selectVal = (lastName - 0xAC00) % 28 > 0 ? firstVal : secondVal;
+        return name + selectVal;
+
+    }
+
     //시간계산기입니다. 예전시간과 현재시간을 넣으면 그 사이의 초가 나와요.
     //초를 알아야 얼마나 지났는지 아니까 그거에 맞게 방치가 되어있다는 걸 깨닫고 화분을 싹틔우던 하겠죠?
     //게임이 켜져있지 않을 때 시간이 얼마나 지났는지 체크하기 위한 함수입니다.

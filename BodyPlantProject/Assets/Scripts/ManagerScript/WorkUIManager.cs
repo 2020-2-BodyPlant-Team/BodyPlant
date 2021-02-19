@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WorkUIManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class WorkUIManager : MonoBehaviour
 
     public GameObject panel;
     public bool isPanel = false;
+    public Text bringText;
 
     CharacterClass chosenCharacter;
 
@@ -59,6 +61,8 @@ public class WorkUIManager : MonoBehaviour
                     {
                         isPanel = true;
                         panel.SetActive(true);
+                        string productedName = gameManager.GetCompleteWord(chosenCharacter.name, "\"이를", "\"를");
+                        bringText.text = "\"" + productedName + " 데려갈까요?";
                     }
 
                 }   
