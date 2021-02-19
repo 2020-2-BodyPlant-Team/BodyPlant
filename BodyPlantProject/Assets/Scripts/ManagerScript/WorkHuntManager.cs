@@ -9,6 +9,7 @@ public class WorkHuntManager : MonoBehaviour
     SaveDataClass saveData;
     WholeComponents wholeComponents;
     List<CharacterClass> characterList;
+    public GiveCoin coinManager;
 
     float waitSec;
     public GameObject sideDeer;
@@ -20,8 +21,10 @@ public class WorkHuntManager : MonoBehaviour
     public CharacterMover characterMover;
     public GameObject[] parentObjectArray;
     public GameObject deerObject;
+    public GameObject bringButton;
     float deerMaxX = 8;
     float deerMinX = -8;
+
 
     GameObject touchedObject;
     RaycastHit2D hit;
@@ -45,7 +48,17 @@ public class WorkHuntManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.huntCharacterList;
-        
+
+        if (characterList.Count > 3)
+        {
+            Application.Quit(); //몰라 꺼버려 ㅋㅋ
+        }
+        if (characterList.Count == 3 || saveData.characterList.Count == 0)
+        {
+            bringButton.SetActive(false);
+        }
+
+
         sideAni = sideDeer.GetComponent<Animation>();
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -58,8 +71,8 @@ public class WorkHuntManager : MonoBehaviour
             characterList[i].realGameobject.transform.localPosition = Vector3.zero;
             characterList[i].realGameobject.transform.localScale = new Vector3(1, 1, 1);
         }
+        coinManager.SetCharacterList(characterList, 0);
 
-        
 
         StartCoroutine("DeerOut");
         StartCoroutine(DeerMove());

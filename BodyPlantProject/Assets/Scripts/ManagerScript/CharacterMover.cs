@@ -318,6 +318,7 @@ public class CharacterMover : MonoBehaviour
 
     public void RotationUpdate()
     {
+
         for (int i = 0; i < rotationList.Count; i++)
         {
             rotatingObjectList[i].transform.eulerAngles = Vector3.Lerp(startAngleList[i], randomAngleList[i], rotationList[i] / randomRotateTimeList[i]);

@@ -15,6 +15,7 @@ public class WorkFishingManager : MonoBehaviour
     public GameObject fishingBar;
     public GameObject icon;
     public GameObject bringButton;
+
     public GameObject coinButton;
     public float wholeWorkingTime;
     float timeCoinRatio = 0.0283f;
@@ -34,7 +35,8 @@ public class WorkFishingManager : MonoBehaviour
     public CharacterMover characterMover;
 
     public GameObject[] boatObjectArray;
-    public Text coinText;
+    public GiveCoin coinManager;
+
 
     IEnumerator cor;    //Coloring 코루틴 일시정지용
 
@@ -63,79 +65,34 @@ public class WorkFishingManager : MonoBehaviour
             bringButton.SetActive(false);
         }
 
+        for(int i = 0; i < boatObjectArray.Length; i++)
+        {
+            boatObjectArray[i].SetActive(false);
+        }
+
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         iconAnimator = icon.GetComponent<Animator>();
 
         cor = Coloring();
-        StartCoroutine(cor);    //근데 이거 스타트에 있으면 바로 시작해야 되는거 아닌가요 왜 안되지ㅠㅠㅠㅠ
-        coinButton.SetActive(false);
+        StartCoroutine(cor);    //근데 이거 스타트에 있으면 바로 시작해야 되는거 아닌가요 왜 안되지ㅠㅠㅠㅠ??????????????????????
         
         for(int i = 0; i < characterList.Count; i++)
         {
+            boatObjectArray[i].SetActive(true);
             GameObject characterObject;
             characterMover.SpawnCharacter(characterList[i],i);
             characterObject = characterList[i].realGameobject;
             characterObject.transform.position = new Vector3(boatObjectArray[i].transform.position.x, boatObjectArray[i].transform.position.y,0);
             characterObject.transform.localScale = boatObjectArray[i].transform.localScale;
             boatObjectArray[i].transform.SetParent(characterObject.transform);
+        }
 
-            float workedTime = (float)gameManager.TimeSubtractionToSeconds(characterList[i].lastEarnedTime, DateTime.Now.ToString());
-            workedTime *= characterList[i].fishWorkRatio;
-            wholeWorkingTime += workedTime;
-        }
-        startTime = DateTime.Now;
-        nowCoin = wholeWorkingTime * timeCoinRatio;
-        if(nowCoin >= 50)
-        {
-            coinButton.SetActive(true);
-        }
-        if(nowCoin > maxCoin)
-        {
-            nowCoin = maxCoin;
-        }
-        StartCoroutine(CoinEarnCoroutine());
-        coinText.text = saveData.coin.ToString();
+        coinManager.SetCharacterList(characterList, 1);
+
+
     }
 
-    IEnumerator CoinEarnCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            for (int i = 0; i < characterList.Count; i++)
-            {
-                float timePerSecond = characterList[i].fishWorkRatio;
-                characterList[i].workEndTime = DateTime.Now.ToString();
-                wholeWorkingTime += timePerSecond;
-                characterList[i].fishTime++;
-            }
-            nowCoin = wholeWorkingTime * timeCoinRatio;
-            if (nowCoin >= 50)
-            {
-                coinButton.SetActive(true);
-            }
-            if (nowCoin > maxCoin)
-            {
-                nowCoin = maxCoin;
-            }
-        }
-    }
-
-    public void CoinEarn()
-    {
-        saveData.coin += (int)nowCoin;
-        wholeWorkingTime = 0;
-        nowCoin = 0;
-        for (int i = 0; i < characterList.Count; i++)
-        {
-            startTime = DateTime.Now;
-            characterList[i].lastEarnedTime = DateTime.Now.ToString();
-        }
-        coinButton.SetActive(false);
-        gameManager.Save();
-        coinText.text = saveData.coin.ToString();
-    }
 
     IEnumerator Coloring()
     {
