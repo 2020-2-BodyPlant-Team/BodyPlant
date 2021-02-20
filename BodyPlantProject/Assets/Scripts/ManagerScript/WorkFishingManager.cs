@@ -143,7 +143,7 @@ public class WorkFishingManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                //보조성분 추가할 곳
+                //보조성분 획득할 곳
                 Debug.Log("보조성분 획득");
                 touchforfish = false;
                 StopCoroutine(cor);

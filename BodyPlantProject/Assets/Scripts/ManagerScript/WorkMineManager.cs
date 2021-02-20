@@ -85,9 +85,9 @@ public class WorkMineManager : MonoBehaviour
         barImage.fillAmount = barAmount / maxBar;
         if(barAmount >= maxBar)
         {
+            //보조성분 획득할 곳
             Debug.Log("게이지 만땅");
             barAmount = 0;
-            //코인, 자원 추가할 코드 자리
         }
         characterMover.RotationUpdate();
     }

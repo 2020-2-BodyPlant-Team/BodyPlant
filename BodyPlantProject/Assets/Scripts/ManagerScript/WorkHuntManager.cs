@@ -127,6 +127,7 @@ public class WorkHuntManager : MonoBehaviour
                 {
                     if (count >= 10)
                     {
+                        //보조성분 획득할 곳
                         Debug.Log("힘겨루기 승리");
                         frontDeer.SetActive(false);
                         count = 0;
