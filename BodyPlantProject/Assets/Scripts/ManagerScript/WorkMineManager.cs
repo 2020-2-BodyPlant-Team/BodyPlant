@@ -15,6 +15,7 @@ public class WorkMineManager : MonoBehaviour
     public GiveCoin coinManager;
     public GameObject[] parentObjectArray;
     public GameObject bringButton;
+    public Text mineElementText;
 
 
     Image barImage;
@@ -73,8 +74,8 @@ public class WorkMineManager : MonoBehaviour
         }
 
         coinManager.SetCharacterList(characterList, 2);
-        
 
+        mineElementText.text = saveData.mineElement.ToString();
 
         aim.SetActive(false);
         InvokeRepeating("SpawnAim", 2, 1);
@@ -86,6 +87,9 @@ public class WorkMineManager : MonoBehaviour
         if(barAmount >= maxBar)
         {
             //보조성분 획득할 곳
+            saveData.mineElement++;
+            gameManager.Save();
+            mineElementText.text = saveData.mineElement.ToString();
             Debug.Log("게이지 만땅");
             barAmount = 0;
         }

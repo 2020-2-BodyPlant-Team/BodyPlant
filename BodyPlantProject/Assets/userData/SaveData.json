@@ -131,10 +131,10 @@
             "name": "ㅁㄴㅇㄹ",
             "personality": 1,
             "createdDate": "2021-02-19 AM 12:49:18",
-            "lastEarnedTime": "2021-02-21 AM 12:03:06",
-            "workEndTime": "2021-02-21 AM 12:03:21",
+            "lastEarnedTime": "2021-02-21 AM 2:45:51",
+            "workEndTime": "2021-02-21 AM 2:45:56",
             "huntTime": 0,
-            "fishTime": 46,
+            "fishTime": 89,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -179,10 +179,10 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2138
+                        "instanceID": -8296
                     },
                     "childObject": {
-                        "instanceID": -2146
+                        "instanceID": -8304
                     },
                     "isHarvested": true
                 },
@@ -224,26 +224,26 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2166
+                        "instanceID": -8324
                     },
                     "childObject": {
-                        "instanceID": -2174
+                        "instanceID": -8332
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -2134
+                "instanceID": -8292
             }
         },
         {
             "name": "왜 그렇게 생각하지",
             "personality": 2,
             "createdDate": "2021-02-19 AM 12:49:04",
-            "lastEarnedTime": "2021-02-21 AM 12:03:06",
-            "workEndTime": "2021-02-21 AM 12:03:21",
+            "lastEarnedTime": "2021-02-21 AM 2:45:51",
+            "workEndTime": "2021-02-21 AM 2:45:56",
             "huntTime": 0,
-            "fishTime": 46,
+            "fishTime": 89,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -290,10 +290,10 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2198
+                        "instanceID": -8356
                     },
                     "childObject": {
-                        "instanceID": -2206
+                        "instanceID": -8364
                     },
                     "isHarvested": true
                 },
@@ -337,10 +337,10 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2226
+                        "instanceID": -8384
                     },
                     "childObject": {
-                        "instanceID": -2234
+                        "instanceID": -8392
                     },
                     "isHarvested": true
                 },
@@ -384,7 +384,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -2254
+                        "instanceID": -8412
                     },
                     "childObject": {
                         "instanceID": 0
@@ -393,17 +393,17 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -2194
+                "instanceID": -8352
             }
         },
         {
             "name": "651",
             "personality": 2,
             "createdDate": "2021-02-20 AM 2:15:31",
-            "lastEarnedTime": "2021-02-21 AM 12:03:06",
-            "workEndTime": "2021-02-21 AM 12:03:21",
+            "lastEarnedTime": "2021-02-21 AM 2:45:51",
+            "workEndTime": "2021-02-21 AM 2:45:56",
             "huntTime": 0,
-            "fishTime": 34,
+            "fishTime": 77,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -450,7 +450,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -2266
+                        "instanceID": -8424
                     },
                     "childObject": {
                         "instanceID": 0
@@ -497,7 +497,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2274
+                        "instanceID": -8432
                     },
                     "childObject": {
                         "instanceID": 0
@@ -544,16 +544,16 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -2282
+                        "instanceID": -8440
                     },
                     "childObject": {
-                        "instanceID": -2290
+                        "instanceID": -8448
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -2262
+                "instanceID": -8420
             }
         }
     ],
@@ -562,10 +562,10 @@
             "name": "4152",
             "personality": 1,
             "createdDate": "2021-02-20 AM 2:08:11",
-            "lastEarnedTime": "2021-02-21 AM 12:02:45",
-            "workEndTime": "2021-02-21 AM 12:02:59",
+            "lastEarnedTime": "2021-02-21 AM 2:00:00",
+            "workEndTime": "2021-02-21 AM 2:00:58",
             "huntTime": 0,
-            "fishTime": 133,
+            "fishTime": 193,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -612,7 +612,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -1868
+                        "instanceID": -7818
                     },
                     "childObject": {
                         "instanceID": 0
@@ -659,7 +659,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1880
+                        "instanceID": -7828
                     },
                     "childObject": {
                         "instanceID": 0
@@ -706,26 +706,26 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1888
+                        "instanceID": -7836
                     },
                     "childObject": {
-                        "instanceID": -1896
+                        "instanceID": -7844
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -1864
+                "instanceID": -7814
             }
         },
         {
             "name": "00",
             "personality": 0,
             "createdDate": "2021-02-20 AM 2:56:29",
-            "lastEarnedTime": "2021-02-21 AM 12:02:45",
-            "workEndTime": "2021-02-21 AM 12:02:59",
+            "lastEarnedTime": "2021-02-21 AM 2:00:00",
+            "workEndTime": "2021-02-21 AM 2:00:58",
             "huntTime": 0,
-            "fishTime": 110,
+            "fishTime": 170,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -772,7 +772,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -1904
+                        "instanceID": -7852
                     },
                     "childObject": {
                         "instanceID": 0
@@ -819,7 +819,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1914
+                        "instanceID": -7862
                     },
                     "childObject": {
                         "instanceID": 0
@@ -866,26 +866,26 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1922
+                        "instanceID": -7870
                     },
                     "childObject": {
-                        "instanceID": -1930
+                        "instanceID": -7878
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -1900
+                "instanceID": -7848
             }
         },
         {
             "name": "123",
             "personality": 0,
             "createdDate": "2021-02-20 AM 3:25:58",
-            "lastEarnedTime": "2021-02-21 AM 12:02:45",
-            "workEndTime": "2021-02-21 AM 12:02:59",
+            "lastEarnedTime": "2021-02-21 AM 2:00:00",
+            "workEndTime": "2021-02-21 AM 2:00:58",
             "huntTime": 0,
-            "fishTime": 45,
+            "fishTime": 105,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -930,7 +930,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1938
+                        "instanceID": -7886
                     },
                     "childObject": {
                         "instanceID": 0
@@ -979,10 +979,10 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -1946
+                        "instanceID": -7894
                     },
                     "childObject": {
-                        "instanceID": -1954
+                        "instanceID": -7902
                     },
                     "isHarvested": true
                 },
@@ -1024,16 +1024,16 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -1970
+                        "instanceID": -7918
                     },
                     "childObject": {
-                        "instanceID": -1978
+                        "instanceID": -7926
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -1934
+                "instanceID": -7882
             }
         }
     ],
@@ -1042,10 +1042,10 @@
             "name": "asf",
             "personality": 1,
             "createdDate": "2021-02-20 AM 1:33:27",
-            "lastEarnedTime": "2021-02-21 AM 12:03:26",
-            "workEndTime": "2021-02-21 AM 12:03:25",
+            "lastEarnedTime": "2021-02-21 AM 2:43:51",
+            "workEndTime": "2021-02-21 AM 2:45:44",
             "huntTime": 0,
-            "fishTime": 95,
+            "fishTime": 221,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -1090,10 +1090,10 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -2446
+                        "instanceID": -8080
                     },
                     "childObject": {
-                        "instanceID": -2454
+                        "instanceID": -8088
                     },
                     "isHarvested": true
                 },
@@ -1135,7 +1135,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -2474
+                        "instanceID": -8108
                     },
                     "childObject": {
                         "instanceID": 0
@@ -1144,17 +1144,17 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -2442
+                "instanceID": -8076
             }
         },
         {
             "name": "asdf",
             "personality": 0,
             "createdDate": "2021-02-20 AM 1:33:31",
-            "lastEarnedTime": "2021-02-21 AM 12:03:26",
-            "workEndTime": "2021-02-21 AM 12:03:25",
+            "lastEarnedTime": "2021-02-21 AM 2:43:51",
+            "workEndTime": "2021-02-21 AM 2:45:44",
             "huntTime": 0,
-            "fishTime": 78,
+            "fishTime": 204,
             "mineTime": 0,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
@@ -1199,7 +1199,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -2488
+                        "instanceID": -8122
                     },
                     "childObject": {
                         "instanceID": 0
@@ -1244,24 +1244,24 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -2496
+                        "instanceID": -8130
                     },
                     "childObject": {
-                        "instanceID": -2504
+                        "instanceID": -8138
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -2484
+                "instanceID": -8118
             }
         }
     ],
     "owningComponentList": [],
-    "coin": 13518,
+    "coin": 14768,
     "boughtNameList": [],
     "boughtDateList": [],
-    "huntElement": 100,
-    "mineElement": 89,
-    "fishElement": 56
+    "huntElement": 102,
+    "mineElement": 90,
+    "fishElement": 64
 }

@@ -33,6 +33,7 @@ public class WorkFishingManager : MonoBehaviour
     float b = 0; //Coloring 코루틴에서 while 돌리려고 만든 변수입니다
     public bool touchforfish = false;
     public CharacterMover characterMover;
+    public Text fishElementText;
 
     public GameObject[] boatObjectArray;
     public GiveCoin coinManager;
@@ -89,7 +90,7 @@ public class WorkFishingManager : MonoBehaviour
         }
 
         coinManager.SetCharacterList(characterList, 1);
-
+        fishElementText.text = saveData.fishElement.ToString();
 
     }
 
@@ -144,6 +145,9 @@ public class WorkFishingManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //보조성분 획득할 곳
+                saveData.fishElement++;
+                gameManager.Save();
+                fishElementText.text = saveData.fishElement.ToString();
                 Debug.Log("보조성분 획득");
                 touchforfish = false;
                 StopCoroutine(cor);

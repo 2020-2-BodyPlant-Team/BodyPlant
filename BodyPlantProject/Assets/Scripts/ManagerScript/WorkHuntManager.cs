@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WorkHuntManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class WorkHuntManager : MonoBehaviour
     public GameObject bringButton;
     float deerMaxX = 8;
     float deerMinX = -8;
+    public Text huntElementText;
 
 
     GameObject touchedObject;
@@ -73,6 +75,7 @@ public class WorkHuntManager : MonoBehaviour
         }
         coinManager.SetCharacterList(characterList, 0);
 
+        huntElementText.text = saveData.huntElement.ToString();
 
         StartCoroutine("DeerOut");
         StartCoroutine(DeerMove());
@@ -128,6 +131,10 @@ public class WorkHuntManager : MonoBehaviour
                     if (count >= 10)
                     {
                         //보조성분 획득할 곳
+                        saveData.huntElement++;
+                        gameManager.Save();
+                        huntElementText.text = saveData.huntElement.ToString();
+
                         Debug.Log("힘겨루기 승리");
                         frontDeer.SetActive(false);
                         count = 0;
