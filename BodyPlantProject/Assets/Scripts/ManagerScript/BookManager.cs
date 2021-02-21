@@ -189,7 +189,7 @@ public class BookManager : MonoBehaviour
 
             float Xgap = Xmax - Xmin;
             float Ygap = Ymax - Ymin;
-            float diaryWidth = 4.0f;
+            float diaryWidth = 4.4f;
             float diaryHeight = 3.4f;
 
             // 크기 다이어리 페이지에 맞게 조정해주기
@@ -217,8 +217,8 @@ public class BookManager : MonoBehaviour
                 }
             }
 
-            float xMinDiaryPos = -2f;
-            float xMaxDiaryPos = 2.4f;
+            float xMinDiaryPos = -2.2f;
+            float xMaxDiaryPos = 2.2f;
             float yMinDiaryPos = -0.4f;
             float yMaxDiaryPos = 3f;
 
@@ -227,19 +227,27 @@ public class BookManager : MonoBehaviour
             {
                 if(characterList[i].components[j].position.x < xMinDiaryPos)
                 {
-                    characterList[i].components[j].position.x += (xMinDiaryPos -characterList[i].components[j].position.x);
+                    Vector3 vector = parent.transform.position;
+                    vector.x += (xMinDiaryPos - characterList[i].components[j].position.x);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].position.x > xMaxDiaryPos)
                 {
-                    characterList[i].components[j].position.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    Vector3 vector = parent.transform.position;
+                    vector.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].position.y < yMinDiaryPos)
                 {
-                    characterList[i].components[j].position.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    Vector3 vector = parent.transform.position;
+                    vector.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].position.y > yMaxDiaryPos)
                 {
-                    characterList[i].components[j].position.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    Vector3 vector = parent.transform.position;
+                    vector.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    parent.transform.position = vector;
                 }
             }
             // 여기도 마찬가지로 팔, 다리 ,머리카락의 세컨드 포지션까지 포함해줘
@@ -247,19 +255,27 @@ public class BookManager : MonoBehaviour
             {
                 if(characterList[i].components[j].secondPosition.x < xMinDiaryPos)
                 {
-                    characterList[i].components[j].secondPosition.x += (xMinDiaryPos -characterList[i].components[j].position.x);
+                    Vector3 vector = parent.transform.position;
+                    vector.x += (xMinDiaryPos - characterList[i].components[j].position.x);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].secondPosition.x > xMaxDiaryPos)
                 {
-                    characterList[i].components[j].secondPosition.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    Vector3 vector = parent.transform.position;
+                    vector.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].secondPosition.y < yMinDiaryPos)
                 {
-                    characterList[i].components[j].secondPosition.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    Vector3 vector = parent.transform.position;
+                    vector.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    parent.transform.position = vector;
                 }
                 if(characterList[i].components[j].secondPosition.y > yMaxDiaryPos)
                 {
-                    characterList[i].components[j].secondPosition.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    Vector3 vector = parent.transform.position;
+                    vector.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    parent.transform.position = vector;
                 }
             }
 
