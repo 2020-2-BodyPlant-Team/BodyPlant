@@ -10,10 +10,15 @@ public class BookManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     List<CharacterClass> characterList;
+    List<CharacterClass> huntCharacterList;
+    List<CharacterClass> mineCharacterList;
+    List<CharacterClass> fishCharacterList;
+    List<CharacterClass> totalList;
     public GameObject diaryPrefab;
     public GameObject buttonPrefab;
     List<GameObject> diaryList;
     List<GameObject> buttonList;
+    List<GameObject> silhouette;
     List<int> passedTime;
     int buttonXgap = 300;
     int buttonYgap = -415;    
@@ -23,12 +28,35 @@ public class BookManager : MonoBehaviour
     public RectTransform contentRect;
 
 
+
     // Start is called before the first frame update
     void Start()
     {        
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         characterList = saveData.characterList;
+        huntCharacterList = saveData.huntCharacterList;
+        mineCharacterList = saveData.mineCharacterList;
+        fishCharacterList = saveData.fishCharacterList;
+
+
+        totalList = new List<CharacterClass>();
+        for(int i = 0; i < characterList.Count; i++)
+        {
+            totalList.Add(characterList[i]);
+        }
+        for(int i = 0; i < huntCharacterList.Count; i++)
+        {
+            totalList.Add(huntCharacterList[i]);
+        }
+        for(int i = 0; i < mineCharacterList.Count; i++)
+        {
+            totalList.Add(mineCharacterList[i]);
+        }
+        for(int i = 0; i < fishCharacterList.Count; i++)
+        {
+            totalList.Add(fishCharacterList[i]);
+        }
 
         diaryList = new List<GameObject>();
         buttonList = new List<GameObject>();
@@ -36,9 +64,50 @@ public class BookManager : MonoBehaviour
         contentRect.anchoredPosition = new Vector2(0, 0);   
         contentRect.sizeDelta = new Vector2(0, (characterList.Count / 3) * (-buttonYgap));
         buttonStartPoint = new Vector2(-300, contentRect.sizeDelta.y / 2 - 180);
-
         
+        GookBabMukGoSipDa(diaryList, buttonList, totalList);
 
+        silhouette = new List<GameObject>();
+        for(int i = 0; i < totalList.Count; i++)
+        {
+            GameObject black = Instantiate(totalList[i].realGameobject, buttonList[i].transform);
+            silhouette.Add(black);          
+            SpriteRenderer[] spriteArray = silhouette[i].GetComponentsInChildren<SpriteRenderer>();
+            Debug.Log(spriteArray.Length);
+            for(int j = 0; j < spriteArray.Length; j++)
+            {
+                spriteArray[j].color = Color.black;
+            }
+            silhouette[i].transform.localScale *= 0.35f;
+            silhouette[i].transform.localPosition = new Vector3(0, 0, -0.5f);
+        }
+
+        for(int i = 0; i < totalList.Count; i++)
+        {
+            diaryList[i].GetComponent<RectTransform>().SetAsLastSibling();
+        }    
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void ButtonFunction()
+    {      
+        for(int i = 0; i < totalList.Count; i++)
+        {
+            GameObject button = EventSystem.current.currentSelectedGameObject;
+            if(button == buttonList[i])
+            {
+                diaryList[i].SetActive(true);
+            }
+        }
+    }
+
+    public void GookBabMukGoSipDa(List<GameObject> diaryList, List<GameObject> buttonList, List<CharacterClass> characterList)
+    {
         for(int i = 0; i < characterList.Count; i++)
         { 
             int elapsedTime;
@@ -50,6 +119,8 @@ public class BookManager : MonoBehaviour
             Vector2 buttonPosition = new Vector2((buttonStartPoint.x + (i % 3) * buttonXgap), (buttonStartPoint.y  + (int)(i / 3) * buttonYgap));
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
             buttonList[i].GetComponent<Button>().onClick.AddListener(delegate { ButtonFunction(); });
+
+
 
 
             DateTime date = DateTime.Parse(characterList[i].createdDate);
@@ -83,8 +154,13 @@ public class BookManager : MonoBehaviour
 
             GameObject parent = new GameObject();
             parent.transform.SetParent(diaryList[i].transform);
-            parent.transform.localPosition = new Vector3(0, 435, -1);
-            //parent.transform.localScale = new Vector3(100, 100, 100);
+            parent.transform.localPosition = new Vector3(0, 300, -1);
+
+            int bodyNumber = 0;
+            int armLegNumber = 0;
+            int handFootNumber = 0;
+            int earEyeNumber = 0;   //이목구비
+            int hairNumber = 0;
 
             for(int k = 0; k < characterList[i].components.Count; k++)
             {
@@ -100,35 +176,31 @@ public class BookManager : MonoBehaviour
                 
                 string name = component.name;
 
-                int bodyNumber = 0;
-                int armLegNumber = 0;
-                int handFootNumber = 0;
-                int earEyeNumber = 0;   //이목구비
-                int hairNumber = 0;
+                
 
                 if (name == "body")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -bodyNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -1 - bodyNumber * 0.01f);
                     bodyNumber++;
                 }
                 if (name == "arm" || name == "leg")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -armLegNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -2 - armLegNumber * 0.01f);
                     armLegNumber++;
                 }
                 if (name == "hand" || name == "foot")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -handFootNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -3 - handFootNumber * 0.01f);
                     handFootNumber++;
                 }
                 if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -earEyeNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -4 - earEyeNumber * 0.01f);
                     earEyeNumber++;
                 }
                 if (name == "hair")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -hairNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -5 - hairNumber * 0.01f);
                     hairNumber++;
                 }
             } 
@@ -163,21 +235,24 @@ public class BookManager : MonoBehaviour
             // 팔, 다리, 머리카락의 경우 세컨드 포지션까지 최대 최소 구하는데 포함해준다.
             for(int j = 0; j < characterList[i].components.Count; j++)
             {
-                if(Xmin > characterList[i].components[j].secondPosition.x)
+                if(gameManager.FindData(characterList[i].components[j].name).isChild)
                 {
-                    Xmin = characterList[i].components[j].secondPosition.x;
-                }
-                if(Xmax < characterList[i].components[j].secondPosition.x)
-                {
-                    Xmax = characterList[i].components[j].secondPosition.x;
-                }
-                if(Ymin > characterList[i].components[j].secondPosition.y)
-                {
-                    Ymin = characterList[i].components[j].secondPosition.y;
-                }
-                if(Ymax < characterList[i].components[j].secondPosition.y)
-                {
-                    Ymax = characterList[i].components[j].secondPosition.y;
+                    if(Xmin > characterList[i].components[j].secondPosition.x)
+                    {
+                        Xmin = characterList[i].components[j].secondPosition.x;
+                    }
+                    if(Xmax < characterList[i].components[j].secondPosition.x)
+                    {
+                        Xmax = characterList[i].components[j].secondPosition.x;
+                    }
+                    if(Ymin > characterList[i].components[j].secondPosition.y)
+                    {
+                        Ymin = characterList[i].components[j].secondPosition.y;
+                    }
+                    if(Ymax < characterList[i].components[j].secondPosition.y)
+                    {
+                        Ymax = characterList[i].components[j].secondPosition.y;
+                    }
                 }
             }
 
@@ -248,37 +323,42 @@ public class BookManager : MonoBehaviour
                     parent.transform.position = vector;
                 }
             }
-            // 여기도 마찬가지로 팔, 다리 ,머리카락의 세컨드 포지션까지 포함해줘
+            // 여기도 마찬가지로 팔, 다리, 머리카락의 세컨드 포지션까지 포함해줘
             for(int j = 0; j < characterList[i].components.Count; j++)
             {
-                Transform obj = characterList[i].components[j].realGameobject.transform.GetChild(1);
-                if (obj.position.x < xMinDiaryPos)
+                if(gameManager.FindData(characterList[i].components[j].name).isChild)
                 {
-                    Vector3 vector = parent.transform.position;
-                    vector.x += (xMinDiaryPos - obj.position.x);
-                    parent.transform.position = vector;
-                }
+                    Transform obj = characterList[i].components[j].realGameobject.transform.GetChild(1);
+                    if (obj.position.x < xMinDiaryPos)
+                    {
+                        Vector3 vector = parent.transform.position;
+                        vector.x += (xMinDiaryPos - obj.position.x);
+                        parent.transform.position = vector;
+                    }
 
-                if(obj.position.x > xMaxDiaryPos)
-                {
-                    Vector3 vector = parent.transform.position;
-                    vector.x -= (obj.position.x - xMaxDiaryPos);
-                    parent.transform.position = vector;
-                }
+                    if(obj.position.x > xMaxDiaryPos)
+                    {
+                        Vector3 vector = parent.transform.position;
+                        vector.x -= (obj.position.x - xMaxDiaryPos);
+                        parent.transform.position = vector;
+                    }
 
-                if(obj.position.y < yMinDiaryPos)
-                {
-                    Vector3 vector = parent.transform.position;
-                    vector.y += (yMinDiaryPos - obj.position.y);
-                    parent.transform.position = vector;
-                }
-                if(obj.position.y > yMaxDiaryPos)
-                {
-                    Vector3 vector = parent.transform.position;
-                    vector.y -= (obj.position.y - yMaxDiaryPos);
-                    parent.transform.position = vector;
+                    if(obj.position.y < yMinDiaryPos)
+                    {
+                        Vector3 vector = parent.transform.position;
+                        vector.y += (yMinDiaryPos - obj.position.y);
+                        parent.transform.position = vector;
+                    }
+                    if(obj.position.y > yMaxDiaryPos)
+                    {
+                        Vector3 vector = parent.transform.position;
+                        vector.y -= (obj.position.y - yMaxDiaryPos);
+                        parent.transform.position = vector;
+                    }
                 }
             }
+
+            characterList[i].realGameobject = parent;
 
             /*for(int k = 0; k < characterList[i].components.Count; k++)
             {
@@ -289,34 +369,11 @@ public class BookManager : MonoBehaviour
                 inst.transform.eulerAngles = component.rotation;
             } */
         }
-
-        for(int i = 0; i < characterList.Count; i++)
-        {
-            diaryList[i].GetComponent<RectTransform>().SetAsLastSibling();
-        }    
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void ButtonFunction()
-    {      
-        for(int i = 0; i < characterList.Count; i++)
-        {
-            GameObject button = EventSystem.current.currentSelectedGameObject;
-            if(button == buttonList[i])
-            {
-                diaryList[i].SetActive(true);
-            }
-        }
+        
     }
 
     public void HouseSceneLoad()
     {
         gameManager.HouseSceneLoad();
-    }
-    
+    }    
 }

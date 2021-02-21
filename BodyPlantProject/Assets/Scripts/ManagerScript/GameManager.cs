@@ -155,5 +155,17 @@ public class GameManager : MonoBehaviour
         return seconds;
     }
 
+    public ComponentDataClass FindData(string name)
+    {
+        foreach (ComponentDataClass data in wholeComponents.componentList)
+        {
+            if (name == data.name)
+            {
+                return data;
+            }
+        }
+        return null;
+    }
+
 
 }
