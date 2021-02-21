@@ -30,6 +30,8 @@ public class GiveCoin : MonoBehaviour
     public float nowCoin;
     DateTime startTime;
     public Text coinText;
+    //0 hunt 1 fish 2 mine
+    int nowWorkIndex;
 
     void Start()
     {
@@ -53,6 +55,7 @@ public class GiveCoin : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        nowWorkIndex = nowWork;
         if (list == null)
         {
             return;
@@ -118,10 +121,26 @@ public class GiveCoin : MonoBehaviour
             yield return new WaitForSeconds(1f);
             for (int i = 0; i < characterList.Count; i++)
             {
-                float timePerSecond = characterList[i].fishWorkRatio;
+                float timePerSecond;
+                //0 hunt 1 fish 2 mine
+                if (nowWorkIndex == 0)
+                {
+                    timePerSecond = characterList[i].huntWorkRatio;
+                }
+                else if(nowWorkIndex == 1)
+                {
+                    timePerSecond = characterList[i].fishWorkRatio;
+                }
+                else
+                {
+                    timePerSecond = characterList[i].mineWorkRatio;
+                }
+                //기본은 1.5 한마리만 1.5다.
                 characterList[i].workEndTime = DateTime.Now.ToString();
                 wholeWorkingTime += timePerSecond;
+                //1초당 캐릭터리스트.count * 1
                 characterList[i].fishTime++;
+                //
             }
             nowCoin = wholeWorkingTime * timeCoinRatio;
             if (nowCoin >= 50)

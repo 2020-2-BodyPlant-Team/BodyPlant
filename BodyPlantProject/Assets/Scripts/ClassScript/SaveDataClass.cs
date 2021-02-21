@@ -14,6 +14,7 @@ public class SaveDataClass
     public List<CharacterClass> huntCharacterList;
     public List<CharacterClass> mineCharacterList;
     public List<CharacterClass> fishCharacterList;
+    //0 hunt 1 mine 2 fish
 
     public List<ComponentClass> owningComponentList;    //현재 내가 수확을 끝마친 부위의 리스트
     public int coin;                            //현재 가지고있는 코인

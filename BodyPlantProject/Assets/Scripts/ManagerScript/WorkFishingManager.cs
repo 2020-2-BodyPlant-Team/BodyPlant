@@ -38,6 +38,8 @@ public class WorkFishingManager : MonoBehaviour
     public GameObject[] boatObjectArray;
     public GiveCoin coinManager;
 
+    public WorkCharacterManager workCharacterManager;
+
 
     IEnumerator cor;    //Coloring 코루틴 일시정지용
 
@@ -91,6 +93,8 @@ public class WorkFishingManager : MonoBehaviour
 
         coinManager.SetCharacterList(characterList, 1);
         fishElementText.text = saveData.fishElement.ToString();
+
+        workCharacterManager.SetCharacterList(characterList);
 
     }
 

@@ -351,8 +351,10 @@ public class CharacterMover : MonoBehaviour
 
     public CharacterClass ChooseCharacter(GameObject touchedObject)
     {
+
         GameObject characterObject = touchedObject;
         int characterIndex = -1;
+        /*
         while (characterObject.transform.parent != null)
         {
             characterObject = characterObject.transform.parent.gameObject;
@@ -371,6 +373,31 @@ public class CharacterMover : MonoBehaviour
             return null;
         }
         return characterList[characterIndex];
+        */
+
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            for(int j = 0; j < characterList[i].components.Count; j++)
+            {
+                if (characterList[i].components[j].realGameobject == characterObject)
+                {
+                    characterIndex = i;
+                    break;
+                }
+            }
+            if (characterIndex != -1)
+            {
+                break;
+            }
+        }
+        if (characterIndex == -1)
+        {
+            Debug.Log("좆됐다 캐릭터를 못찾았다");
+            return null;
+        }
+        return characterList[characterIndex];
+
+
     }
 
 
