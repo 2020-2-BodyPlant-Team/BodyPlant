@@ -90,19 +90,13 @@ public class BookManager : MonoBehaviour
             {
                 ComponentClass component = characterList[i].components[k];
                 string path;
-                if (component.secondSwitch)
-                {
-                    path = "Components/Complete/" + component.name + "2";
-                }
-                else
-                {
-                    path = "Components/Complete/" + component.name;
-                }
-                
+                path = "Components/Complete/" + component.name;
+
                 GameObject prefab = Resources.Load<GameObject>(path);
                 GameObject inst = Instantiate(prefab,parent.transform);
                 inst.transform.localPosition = component.position;
                 inst.transform.eulerAngles = component.rotation;
+                component.realGameobject = inst;
                 
                 string name = component.name;
 
@@ -223,58 +217,65 @@ public class BookManager : MonoBehaviour
             float yMaxDiaryPos = 3f;
 
             //만약 크기를 조정하고나서 캐릭터가 범위에 벗어나게 생성되었을 때 위치 조정해주기
+            //알겠어
             for(int j = 0; j < characterList[i].components.Count; j++)
             {
-                if(characterList[i].components[j].position.x < xMinDiaryPos)
+                GameObject obj = characterList[i].components[j].realGameobject;
+                if (obj.transform.position.x < xMinDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.x += (xMinDiaryPos - characterList[i].components[j].position.x);
+                    vector.x += (xMinDiaryPos - obj.transform.position.x);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].position.x > xMaxDiaryPos)
+
+                if(obj.transform.position.x > xMaxDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    vector.x -= (obj.transform.position.x - xMaxDiaryPos);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].position.y < yMinDiaryPos)
+
+                if(obj.transform.position.y < yMinDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    vector.y += (yMinDiaryPos - obj.transform.position.y);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].position.y > yMaxDiaryPos)
+                if(obj.transform.position.y > yMaxDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    vector.y -= (obj.transform.position.y - yMaxDiaryPos);
                     parent.transform.position = vector;
                 }
             }
             // 여기도 마찬가지로 팔, 다리 ,머리카락의 세컨드 포지션까지 포함해줘
             for(int j = 0; j < characterList[i].components.Count; j++)
             {
-                if(characterList[i].components[j].secondPosition.x < xMinDiaryPos)
+                Transform obj = characterList[i].components[j].realGameobject.transform.GetChild(1);
+                if (obj.position.x < xMinDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.x += (xMinDiaryPos - characterList[i].components[j].position.x);
+                    vector.x += (xMinDiaryPos - obj.position.x);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].secondPosition.x > xMaxDiaryPos)
+
+                if(obj.position.x > xMaxDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.x -= (characterList[i].components[j].position.x - xMaxDiaryPos);
+                    vector.x -= (obj.position.x - xMaxDiaryPos);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].secondPosition.y < yMinDiaryPos)
+
+                if(obj.position.y < yMinDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.y += (yMinDiaryPos - characterList[i].components[j].position.y);
+                    vector.y += (yMinDiaryPos - obj.position.y);
                     parent.transform.position = vector;
                 }
-                if(characterList[i].components[j].secondPosition.y > yMaxDiaryPos)
+                if(obj.position.y > yMaxDiaryPos)
                 {
                     Vector3 vector = parent.transform.position;
-                    vector.y -= (characterList[i].components[j].position.y - yMaxDiaryPos);
+                    vector.y -= (obj.position.y - yMaxDiaryPos);
                     parent.transform.position = vector;
                 }
             }
