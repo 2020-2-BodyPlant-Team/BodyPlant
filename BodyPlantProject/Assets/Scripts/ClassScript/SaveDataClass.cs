@@ -24,7 +24,11 @@ public class SaveDataClass
     public int huntElement;
     public int mineElement;
     public int fishElement;                //보조성분. 
-         
+
+    public bool trainSelled;
+    public bool chairSelled;
+
+    public int[] beanRemainingArray;  //씨앗 남아있는 양
 
     public SaveDataClass()
     {
@@ -36,6 +40,12 @@ public class SaveDataClass
         huntCharacterList = new List<CharacterClass>();
         mineCharacterList = new List<CharacterClass>();
         fishCharacterList = new List<CharacterClass>();
+
+        beanRemainingArray = new int[10];
+        for(int i = 0; i < beanRemainingArray.Length; i++)
+        {
+            beanRemainingArray[i] = 10;
+        }
 
 
         characterList = new List<CharacterClass>();

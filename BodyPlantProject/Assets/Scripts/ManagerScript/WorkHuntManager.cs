@@ -11,6 +11,7 @@ public class WorkHuntManager : MonoBehaviour
     WholeComponents wholeComponents;
     List<CharacterClass> characterList;
     public GiveCoin coinManager;
+    public WorkCharacterManager workCharacterManager;
 
     float waitSec;
     public GameObject sideDeer;
@@ -79,6 +80,8 @@ public class WorkHuntManager : MonoBehaviour
 
         StartCoroutine("DeerOut");
         StartCoroutine(DeerMove());
+
+        workCharacterManager.SetCharacterList(characterList);
 
     }
 

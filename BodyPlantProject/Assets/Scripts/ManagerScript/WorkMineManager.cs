@@ -17,6 +17,8 @@ public class WorkMineManager : MonoBehaviour
     public GameObject bringButton;
     public Text mineElementText;
 
+    public WorkCharacterManager workCharacterManager;
+
 
     Image barImage;
     float maxBar = 100f;
@@ -79,8 +81,10 @@ public class WorkMineManager : MonoBehaviour
 
         aim.SetActive(false);
         InvokeRepeating("SpawnAim", 2, 1);
+        workCharacterManager.SetCharacterList(characterList);
+
     }
-    
+
     void Update()
     {
         barImage.fillAmount = barAmount / maxBar;

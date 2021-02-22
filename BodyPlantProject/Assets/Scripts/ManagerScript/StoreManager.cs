@@ -250,6 +250,7 @@ public class StoreManager : MonoBehaviour
         leftPot--;
         gameManager.Save();
         buySeed3Button.gameObject.SetActive(true);
+
     }
     public void buySeed4()
     {
@@ -261,6 +262,7 @@ public class StoreManager : MonoBehaviour
         leftPot--;
         gameManager.Save();
         buySeed4Button.gameObject.SetActive(true);
+
     }
     public void buySeed5()
     {
@@ -353,14 +355,15 @@ public class StoreManager : MonoBehaviour
         buySeed12Button.gameObject.SetActive(true);
     }
 
-    public void buyToy()
+    public void buyChair()
     {
         saveData.coin -= 20;
         PlayerPrefs.SetInt("IsToySold", 1);
         toyPrice.text = "구매가 완료되었습니다!";
         buyToyButton.gameObject.SetActive(false);
+
     }
-    public void buyBeanBag()
+    public void buyTrain()
     {
         saveData.coin -= 20;
         PlayerPrefs.SetInt("IsBeanBagSold", 1);

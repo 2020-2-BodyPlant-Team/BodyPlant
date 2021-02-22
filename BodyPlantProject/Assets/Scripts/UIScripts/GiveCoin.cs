@@ -32,6 +32,7 @@ public class GiveCoin : MonoBehaviour
     public Text coinText;
     //0 hunt 1 fish 2 mine
     int nowWorkIndex;
+    int trainCoin = 30;
 
     void Start()
     {
@@ -143,6 +144,12 @@ public class GiveCoin : MonoBehaviour
                 //
             }
             nowCoin = wholeWorkingTime * timeCoinRatio;
+
+            if (nowWorkIndex == 2 && saveData.trainSelled)
+            {
+                nowCoin += trainCoin;
+            }
+
             if (nowCoin >= 50)
             {
                 bool exist = false;
