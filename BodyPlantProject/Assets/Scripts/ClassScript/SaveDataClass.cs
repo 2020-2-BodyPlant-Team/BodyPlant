@@ -28,7 +28,7 @@ public class SaveDataClass
     public bool trainSelled;
     public bool chairSelled;
 
-    public int[] beanRemainingArray;  //씨앗 남아있는 양
+    //public int[] beanRemainingArray;  //잔량이었는데 이거 안한대. 이거때매 기획 바꿀뻔해서 살짝 화날뻔.
 
     public SaveDataClass()
     {
@@ -41,12 +41,6 @@ public class SaveDataClass
         mineCharacterList = new List<CharacterClass>();
         fishCharacterList = new List<CharacterClass>();
 
-        beanRemainingArray = new int[10];
-        for(int i = 0; i < beanRemainingArray.Length; i++)
-        {
-            beanRemainingArray[i] = 10;
-        }
-
 
         characterList = new List<CharacterClass>();
 
@@ -55,6 +49,8 @@ public class SaveDataClass
         mineElement = 100;
         huntElement = 100;
         coin = 5000;
+        trainSelled = false;
+        chairSelled = false;
 
 
     }

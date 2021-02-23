@@ -1791,7 +1791,6 @@ MonoBehaviour:
     fishElement: 0
     trainSelled: 0
     chairSelled: 0
-    beanRemainingArray: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   fromPotScene: 0
   workSceneIndex: 0
 --- !u!4 &1591879849
