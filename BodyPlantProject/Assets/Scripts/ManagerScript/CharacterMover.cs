@@ -396,8 +396,6 @@ public class CharacterMover : MonoBehaviour
             return null;
         }
         return characterList[characterIndex];
-
-
     }
 
 
