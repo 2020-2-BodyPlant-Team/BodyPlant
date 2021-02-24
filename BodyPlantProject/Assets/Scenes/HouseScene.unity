@@ -1820,7 +1820,7 @@ GameObject:
   - component: {fileID: 1618812230}
   - component: {fileID: 1618812229}
   m_Layer: 5
-  m_Name: ComposeScene
+  m_Name: SetupButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1887,18 +1887,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1618812230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2039371416}
-        m_MethodName: ComposeSceneLoad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1618812230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2308,6 +2297,7 @@ MonoBehaviour:
   downParent: {fileID: 662505183}
   leftParent: {fileID: 1258994581}
   rightParent: {fileID: 1036076645}
+  coinText: {fileID: 302968638}
   panel: {fileID: 1687917959}
 --- !u!1 &2136036085
 GameObject:

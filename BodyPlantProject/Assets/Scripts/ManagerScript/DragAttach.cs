@@ -29,7 +29,7 @@ public class DragAttach : MonoBehaviour
     {
         if (isDrag)
         {
-            if (composeManager.rotationMode)
+            if (Input.touchCount > 1)
             {
                 //회전모드일 때는 회전을 한다
                 Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);

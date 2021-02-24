@@ -2,7 +2,7 @@
     "lastPlayTime": "2021-02-19 AM 12:48:15",
     "potList": [
         {
-            "name": "null",
+            "name": "hair",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -11,9 +11,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-02-24 AM 1:37:58",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-02-24 AM 1:38:06",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -35,7 +35,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -10720
             },
             "childObject": {
                 "instanceID": 0
@@ -53,8 +53,8 @@
                 "y": 0.0
             },
             "plantedTime": "2021-02-24 AM 1:37:37",
-            "isSprotued": false,
-            "percentage": 0.4399999976158142,
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -76,7 +76,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": -34104
+                "instanceID": -10664
             },
             "childObject": {
                 "instanceID": 0
@@ -94,8 +94,8 @@
                 "y": 0.0
             },
             "plantedTime": "2021-02-24 AM 1:37:37",
-            "isSprotued": false,
-            "percentage": 0.4399999976158142,
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -117,7 +117,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": -34110
+                "instanceID": -10692
             },
             "childObject": {
                 "instanceID": 0
@@ -180,7 +180,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -34126
+                        "instanceID": -10470
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -34136
+                        "instanceID": -10480
                     },
                     "childObject": {
                         "instanceID": 0
@@ -274,16 +274,16 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -34144
+                        "instanceID": -10488
                     },
                     "childObject": {
-                        "instanceID": -34152
+                        "instanceID": -10496
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -34122
+                "instanceID": -10466
             }
         },
         {
@@ -338,10 +338,10 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -34160
+                        "instanceID": -10504
                     },
                     "childObject": {
-                        "instanceID": -34168
+                        "instanceID": -10512
                     },
                     "isHarvested": true
                 },
@@ -383,7 +383,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -34188
+                        "instanceID": -10532
                     },
                     "childObject": {
                         "instanceID": 0
@@ -392,7 +392,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -34156
+                "instanceID": -10500
             }
         },
         {
@@ -449,7 +449,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -34202
+                        "instanceID": -10546
                     },
                     "childObject": {
                         "instanceID": 0
@@ -496,7 +496,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -34212
+                        "instanceID": -10556
                     },
                     "childObject": {
                         "instanceID": 0
@@ -543,16 +543,16 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -34220
+                        "instanceID": -10564
                     },
                     "childObject": {
-                        "instanceID": -34228
+                        "instanceID": -10572
                     },
                     "isHarvested": true
                 }
             ],
             "realGameobject": {
-                "instanceID": -34198
+                "instanceID": -10542
             }
         }
     ],
@@ -2030,17 +2030,5 @@
     "mineElement": 70,
     "fishElement": 70,
     "trainSelled": false,
-    "chairSelled": false,
-    "beanRemainingArray": [
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10
-    ]
+    "chairSelled": false
 }

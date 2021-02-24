@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HouseManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class HouseManager : MonoBehaviour
     Vector2 leftPos;
     Vector2 rightPos;
     Vector2 downPos;
+
+    public Text coinText;
 
     public void PotSceneLoad()
     {
@@ -138,6 +141,8 @@ public class HouseManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.characterList;
+
+        coinText.text = saveData.coin.ToString();
 
         upPos = new Vector2(0, 200);
         leftPos = new Vector2(-350, 0);

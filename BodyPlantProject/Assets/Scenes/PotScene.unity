@@ -4778,11 +4778,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 644297186}
+      objectReference: {fileID: 644297187}
     - target: {fileID: 1125275686344529399, guid: 04b30f4df1ab9a543875e6cb2ede5036,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125275686344529399, guid: 04b30f4df1ab9a543875e6cb2ede5036,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StoreSceneLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125275686344529399, guid: 04b30f4df1ab9a543875e6cb2ede5036,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1665179260873521087, guid: 04b30f4df1ab9a543875e6cb2ede5036,
         type: 3}

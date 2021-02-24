@@ -33,7 +33,7 @@ public class ComposeManager : MonoBehaviour
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
 
-    public bool rotationMode;
+    //public bool rotationMode;
     public bool flipMode;
     bool modifyMode;
     public GameObject modifyPanel;
@@ -80,7 +80,7 @@ public class ComposeManager : MonoBehaviour
         attachObjectList = new List<List<GameObject>>();
         buttonList = new List<GameObject>();
         removedButtonList = new List<int>();
-        rotationMode = false;
+        //rotationMode = false;
         modifyMode = false;
         saveButton.SetActive(false);
         isModifiedCharacter = false;
@@ -591,15 +591,16 @@ public class ComposeManager : MonoBehaviour
         
     }
 
-    public void RotationButton()
+    /*public void RotationButton()
     {
         rotationMode = !rotationMode;
         flipMode = false;
-    }
+    }*/
+
     public void FlipButton()
     {
         flipMode = !flipMode;
-        rotationMode = false;
+        //rotationMode = false;
     }
     public void ModifyButton()
     {
@@ -993,7 +994,7 @@ public class ComposeManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))    //터치끝났을 때 adjustattach
         {
-            if(!flipMode && !rotationMode)
+            if(!flipMode)
             {
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
                 if (hit = Physics2D.Raycast(mousePos, Vector2.zero))

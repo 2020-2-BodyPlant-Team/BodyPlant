@@ -119,17 +119,17 @@ public class JsonManager
         builder.Append(directory);
         //위까지는 세이브랑 똑같다
         //파일스트림을 만들어준다. 파일모드를 open으로 해서 열어준다. 다 구글링이다
-        if (!Directory.Exists(builder.ToString()))
+        string builderToString = builder.ToString();
+        if (!Directory.Exists(builderToString))
         {
             //디렉토리가 없는경우 만들어준다
-            Directory.CreateDirectory(builder.ToString());
+            Directory.CreateDirectory(builderToString);
 
         }
         builder.Append(appender);
 
         if (File.Exists(builder.ToString()))
         {
-
             //세이브 파일이 있는경우
 
             FileStream stream = new FileStream(builder.ToString(), FileMode.Open);
