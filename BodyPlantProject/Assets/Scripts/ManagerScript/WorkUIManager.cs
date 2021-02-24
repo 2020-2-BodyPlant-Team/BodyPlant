@@ -84,11 +84,7 @@ public class WorkUIManager : MonoBehaviour
         {
             characterList = saveData.fishCharacterList;
         }
-        else
-        {
-            Application.Quit();
-            //걍 꺼버려 ㅋㅋㅋ
-        }
+
         if (characterList.Count < 5)
         {
             saveData.characterList.Remove(chosenCharacter);

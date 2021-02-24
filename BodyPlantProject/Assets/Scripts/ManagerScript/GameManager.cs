@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         if (past == null || latest == null)
         {
             Debug.Log("time is null");
-            Application.Quit();
+            //Application.Quit();
             return 0;
         }
 

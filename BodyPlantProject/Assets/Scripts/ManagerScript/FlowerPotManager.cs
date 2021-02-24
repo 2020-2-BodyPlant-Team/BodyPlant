@@ -245,7 +245,7 @@ public class FlowerPotManager : MonoBehaviour
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
         componentsInPot[index].isHarvested = false;
         //만약 현재 확대된 상태면 수확버튼 활성화.
-        if (nowMagnified)
+        if (nowMagnified && nowMagnifiedPotIndex == index)
         {
             for(int i = 0; i < elementButtonArray.Length; i++)
             {
@@ -297,6 +297,10 @@ public class FlowerPotManager : MonoBehaviour
     {
         int index = nowMagnifiedPotIndex;   //어차피 확대된 거에서만 호출하니까 확대된 index를 불러온다.
         Debug.Log("이거 되긴 하냐" + index);
+        if(componentsInPot[index].name == null)
+        {
+            return;
+        }
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
         for (int i = 0; i < elementButtonArray.Length; i++)

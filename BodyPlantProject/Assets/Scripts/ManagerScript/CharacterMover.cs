@@ -182,7 +182,15 @@ public class CharacterMover : MonoBehaviour
 
             rotationList.Add(0);
             randomRotateTimeList.Add(Random.Range(1f, 2f));
-            randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
+            if(component.rotation.y == 0)
+            {
+                randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
+            }
+            else
+            {
+                randomAngleList.Add(new Vector3(0, 180, Random.Range(-30, 30) + component.rotation.z));
+            }
+            
             startAngleList.Add(component.rotation);
             originAngleList.Add(component.rotation.z);
             rotatingObjectList.Add(component.realGameobject);
@@ -220,7 +228,14 @@ public class CharacterMover : MonoBehaviour
                 component.childObject = component.realGameobject.transform.GetChild(0).gameObject;
                 rotationList.Add(0);
                 randomRotateTimeList.Add(Random.Range(1f, 2f));
-                randomAngleList.Add(new Vector3(0, 0, angle.z + Random.Range(-30, 30)));
+                if (component.rotation.y == 0)
+                {
+                    randomAngleList.Add(new Vector3(0, 0, Random.Range(-30, 30) + component.rotation.z));
+                }
+                else
+                {
+                    randomAngleList.Add(new Vector3(0, 180, Random.Range(-30, 30) + component.rotation.z));
+                }
                 startAngleList.Add(angle);
                 originAngleList.Add(angle.z);
                 rotatingObjectList.Add(component.childObject);
@@ -328,7 +343,15 @@ public class CharacterMover : MonoBehaviour
                 rotationList[i] = 0;
                 randomRotateTimeList[i] = Random.Range(1f, 2f);
                 startAngleList[i] = randomAngleList[i];
-                randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-30, 30));
+                if(startAngleList[i].y == 0)
+                {
+                    randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-30, 30));
+                }
+                else
+                {
+                    randomAngleList[i] = new Vector3(0, 180, originAngleList[i] + Random.Range(-30, 30));
+                }
+                
             }
         }
     }

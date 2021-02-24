@@ -9,7 +9,7 @@ public class WorkHuntManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
-    List<CharacterClass> characterList;
+    public List<CharacterClass> characterList;
     public GiveCoin coinManager;
     public WorkCharacterManager workCharacterManager;
 
@@ -52,10 +52,7 @@ public class WorkHuntManager : MonoBehaviour
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.huntCharacterList;
 
-        if (characterList.Count > 3)
-        {
-            Application.Quit(); //몰라 꺼버려 ㅋㅋ
-        }
+       
         if (characterList.Count == 3 || saveData.characterList.Count == 0)
         {
             bringButton.SetActive(false);
