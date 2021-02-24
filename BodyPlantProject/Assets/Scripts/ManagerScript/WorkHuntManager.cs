@@ -19,6 +19,7 @@ public class WorkHuntManager : MonoBehaviour
 
     public float limitTime = 2f;
     public GameObject frontDeer;
+    Animator fdAnimator;
     public bool isFront = false;
     public CharacterMover characterMover;
     public GameObject[] parentObjectArray;
@@ -60,6 +61,7 @@ public class WorkHuntManager : MonoBehaviour
 
 
         sideAni = sideDeer.GetComponent<Animation>();
+        fdAnimator = frontDeer.GetComponent<Animator>();
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -134,9 +136,8 @@ public class WorkHuntManager : MonoBehaviour
                         saveData.huntElement++;
                         gameManager.Save();
                         huntElementText.text = saveData.huntElement.ToString();
-
                         Debug.Log("힘겨루기 승리");
-                        frontDeer.SetActive(false);
+                        StartCoroutine("DeerTear");
                         count = 0;
                     }
                     else
@@ -164,5 +165,14 @@ public class WorkHuntManager : MonoBehaviour
         }
 
         characterMover.RotationUpdate();
+    }
+
+    IEnumerator DeerTear()
+    {
+        //fdAnimator.SetTrigger("isWin");
+        fdAnimator.SetBool("isWinning", true);
+        yield return new WaitForSeconds(2);
+        frontDeer.SetActive(false);
+        //fdAnimator.SetBool("isWinning", false);
     }
 }

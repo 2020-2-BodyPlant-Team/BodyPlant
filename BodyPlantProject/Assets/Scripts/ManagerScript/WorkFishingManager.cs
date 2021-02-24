@@ -27,11 +27,13 @@ public class WorkFishingManager : MonoBehaviour
     public float posX;
     public float animSpeed;
     float loopTime;
+    RectTransform rt;
 
     public GameObject panjung;
-    float a = 0;
-    float b = 0; //Coloring 코루틴에서 while 돌리려고 만든 변수입니다
+    public float a = 0; //Coloring 코루틴에서 while 돌리려고 만든 변수입니다
+    //float b = 0; 
     public bool touchforfish = false;
+    bool ifSunggong = false;
     public CharacterMover characterMover;
     public Text fishElementText;
 
@@ -39,7 +41,6 @@ public class WorkFishingManager : MonoBehaviour
     public GiveCoin coinManager;
 
     public WorkCharacterManager workCharacterManager;
-
 
     IEnumerator cor;    //Coloring 코루틴 일시정지용
 
@@ -74,13 +75,13 @@ public class WorkFishingManager : MonoBehaviour
         }
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        iconAnimator = icon.GetComponent<Animator>();
-
-        cor = Coloring();
-        StartCoroutine(cor);    //근데 이거 스타트에 있으면 바로 시작해야 되는거 아닌가요 왜 안되지ㅠㅠㅠㅠ??????????????????????
         
-        for(int i = 0; i < characterList.Count; i++)
+        fishingBar.SetActive(false);
+        iconAnimator = icon.GetComponent<Animator>();
+        cor = Coloring();
+        StartCoroutine(cor);
+
+        for (int i = 0; i < characterList.Count; i++)
         {
             boatObjectArray[i].SetActive(true);
             GameObject characterObject;
@@ -98,53 +99,48 @@ public class WorkFishingManager : MonoBehaviour
 
     }
 
-
     IEnumerator Coloring()
     {
+        icon.transform.localPosition = new Vector2(-300, icon.transform.localPosition.y);
+        touchforfish = false;
+        panjung.GetComponent<Image>().color = new Color(215 / 255f, 57 / 255f, 57 / 255f);
+        WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(1.0f, 4.0f));
+        if (ifSunggong)
+        {
+            yield return loopTime;
+            ifSunggong = false;
+        }
         fishingBar.SetActive(true);
         animSpeed = UnityEngine.Random.Range(1.5f, 4f);
         iconAnimator.SetFloat("fishingSpeed", animSpeed);
-        iconAnimator.SetTrigger("isFishing");
-        while (posX <= -52)
+        //iconAnimator.SetTrigger("isFishing");
+        iconAnimator.SetBool("isFish", true);
+        WaitForSeconds wait = new WaitForSeconds(0.02f);
+        while (posX <= 351)
         {
             posX = icon.transform.localPosition.x;
-            panjung.GetComponent<Image>().color = Color.Lerp(Color.red, Color.yellow, a);
-            a = (posX + 300) / 248; //(posX + 300) / 300
-            yield return new WaitForSeconds(0.02f);
-        }
-        while (posX > -52)
-        {
-            posX = icon.transform.localPosition.x;
-            panjung.GetComponent<Image>().color = Color.Lerp(Color.yellow, Color.green, b);
-            b = (posX + 52) / 247;  //posX / 300
-            //if (panjung.GetComponent<Image>().color == Color.green)
-            if(posX > 195)
-            {
-                touchforfish = true;
-            }
-            if(posX > 346)
+            panjung.GetComponent<Image>().color = Color.Lerp(new Color(215 / 255f, 57 / 255f, 57 / 255f), new Color(72 / 255f, 163 / 255f, 62 / 225f), a);
+            a = (posX + 300) / 485;
+            yield return wait;
+            if (posX >= 345)
             {
                 panjung.GetComponent<Image>().color = Color.black;
-                touchforfish = false;
-                iconAnimator.SetFloat("fishingSpeed", 0);
-                yield return new WaitForSeconds(0.2f);
-                iconAnimator.SetFloat("fishingSpeed", 1);   //의도:판정바 검정색 된 거 좀 보여주고 가라
+                yield return wait;
+                break;
             }
-            yield return new WaitForSeconds(0.02f);
         }
+        iconAnimator.SetBool("isFish", false);
         fishingBar.SetActive(false);
-        touchforfish = false;
-        loopTime = UnityEngine.Random.Range(1.0f, 4.0f);
-        yield return new WaitForSeconds(loopTime);
+        yield return loopTime;
         cor = Coloring();
         StartCoroutine(cor);
     }
-
+    
     void Update()
     {
         characterMover.FishingUpdate();
 
-        if(touchforfish == true)
+        if(touchforfish)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -156,8 +152,9 @@ public class WorkFishingManager : MonoBehaviour
                 touchforfish = false;
                 StopCoroutine(cor);
                 fishingBar.SetActive(false);
+                ifSunggong = true;
                 cor = Coloring();
-                StartCoroutine(cor);    //의도:낚시 성공하면 코루틴 바로 끝내고 새로 시작해라
+                StartCoroutine(cor);
             }
         }
     }
