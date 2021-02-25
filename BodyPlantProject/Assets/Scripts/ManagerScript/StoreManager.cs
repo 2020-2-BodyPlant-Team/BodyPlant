@@ -316,18 +316,16 @@ public class StoreManager : MonoBehaviour
     }
 
 
-    public void buyChair()
+    public void buyTrain()
     {
-        saveData.coin -= 20;
-        PlayerPrefs.SetInt("IsToySold", 1);
+        saveData.coin -= 700;
         toyPrice.text = "구매가 완료되었습니다!";
         buyToyButton.gameObject.SetActive(false);
 
     }
-    public void buyTrain()
+    public void buyChair()
     {
-        saveData.coin -= 20;
-        PlayerPrefs.SetInt("IsBeanBagSold", 1);
+        saveData.coin -= 800;
         beanBagPrice.text = "구매가 완료되었습니다!";
         buyBeanBagButton.gameObject.SetActive(false);
     }
