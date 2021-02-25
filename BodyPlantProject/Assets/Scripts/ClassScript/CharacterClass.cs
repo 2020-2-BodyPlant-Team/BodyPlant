@@ -18,6 +18,7 @@ public class CharacterClass
     public DateTime createdDateTime;        //년월일 쓰기 위해서 만듦
     public string lastEarnedTime;         //최근에 수금한 날짜.
     public string workEndTime;              //가장 마지막 일에서 나온 날짜.
+    public string loveStartTime;            //애정도가 차오르는 그거.
 
     public int huntTime;
     public int fishTime;

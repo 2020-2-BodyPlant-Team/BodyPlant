@@ -162,6 +162,8 @@ public class HouseManager : MonoBehaviour
         rightRect = rightParent.GetComponent<RectTransform>();
     }
 
+
+
     void Update()
     {
         characterMover.PositionUpdate();
