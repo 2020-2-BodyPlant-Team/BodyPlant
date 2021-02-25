@@ -250,6 +250,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &129458076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129458077}
+  - component: {fileID: 129458079}
+  - component: {fileID: 129458078}
+  m_Layer: 5
+  m_Name: BeanBagDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &129458077
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129458076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 872395562}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -35.97, y: 275}
+  m_SizeDelta: {x: 300, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &129458078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129458076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC804\uCCB4 \uC0DD\uBA85\uCCB4 \uC560\uC815\uB3C4 \uC0C1\uC2B9\uB960
+    \uC18C\uD3ED(5%) \uC99D"
+--- !u!222 &129458079
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129458076}
+  m_CullTransparentMesh: 0
 --- !u!1 &150203157
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,15 +725,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2125242661}
+  m_Children: []
   m_Father: {fileID: 872395562}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.30002, y: 41.999878}
-  m_SizeDelta: {x: 220, y: 220}
+  m_AnchoredPosition: {x: 285, y: 300}
+  m_SizeDelta: {x: 205, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &309698494
 GameObject:
@@ -1069,8 +1147,6 @@ MonoBehaviour:
   seed8Price: {fileID: 150203160}
   seed9Price: {fileID: 1483981007}
   seed10Price: {fileID: 2061088726}
-  seed11Price: {fileID: 0}
-  seed12Price: {fileID: 0}
   toyPrice: {fileID: 1050320654}
   beanBagPrice: {fileID: 2125242663}
   buySeed1Button: {fileID: 1786474275}
@@ -1083,8 +1159,6 @@ MonoBehaviour:
   buySeed8Button: {fileID: 720530511}
   buySeed9Button: {fileID: 649306664}
   buySeed10Button: {fileID: 1241839198}
-  buySeed11Button: {fileID: 0}
-  buySeed12Button: {fileID: 0}
   buyToyButton: {fileID: 1171299571}
   buyBeanBagButton: {fileID: 294411037}
 --- !u!1 &649306660
@@ -1659,6 +1733,10 @@ RectTransform:
   m_Children:
   - {fileID: 1171299568}
   - {fileID: 294411040}
+  - {fileID: 1050320652}
+  - {fileID: 2125242661}
+  - {fileID: 1602016995}
+  - {fileID: 129458077}
   m_Father: {fileID: 708164734}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1738,7 +1816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -275, y: -1325}
+  m_AnchoredPosition: {x: -275, y: -1000}
   m_SizeDelta: {x: 232.95032, y: 225.12964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872410733
@@ -2363,7 +2441,7 @@ GameObject:
   - component: {fileID: 1050320653}
   - component: {fileID: 1050320654}
   m_Layer: 5
-  m_Name: ToyPrice
+  m_Name: ToyName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2380,12 +2458,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1171299568}
-  m_RootOrder: 0
+  m_Father: {fileID: 872395562}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 146}
+  m_AnchoredPosition: {x: -35.97, y: 625}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1050320653
@@ -2428,7 +2506,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toy Price
+  m_Text: "\uCE59\uCE59\uD3ED\uD3ED \uAE30\uCC28"
 --- !u!1 &1053397655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,15 +2970,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1050320652}
+  m_Children: []
   m_Father: {fileID: 872395562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -168, y: 42}
-  m_SizeDelta: {x: 220, y: 220}
+  m_AnchoredPosition: {x: 285, y: 625}
+  m_SizeDelta: {x: 205, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171299569
 MonoBehaviour:
@@ -3224,8 +3301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.93411255, y: -1161}
-  m_SizeDelta: {x: -1.8681641, y: 2323.941}
+  m_AnchoredPosition: {x: 0.93411255, y: -1119.1}
+  m_SizeDelta: {x: -1.8681641, y: 2240.0054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271239657
 MonoBehaviour:
@@ -3515,8 +3592,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733718699}
   m_HandleRect: {fileID: 1733718698}
   m_Direction: 2
-  m_Value: 0.9995824
-  m_Size: 0.3976832
+  m_Value: 0.99959695
+  m_Size: 0.4065269
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3866,6 +3943,85 @@ MonoBehaviour:
   m_Text: 'Coin Amount
 
 '
+--- !u!1 &1602016994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602016995}
+  - component: {fileID: 1602016997}
+  - component: {fileID: 1602016996}
+  m_Layer: 5
+  m_Name: ToyDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1602016995
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602016994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 872395562}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -35.97, y: 600}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1602016996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602016994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uAD11\uC9C8 \uC644\uB8CC\uC2DC \uC5BB\uB294 \uCF54\uC778 \uC591 \uC18C\uD3ED(+1)
+    \uC99D\uAC00"
+--- !u!222 &1602016997
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602016994}
+  m_CullTransparentMesh: 0
 --- !u!1 &1632005099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,7 +5543,7 @@ GameObject:
   - component: {fileID: 2125242662}
   - component: {fileID: 2125242663}
   m_Layer: 5
-  m_Name: BeanBagPrice
+  m_Name: BeanBagName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5404,12 +5560,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 294411040}
-  m_RootOrder: 0
+  m_Father: {fileID: 872395562}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 146}
+  m_AnchoredPosition: {x: -35.97, y: 300}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2125242662
@@ -5452,4 +5608,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bean Bag Price
+  m_Text: "\uD479\uC2E0\uD55C \uCFE0\uC158 \uC758\uC790"
