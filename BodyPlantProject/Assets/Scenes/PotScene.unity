@@ -1734,7 +1734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455f66a6c6790584fa8c445074cb5284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinText: {fileID: 626947635}
 --- !u!1 &642305058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3260,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

@@ -319,7 +319,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1970749814}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -461,9 +461,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterList: []
+  characterMover: {fileID: 0}
+  upParent: {fileID: 0}
+  downParent: {fileID: 0}
+  leftParent: {fileID: 0}
+  rightParent: {fileID: 0}
+  coinText: {fileID: 0}
   panel: {fileID: 0}
-  toy: {fileID: 0}
-  beanBag: {fileID: 0}
 --- !u!4 &767471568
 Transform:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public class BookManager : MonoBehaviour
 
         contentRect.anchoredPosition = new Vector2(0, 0);   
         contentRect.sizeDelta = new Vector2(0, (characterList.Count / 3) * (-buttonYgap));
-        buttonStartPoint = new Vector2(-300, contentRect.sizeDelta.y / 2 - 180);
+        buttonStartPoint = new Vector2(-300, (contentRect.sizeDelta.y / 2) - 180);
         
         GookBabMukGoSipDa(diaryList, buttonList, totalList);
 
@@ -180,27 +180,27 @@ public class BookManager : MonoBehaviour
 
                 if (name == "body")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -1 - bodyNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.1f - bodyNumber * 0.001f);
                     bodyNumber++;
                 }
                 if (name == "arm" || name == "leg")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -2 - armLegNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.2f - armLegNumber * 0.001f);
                     armLegNumber++;
                 }
                 if (name == "hand" || name == "foot")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -3 - handFootNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.3f - handFootNumber * 0.001f);
                     handFootNumber++;
                 }
                 if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -4 - earEyeNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.4f - earEyeNumber * 0.001f);
                     earEyeNumber++;
                 }
                 if (name == "hair")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -5 - hairNumber * 0.01f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.5f - hairNumber * 0.001f);
                     hairNumber++;
                 }
             } 
