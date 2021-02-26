@@ -26,8 +26,6 @@ public class StoreManager : MonoBehaviour
     int isSeed8Sold;
     int isSeed9Sold;
     int isSeed10Sold;
-    int isSeed11Sold;
-    int isSeed12Sold;
     int isToySold;
     int isBeanBagSold;
 
@@ -115,62 +113,58 @@ public class StoreManager : MonoBehaviour
 
 
 
-        
-        isSeed1Sold = PlayerPrefs.GetInt("IsSeed1Sold");
+
         if (saveData.coin >= 50)
             buySeed1Button.interactable = true;
         else
             buySeed1Button.interactable = false;
 
-        isSeed2Sold = PlayerPrefs.GetInt("IsSeed2Sold");
         if (saveData.coin >= 50)
             buySeed2Button.interactable = true;
         else
             buySeed2Button.interactable = false;
 
-        isSeed3Sold = PlayerPrefs.GetInt("IsSeed3Sold");
+     
         if (saveData.coin >= 50)
             buySeed3Button.interactable = true;
         else
             buySeed3Button.interactable = false;
 
-        isSeed4Sold = PlayerPrefs.GetInt("IsSeed4Sold");
+  
         if (saveData.coin >= 50)
             buySeed4Button.interactable = true;
         else
             buySeed4Button.interactable = false;
 
-        isSeed5Sold = PlayerPrefs.GetInt("IsSeed5Sold");
+
         if (saveData.coin >= 70)
             buySeed5Button.interactable = true;
         else
             buySeed5Button.interactable = false;
 
-        isSeed6Sold = PlayerPrefs.GetInt("IsSeed6Sold");
+       
         if (saveData.coin >= 100)
             buySeed6Button.interactable = true;
         else
             buySeed6Button.interactable = false;
 
-        isSeed7Sold = PlayerPrefs.GetInt("IsSeed7Sold");
         if (saveData.coin >= 70)
             buySeed7Button.interactable = true;
         else
             buySeed7Button.interactable = false;
 
-        isSeed8Sold = PlayerPrefs.GetInt("IsSeed8Sold");
+      
         if (saveData.coin >= 100)
             buySeed8Button.interactable = true;
         else
             buySeed8Button.interactable = false;
 
-        isSeed9Sold = PlayerPrefs.GetInt("IsSeed9Sold");
         if (saveData.coin >= 150 )
             buySeed9Button.interactable = true;
         else
             buySeed9Button.interactable = false;
 
-        isSeed10Sold = PlayerPrefs.GetInt("IsSeed10Sold");
+
         if (saveData.coin >= 30)
             buySeed10Button.interactable = true;
         else
@@ -187,13 +181,11 @@ public class StoreManager : MonoBehaviour
 
 
 
-        isToySold = PlayerPrefs.GetInt("IsToySold");
         if (saveData.coin >= 700 && isToySold == 0)
             buyToyButton.interactable = true;
         else
             buyToyButton.interactable = false;
 
-        isBeanBagSold = PlayerPrefs.GetInt("IsBeanBagSold");
         if (saveData.coin >= 800 && isBeanBagSold == 0)
             buyBeanBagButton.interactable = true;
         else
@@ -203,9 +195,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed1()
     {
         saveData.coin -= 50;
-        PlayerPrefs.SetInt("IsSeed1Sold", 1);
+     
         seed1Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("body");
+        boughtNameList.Add("eye");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -215,9 +207,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed2()
     {
         saveData.coin -= 50;
-        PlayerPrefs.SetInt("IsSeed2Sold", 1);
+      
         seed2Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("arm");
+        boughtNameList.Add("nose");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -227,9 +219,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed3()
     {
         saveData.coin -= 50;
-        PlayerPrefs.SetInt("IsSeed3Sold", 1);
+       
         seed3Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("leg");
+        boughtNameList.Add("lip");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -239,7 +231,7 @@ public class StoreManager : MonoBehaviour
     public void buySeed4()
     {
         saveData.coin -= 50;
-        PlayerPrefs.SetInt("IsSeed4Sold", 1);
+    
         seed4Price.text = "구매가 완료되었습니다!";
         boughtNameList.Add("ear");
         boughtDateList.Add(DateTime.Now.ToString());
@@ -251,9 +243,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed5()
     {
         saveData.coin -= 70;
-        PlayerPrefs.SetInt("IsSeed5Sold", 1);
+       
         seed5Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("eye");
+        boughtNameList.Add("hand");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -262,9 +254,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed6()
     {
         saveData.coin -= 100;
-        PlayerPrefs.SetInt("IsSeed6Sold", 1);
+        
         seed6Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("foot");
+        boughtNameList.Add("arm");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -273,9 +265,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed7()
     {
         saveData.coin -= 70;
-        PlayerPrefs.SetInt("IsSeed7Sold", 1);
+       
         seed7Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("hair");
+        boughtNameList.Add("foot");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -284,9 +276,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed8()
     {
         saveData.coin -= 100;
-        PlayerPrefs.SetInt("IsSeed8Sold", 1);
+   
         seed8Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("hand");
+        boughtNameList.Add("leg");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -295,9 +287,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed9()
     {
         saveData.coin -= 150;
-        PlayerPrefs.SetInt("IsSeed9Sold", 1);
+   
         seed9Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("mouth");
+        boughtNameList.Add("body");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -306,9 +298,9 @@ public class StoreManager : MonoBehaviour
     public void buySeed10()
     {
         saveData.coin -= 30;
-        PlayerPrefs.SetInt("IsSeed10Sold", 1);
+     
         seed10Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("nose");
+        boughtNameList.Add("hair");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
@@ -332,7 +324,6 @@ public class StoreManager : MonoBehaviour
 
     public void exitStore()
     {
-        PlayerPrefs.SetInt("CoinAmount", coinAmount);
         SceneManager.LoadScene("HouseScene");
     }
 
