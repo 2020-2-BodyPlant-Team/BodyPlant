@@ -67,6 +67,8 @@ public class BookManager : MonoBehaviour
         
         GookBabMukGoSipDa(diaryList, buttonList, totalList);
 
+        StartCoroutine(LovenessCoroutine());
+
         silhouette = new List<GameObject>();
         for(int i = 0; i < totalList.Count; i++)
         {
@@ -94,6 +96,47 @@ public class BookManager : MonoBehaviour
 
     }
 
+    IEnumerator LovenessCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            UpdateLoveness();
+            for(int i = 0; i < characterList.Count; i++)
+            {
+                diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
+            }
+            gameManager.Save();
+
+        }
+        
+    }
+
+    void UpdateLoveness()
+    {
+        float loveRatio = 1.0f;
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            if (characterList[i].personality == CharacterClass.Personality.Jogon)
+            {
+                loveRatio += 0.02f;
+            }
+        }
+
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            float ratio = loveRatio;
+            if (characterList[i].personality == CharacterClass.Personality.Mongsil)
+            {
+                ratio += 0.05f;
+            }
+            int time = gameManager.TimeSubtractionToSeconds(characterList[i].loveStartTime, DateTime.Now.ToString());
+            characterList[i].loveTime += time;
+            characterList[i].loveStartTime = DateTime.Now.ToString();
+            characterList[i].loveNess += gameManager.loveRatio * ratio * time;
+        }
+    }
+
     public void ButtonFunction()
     {      
         for(int i = 0; i < totalList.Count; i++)
@@ -108,6 +151,7 @@ public class BookManager : MonoBehaviour
 
     public void GookBabMukGoSipDa(List<GameObject> diaryList, List<GameObject> buttonList, List<CharacterClass> characterList)
     {
+        UpdateLoveness();
         for(int i = 0; i < characterList.Count; i++)
         { 
             int elapsedTime;
@@ -145,8 +189,7 @@ public class BookManager : MonoBehaviour
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "조곤조곤";
             }
             
-            //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
-            //이거잠깐 지울게 loveNess지움.
+            diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
             diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());

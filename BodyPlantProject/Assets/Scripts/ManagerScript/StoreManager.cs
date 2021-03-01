@@ -221,7 +221,7 @@ public class StoreManager : MonoBehaviour
         saveData.coin -= 50;
        
         seed3Price.text = "구매가 완료되었습니다!";
-        boughtNameList.Add("lip");
+        boughtNameList.Add("mouth");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
         gameManager.Save();
