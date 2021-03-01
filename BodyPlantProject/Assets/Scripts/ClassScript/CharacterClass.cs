@@ -9,7 +9,7 @@ public class CharacterClass
 {
     public enum Personality     //성격 enum. 굳이 없어도 되는데 편하니까 만드는거에요. 걍 int로 만들고 1 2 3 4 해도됩니다.
     {
-        Mongsil,Dugun,Ussuk,Nunsil
+        Mongsil,Ggumul,Puksin,Jogon
             //몽실몽실, 두근두근, 으쓱으쓱, 는실는실
     }
     public string name;                     //이름;
@@ -23,6 +23,7 @@ public class CharacterClass
     public int huntTime;
     public int fishTime;
     public int mineTime;
+    public int loveTime;                    //애정도가 올라간 시간.
     public float huntWorkRatio;
     public float fishWorkRatio;
     public float mineWorkRatio;
@@ -44,6 +45,8 @@ public class CharacterClass
         huntWorkRatio = 1;
         fishWorkRatio = 1;
         mineWorkRatio = 1;
+        loveStartTime = DateTime.Now.ToString();
+        loveTime = 0;
         loveNess = 0;
     }
 

@@ -132,20 +132,21 @@ public class BookManager : MonoBehaviour
             {
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "몽실몽실";
             }
-            if(characterList[i].personality == CharacterClass.Personality.Dugun)
+            if(characterList[i].personality == CharacterClass.Personality.Ggumul)
             {
-                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "두근두근";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "꾸물꾸물";
             }
-            if(characterList[i].personality == CharacterClass.Personality.Ussuk)
+            if(characterList[i].personality == CharacterClass.Personality.Puksin)
             {
-                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "으쓱으쓱";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "푹신푹신";
             }
-            if(characterList[i].personality == CharacterClass.Personality.Nunsil)
+            if(characterList[i].personality == CharacterClass.Personality.Jogon)
             {
-                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "는실는실";
+                diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "조곤조곤";
             }
             
-            diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
+            //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString();
+            //이거잠깐 지울게 loveNess지움.
             diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
@@ -371,6 +372,8 @@ public class BookManager : MonoBehaviour
         }
         
     }
+
+
 
     public void HouseSceneLoad()
     {

@@ -693,6 +693,13 @@ public class ComposeManager : MonoBehaviour
             character.name = nameInput;
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
 
+            if(character.personality == CharacterClass.Personality.Ggumul)
+            {
+                character.fishWorkRatio += 0.03f;
+                character.huntWorkRatio += 0.03f;
+                character.mineWorkRatio += 0.03f;
+            }
+
             float count = 0;
 
             foreach (ComponentClass component in activedComponent)

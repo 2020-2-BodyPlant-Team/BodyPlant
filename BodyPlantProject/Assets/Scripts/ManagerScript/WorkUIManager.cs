@@ -75,6 +75,31 @@ public class WorkUIManager : MonoBehaviour
     //6 hunt, 7 mine, 8 fish
     public void YesBtn()
     {
+        List<CharacterClass> loveCharacterList = saveData.characterList;
+        float loveRatio = 1.0f;
+        for(int i = 0; i< loveCharacterList.Count; i++)
+        {
+            if(loveCharacterList[i].personality == CharacterClass.Personality.Jogon)
+            {
+                loveRatio += 0.02f;
+            }
+        }
+
+        for (int i = 0; i < loveCharacterList.Count; i++)
+        {
+            float ratio = loveRatio;
+            if (loveCharacterList[i].personality == CharacterClass.Personality.Mongsil)
+            {
+                ratio += 0.05f;
+            }
+            int time = gameManager.TimeSubtractionToSeconds(loveCharacterList[i].loveStartTime, DateTime.Now.ToString());
+            loveCharacterList[i].loveTime += time;
+            loveCharacterList[i].loveStartTime = DateTime.Now.ToString();
+            loveCharacterList[i].loveNess += gameManager.loveRatio * ratio * time;
+        }
+
+
+
         List<CharacterClass> characterList = saveData.huntCharacterList;
         if (gameManager.workSceneIndex == 7)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class WorkCharacterManager : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class WorkCharacterManager : MonoBehaviour
         characterList.Remove(item);
 
         saveData.characterList.Add(item);
+        item.loveStartTime = DateTime.Now.ToString();
 
         item.realGameobject.SetActive(false);
         bringButton.SetActive(true);

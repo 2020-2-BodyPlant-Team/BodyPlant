@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
     public bool fromPotScene;
 
+    public float loveRatio = 0.00001f;  //애정도 * 초 를 할건데 그냥 변수 여따 만듬
+
     public int workSceneIndex;  //일하기 <-> 캐릭터 데려오기 씬 이동용입니다
 
     void Awake()
