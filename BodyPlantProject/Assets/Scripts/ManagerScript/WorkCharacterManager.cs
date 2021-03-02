@@ -36,7 +36,8 @@ public class WorkCharacterManager : MonoBehaviour
         for(int i =0; i<characterList.Count; i++)
         {
             GameObject obj = characterList[i].realGameobject;
-            GameObject buttonObject = Instantiate(buttonPrefab, obj.transform);
+            GameObject buttonObject = Instantiate(buttonPrefab);
+            buttonObject.transform.SetParent(obj.transform);
             buttonList.Add(buttonObject);
             buttonObject.transform.localPosition = Vector3.zero;
             buttonObject.SetActive(false);

@@ -683,12 +683,14 @@ public class ComposeManager : MonoBehaviour
     public void SaveCharacter(bool isNew)
     {
         Vector3 centerPosition = Vector3.zero;
+
+        CharacterClass character;
         if (isNew)
         {
             //새로만든 캐릭터라면 이름까지 저장해야해.
 
             FindWholeJoint();
-            CharacterClass character = new CharacterClass();
+            character = new CharacterClass();
             character.components = activedComponent;
             character.name = nameInput;
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
@@ -728,10 +730,6 @@ public class ComposeManager : MonoBehaviour
                 harvestedComponent.Remove(component);
             }
             saveData.characterList.Add(character);
-            gameManager.Save();
-            //저장.
-
-            activedComponent = new List<ComponentClass>();  //초기화;
 
         }
         else
@@ -740,7 +738,7 @@ public class ComposeManager : MonoBehaviour
             //기획나오면 추가될거
             
             FindWholeJoint();
-            CharacterClass character = characterList[modifyingIndex];
+            character = characterList[modifyingIndex];
             int componentNumber = activedComponent.Count;
             character.components = activedComponent;
 
@@ -765,12 +763,67 @@ public class ComposeManager : MonoBehaviour
                 component.rotation = component.realGameobject.transform.eulerAngles;
                 component.realGameobject.SetActive(false); 
             }
-           
-            gameManager.Save();
-            //저장.
 
-            activedComponent = new List<ComponentClass>();  //초기화;
         }
+
+        float Xmin = character.components[0].position.x;
+        float Xmax = character.components[0].position.x;
+        float Ymin = character.components[0].position.y;
+        float Ymax = character.components[0].position.y;
+
+        // 최댓값 최솟값 구하기
+        for (int j = 1; j < character.components.Count; j++)
+        {
+            if (Xmin > character.components[j].position.x)
+            {
+                Xmin = character.components[j].position.x;
+            }
+            if (Xmax < character.components[j].position.x)
+            {
+                Xmax = character.components[j].position.x;
+            }
+            if (Ymin > character.components[j].position.y)
+            {
+                Ymin = character.components[j].position.y;
+            }
+            if (Ymax < character.components[j].position.y)
+            {
+                Ymax = character.components[j].position.y;
+            }
+        }
+
+        // 팔, 다리, 머리카락의 경우 세컨드 포지션까지 최대 최소 구하는데 포함해준다.
+        for (int j = 0; j < character.components.Count; j++)
+        {
+            if (gameManager.FindData(character.components[j].name).isChild)
+            {
+                if (Xmin > character.components[j].secondPosition.x)
+                {
+                    Xmin = character.components[j].secondPosition.x;
+                }
+                if (Xmax < character.components[j].secondPosition.x)
+                {
+                    Xmax = character.components[j].secondPosition.x;
+                }
+                if (Ymin > character.components[j].secondPosition.y)
+                {
+                    Ymin = character.components[j].secondPosition.y;
+                }
+                if (Ymax < character.components[j].secondPosition.y)
+                {
+                    Ymax = character.components[j].secondPosition.y;
+                }
+            }
+        }
+
+        float Xgap = Xmax - Xmin;
+        float Ygap = Ymax - Ymin;
+        character.xGap = Xgap;
+        character.yGap = Ygap;
+        gameManager.Save();
+        //저장.
+
+        activedComponent = new List<ComponentClass>();  //초기화;
 
         gameManager.HouseSceneLoad();
     }

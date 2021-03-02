@@ -48,8 +48,44 @@ public class CharacterMover : MonoBehaviour
         rotationBool = true;
         positionBool = true;
     }
-    
 
+    public void SpawnCharacter(CharacterClass character, int characterIndex, bool modifyScale)
+    {
+        SpawnCharacter(character, characterIndex);
+        if (modifyScale)
+        {
+            GameObject parent = character.realGameobject;
+            float diaryWidth = 2;
+            float diaryHeight = 2;
+            float Xgap = character.xGap;
+            float Ygap = character.yGap;
+
+            // 크기 다이어리 페이지에 맞게 조정해주기
+            if (Xgap > diaryWidth && Ygap < diaryHeight)
+            {
+                float ratio = diaryWidth / Xgap;
+                parent.transform.localScale *= ratio;
+            }
+            if (Xgap < diaryWidth && Ygap > diaryHeight)
+            {
+                float ratio = diaryHeight / Ygap;
+                parent.transform.localScale *= ratio;
+            }
+            if (Xgap > diaryWidth && Ygap > diaryHeight)
+            {
+                float Xratio = diaryWidth / Xgap;
+                float Yratio = diaryHeight / Ygap;
+                if (Xratio >= Yratio)
+                {
+                    parent.transform.localScale *= Xratio;
+                }
+                if (Xratio < Yratio)
+                {
+                    parent.transform.localScale *= Yratio;
+                }
+            }
+        }
+    }
 
     //이제 다른 스크립트에서 요걸 쓸거에요.
     public void SpawnCharacter(CharacterClass character,int characterIndex)

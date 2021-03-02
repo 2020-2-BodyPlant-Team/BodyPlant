@@ -85,10 +85,10 @@ public class WorkFishingManager : MonoBehaviour
         {
             boatObjectArray[i].SetActive(true);
             GameObject characterObject;
-            characterMover.SpawnCharacter(characterList[i],i);
+            characterMover.SpawnCharacter(characterList[i],i,true);
             characterObject = characterList[i].realGameobject;
             characterObject.transform.position = new Vector3(boatObjectArray[i].transform.position.x, boatObjectArray[i].transform.position.y,0);
-            characterObject.transform.localScale = boatObjectArray[i].transform.localScale;
+            //characterObject.transform.localScale = boatObjectArray[i].transform.localScale;
             boatObjectArray[i].transform.SetParent(characterObject.transform);
         }
 

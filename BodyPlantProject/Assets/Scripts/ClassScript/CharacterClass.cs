@@ -28,6 +28,8 @@ public class CharacterClass
     public float fishWorkRatio;
     public float mineWorkRatio;
     public float loveNess;                  //애정도
+    public float xGap;
+    public float yGap;
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
     public GameObject realGameobject;
 
