@@ -125,25 +125,22 @@
             "isHarvested": false
         }
     ],
-    "characterList": [],
-    "huntCharacterList": [],
-    "mineCharacterList": [],
-    "fishCharacterList": [
+    "characterList": [
         {
             "name": "asdf",
             "personality": 0,
             "createdDate": "2021-03-02 PM 7:53:40",
-            "lastEarnedTime": "2021-03-02 PM 7:53:53",
-            "workEndTime": "",
-            "loveStartTime": "2021-03-02 PM 7:53:53",
+            "lastEarnedTime": "2021-03-03 PM 6:56:19",
+            "workEndTime": "2021-03-03 PM 6:59:00",
+            "loveStartTime": "2021-03-03 PM 8:22:24",
             "huntTime": 0,
-            "fishTime": 0,
+            "fishTime": 164,
             "mineTime": 0,
-            "loveTime": 13,
+            "loveTime": 5017,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.00013649999164044857,
+            "loveNess": 100.0,
             "xGap": 0.5820000171661377,
             "yGap": 4.114999771118164,
             "components": [
@@ -185,7 +182,7 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -11954
+                        "instanceID": -31376
                     },
                     "childObject": {
                         "instanceID": 0
@@ -234,10 +231,10 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -11962
+                        "instanceID": -31384
                     },
                     "childObject": {
-                        "instanceID": -11970
+                        "instanceID": -31130
                     },
                     "isHarvested": true
                 },
@@ -283,7 +280,7 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -11990
+                        "instanceID": -31412
                     },
                     "childObject": {
                         "instanceID": 0
@@ -328,7 +325,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -11998
+                        "instanceID": -31420
                     },
                     "childObject": {
                         "instanceID": 0
@@ -373,7 +370,7 @@
                     "attached": false,
                     "usedElement": 1,
                     "realGameobject": {
-                        "instanceID": -12006
+                        "instanceID": -31428
                     },
                     "childObject": {
                         "instanceID": 0
@@ -382,10 +379,13 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -11950
+                "instanceID": -31372
             }
         }
     ],
+    "huntCharacterList": [],
+    "mineCharacterList": [],
+    "fishCharacterList": [],
     "owningComponentList": [
         {
             "name": "foot",
@@ -429,7 +429,7 @@
             "isHarvested": true
         }
     ],
-    "coin": 4340,
+    "coin": 4640,
     "boughtNameList": [
         "nose",
         "mouth",
@@ -442,7 +442,7 @@
     ],
     "huntElement": 100,
     "mineElement": 100,
-    "fishElement": 98,
+    "fishElement": 100,
     "trainSelled": false,
     "chairSelled": false
 }

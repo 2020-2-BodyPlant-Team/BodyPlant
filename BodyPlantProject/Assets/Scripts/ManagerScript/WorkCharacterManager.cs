@@ -62,6 +62,8 @@ public class WorkCharacterManager : MonoBehaviour
         CharacterClass item = characterList[index];
         characterList.Remove(item);
 
+        gameManager.UpdateLoveness();
+
         saveData.characterList.Add(item);
         item.loveStartTime = DateTime.Now.ToString();
 

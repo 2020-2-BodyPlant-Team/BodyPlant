@@ -26,6 +26,10 @@ public class BookManager : MonoBehaviour
     public GameObject buttonParent;
     public GameObject diaryParent;
     public RectTransform contentRect;
+    public List<RectTransform> lovenessMaskList;    //애정도에 마스크 올라갔다 내려갔다 해야되는데 이거임. 차례대로 쓰면 댐.
+
+    Vector2 lovenessZero = new Vector2(0, 19);
+    Vector2 lovenessFull = new Vector2(0, 128);
 
 
 
@@ -60,6 +64,7 @@ public class BookManager : MonoBehaviour
 
         diaryList = new List<GameObject>();
         buttonList = new List<GameObject>();
+        lovenessMaskList = new List<RectTransform>();
 
         contentRect.anchoredPosition = new Vector2(0, 0);   
         contentRect.sizeDelta = new Vector2(0, (characterList.Count / 3) * (-buttonYgap));
@@ -101,10 +106,11 @@ public class BookManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            UpdateLoveness();
+            gameManager.UpdateLoveness();
             for(int i = 0; i < characterList.Count; i++)
             {
-                diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
+                //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
+                lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, characterList[i].loveNess/100.0f);
             }
             gameManager.Save();
 
@@ -112,30 +118,6 @@ public class BookManager : MonoBehaviour
         
     }
 
-    void UpdateLoveness()
-    {
-        float loveRatio = 1.0f;
-        for (int i = 0; i < characterList.Count; i++)
-        {
-            if (characterList[i].personality == CharacterClass.Personality.Jogon)
-            {
-                loveRatio += 0.02f;
-            }
-        }
-
-        for (int i = 0; i < characterList.Count; i++)
-        {
-            float ratio = loveRatio;
-            if (characterList[i].personality == CharacterClass.Personality.Mongsil)
-            {
-                ratio += 0.05f;
-            }
-            int time = gameManager.TimeSubtractionToSeconds(characterList[i].loveStartTime, DateTime.Now.ToString());
-            characterList[i].loveTime += time;
-            characterList[i].loveStartTime = DateTime.Now.ToString();
-            characterList[i].loveNess += gameManager.loveRatio * ratio * time;
-        }
-    }
 
     public void ButtonFunction()
     {      
@@ -151,7 +133,7 @@ public class BookManager : MonoBehaviour
 
     public void GookBabMukGoSipDa(List<GameObject> diaryList, List<GameObject> buttonList, List<CharacterClass> characterList)
     {
-        UpdateLoveness();
+        gameManager.UpdateLoveness();
         for(int i = 0; i < characterList.Count; i++)
         { 
             int elapsedTime;
@@ -159,6 +141,9 @@ public class BookManager : MonoBehaviour
 
             diaryList.Add(Instantiate(diaryPrefab, diaryParent.transform));                   
             buttonList.Add(Instantiate(buttonPrefab, buttonParent.transform));
+            lovenessMaskList.Add(diaryList[i].transform.GetChild(1).GetChild(3).GetChild(0).gameObject.GetComponent<RectTransform>());
+            lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, characterList[i].loveNess/100.0f);
+
 
             Vector2 buttonPosition = new Vector2((buttonStartPoint.x + (i % 3) * buttonXgap), (buttonStartPoint.y  + (int)(i / 3) * buttonYgap));
             buttonList[i].GetComponent<RectTransform>().anchoredPosition = buttonPosition;
@@ -189,7 +174,7 @@ public class BookManager : MonoBehaviour
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "조곤조곤";
             }
             
-            diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
+            //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
             diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());

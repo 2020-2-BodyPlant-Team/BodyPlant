@@ -252,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40cff26725930b84bb74e59f7ff9d3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionPanel: {fileID: 0}
 --- !u!1 &33746831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.300049, y: 39.80005}
+  m_AnchoredPosition: {x: 10.300049, y: 39.799805}
   m_SizeDelta: {x: -224.1405, y: -1296.4966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566125725
@@ -1741,7 +1740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40cff26725930b84bb74e59f7ff9d3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionPanel: {fileID: 0}
 --- !u!1 &779907203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,6 +2369,7 @@ MonoBehaviour:
     trainSelled: 0
     chairSelled: 0
   fromPotScene: 0
+  loveRatio: 0.00001
   workSceneIndex: 0
 --- !u!4 &1591879849
 Transform:

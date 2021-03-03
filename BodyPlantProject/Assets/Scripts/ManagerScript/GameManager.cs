@@ -169,5 +169,35 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+    public void UpdateLoveness()
+    {
+        float loveRatio = 1.0f;
+        List<CharacterClass> characterList = saveData.characterList;
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            if (characterList[i].personality == CharacterClass.Personality.Jogon)
+            {
+                loveRatio += 0.02f;
+            }
+        }
+
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            float ratio = loveRatio;
+            if (characterList[i].personality == CharacterClass.Personality.Mongsil)
+            {
+                ratio += 0.05f;
+            }
+            int time = TimeSubtractionToSeconds(characterList[i].loveStartTime, DateTime.Now.ToString());
+            characterList[i].loveTime += time;
+            characterList[i].loveStartTime = DateTime.Now.ToString();
+            characterList[i].loveNess += this.loveRatio * ratio * time;
+            if (characterList[i].loveNess > 100)
+            {
+                characterList[i].loveNess = 100;
+            }
+        }
+    }
+
 
 }

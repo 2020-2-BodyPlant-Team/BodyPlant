@@ -10,7 +10,8 @@ public class CharacterClass
     public enum Personality     //성격 enum. 굳이 없어도 되는데 편하니까 만드는거에요. 걍 int로 만들고 1 2 3 4 해도됩니다.
     {
         Mongsil,Ggumul,Puksin,Jogon
-            //몽실몽실, 두근두근, 으쓱으쓱, 는실는실
+            //몽실몽실, 두근두근, 는실는실, 으쓱으쓱
+            //차례대로 눈치껏 만들어라 ㅋㅋ
     }
     public string name;                     //이름;
     public Personality personality;         //성격
