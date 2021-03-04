@@ -160,22 +160,43 @@ public class BookManager : MonoBehaviour
             if(characterList[i].personality == CharacterClass.Personality.Mongsil)
             {
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "몽실몽실";
+                diaryList[i].transform.GetChild(1).GetChild(10).gameObject.SetActive(true);
             }
             if(characterList[i].personality == CharacterClass.Personality.Ggumul)
             {
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "꾸물꾸물";
+                diaryList[i].transform.GetChild(1).GetChild(11).gameObject.SetActive(true);
             }
             if(characterList[i].personality == CharacterClass.Personality.Puksin)
             {
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "푹신푹신";
+                diaryList[i].transform.GetChild(1).GetChild(12).gameObject.SetActive(true);
             }
             if(characterList[i].personality == CharacterClass.Personality.Jogon)
             {
                 diaryList[i].transform.GetChild(1).GetChild(2).GetComponent<Text>().text = "조곤조곤";
+                diaryList[i].transform.GetChild(1).GetChild(13).gameObject.SetActive(true);
             }
             
             //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
             diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
+            string characterName = diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text;
+            if(characterName.Length == 9)
+            {
+                diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<LetterSpacing>().spacing = 8;
+            }
+            if(characterName.Length == 8)
+            {
+                diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<LetterSpacing>().spacing = 12;
+            }
+            if(characterName.Length < 8 && characterName.Length >= 4)
+            {
+                diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<LetterSpacing>().spacing = 20;
+            }
+            if(characterName.Length <= 3)
+            {
+                diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<LetterSpacing>().spacing = 30;
+            }
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(characterList[i].createdDate, DateTime.Now.ToString());
             int days = elapsedTime / (60 * 60 * 24);
