@@ -15,13 +15,14 @@ public class PanjungCol : MonoBehaviour
     {
         if(other.gameObject.tag == "Panjung")
         {
-            //GameObject.Find("WorkFishingManager").GetComponent<WorkFishingManager>().touchforfish = true;
             workFishingManager.touchforfish = true;
         }
     }
     public void OnTriggerExit2D(Collider2D other)
     {
-        //GameObject.Find("WorkFishingManager").GetComponent<WorkFishingManager>().touchforfish = false;
-        workFishingManager.touchforfish = false;
+        if (other.gameObject.tag == "Panjung")
+        {
+            workFishingManager.touchforfish = false;
+        }
     }
 }

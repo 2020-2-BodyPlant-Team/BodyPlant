@@ -250,8 +250,6 @@ MonoBehaviour:
   - {fileID: 1176232459}
   coinManager: {fileID: 1816723305}
   workCharacterManager: {fileID: 1601296776}
-  panjungCol: {fileID: 0}
-  other: {fileID: 550619813}
 --- !u!4 &230787226
 Transform:
   m_ObjectHideFlags: 0
@@ -935,6 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d203c3fc45bfa408c1b8be9510d207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panjung: {fileID: 550619809}
 --- !u!95 &1283287842
 Animator:
   serializedVersion: 3
@@ -988,7 +987,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -65.926346, y: -0.0008544922}
+  m_Offset: {x: -52.1241, y: -0.0008544922}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -999,7 +998,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.804752, y: 64.03918}
+  m_Size: {x: 9.908909, y: 64.03918}
   m_EdgeRadius: 0
 --- !u!1 &1317198551
 GameObject:
@@ -1494,7 +1493,7 @@ PrefabInstance:
     - target: {fileID: 4898889979814805228, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5305771623630717621, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
@@ -1674,7 +1673,7 @@ PrefabInstance:
     - target: {fileID: 7048250985175515508, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7048250985175515511, guid: 68244f40627a98b48bf622302291df30,
         type: 3}

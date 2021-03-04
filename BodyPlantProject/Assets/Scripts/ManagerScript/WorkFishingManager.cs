@@ -104,7 +104,7 @@ public class WorkFishingManager : MonoBehaviour
         icon.transform.localPosition = new Vector2(-300, icon.transform.localPosition.y);
         touchforfish = false;
         panjung.GetComponent<Image>().color = new Color(215 / 255f, 57 / 255f, 57 / 255f);
-        WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(1.0f, 4.0f));
+        WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(1.5f, 4.0f));
         if (ifSunggong)
         {
             yield return loopTime;
@@ -113,7 +113,6 @@ public class WorkFishingManager : MonoBehaviour
         fishingBar.SetActive(true);
         animSpeed = UnityEngine.Random.Range(1.5f, 4f);
         iconAnimator.SetFloat("fishingSpeed", animSpeed);
-        //iconAnimator.SetTrigger("isFishing");
         iconAnimator.SetBool("isFish", true);
         WaitForSeconds wait = new WaitForSeconds(0.02f);
         while (posX <= 351)
@@ -121,13 +120,14 @@ public class WorkFishingManager : MonoBehaviour
             posX = icon.transform.localPosition.x;
             panjung.GetComponent<Image>().color = Color.Lerp(new Color(215 / 255f, 57 / 255f, 57 / 255f), new Color(72 / 255f, 163 / 255f, 62 / 225f), a);
             a = (posX + 300) / 485;
-            yield return wait;
             if (posX >= 345)
             {
                 panjung.GetComponent<Image>().color = Color.black;
                 yield return wait;
-                break;
             }
+            if (posX >= 350)
+                break;
+            yield return wait;
         }
         iconAnimator.SetBool("isFish", false);
         fishingBar.SetActive(false);
@@ -140,7 +140,7 @@ public class WorkFishingManager : MonoBehaviour
     {
         characterMover.FishingUpdate();
 
-        if(touchforfish)
+        if (touchforfish)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -157,5 +157,49 @@ public class WorkFishingManager : MonoBehaviour
                 StartCoroutine(cor);
             }
         }
+        else if (!touchforfish)
+        {
+            if (!inputCorRunning && fishingBar.activeSelf == true)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    StartCoroutine(NameInputShake());
+                    Debug.Log("보조성분 획득 실패");
+                }
+            }
+        }
+    }
+
+    //정상훈 그는 신인가?정상훈 그는 신인가?정상훈 그는 신인가?정상훈 그는 신인가?정상훈 그는 신인가?
+    bool inputCorRunning = false;
+    IEnumerator NameInputShake()
+    {
+        iconAnimator.SetFloat("fishingSpeed", 0);
+        iconAnimator.SetBool("isFish", false);
+        inputCorRunning = true;
+        GameObject shakeObject = fishingBar.gameObject;
+        RectTransform rect = shakeObject.GetComponent<RectTransform>();
+        Vector2 originPos = rect.anchoredPosition;
+
+        float x1 = -15;
+        float x2 = 15;
+        float y1 = -20;
+        float y2 = 20;
+
+        float timer = 0;
+        while (timer < 0.3f)
+        {
+            timer += Time.deltaTime;
+            float xRandom = UnityEngine.Random.Range(x1, x2);
+            float yRandom = UnityEngine.Random.Range(y1, y2);
+            rect.anchoredPosition = new Vector3(xRandom, yRandom);
+            yield return null;
+        }
+        inputCorRunning = false;
+        rect.anchoredPosition = originPos;
+        ifSunggong = true;
+        fishingBar.SetActive(false);
+        cor = Coloring();
+        StartCoroutine(cor);
     }
 }
