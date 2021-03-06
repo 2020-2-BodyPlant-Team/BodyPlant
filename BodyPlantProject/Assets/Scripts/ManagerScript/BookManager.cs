@@ -110,7 +110,13 @@ public class BookManager : MonoBehaviour
             for(int i = 0; i < totalList.Count; i++)
             {
                 //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
-                lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, characterList[i].loveNess/100.0f);
+                lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, totalList[i].loveNess/100.0f);
+
+                if(totalList[i].loveNess == 100)
+                {
+                    //다이어리 페이지에 있는 애정도가 100이 되었을 때 하트가 가운데로 가도록 해줌
+                    diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Animator>().SetTrigger("FullOfLove");
+                }
             }
             gameManager.Save();
         }
