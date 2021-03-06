@@ -107,13 +107,12 @@ public class BookManager : MonoBehaviour
         {
             yield return new WaitForSeconds(5f);
             gameManager.UpdateLoveness();
-            for(int i = 0; i < characterList.Count; i++)
+            for(int i = 0; i < totalList.Count; i++)
             {
                 //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
                 lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, characterList[i].loveNess/100.0f);
             }
             gameManager.Save();
-
         }
         
     }
@@ -181,6 +180,8 @@ public class BookManager : MonoBehaviour
             //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
             diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text = characterList[i].name;
             string characterName = diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<Text>().text;
+
+            //글자수에 따라 간격 조정해주기
             if(characterName.Length == 9)
             {
                 diaryList[i].transform.GetChild(1).GetChild(4).GetComponent<LetterSpacing>().spacing = 8;
