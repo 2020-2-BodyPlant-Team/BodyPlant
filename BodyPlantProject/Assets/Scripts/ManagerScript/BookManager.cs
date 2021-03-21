@@ -16,7 +16,6 @@ public class BookManager : MonoBehaviour
     List<CharacterClass> totalList;
     public GameObject diaryPrefab;
     public GameObject buttonPrefab;
-    public List<GameObject> stickerPrefab;
     List<GameObject> diaryList;
     List<GameObject> buttonList;
     List<GameObject> silhouette;
@@ -31,10 +30,6 @@ public class BookManager : MonoBehaviour
 
     Vector2 lovenessZero = new Vector2(0, 19);
     Vector2 lovenessFull = new Vector2(0, 128);
-    bool isModify = false;
-    RaycastHit2D hit;
-    GameObject touchedObject;
-    public Camera cam;
 
 
 
@@ -103,81 +98,7 @@ public class BookManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GameObject pointer = EventSystem.current.currentSelectedGameObject;
-        for(int i = 0; i < totalList.Count; i++)
-        {
-            if(totalList[i].loveNess >= 100)
-            {
-                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-                if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
-                {
-                    touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
-                    Debug.Log(touchedObject);
-            
-                    if(touchedObject.name == "Loveness" && Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        int randomNum = UnityEngine.Random.Range(0, 15);
-                        GameObject sticker = Instantiate(stickerPrefab[randomNum]);
-                        sticker.transform.position = new Vector3(mousePos.x, mousePos.y, -0.3f);
-                        StickerClass stickerClass = new StickerClass();
-                        totalList[i].stickerList.Add(stickerClass);
-                        stickerClass.position = sticker.transform.position;
-                        stickerClass.stickerPrefabIndex = randomNum;
-                        stickerClass.stickerObject = sticker;
 
-
-                        if(randomNum >= 0 && randomNum < 5)
-                        {
-                            totalList[i].fishWorkRatio += 0.2f;
-                        }
-                        if(randomNum >= 5 && randomNum < 10)
-                        {
-                            totalList[i].huntWorkRatio += 0.2f;
-                        }
-                        if(randomNum >= 10 && randomNum < 15)
-                        {
-                            totalList[i].mineWorkRatio += 0.2f;
-                        }
-                        sticker.transform.SetParent(diaryList[i].transform);
-                        sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
-                        totalList[i].loveNess = 0;
-                        gameManager.Save();
-                    }
-                    if(touchedObject.CompareTag("Sticker") && Input.GetKeyUp(KeyCode.Mouse0))
-                    {
-                        for(int j = 0; j < totalList[i].stickerList.Count; j++)
-                        {
-                            if(touchedObject == totalList[i].stickerList[j].stickerObject)
-                            {
-                                totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-
-        
-        /*for(int i = 0; i < totalList.Count; i++)
-        {
-            for(int j = 0; j < stickerPrefab.Count; j++)
-            {
-                if(pointer == stickerPrefab[j])
-                {
-                    isModify = true;
-                    if(isModify)
-                    {
-                        Vector2 mousePos = Input.mousePosition;
-                        pointer.transform.GetChild(3).transform.Translate(mousePos);
-                        if(Input.GetMouseButtonUp(0))
-                        {
-                            isModify = false;
-                        }
-                    }
-                }
-            }
-        }*/
     }
 
     IEnumerator LovenessCoroutine()
@@ -190,8 +111,22 @@ public class BookManager : MonoBehaviour
             {
                 //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
                 lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, totalList[i].loveNess/100.0f);
+
+                if(totalList[i].loveNess == 100)
+                {
+                    //다이어리 페이지에 있는 애정도가 100이 되었을 때 하트가 가운데로 가도록 해줌
+                    diaryList[i].transform.GetChild(1).GetChild(9).GetComponent<Animator>().SetTrigger("FullOfLove");
+
+                    // 애정도가 100이 된 후에 클릭시 랜덤하게 스티커 생성, 애정도는 다시 0으로
+                    if(Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Debug.Log("spaceClicked");
+                        diaryList[i].transform.GetChild(1).GetChild(9).GetComponent<Animator>().SetTrigger("Click");
+                        //Instantiate();
+                        totalList[i].loveNess = 0;
+                    }
+                }
             }
-            
             gameManager.Save();
         }
         
@@ -490,6 +425,15 @@ public class BookManager : MonoBehaviour
             }
 
             characterList[i].realGameobject = parent;
+
+            /*for(int k = 0; k < characterList[i].components.Count; k++)
+            {
+                ComponentClass component = characterList[i].components[k];
+                GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + component.name);
+                GameObject inst = Instantiate(prefab,parent.transform);
+                inst.transform.localPosition = component.position;
+                inst.transform.eulerAngles = component.rotation;
+            } */
         }
         
     }

@@ -33,12 +33,9 @@ public class CharacterClass
     public float yGap;
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
     public GameObject realGameobject;
-    public List<StickerClass> stickerList;
-
 
     public CharacterClass()
     {
-        stickerList = new List<StickerClass>();
         name = "null";
 
         createdDate = DateTime.Now.ToString();
