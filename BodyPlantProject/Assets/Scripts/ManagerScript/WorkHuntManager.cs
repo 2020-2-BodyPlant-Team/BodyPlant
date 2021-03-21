@@ -16,6 +16,14 @@ public class WorkHuntManager : MonoBehaviour
     float waitSec;
     public GameObject sideDeer;
     Animation sideAni;
+    public GameObject tearOne;
+    Animation tearOneAni;
+    public GameObject tearTwo;
+    Animation tearTwoAni;
+    public GameObject rightHorn;
+    Animation rightHornAni;
+    public GameObject leftHorn;
+    Animation leftHornAni;
 
     public float limitTime = 2f;
     public GameObject frontDeer;
@@ -62,6 +70,10 @@ public class WorkHuntManager : MonoBehaviour
 
         sideAni = sideDeer.GetComponent<Animation>();
         fdAnimator = frontDeer.GetComponent<Animator>();
+        tearOneAni = tearOne.GetComponent<Animation>();
+        tearTwoAni = tearTwo.GetComponent<Animation>();
+        rightHornAni = rightHorn.GetComponent<Animation>();
+        leftHornAni = leftHorn.GetComponent<Animation>();
 
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -170,9 +182,21 @@ public class WorkHuntManager : MonoBehaviour
     IEnumerator DeerTear()
     {
         //fdAnimator.SetTrigger("isWin");
+        tearOne.SetActive(true);
+        tearTwo.SetActive(true);
+        rightHorn.SetActive(true);
+        leftHorn.SetActive(true);
+        tearOneAni.Play("TearOne");
+        tearTwoAni.Play("TearTwo");
+        rightHornAni.Play("RightHorn");
+        leftHornAni.Play("LeftHorn");
         fdAnimator.SetBool("isWinning", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        fdAnimator.SetBool("isWinning", false);
         frontDeer.SetActive(false);
-        //fdAnimator.SetBool("isWinning", false);
+        tearOne.SetActive(false);
+        tearTwo.SetActive(false);
+        rightHorn.SetActive(false);
+        leftHorn.SetActive(false);
     }
 }

@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -167548
+                        "instanceID": -1504
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -167558
+                        "instanceID": -1516
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -167544
+                "instanceID": -1500
             },
             "stickerList": [
                 {
@@ -269,7 +269,7 @@
     "coin": 4850,
     "boughtNameList": [],
     "boughtDateList": [],
-    "huntElement": 100,
+    "huntElement": 103,
     "mineElement": 100,
     "fishElement": 92,
     "trainSelled": false,
