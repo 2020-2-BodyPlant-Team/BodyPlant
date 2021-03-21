@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ComposeManager : MonoBehaviour
 {
     GameManager gameManager;
+    SoundManager soundManager;
     SaveDataClass saveData;                 //캐릭터를 저장해줘야하니까.
     [SerializeField]
     List<ComponentClass> harvestedComponent;//버튼형태로 있는 부위.
@@ -73,6 +74,7 @@ public class ComposeManager : MonoBehaviour
         namingObject.SetActive(false);
         nameAskingObject.SetActive(false);
         gameManager = GameManager.singleTon;
+        soundManager = SoundManager.inst;
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         harvestedComponent = gameManager.saveData.owningComponentList;
@@ -382,7 +384,7 @@ public class ComposeManager : MonoBehaviour
         {
             modifyButtonObject.SetActive(false);
         }
-
+        soundManager.ButtonEffectPlay();
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj,parentObject.transform);
@@ -459,6 +461,7 @@ public class ComposeManager : MonoBehaviour
     public void SpawnModifyComponent(ComponentClass component)
     {
         string name = component.name;
+        soundManager.ButtonEffectPlay();
         addedComponentNumber++;
         ComponentDataClass data = FindData(name);
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
@@ -513,6 +516,7 @@ public class ComposeManager : MonoBehaviour
 
     public void SaveButton()
     {
+        soundManager.ButtonEffectPlay();
         if (isModifiedCharacter)
         {
             nameAskingObject.SetActive(true);
@@ -530,6 +534,7 @@ public class ComposeManager : MonoBehaviour
 
     public void NameButton()
     {
+        soundManager.ButtonEffectPlay();
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
@@ -545,6 +550,7 @@ public class ComposeManager : MonoBehaviour
             nameInputField.text = nameInputField.text.Remove(10);
             if (!inputCorRunning)
             {
+                soundManager.ErrorEffectPlay();
                 StartCoroutine(NameInputShake());
             }
         }
@@ -581,6 +587,7 @@ public class ComposeManager : MonoBehaviour
 
     public void YesButton()
     {
+        soundManager.ButtonEffectPlay();
         SaveCharacter(!isModifiedCharacter);
         namingObject.SetActive(false);
         nameAskingObject.SetActive(false);
@@ -588,12 +595,14 @@ public class ComposeManager : MonoBehaviour
 
     public void NoButton()
     {
+        soundManager.ButtonEffectPlay();
         namingObject.SetActive(true);
         nameAskingObject.SetActive(false);
     }
 
     public void BackButton()
     {
+        soundManager.ButtonEffectPlay();
         if (gameManager.fromPotScene)
         {
             gameManager.PotSceneLoad();
@@ -613,17 +622,20 @@ public class ComposeManager : MonoBehaviour
 
     public void FlipButton()
     {
+        soundManager.ButtonEffectPlay();
         flipMode = !flipMode;
         //rotationMode = false;
     }
     public void ModifyButton()
     {
+        soundManager.ButtonEffectPlay();
         cam.gameObject.transform.position = new Vector3(10, 0, -10);
         modifyMode = true;
     }
 
     public void ModifyYesButton()
     {
+        soundManager.ButtonEffectPlay();
         cam.gameObject.transform.position = new Vector3(0, 0, -10);
         modifyPanel.SetActive(false);
         modifyButtonObject.SetActive(false);
@@ -637,6 +649,7 @@ public class ComposeManager : MonoBehaviour
 
     public void ModifyBackButton()
     {
+        soundManager.ButtonEffectPlay();
         cam.gameObject.transform.position = new Vector3(0, 0, -10);
 
         isModifiedCharacter = false;
@@ -645,6 +658,7 @@ public class ComposeManager : MonoBehaviour
 
     public void ModifyNoButton()
     {
+        soundManager.ButtonEffectPlay();
         modifyPanel.SetActive(false);
         modifyMode = true;
     }
@@ -675,6 +689,7 @@ public class ComposeManager : MonoBehaviour
         modifyMode = false;
         string productedName = gameManager.GetCompleteWord(characterList[characterIndex].name, "\"이를", "\"를");
         modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
+        soundManager.CheerEffectPlay();
         modifyPanel.SetActive(true);
     }
 
@@ -683,7 +698,8 @@ public class ComposeManager : MonoBehaviour
     public void SaveCharacter(bool isNew)
     {
         Vector3 centerPosition = Vector3.zero;
-
+        soundManager.FanfareEffectPlay();
+        soundManager.ButtonEffectPlay();
         CharacterClass character;
         if (isNew)
         {
@@ -1057,6 +1073,7 @@ public class ComposeManager : MonoBehaviour
             componentObject.transform.position = componentObject.transform.position - convert;
             if (convert != Vector3.zero)
             {
+                soundManager.ComposeEffectPlay();
                 notAttached = false;
             }
         }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 {
     //제이슨 세이브로드하기위한 제이슨매니저
     JsonManager jsonManager;
+    SoundManager soundManager;
     public WholeComponents wholeComponents;    //테스트용
     public SaveDataClass saveData;             //세이브데이터
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void Start()
+    {
+        soundManager = SoundManager.inst;
+    }
+
 
     
     //세이브데이터 세이브
@@ -88,31 +94,38 @@ public class GameManager : MonoBehaviour
     {
         fromPotScene = false;
         SceneManager.LoadScene("HouseScene");
+        soundManager.MainBGMPlay();
+        soundManager.HouseEffectPlay();
     }
 
     public void WorkMineSceneLoad() //일하기 광산
     {
         SceneManager.LoadScene("WorkMineScene");
+        soundManager.MineBGMPlay();
     }
 
     public void WorkHuntSceneLoad() //일하기 사냥
     {
         SceneManager.LoadScene("WorkHuntScene");
+        soundManager.HuntBGMPlay();
     }
 
     public void WorkFishingSceneLoad() //일하기 낚시
     {
         SceneManager.LoadScene("WorkFishingScene");
+        soundManager.FishBGMPlay();
     }
 
     public void StoreSceneLoad()
     {
         SceneManager.LoadScene("StoreScene");
+        soundManager.StoreEffectPlay();
     }
 
     public void BookSceneLoad()
     {
         SceneManager.LoadScene("BookScene");
+        soundManager.BookEffectPlay();
     }
 
     public void SecretRoomSceneLoad()
@@ -172,6 +185,10 @@ public class GameManager : MonoBehaviour
     public void UpdateLoveness()
     {
         float loveRatio = 1.0f;
+        if (saveData.chairSelled)
+        {
+            loveRatio = 1.05f;
+        }
         List<CharacterClass> characterList = saveData.characterList;
         for (int i = 0; i < characterList.Count; i++)
         {

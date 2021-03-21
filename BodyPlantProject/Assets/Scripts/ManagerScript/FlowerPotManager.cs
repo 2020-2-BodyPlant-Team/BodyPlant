@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class FlowerPotManager : MonoBehaviour
 {
     GameManager gameManager;        //게임매니저를 통해 세이브데이터를 참조해야 한다.
+    SoundManager soundManager;
     SaveDataClass saveData;         //게임매니저를 통해 가져올 세이브 데이터
     List<string> boughtNameList;
     List<string> boughtDateList;
@@ -58,6 +59,7 @@ public class FlowerPotManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;    //싱글톤을하면 이런식으로 가져올 수 있다. 편하다.
         //saveData = GameManager.saveData;
+        soundManager = SoundManager.inst;
         saveData = gameManager.saveData;
         componentsInPot = saveData.potList;
         wholeComponents = gameManager.wholeComponents;
@@ -295,6 +297,7 @@ public class FlowerPotManager : MonoBehaviour
     //심은걸 수확하는거. 터치해서 수확. 버튼에서 호출
     public void HarvestSprout()
     {
+        soundManager.ButtonEffectPlay();
         int index = nowMagnifiedPotIndex;   //어차피 확대된 거에서만 호출하니까 확대된 index를 불러온다.
         Debug.Log("이거 되긴 하냐" + index);
         if(componentsInPot[index].name == null)
@@ -307,6 +310,8 @@ public class FlowerPotManager : MonoBehaviour
         {
             elementButtonArray[i].interactable = false;
         }
+
+        soundManager.HarvestEffectPlay();
 
         //수확이 되었다는거를 세이브해줘야하니까 세이브데이터에 넣어주고
         componentsInPot[index].isHarvested = true;
@@ -351,7 +356,7 @@ public class FlowerPotManager : MonoBehaviour
             Debug.Log("자리ㅏ가 없다");
             return;
         }
-
+        soundManager.PlantEffectPlay();
         //이제 전체 컴포넌트중에서 이름을통해 특정 컴포넌트를 찾는다. 이름은 파라미터로 받았따.
         ComponentClass component = new ComponentClass();
         ComponentDataClass componentData = null;
@@ -437,6 +442,7 @@ public class FlowerPotManager : MonoBehaviour
     //화분 돋보기 애니메이션 켜주고, 돋보기 켜주고.
     void ActiveMagnifier(int index)
     {
+        soundManager.ButtonEffectPlay();
         magnifierArray[index].SetActive(true);          //돋보기 켜주고
         StartCoroutine(MagnifierAnimation(index));      //애니메이션 켜주고
     }
@@ -458,7 +464,7 @@ public class FlowerPotManager : MonoBehaviour
     //돋보기가 생긴 후 한 번 더 클릭했을 때 카메라가 이동하는 함수.
     void CameraMove(int index,bool goBack)
     {
-
+        soundManager.ExpandEffectPlay();
         if (goBack)
         {
             buttonBundle.SetActive(true);
@@ -497,6 +503,7 @@ public class FlowerPotManager : MonoBehaviour
     //확대했다가 뒤로가기버튼 누르면 실행하는 함수.
     public void MagnifyBackButton()
     {
+        soundManager.ButtonEffectPlay();
         CameraMove(nowMagnifiedPotIndex, true);
     }
 
@@ -635,12 +642,14 @@ public class FlowerPotManager : MonoBehaviour
     //합성 씬 로드.
     public void ComposeSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = true;
         gameManager.ComposeSceneLoad();
     }
 
     public void HouseSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = false;
         gameManager.HouseSceneLoad();
     }
@@ -648,6 +657,7 @@ public class FlowerPotManager : MonoBehaviour
 
     public void StoreSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.StoreSceneLoad();
     }
 
@@ -667,18 +677,21 @@ public class FlowerPotManager : MonoBehaviour
 
     public void WorkMineSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = true;
         gameManager.WorkMineSceneLoad();
     }
 
     public void WorkHuntSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = true;
         gameManager.WorkHuntSceneLoad();
     }
 
     public void WorkFishingSceneLoad()
     {
+        soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = true;
         gameManager.WorkFishingSceneLoad();
     }
@@ -686,6 +699,7 @@ public class FlowerPotManager : MonoBehaviour
     //0 hunt, 1 mine, 2 fish
     public void ElementButton(int element)
     {
+        soundManager.ButtonEffectPlay();
         float lastPercentage = 0;
         //꽃피지 않을때만 돌아간다.
         float percentage = 0;

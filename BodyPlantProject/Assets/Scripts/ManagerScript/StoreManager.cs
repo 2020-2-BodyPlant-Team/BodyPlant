@@ -181,12 +181,12 @@ public class StoreManager : MonoBehaviour
 
 
 
-        if (saveData.coin >= 700 && isToySold == 0)
+        if (saveData.coin >= 700 && !saveData.trainSelled)
             buyToyButton.interactable = true;
         else
             buyToyButton.interactable = false;
 
-        if (saveData.coin >= 800 && isBeanBagSold == 0)
+        if (saveData.coin >= 800 && !saveData.chairSelled)
             buyBeanBagButton.interactable = true;
         else
             buyBeanBagButton.interactable = false;
@@ -195,7 +195,7 @@ public class StoreManager : MonoBehaviour
     public void buySeed1()
     {
         saveData.coin -= 50;
-     
+        
         seed1Price.text = "구매가 완료되었습니다!";
         boughtNameList.Add("eye");
         boughtDateList.Add(DateTime.Now.ToString());
@@ -211,7 +211,7 @@ public class StoreManager : MonoBehaviour
         seed2Price.text = "구매가 완료되었습니다!";
         boughtNameList.Add("nose");
         boughtDateList.Add(DateTime.Now.ToString());
-        leftPot--;
+        leftPot--; 
         gameManager.Save();
         buySeed2Button.gameObject.SetActive(true);
 
@@ -311,6 +311,7 @@ public class StoreManager : MonoBehaviour
     public void buyTrain()
     {
         saveData.coin -= 700;
+        saveData.trainSelled = true;
         toyPrice.text = "구매가 완료되었습니다!";
         buyToyButton.gameObject.SetActive(false);
 
@@ -318,6 +319,7 @@ public class StoreManager : MonoBehaviour
     public void buyChair()
     {
         saveData.coin -= 800;
+        saveData.chairSelled = true;
         beanBagPrice.text = "구매가 완료되었습니다!";
         buyBeanBagButton.gameObject.SetActive(false);
     }

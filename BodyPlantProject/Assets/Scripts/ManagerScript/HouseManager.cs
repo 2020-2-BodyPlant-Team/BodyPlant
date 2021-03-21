@@ -8,6 +8,7 @@ public class HouseManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     WholeComponents wholeComponents;
+    SoundManager soundManager;
 
     [SerializeField]
     List<CharacterClass> characterList;
@@ -33,12 +34,14 @@ public class HouseManager : MonoBehaviour
     public void PotSceneLoad()
     {
         gameManager.PotSceneLoad();
+        soundManager.ButtonEffectPlay();
     }
 
     public GameObject panel;
     public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
     {
-        if(panel.activeSelf == false)
+        soundManager.ButtonEffectPlay();
+        if (panel.activeSelf == false)
         {
             panel.SetActive(true);
         }
@@ -51,31 +54,40 @@ public class HouseManager : MonoBehaviour
     public void WorkMineSceneLoad()
     {
         gameManager.WorkMineSceneLoad();
+        soundManager.MineBGMPlay();
+        soundManager.ButtonEffectPlay();
     }
 
     public void WorkHuntSceneLoad()
     {
         gameManager.WorkHuntSceneLoad();
+        soundManager.HuntBGMPlay();
+        soundManager.ButtonEffectPlay();
     }
 
     public void WorkFishingSceneLoad()
     {
         gameManager.WorkFishingSceneLoad();
+        soundManager.FishBGMPlay();
+        soundManager.ButtonEffectPlay();
     }
 
     public void StoreSceneLoad()
     {
         gameManager.StoreSceneLoad();
+        soundManager.ButtonEffectPlay();
     }
 
     public void ComposeSceneLoad()
     {
         gameManager.ComposeSceneLoad();
+        soundManager.ButtonEffectPlay();
     }
 
     public void BookSceneLoad()
     {
         gameManager.BookSceneLoad();
+        soundManager.ButtonEffectPlay();
     }
 
 
@@ -85,6 +97,7 @@ public class HouseManager : MonoBehaviour
     {
         if (!nowFullScreen && !nowCorRunning)
         {
+            soundManager.ButtonEffectPlay();
             StartCoroutine(FullScreenCoroutine());
         }
         
@@ -111,6 +124,7 @@ public class HouseManager : MonoBehaviour
     {
         if (nowFullScreen && !nowCorRunning)
         {
+            soundManager.ButtonEffectPlay();
             StartCoroutine(FullScreenRemoveCoroutine());
         }
     }
@@ -141,6 +155,7 @@ public class HouseManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.characterList;
+        soundManager = SoundManager.inst;
 
         coinText.text = saveData.coin.ToString();
 

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class WorkUIManager : MonoBehaviour
 {
     GameManager gameManager;
+    SoundManager soundManager;
 
     [SerializeField]
     GameObject touchedObject;
@@ -33,6 +34,7 @@ public class WorkUIManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        soundManager = SoundManager.inst;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.characterList;
 
@@ -117,6 +119,7 @@ public class WorkUIManager : MonoBehaviour
         }
         chosenCharacter.lastEarnedTime = DateTime.Now.ToString();
 
+        soundManager.CheerEffectPlay();
 
         gameManager.Save();
 
@@ -129,5 +132,10 @@ public class WorkUIManager : MonoBehaviour
     {
         panel.SetActive(false);
         isPanel = false;
+    }
+
+    public void BackBtn()
+    {
+        SceneManager.LoadScene(gameManager.workSceneIndex);
     }
 }
