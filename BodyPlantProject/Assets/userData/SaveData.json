@@ -132,15 +132,15 @@
             "createdDate": "3/21/2021 7:18:32 PM",
             "lastEarnedTime": "3/21/2021 7:18:32 PM",
             "workEndTime": "",
-            "loveStartTime": "3/21/2021 7:19:44 PM",
+            "loveStartTime": "3/21/2021 7:26:27 PM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 72,
-            "huntWorkRatio": 1.2000000476837159,
+            "loveTime": 475,
+            "huntWorkRatio": 1.4000000953674317,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 100,
+            "loveNess": 0.00039000000106170774,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -166952
+                        "instanceID": -167548
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -166962
+                        "instanceID": -167558
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -166948
+                "instanceID": -167544
             },
             "stickerList": [
                 {
@@ -247,6 +247,16 @@
                     },
                     "stickerObject": {
                         "instanceID": -167008
+                    }
+                },
+                {
+                    "stickerPrefabIndex": 7,
+                    "position": {
+                        "x": 1.6935480833053589,
+                        "y": 0.032258033752441409
+                    },
+                    "stickerObject": {
+                        "instanceID": -167604
                     }
                 }
             ]
