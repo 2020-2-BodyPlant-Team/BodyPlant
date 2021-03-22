@@ -2,7 +2,7 @@
     "lastPlayTime": "3/21/2021 6:28:24 PM",
     "potList": [
         {
-            "name": "null",
+            "name": "eye",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -11,9 +11,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "3/21/2021 7:18:07 PM",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-03-22 PM 4:51:45",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -35,7 +35,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -6120
             },
             "childObject": {
                 "instanceID": 0
@@ -43,7 +43,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "nose",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -52,9 +52,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "3/21/2021 7:18:13 PM",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-03-22 PM 4:51:45",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -76,7 +76,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -6130
             },
             "childObject": {
                 "instanceID": 0
@@ -94,8 +94,8 @@
                 "y": 0.0
             },
             "plantedTime": "3/21/2021 7:17:55 PM",
-            "isSprotued": false,
-            "percentage": 0.3799999952316284,
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -117,7 +117,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": -164868
+                "instanceID": -6110
             },
             "childObject": {
                 "instanceID": 0
@@ -132,15 +132,15 @@
             "createdDate": "3/21/2021 7:18:32 PM",
             "lastEarnedTime": "3/21/2021 7:18:32 PM",
             "workEndTime": "",
-            "loveStartTime": "3/21/2021 7:26:27 PM",
+            "loveStartTime": "2021-03-22 PM 4:52:40",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 475,
+            "loveTime": 77648,
             "huntWorkRatio": 1.4000000953674317,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.00039000000106170774,
+            "loveNess": 0.7721199989318848,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -1504
+                        "instanceID": -6002
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -1516
+                        "instanceID": -6012
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -1500
+                "instanceID": -5998
             },
             "stickerList": [
                 {
@@ -266,12 +266,18 @@
     "mineCharacterList": [],
     "fishCharacterList": [],
     "owningComponentList": [],
-    "coin": 4850,
-    "boughtNameList": [],
-    "boughtDateList": [],
+    "coin": 4750,
+    "boughtNameList": [
+        "eye",
+        "nose"
+    ],
+    "boughtDateList": [
+        "2021-03-22 PM 4:51:45",
+        "2021-03-22 PM 4:51:45"
+    ],
     "huntElement": 103,
     "mineElement": 100,
-    "fishElement": 92,
+    "fishElement": 96,
     "trainSelled": false,
     "chairSelled": false
 }
