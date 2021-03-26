@@ -8,6 +8,7 @@ using UnityEngine;
 public class ComponentDataClass
 {
     public string name;                 //이름                              
+    public string koreanName;
     //public bool isJoint;            //관절이 돌아가는 건지 (팔, 다리인지)
     public bool isChild;            //차일드가 있는지.
     public List<Vector2> attachPosition;    //붙이는곳의 위치.
@@ -21,6 +22,7 @@ public class ComponentDataClass
     public ComponentDataClass()
     {
         name = "null";
+        koreanName = "한글이름";
         attachPosition = new List<Vector2>();
         attachPosition.Add(Vector2.zero);
         price = 10;

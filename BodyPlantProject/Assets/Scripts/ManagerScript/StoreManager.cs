@@ -60,6 +60,12 @@ public class StoreManager : MonoBehaviour
     public Button buyToyButton;
     public Button buyBeanBagButton;
 
+    public Image catEyeImage;
+    public Image catTailImage;
+    public Sprite[] catEyeList;
+    public Sprite[] catTailList;
+    public Image[] potImageArray;
+    bool[] leftPotArray;
     /*
      0 eye
      1 nose
@@ -73,6 +79,64 @@ public class StoreManager : MonoBehaviour
      9 hair
     */
 
+    IEnumerator CatEyeCoroutine()
+    {
+        int eyeIndex = 0;
+        float frame = 0.125f;
+        bool goingPlus = true;
+        while (true)
+        {
+            catEyeImage.sprite = catEyeList[eyeIndex];
+            if(eyeIndex == 0)
+            {
+                frame = 3f;
+                catEyeImage.gameObject.SetActive(false);
+            }
+            else
+            {
+                catEyeImage.gameObject.SetActive(true);
+            }
+
+            if (goingPlus)
+                eyeIndex++;
+            else
+                eyeIndex--;
+            yield return new WaitForSeconds(frame);
+            frame = 0.125f;
+            if(eyeIndex == catEyeList.Length-1)
+            {
+                goingPlus = false;
+            }
+            if(eyeIndex == 0)
+            {
+                goingPlus = true;
+            }
+
+        }
+    }
+
+    IEnumerator CatTailCoroutine()
+    {
+        int tailIndex = 0;
+        float frame = 0.125f;
+        while (true)
+        {
+            catTailImage.sprite = catTailList[tailIndex];
+            if (tailIndex == 0)
+            {
+                frame = 5f;
+            }
+            tailIndex++;
+            yield return new WaitForSeconds(frame);
+            frame = 0.125f;
+            if (tailIndex >= catTailList.Length)
+            {
+                tailIndex = 0;
+            }
+
+        }
+    }
+
     void Start()
     {
 
@@ -82,15 +146,48 @@ public class StoreManager : MonoBehaviour
         boughtDateList = saveData.boughtDateList;
         coinAmount = saveData.coin;
         potList = saveData.potList;
+        leftPotArray = new bool[3];
         leftPot = 0;
-        foreach(ComponentClass component in potList)
+
+        for(int i = 0; i<potList.Length; i++)
         {
-            if(component.name == "null")
+            leftPotArray[i] = false;
+            if(potList[i].name == "null")
             {
                 leftPot++;
+                leftPotArray[i] = true;
+            }
+        }
+        if (boughtNameList.Count > 0)
+        {
+            for (int i = 0; i < boughtNameList.Count; i++)
+            {
+                if (leftPotArray[0] == true)
+                {
+                    leftPotArray[0] = false;
+                }
+                else if (leftPotArray[1] == true)
+                {
+                    leftPotArray[1] = false;
+                }
+                else if (leftPotArray[2] == true)
+                {
+                    leftPotArray[2] = false;
+                }
             }
         }
         leftPot -= boughtNameList.Count;
+
+        for(int i = 0; i < 3; i++)
+        {
+            if(leftPotArray[i] == false)
+            {
+                potImageArray[i].color = new Color(1, 1, 1, 0.5f);
+            }
+        }
+
+
+
 
         seedButtonList = new List<Button>();
 
@@ -104,6 +201,9 @@ public class StoreManager : MonoBehaviour
         seedButtonList.Add(buySeed8Button);
         seedButtonList.Add(buySeed9Button);
         seedButtonList.Add(buySeed10Button);
+
+        StartCoroutine(CatEyeCoroutine());
+        StartCoroutine(CatTailCoroutine());
 
     }
 
@@ -200,6 +300,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("eye");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed1Button.gameObject.SetActive(true);
     }
@@ -211,7 +312,8 @@ public class StoreManager : MonoBehaviour
         seed2Price.text = "구매가 완료되었습니다!";
         boughtNameList.Add("nose");
         boughtDateList.Add(DateTime.Now.ToString());
-        leftPot--; 
+        leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed2Button.gameObject.SetActive(true);
 
@@ -224,6 +326,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("mouth");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed3Button.gameObject.SetActive(true);
 
@@ -236,6 +339,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("ear");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed4Button.gameObject.SetActive(true);
 
@@ -248,6 +352,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("hand");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed5Button.gameObject.SetActive(true);
     }
@@ -259,6 +364,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("arm");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed6Button.gameObject.SetActive(true);
     }
@@ -270,6 +376,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("foot");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed7Button.gameObject.SetActive(true);
     }
@@ -281,6 +388,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("leg");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed8Button.gameObject.SetActive(true);
     }
@@ -292,6 +400,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("body");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed9Button.gameObject.SetActive(true);
     }
@@ -303,6 +412,7 @@ public class StoreManager : MonoBehaviour
         boughtNameList.Add("hair");
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
+        PotAlphaChange();
         gameManager.Save();
         buySeed10Button.gameObject.SetActive(true);
     }
@@ -327,6 +437,34 @@ public class StoreManager : MonoBehaviour
     public void exitStore()
     {
         SceneManager.LoadScene("HouseScene");
+    }
+
+    void PotAlphaChange()
+    {
+        for (int i = 0; i < boughtNameList.Count; i++)
+        {
+            if (leftPotArray[0] == true)
+            {
+                leftPotArray[0] = false;
+            }
+            else if (leftPotArray[1] == true)
+            {
+                leftPotArray[1] = false;
+            }
+            else if (leftPotArray[2] == true)
+            {
+                leftPotArray[2] = false;
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (leftPotArray[i] == false)
+            {
+                potImageArray[i].color = new Color(1, 1, 1, 0.5f);
+            }
+        }
+
     }
 
     public void resetPlayerPrefs()

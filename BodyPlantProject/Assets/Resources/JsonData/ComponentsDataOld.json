@@ -1,8 +1,8 @@
-Ôªø{
+{
     "componentList": [
         {
             "name": "arm",
-            "koreanName": "Ìåî",
+            "koreanName": "∆»",
             "isChild": true,
             "attachPosition": [
                 {
@@ -24,7 +24,7 @@
         },
         {
             "name": "leg",
-            "koreanName": "Îã§Î¶¨",
+            "koreanName": "¥Ÿ∏Æ",
             "isChild": true,
             "attachPosition": [
                 {
@@ -46,7 +46,7 @@
         },
         {
             "name": "mouth",
-                        "koreanName": "ÏûÖ",
+                        "koreanName": "¿‘",
             "isChild": false,
             "attachPosition": [
                 {
@@ -64,7 +64,7 @@
         },
         {
             "name": "nose",
-                        "koreanName": "ÏΩî",
+                        "koreanName": "ƒ⁄",
             "isChild": false,
             "attachPosition": [
                 {
@@ -82,7 +82,7 @@
         },
         {
             "name": "eye",
-                        "koreanName": "Îàà",
+                        "koreanName": "¥´",
             "isChild": false,
             "attachPosition": [
                 {
@@ -100,7 +100,7 @@
         },
         {
             "name": "hair",
-                        "koreanName": "Î®∏Î¶¨Ïπ¥ÎùΩ",
+                        "koreanName": "∏”∏Æƒ´∂Ù",
             "isChild": true,
             "attachPosition": [
                 {
@@ -122,7 +122,7 @@
         },
         {
             "name": "foot",
-                        "koreanName": "Î∞ú",
+                        "koreanName": "πﬂ",
             "isChild": false,
             "attachPosition": [
                 {
@@ -140,7 +140,7 @@
         },
         {
             "name": "hand",
-                        "koreanName": "ÏÜê",
+                        "koreanName": "º’",
             "isChild": false,
             "attachPosition": [
                 {
@@ -158,7 +158,7 @@
         },
         {
             "name": "ear",
-                        "koreanName": "Í∑Ä",
+                        "koreanName": "±Õ",
             "isChild": false,
             "attachPosition": [
                 {
@@ -176,7 +176,7 @@
         },
         {
             "name": "body",
-                        "koreanName": "Î™∏ÌÜµ",
+                        "koreanName": "∏ˆ≈Î",
             "isChild": false,
             "attachPosition": [
                 {

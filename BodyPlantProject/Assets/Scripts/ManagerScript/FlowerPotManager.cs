@@ -623,7 +623,8 @@ public class FlowerPotManager : MonoBehaviour
                 progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
                 
                 nameText.gameObject.SetActive(true);
-                nameText.text = componentsInPot[index].name;
+                ComponentDataClass data = FindData(componentsInPot[index].name);
+                nameText.text = data.koreanName;
                 //이름텍스트도 켜주고 이름도 넣어준다.
             }
 
