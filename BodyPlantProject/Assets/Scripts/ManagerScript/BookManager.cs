@@ -97,6 +97,16 @@ public class BookManager : MonoBehaviour
         for(int i = 0; i < totalList.Count; i++)
         {
             diaryList[i].GetComponent<RectTransform>().SetAsLastSibling();
+        }
+
+        for(int i = 0; i < totalList.Count; i++)
+        {
+            for(int j = 0; j < totalList[i].stickerList.Count; j++)
+            {
+                GameObject sticker = Instantiate(totalList[i].stickerList[j].stickerObject, diaryList[i].transform);
+                sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
+                //sticker.transform.position = totalList[i].stickerList[j].position;
+            }
         }    
     }
 
@@ -118,12 +128,14 @@ public class BookManager : MonoBehaviour
                     {
                         int randomNum = UnityEngine.Random.Range(0, 15);
                         GameObject sticker = Instantiate(stickerPrefab[randomNum]);
-                        sticker.transform.position = new Vector3(mousePos.x, mousePos.y, -0.3f);
+                        sticker.transform.position = new Vector3(0, 2.5f, -0.3f);
                         StickerClass stickerClass = new StickerClass();
                         totalList[i].stickerList.Add(stickerClass);
                         stickerClass.position = sticker.transform.position;
                         stickerClass.stickerPrefabIndex = randomNum;
+                        stickerClass.characterName = totalList[i].name;
                         stickerClass.stickerObject = sticker;
+                        stickerClass.isFirstTimeOfInstantiation = true;
 
 
                         if(randomNum >= 0 && randomNum < 5)
@@ -143,13 +155,23 @@ public class BookManager : MonoBehaviour
                         totalList[i].loveNess = 0;
                         gameManager.Save();
                     }
-                    if(touchedObject.CompareTag("Sticker") && Input.GetKeyUp(KeyCode.Mouse0))
+
+                    if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
                     {
-                        for(int j = 0; j < totalList[i].stickerList.Count; j++)
+                        /*for(int j = 0; j < totalList[i].stickerList.Count; j++)
                         {
                             if(touchedObject == totalList[i].stickerList[j].stickerObject)
                             {
                                 totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                            }
+                        }*/
+
+                        if(touchedObject.GetComponent<StickerClass>().isFirstTimeOfInstantiation == true)
+                        {
+                            touchedObject.transform.position = mousePos;
+                            if(Input.GetKeyDown(KeyCode.Mouse0))
+                            {
+                                touchedObject.GetComponent<StickerClass>().isFirstTimeOfInstantiation = false;
                             }
                         }
                     }
@@ -184,7 +206,7 @@ public class BookManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(0.1f);
             gameManager.UpdateLoveness();
             for(int i = 0; i < totalList.Count; i++)
             {

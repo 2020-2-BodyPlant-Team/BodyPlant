@@ -132,15 +132,15 @@
             "createdDate": "3/21/2021 7:18:32 PM",
             "lastEarnedTime": "3/21/2021 7:18:32 PM",
             "workEndTime": "",
-            "loveStartTime": "2021-03-26 AM 8:51:32",
+            "loveStartTime": "3/30/2021 1:52:27 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 394380,
-            "huntWorkRatio": 1.4000000953674317,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.2000000476837159,
-            "loveNess": 0.00039999998989515007,
+            "loveTime": 714835,
+            "huntWorkRatio": 2.000000238418579,
+            "fishWorkRatio": 1.2000000476837159,
+            "mineWorkRatio": 1.4000000953674317,
+            "loveNess": 100.0,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -6038
+                        "instanceID": -6434
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -6048
+                        "instanceID": -6444
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -6034
+                "instanceID": -6430
             },
             "stickerList": [
                 {
@@ -247,7 +247,9 @@
                     },
                     "stickerObject": {
                         "instanceID": -167008
-                    }
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
                 },
                 {
                     "stickerPrefabIndex": 7,
@@ -257,7 +259,9 @@
                     },
                     "stickerObject": {
                         "instanceID": -167604
-                    }
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
                 },
                 {
                     "stickerPrefabIndex": 10,
@@ -267,7 +271,69 @@
                     },
                     "stickerObject": {
                         "instanceID": -9212
-                    }
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 7,
+                    "position": {
+                        "x": 1.7258063554763795,
+                        "y": 0.08064508438110352
+                    },
+                    "stickerObject": {
+                        "instanceID": -2556
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 10,
+                    "position": {
+                        "x": 1.7258063554763795,
+                        "y": 0.04838705062866211
+                    },
+                    "stickerObject": {
+                        "instanceID": -3082
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 2,
+                    "position": {
+                        "x": 0.0,
+                        "y": 250.0
+                    },
+                    "stickerObject": {
+                        "instanceID": -3696
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 6,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -4232
+                    },
+                    "characterName": "null",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 5,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -4930
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": true
                 }
             ]
         }
