@@ -11,6 +11,7 @@ public class WorkFishingManager : MonoBehaviour
     SaveDataClass saveData;
     WholeComponents wholeComponents;
     List<CharacterClass> characterList;
+    SoundManager soundManager;
 
     public GameObject fishingBar;
     public GameObject icon;
@@ -68,8 +69,9 @@ public class WorkFishingManager : MonoBehaviour
         {
             bringButton.SetActive(false);
         }
+        soundManager = SoundManager.inst;
 
-        for(int i = 0; i < boatObjectArray.Length; i++)
+        for (int i = 0; i < boatObjectArray.Length; i++)
         {
             boatObjectArray[i].SetActive(false);
         }
@@ -97,6 +99,8 @@ public class WorkFishingManager : MonoBehaviour
 
         workCharacterManager.SetCharacterList(characterList);
 
+        
+        InvokeRepeating("ShipSound", 4, 4);
     }
 
     IEnumerator Coloring()
@@ -104,12 +108,15 @@ public class WorkFishingManager : MonoBehaviour
         icon.transform.localPosition = new Vector2(-300, icon.transform.localPosition.y);
         touchforfish = false;
         panjung.GetComponent<Image>().color = new Color(215 / 255f, 57 / 255f, 57 / 255f);
-        WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(1.5f, 4.0f));
+        WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(2.5f, 5.0f));
         if (ifSunggong)
         {
             yield return loopTime;
             ifSunggong = false;
         }
+        soundManager.ThrowEffectPlay();
+        yield return new WaitForSeconds(0.8f);
+        soundManager.JjiEffectPlay();
         fishingBar.SetActive(true);
         animSpeed = UnityEngine.Random.Range(1.5f, 4f);
         iconAnimator.SetFloat("fishingSpeed", animSpeed);
@@ -131,6 +138,7 @@ public class WorkFishingManager : MonoBehaviour
         }
         iconAnimator.SetBool("isFish", false);
         fishingBar.SetActive(false);
+        soundManager.FailEffectPlay();
         yield return loopTime;
         cor = Coloring();
         StartCoroutine(cor);
@@ -151,10 +159,11 @@ public class WorkFishingManager : MonoBehaviour
                 Debug.Log("보조성분 획득");
                 touchforfish = false;
                 StopCoroutine(cor);
+                StartCoroutine("SucceedSound");
+                /*ifSunggong = true;
                 fishingBar.SetActive(false);
-                ifSunggong = true;
                 cor = Coloring();
-                StartCoroutine(cor);
+                StartCoroutine(cor);*/
             }
         }
         else if (!touchforfish)
@@ -165,6 +174,7 @@ public class WorkFishingManager : MonoBehaviour
                 {
                     StartCoroutine(NameInputShake());
                     Debug.Log("보조성분 획득 실패");
+                    soundManager.FailEffectPlay();
                 }
             }
         }
@@ -197,6 +207,42 @@ public class WorkFishingManager : MonoBehaviour
         }
         inputCorRunning = false;
         rect.anchoredPosition = originPos;
+        ifSunggong = true;
+        fishingBar.SetActive(false);
+        cor = Coloring();
+        StartCoroutine(cor);
+    }
+
+    void ShipSound()
+    {
+        if (soundManager.effectSource.isPlaying == false)
+        {
+            AudioClip[] shipAudio = new AudioClip[2];
+            shipAudio[0] = soundManager.shipEffectOne;
+            shipAudio[1] = soundManager.shipEffectTwo;
+            int i = UnityEngine.Random.Range(1, 3);
+            soundManager.effectSource.clip = shipAudio[i];
+            soundManager.effectSource.Play();
+        }
+            
+        //yield return new WaitForSeconds(0.4f);
+    }
+
+    IEnumerator SucceedSound()
+    {
+        iconAnimator.SetFloat("fishingSpeed", 0);
+        iconAnimator.SetBool("isFish", false);
+        AudioClip[] succAudio = new AudioClip[3];
+        succAudio[0] = soundManager.rillEffect;
+        succAudio[1] = soundManager.mulEffect;
+        succAudio[2] = soundManager.succedEffect;
+        for (int i = 0; i < 3; i++)
+        {
+            soundManager.effectSource.clip = succAudio[i];
+            soundManager.effectSource.Play();
+            yield return new WaitForSeconds(0.8f);
+        }
+        yield return new WaitForSeconds(3);
         ifSunggong = true;
         fishingBar.SetActive(false);
         cor = Coloring();

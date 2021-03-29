@@ -10,6 +10,7 @@ public class WorkMineManager : MonoBehaviour
     SaveDataClass saveData;
     WholeComponents wholeComponents;
     List<CharacterClass> characterList;
+    SoundManager soundManager;
 
     public CharacterMover characterMover;
     public GiveCoin coinManager;
@@ -19,13 +20,12 @@ public class WorkMineManager : MonoBehaviour
 
     public WorkCharacterManager workCharacterManager;
 
-
     Image barImage;
     float maxBar = 100f;
     public static float barAmount;
 
     public GameObject aim;
-
+    public GameObject rock;
 
     public void HouseSceneLoad()
     {
@@ -43,6 +43,7 @@ public class WorkMineManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.mineCharacterList;
+        soundManager = SoundManager.inst;
 
         barImage = GameObject.Find("Bar").GetComponent<Image>();
         barAmount = 0f;
@@ -56,13 +57,11 @@ public class WorkMineManager : MonoBehaviour
             bringButton.SetActive(false);
         }
 
-
         gameManager.workSceneIndex = SceneManager.GetActiveScene().buildIndex;
         for (int i = 0; i < parentObjectArray.Length; i++)
         {
             parentObjectArray[i].SetActive(false);
         }
-
 
         for (int i = 0; i < characterList.Count; i++)
         {
@@ -80,9 +79,8 @@ public class WorkMineManager : MonoBehaviour
         mineElementText.text = saveData.mineElement.ToString();
 
         aim.SetActive(false);
-        InvokeRepeating("SpawnAim", 2, 1);
+        InvokeRepeating("SpawnAim", 2, 1.8f);
         workCharacterManager.SetCharacterList(characterList);
-
     }
 
     void Update()
@@ -96,6 +94,7 @@ public class WorkMineManager : MonoBehaviour
             mineElementText.text = saveData.mineElement.ToString();
             Debug.Log("게이지 만땅");
             barAmount = 0;
+            soundManager.SuccedEffectPlay();
         }
         characterMover.RotationUpdate();
     }
@@ -104,6 +103,23 @@ public class WorkMineManager : MonoBehaviour
     {
         barAmount += 10f;
         aim.SetActive(false);
+        StartCoroutine("MineSound");
+    }
+
+    IEnumerator MineSound()
+    {
+        AudioClip[] mineAudio = new AudioClip[2];
+        mineAudio[0] = soundManager.gangEffect;
+        mineAudio[1] = soundManager.stoneEffect;
+        for(int i = 0; i < 2; i++)
+        {
+            if(barAmount != 100)
+            {
+                soundManager.effectSource.clip = mineAudio[i];
+                soundManager.effectSource.Play();
+                yield return new WaitForSeconds(0.4f);
+            }
+        }
     }
 
     void SpawnAim()
@@ -113,7 +129,5 @@ public class WorkMineManager : MonoBehaviour
         float posX = Random.Range(-1.0f, 1.5f);
         float posY = Random.Range(-4.0f, -1.0f);
         aim.transform.position = new Vector3(posX, posY, 0);
-
-
     }
 }

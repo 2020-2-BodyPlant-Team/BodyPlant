@@ -28,6 +28,21 @@ public class SoundManager : MonoBehaviour
     public AudioClip expandEffect;
     public AudioClip coinEffect;
 
+    public AudioClip succedEffect;
+    public AudioClip failEffect;
+    public AudioClip gangEffect;
+    public AudioClip stoneEffect;
+    public AudioClip grassEffect;
+    public AudioClip deerfailEffect;
+    public AudioClip deerhornEffect;
+    public AudioClip deeroutEffect;
+    public AudioClip shipEffectOne;
+    public AudioClip shipEffectTwo;
+    public AudioClip throwEffect;
+    public AudioClip jjiEffect;
+    public AudioClip rillEffect;
+    public AudioClip mulEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -175,7 +190,77 @@ public class SoundManager : MonoBehaviour
         bgmSource.mute = muteOnTrue;
     }
 
-    
+    public void SuccedEffectPlay()  //일하기 성공
+    {
+        effectSource.clip = succedEffect;
+        effectSource.Play();
+    }
+
+    public void FailEffectPlay()    //일하기 실패
+    {
+        effectSource.clip = failEffect;
+        effectSource.Play();
+    }
+
+    public void GangEffectPlay()
+    {
+        effectSource.clip = gangEffect;
+        effectSource.Play();
+    }
+
+    public void StoneEffectPlay()
+    {
+        effectSource.clip = stoneEffect;
+        effectSource.Play();
+    }
+
+    public void GrassEffectPlay()
+    {
+        effectSource.clip = grassEffect;
+        effectSource.Play();
+    }
+
+    public void DeerfailEffectPlay()
+    {
+        effectSource.clip = deerfailEffect;
+        effectSource.Play();
+    }
+
+    public void DeerhornEffectPlay()
+    {
+        effectSource.clip = deerhornEffect;
+        effectSource.Play();
+    }
+
+    public void DeeroutEffectPlay()
+    {
+        effectSource.clip = deeroutEffect;
+        effectSource.Play();
+    }
+
+    public void ThrowEffectPlay()
+    {
+        effectSource.clip = throwEffect;
+        effectSource.Play();
+    }
+
+    public void JjiEffectPlay()
+    {
+        effectSource.clip = jjiEffect;
+        effectSource.Play();
+    }
+
+    public void RillEffectPlay()
+    {
+        effectSource.clip = rillEffect;
+        effectSource.Play();
+    }
+
+    public void MulEffectPlay()
+    {
+        effectSource.clip = mulEffect;
+        effectSource.Play();
+    }
 
     // Update is called once per frame
     void Update()

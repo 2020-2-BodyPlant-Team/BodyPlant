@@ -12,6 +12,7 @@ public class WorkHuntManager : MonoBehaviour
     public List<CharacterClass> characterList;
     public GiveCoin coinManager;
     public WorkCharacterManager workCharacterManager;
+    SoundManager soundManager;
 
     float waitSec;
     public GameObject sideDeer;
@@ -43,7 +44,6 @@ public class WorkHuntManager : MonoBehaviour
     public Camera cam;
     int count;
 
-
     public void HouseSceneLoad()
     {
         gameManager.HouseSceneLoad();
@@ -60,13 +60,12 @@ public class WorkHuntManager : MonoBehaviour
         saveData = gameManager.saveData;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.huntCharacterList;
+        soundManager = SoundManager.inst;
 
-       
         if (characterList.Count == 3 || saveData.characterList.Count == 0)
         {
             bringButton.SetActive(false);
         }
-
 
         sideAni = sideDeer.GetComponent<Animation>();
         fdAnimator = frontDeer.GetComponent<Animator>();
@@ -94,6 +93,7 @@ public class WorkHuntManager : MonoBehaviour
 
         workCharacterManager.SetCharacterList(characterList);
 
+        soundManager.GrassEffectPlay();
     }
 
     IEnumerator DeerOut()
@@ -102,10 +102,9 @@ public class WorkHuntManager : MonoBehaviour
         yield return new WaitForSeconds(waitSec);
         sideAni.Play("sideDeerMove");
         yield return new WaitForSeconds(2);
-        {
-            isFront = true;
-            frontDeer.SetActive(true);
-        }
+        isFront = true;
+        frontDeer.SetActive(true);
+        soundManager.DeeroutEffectPlay();
     }
     
 
@@ -151,12 +150,14 @@ public class WorkHuntManager : MonoBehaviour
                         Debug.Log("힘겨루기 승리");
                         StartCoroutine("DeerTear");
                         count = 0;
+                        soundManager.SuccedEffectPlay();
                     }
                     else
                     {
                         Debug.Log("힘겨루기 패배");
                         frontDeer.SetActive(false);
                         count = 0;
+                        soundManager.DeerfailEffectPlay();
                     }
                     StartCoroutine("DeerOut");
                 }
@@ -171,7 +172,11 @@ public class WorkHuntManager : MonoBehaviour
                 touchedObject = hit.collider.gameObject;
                 if(touchedObject == frontDeer)
                 {
-                    count++;
+                    if(isFront == true)
+                    {
+                        count++;
+                        soundManager.DeerhornEffectPlay();
+                    }
                 }
             }
         }
