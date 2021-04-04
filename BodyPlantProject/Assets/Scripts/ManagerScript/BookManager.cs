@@ -31,10 +31,10 @@ public class BookManager : MonoBehaviour
 
     Vector2 lovenessZero = new Vector2(0, 19);
     Vector2 lovenessFull = new Vector2(0, 128);
-    bool isModify = false;
     RaycastHit2D hit;
     GameObject touchedObject;
     public Camera cam;
+    private StickerClass touchedStickerClass;
 
 
 
@@ -91,7 +91,9 @@ public class BookManager : MonoBehaviour
                 spriteArray[j].color = Color.black;
             }
             silhouette[i].transform.localScale *= 0.35f;
-            silhouette[i].transform.localPosition = new Vector3(0, 0, -0.5f);
+            silhouette[i].transform.localPosition = new Vector3(0, 0, 6052f);
+
+            diaryList[i].transform.GetChild(2).GetComponent<Button>().onClick.AddListener(StickerBtnFunction);
         }
 
         for(int i = 0; i < totalList.Count; i++)
@@ -103,9 +105,9 @@ public class BookManager : MonoBehaviour
         {
             for(int j = 0; j < totalList[i].stickerList.Count; j++)
             {
-                GameObject sticker = Instantiate(totalList[i].stickerList[j].stickerObject, diaryList[i].transform);
+                GameObject sticker = Instantiate(stickerPrefab[totalList[i].stickerList[j].stickerPrefabIndex], diaryList[i].transform);
                 sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
-                //sticker.transform.position = totalList[i].stickerList[j].position;
+                sticker.transform.position = totalList[i].stickerList[j].position;
             }
         }    
     }
@@ -128,6 +130,7 @@ public class BookManager : MonoBehaviour
                     {
                         int randomNum = UnityEngine.Random.Range(0, 15);
                         GameObject sticker = Instantiate(stickerPrefab[randomNum]);
+                        sticker.transform.localScale = new Vector3(0.0078125f, 0.0078125f, 0.0052083333333333f);
                         sticker.transform.position = new Vector3(0, 2.5f, -0.3f);
                         StickerClass stickerClass = new StickerClass();
                         totalList[i].stickerList.Add(stickerClass);
@@ -137,7 +140,10 @@ public class BookManager : MonoBehaviour
                         stickerClass.stickerObject = sticker;
                         stickerClass.isFirstTimeOfInstantiation = true;
 
+                        //스티커 생성시 붙이기 버튼 SetActive
+                        diaryList[i].transform.GetChild(2).gameObject.SetActive(true);
 
+                        //스티커에 따라 캐릭터의 능력치 증가
                         if(randomNum >= 0 && randomNum < 5)
                         {
                             totalList[i].fishWorkRatio += 0.2f;
@@ -153,57 +159,38 @@ public class BookManager : MonoBehaviour
                         sticker.transform.SetParent(diaryList[i].transform);
                         sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
                         totalList[i].loveNess = 0;
+
                         gameManager.Save();
                     }
 
-                    if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
+        
+                    GameObject touchedStickerObject = EventSystem.current.currentSelectedGameObject;
+                    if(touchedStickerObject != null)
                     {
-                        /*for(int j = 0; j < totalList[i].stickerList.Count; j++)
+                        if(touchedStickerObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
                         {
-                            if(touchedObject == totalList[i].stickerList[j].stickerObject)
+                            for(int j = 0; j < totalList[i].stickerList.Count; j++)
                             {
-                                totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                                if(touchedStickerObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
+                                {
+                                    totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                                    touchedStickerClass = totalList[i].stickerList[j];
+                                }
                             }
-                        }*/
-
-                        if(touchedObject.GetComponent<StickerClass>().isFirstTimeOfInstantiation == true)
-                        {
-                            touchedObject.transform.position = mousePos;
-                            if(Input.GetKeyDown(KeyCode.Mouse0))
-                            {
-                                touchedObject.GetComponent<StickerClass>().isFirstTimeOfInstantiation = false;
-                            }
+                            
                         }
                     }
+                    
 
                 }
             }
         }
-
-        
-        /*for(int i = 0; i < totalList.Count; i++)
-        {
-            for(int j = 0; j < stickerPrefab.Count; j++)
-            {
-                if(pointer == stickerPrefab[j])
-                {
-                    isModify = true;
-                    if(isModify)
-                    {
-                        Vector2 mousePos = Input.mousePosition;
-                        pointer.transform.GetChild(3).transform.Translate(mousePos);
-                        if(Input.GetMouseButtonUp(0))
-                        {
-                            isModify = false;
-                        }
-                    }
-                }
-            }
-        }*/
     }
 
     IEnumerator LovenessCoroutine()
     {
+        float timer = 0;
+        
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
@@ -214,7 +201,13 @@ public class BookManager : MonoBehaviour
                 lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, totalList[i].loveNess/100.0f);
             }
             
-            gameManager.Save();
+            timer += Time.deltaTime;
+            if(timer >= 10)
+            {
+                timer = 0;
+                gameManager.Save();
+            }
+            
         }
         
     }
@@ -230,6 +223,13 @@ public class BookManager : MonoBehaviour
                 diaryList[i].SetActive(true);
             }
         }
+    }
+
+    public void StickerBtnFunction()
+    {
+        touchedStickerClass.isFirstTimeOfInstantiation = false;
+        GameObject button = EventSystem.current.currentSelectedGameObject;
+        button.SetActive(false);        
     }
 
     public void GookBabMukGoSipDa(List<GameObject> diaryList, List<GameObject> buttonList, List<CharacterClass> characterList)
@@ -305,6 +305,13 @@ public class BookManager : MonoBehaviour
             int days = elapsedTime / (60 * 60 * 24);
             diaryList[i].transform.GetChild(1).GetChild(5).GetComponent<Text>().text = days.ToString();  
 
+            //fishing 일한 일수
+            diaryList[i].transform.GetChild(1).GetChild(6).GetComponent<Text>().text = (characterList[i].fishTime / 86400).ToString() + "일";
+            //mining 일한 일수
+            diaryList[i].transform.GetChild(1).GetChild(7).GetComponent<Text>().text = (characterList[i].mineTime / 86400).ToString() + "일";
+            //hunting 일한 일수
+            diaryList[i].transform.GetChild(1).GetChild(8).GetComponent<Text>().text = (characterList[i].huntTime / 86400).ToString() + "일";
+
             GameObject parent = new GameObject();
             parent.transform.SetParent(diaryList[i].transform);
             parent.transform.localPosition = new Vector3(0, 300, -1);
@@ -322,10 +329,11 @@ public class BookManager : MonoBehaviour
                 path = "Components/Complete/" + component.name;
 
                 GameObject prefab = Resources.Load<GameObject>(path);
-                GameObject inst = Instantiate(prefab,parent.transform);
+                GameObject inst = Instantiate(prefab, parent.transform);
                 inst.transform.localPosition = component.position;
                 inst.transform.eulerAngles = component.rotation;
                 component.realGameobject = inst;
+                inst.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y, -1);
                 
                 string name = component.name;
 

@@ -16,7 +16,7 @@ public class StickerClass
         stickerPrefabIndex = 0;
         position = Vector2.zero;
         characterName = "null";
-        isFirstTimeOfInstantiation = false;
+        isFirstTimeOfInstantiation = true;
     }
 
 }
