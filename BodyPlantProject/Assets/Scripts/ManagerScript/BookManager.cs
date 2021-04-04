@@ -72,7 +72,7 @@ public class BookManager : MonoBehaviour
         lovenessMaskList = new List<RectTransform>();
 
         contentRect.anchoredPosition = new Vector2(0, 0);   
-        contentRect.sizeDelta = new Vector2(0, (characterList.Count / 3) * (-buttonYgap));
+        contentRect.sizeDelta = new Vector2(0, ((characterList.Count / 3) + 1) * (-buttonYgap));
         buttonStartPoint = new Vector2(-300, (contentRect.sizeDelta.y / 2) - 180);
         
         GookBabMukGoSipDa(diaryList, buttonList, totalList);
@@ -92,6 +92,10 @@ public class BookManager : MonoBehaviour
             }
             silhouette[i].transform.localScale *= 0.35f;
             silhouette[i].transform.localPosition = new Vector3(0, 0, 6052f);
+            for(int j = 0; j < silhouette[i].transform.childCount; j++)
+            {
+                silhouette[i].transform.GetChild(j).GetComponent<SpriteRenderer>().sortingOrder = 1;
+            }
 
             diaryList[i].transform.GetChild(2).GetComponent<Button>().onClick.AddListener(StickerBtnFunction);
         }
@@ -118,14 +122,13 @@ public class BookManager : MonoBehaviour
         //GameObject pointer = EventSystem.current.currentSelectedGameObject;
         for(int i = 0; i < totalList.Count; i++)
         {
-            if(totalList[i].loveNess >= 100)
+            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
+            if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
             {
-                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-                if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
+                touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
+                Debug.Log(touchedObject);
+                if(totalList[i].loveNess >= 100)
                 {
-                    touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
-                    Debug.Log(touchedObject);
-            
                     if(touchedObject.name == "Loveness" && Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         int randomNum = UnityEngine.Random.Range(0, 15);
@@ -162,29 +165,27 @@ public class BookManager : MonoBehaviour
 
                         gameManager.Save();
                     }
-
-        
-                    //GameObject touchedStickerObject = EventSystem.current.currentSelectedGameObject;
-                    if(touchedObject != null)
-                    {
-                        if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
-                        {
-                            Debug.Log(touchedObject);
-                            for(int j = 0; j < totalList[i].stickerList.Count; j++)
-                            {
-                                if(touchedObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
-                                {
-                                    totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
-                                    touchedStickerClass = totalList[i].stickerList[j];
-                                }
-                            }
-                            
-                        }
-                    }
-                    
-
                 }
-            }
+
+    
+                //GameObject touchedStickerObject = EventSystem.current.currentSelectedGameObject;
+                if(touchedObject != null)
+                {
+                    if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
+                    {
+                        Debug.Log(touchedObject);
+                        for(int j = 0; j < totalList[i].stickerList.Count; j++)
+                        {
+                            if(touchedObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
+                            {
+                                totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                                touchedStickerClass = totalList[i].stickerList[j];
+                            }
+                        }
+                        
+                    }
+                }
+            }           
         }
     }
 
