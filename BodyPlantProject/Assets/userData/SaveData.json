@@ -132,15 +132,15 @@
             "createdDate": "3/21/2021 7:18:32 PM",
             "lastEarnedTime": "3/21/2021 7:18:32 PM",
             "workEndTime": "",
-            "loveStartTime": "4/4/2021 2:32:04 PM",
+            "loveStartTime": "4/4/2021 2:46:54 PM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 1192412,
+            "loveTime": 1193302,
             "huntWorkRatio": 2.000000238418579,
             "fishWorkRatio": 1.2000000476837159,
             "mineWorkRatio": 1.8000001907348633,
-            "loveNess": 0.016329998150467874,
+            "loveNess": 0.025230001658201219,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -22250
+                        "instanceID": -33784
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -22260
+                        "instanceID": -33794
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -22246
+                "instanceID": -33780
             },
             "stickerList": [
                 {
@@ -367,14 +367,14 @@
             "createdDate": "4/4/2021 2:07:37 PM",
             "lastEarnedTime": "4/4/2021 2:07:37 PM",
             "workEndTime": "",
-            "loveStartTime": "4/4/2021 2:32:04 PM",
+            "loveStartTime": "4/4/2021 2:46:54 PM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 1467,
-            "huntWorkRatio": 1.2300000190734864,
+            "loveTime": 2357,
+            "huntWorkRatio": 1.4300000667572022,
             "fishWorkRatio": 1.2300000190734864,
-            "mineWorkRatio": 1.2300000190734864,
+            "mineWorkRatio": 1.4300000667572022,
             "loveNess": 0.0,
             "xGap": 0.0,
             "yGap": 0.0,
@@ -419,7 +419,7 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -22482
+                        "instanceID": -34016
                     },
                     "childObject": {
                         "instanceID": 0
@@ -466,7 +466,7 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -22492
+                        "instanceID": -34026
                     },
                     "childObject": {
                         "instanceID": 0
@@ -513,7 +513,7 @@
                     "attached": false,
                     "usedElement": 0,
                     "realGameobject": {
-                        "instanceID": -22500
+                        "instanceID": -34034
                     },
                     "childObject": {
                         "instanceID": 0
@@ -522,7 +522,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -22478
+                "instanceID": -34012
             },
             "stickerList": [
                 {
@@ -557,6 +557,30 @@
                     },
                     "stickerObject": {
                         "instanceID": -22694
+                    },
+                    "characterName": "너의 눈코입",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 11,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -26106
+                    },
+                    "characterName": "너의 눈코입",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 8,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -34276
                     },
                     "characterName": "너의 눈코입",
                     "isFirstTimeOfInstantiation": true

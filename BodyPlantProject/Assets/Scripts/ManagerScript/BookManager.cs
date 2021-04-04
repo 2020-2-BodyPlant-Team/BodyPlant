@@ -164,14 +164,15 @@ public class BookManager : MonoBehaviour
                     }
 
         
-                    GameObject touchedStickerObject = EventSystem.current.currentSelectedGameObject;
-                    if(touchedStickerObject != null)
+                    //GameObject touchedStickerObject = EventSystem.current.currentSelectedGameObject;
+                    if(touchedObject != null)
                     {
-                        if(touchedStickerObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
+                        if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
                         {
+                            Debug.Log(touchedObject);
                             for(int j = 0; j < totalList[i].stickerList.Count; j++)
                             {
-                                if(touchedStickerObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
+                                if(touchedObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
                                 {
                                     totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
                                     touchedStickerClass = totalList[i].stickerList[j];
