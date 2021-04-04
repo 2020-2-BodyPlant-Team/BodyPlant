@@ -2,7 +2,7 @@
     "lastPlayTime": "3/21/2021 6:28:24 PM",
     "potList": [
         {
-            "name": "null",
+            "name": "nose",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -11,9 +11,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-03-26 AM 11:10:10",
+            "plantedTime": "2021-04-04 PM 12:36:26",
             "isSprotued": false,
-            "percentage": 0.0,
+            "percentage": 0.07999999821186066,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -35,7 +35,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -40086
             },
             "childObject": {
                 "instanceID": 0
@@ -43,7 +43,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "nose",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -52,9 +52,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-03-26 AM 11:45:06",
+            "plantedTime": "2021-04-04 PM 12:36:29",
             "isSprotued": false,
-            "percentage": 0.0,
+            "percentage": 0.03999999910593033,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -76,7 +76,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -40092
             },
             "childObject": {
                 "instanceID": 0
@@ -117,7 +117,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": -32286
+                "instanceID": -40076
             },
             "childObject": {
                 "instanceID": 0
@@ -182,7 +182,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -6434
+                        "instanceID": -39960
                     },
                     "childObject": {
                         "instanceID": 0
@@ -227,7 +227,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -6444
+                        "instanceID": -39970
                     },
                     "childObject": {
                         "instanceID": 0
@@ -236,7 +236,7 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -6430
+                "instanceID": -39956
             },
             "stickerList": [
                 {
@@ -671,9 +671,15 @@
             "isHarvested": true
         }
     ],
-    "coin": 4400,
-    "boughtNameList": [],
-    "boughtDateList": [],
+    "coin": 4300,
+    "boughtNameList": [
+        "nose",
+        "nose"
+    ],
+    "boughtDateList": [
+        "2021-04-04 PM 12:36:26",
+        "2021-04-04 PM 12:36:29"
+    ],
     "huntElement": 108,
     "mineElement": 120,
     "fishElement": 130,

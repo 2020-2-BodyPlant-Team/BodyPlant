@@ -9,6 +9,7 @@ public class HouseManager : MonoBehaviour
     SaveDataClass saveData;
     WholeComponents wholeComponents;
     SoundManager soundManager;
+    OptionManager optionManager;
 
     [SerializeField]
     List<CharacterClass> characterList;
@@ -28,6 +29,13 @@ public class HouseManager : MonoBehaviour
     Vector2 leftPos;
     Vector2 rightPos;
     Vector2 downPos;
+    Vector2 optionUpPosChanged;
+    Vector2 optionUpPosOrigin;
+
+    public GameObject buttonBundle;
+    Button[] buttonBundleArray;
+
+
 
     public Text coinText;
 
@@ -107,12 +115,23 @@ public class HouseManager : MonoBehaviour
     {
         float time = 0;
         nowCorRunning = true;
-        while(time < 1)
+        RectTransform optionRect = optionManager.optionButtonObject.GetComponent<RectTransform>();
+
+        if (panel.activeSelf)
+        {
+            panel.SetActive(false);
+        }
+        for(int i = 0;i< buttonBundleArray.Length; i++)
+        {
+            buttonBundleArray[i].interactable = false;
+        }
+        while (time < 1)
         {
             upRect.anchoredPosition = Vector2.Lerp(Vector2.zero, upPos, time);
             downRect.anchoredPosition = Vector2.Lerp(Vector2.zero, downPos, time);
             rightRect.anchoredPosition = Vector2.Lerp(Vector2.zero, rightPos, time);
             leftRect.anchoredPosition = Vector2.Lerp(Vector2.zero, leftPos, time);
+            optionRect.anchoredPosition = Vector2.Lerp(optionUpPosOrigin, optionUpPosChanged, time);
             time += 2* Time.deltaTime;
             yield return null;
         }
@@ -133,15 +152,22 @@ public class HouseManager : MonoBehaviour
     {
         float time = 0;
         nowCorRunning = true;
+        RectTransform optionRect = optionManager.optionButtonObject.GetComponent<RectTransform>();
         while (time < 1)
         {
             upRect.anchoredPosition = Vector2.Lerp(upPos, Vector2.zero,  time);
             downRect.anchoredPosition = Vector2.Lerp(downPos, Vector2.zero, time);
             rightRect.anchoredPosition = Vector2.Lerp(rightPos, Vector2.zero, time);
             leftRect.anchoredPosition = Vector2.Lerp(leftPos, Vector2.zero,  time);
+            optionRect.anchoredPosition = Vector2.Lerp(optionUpPosChanged, optionUpPosOrigin, time);
             time += 2* Time.deltaTime;
             yield return null;
         }
+        for (int i = 0; i < buttonBundleArray.Length; i++)
+        {
+            buttonBundleArray[i].interactable = true;
+        }
+
         nowCorRunning = false;
         nowFullScreen = false;
     }
@@ -156,6 +182,7 @@ public class HouseManager : MonoBehaviour
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.characterList;
         soundManager = SoundManager.inst;
+        optionManager = OptionManager.singleTon;
 
         coinText.text = saveData.coin.ToString();
 
@@ -163,6 +190,10 @@ public class HouseManager : MonoBehaviour
         leftPos = new Vector2(-350, 0);
         rightPos = new Vector2(400, 0);
         downPos = new Vector2(0, -325);
+        optionUpPosChanged = new Vector2(423, 1048);
+        optionUpPosOrigin = new Vector2(423, 840);
+
+        buttonBundleArray = buttonBundle.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < characterList.Count; i++)
         {

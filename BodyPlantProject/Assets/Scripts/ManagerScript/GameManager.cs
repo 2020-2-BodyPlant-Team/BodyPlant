@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public SaveDataClass saveData;             //세이브데이터
     public static GameManager singleTon;    //싱글톤을 만들기위해 public static으로 만든다. 어디서든 참조가 가능하기 위함.
     public bool fromPotScene;
+    public OptionManager optionManager;
 
     public float loveRatio = 0.00001f;  //애정도 * 초 를 할건데 그냥 변수 여따 만듬
 
@@ -83,11 +84,13 @@ public class GameManager : MonoBehaviour
     {
         fromPotScene = false;
         SceneManager.LoadScene("ComposeScene");
+        optionManager.OptionButtonActive(false);
     }
     public void PotSceneLoad()
     {
         fromPotScene = true;
         SceneManager.LoadScene("PotScene");
+        optionManager.OptionButtonActive(true);
     }
 
     public void HouseSceneLoad()
@@ -96,41 +99,48 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("HouseScene");
         soundManager.MainBGMPlay();
         soundManager.HouseEffectPlay();
+        optionManager.OptionButtonActive(true);
     }
 
     public void WorkMineSceneLoad() //일하기 광산
     {
         SceneManager.LoadScene("WorkMineScene");
         soundManager.MineBGMPlay();
+        optionManager.OptionButtonActive(true);
     }
 
     public void WorkHuntSceneLoad() //일하기 사냥
     {
         SceneManager.LoadScene("WorkHuntScene");
         soundManager.HuntBGMPlay();
+        optionManager.OptionButtonActive(true);
     }
 
     public void WorkFishingSceneLoad() //일하기 낚시
     {
         SceneManager.LoadScene("WorkFishingScene");
         soundManager.FishBGMPlay();
+        optionManager.OptionButtonActive(true);
     }
 
     public void StoreSceneLoad()
     {
         SceneManager.LoadScene("StoreScene");
         soundManager.StoreEffectPlay();
+        optionManager.OptionButtonActive(false);
     }
 
     public void BookSceneLoad()
     {
         SceneManager.LoadScene("BookScene");
         soundManager.BookEffectPlay();
+        optionManager.OptionButtonActive(false);
     }
 
     public void SecretRoomSceneLoad()
     {
         SceneManager.LoadScene("SecretRoomScene");
+        optionManager.OptionButtonActive(false);
     }
 
     public string GetCompleteWord(string name, string firstVal, string secondVal)

@@ -436,7 +436,7 @@ public class StoreManager : MonoBehaviour
 
     public void exitStore()
     {
-        SceneManager.LoadScene("HouseScene");
+        gameManager.HouseSceneLoad();
     }
 
     void PotAlphaChange()
