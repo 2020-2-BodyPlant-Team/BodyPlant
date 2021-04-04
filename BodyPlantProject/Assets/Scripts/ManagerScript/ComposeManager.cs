@@ -709,7 +709,7 @@ public class ComposeManager : MonoBehaviour
             character = new CharacterClass();
             character.components = activedComponent;
             character.name = nameInput;
-            character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 3);
+            character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 4);
 
             if(character.personality == CharacterClass.Personality.Ggumul)
             {
