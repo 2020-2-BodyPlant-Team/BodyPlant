@@ -93,7 +93,8 @@ public class WorkHuntManager : MonoBehaviour
 
         workCharacterManager.SetCharacterList(characterList);
 
-        soundManager.GrassEffectPlay();
+        if(!soundManager.EffectPlaying())
+            soundManager.GrassEffectPlay();
     }
 
     IEnumerator DeerOut()
@@ -110,7 +111,7 @@ public class WorkHuntManager : MonoBehaviour
 
     IEnumerator DeerMove()
     {
-        float velocity = -0.015f;
+        float velocity = -0.005f;
         while (true)
         {
             yield return null;

@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     public void SecretRoomSceneLoad()
     {
         SceneManager.LoadScene("SecretRoomScene");
-        optionManager.OptionButtonActive(false);
+        //optionManager.OptionButtonActive(false);
     }
 
     public string GetCompleteWord(string name, string firstVal, string secondVal)

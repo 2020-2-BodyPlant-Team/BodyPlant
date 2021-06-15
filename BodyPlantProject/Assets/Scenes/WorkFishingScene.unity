@@ -532,7 +532,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 147.08179, y: 88.45372}
+  m_Size: {x: 249.55, y: 88.45372}
   m_EdgeRadius: 0
 --- !u!1 &636047103
 GameObject:
@@ -1699,7 +1699,7 @@ PrefabInstance:
     - target: {fileID: 7048250985350352457, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207
+      value: -251
       objectReference: {fileID: 0}
     - target: {fileID: 7048250985350352462, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
@@ -1745,7 +1745,7 @@ PrefabInstance:
     - target: {fileID: 7048250986330617082, guid: 68244f40627a98b48bf622302291df30,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 572.3
+      value: 528.3
       objectReference: {fileID: 0}
     - target: {fileID: 7048250986330617083, guid: 68244f40627a98b48bf622302291df30,
         type: 3}

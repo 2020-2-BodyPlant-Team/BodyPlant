@@ -103,8 +103,9 @@ public class ComposeManager : MonoBehaviour
             inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400*harvestedComponent.Count/2+ i * 400, -74f);
             Image image = inst.GetComponent<Image>();
             image.sprite = componentData.componentSpriteArray[0];
+            /*
             Text text = inst.GetComponentInChildren<Text>();
-            text.text = componentData.name;
+            text.text = componentData.name;*/
             string name = componentData.name;
             int index = i;      //delegate에 그냥 i를 넣으면 되는데, 이상하게 int가 callbyRef로 넘어간다.
             Button button = inst.GetComponent<Button>();

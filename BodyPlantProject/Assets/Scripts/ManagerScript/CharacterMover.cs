@@ -392,6 +392,7 @@ public class CharacterMover : MonoBehaviour
         }
     }
 
+    /*
     public void FishingUpdate()
     {
         for (int i = 0; i < rotationList.Count; i++)
@@ -406,7 +407,7 @@ public class CharacterMover : MonoBehaviour
                 randomAngleList[i] = new Vector3(0, 0, originAngleList[i] + Random.Range(-5, 5));
             }
         }
-    }
+    }*/
 
     public CharacterClass ChooseCharacter(GameObject touchedObject)
     {

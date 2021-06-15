@@ -37,6 +37,8 @@ public class WorkCharacterManager : MonoBehaviour
         {
             GameObject obj = characterList[i].realGameobject;
             GameObject buttonObject = Instantiate(buttonPrefab);
+            characterList[i].getOutButton = buttonObject;
+            buttonObject.GetComponent<Canvas>().sortingOrder = 3;
             buttonObject.transform.SetParent(obj.transform);
             buttonList.Add(buttonObject);
             buttonObject.transform.localPosition = Vector3.zero;
@@ -73,7 +75,7 @@ public class WorkCharacterManager : MonoBehaviour
         gameManager.Save();
     }
 
-    public void ChooseCharacter(CharacterClass character)
+    public void ChooseCharacter(CharacterClass character,GameObject touched)
     {
         if (character == null)
         {
@@ -83,20 +85,27 @@ public class WorkCharacterManager : MonoBehaviour
         {
             if(character == characterList[i])
             {
-                int minus = 0;
+                /*
+                int plus = 0;
                 int index = i;
+
                 for (int j = 0; j < restIndex.Count; j++)
                 {
-                    if (index > restIndex[j])
+                    if (index >= restIndex[j])
                     {
-                        minus++;
+                        plus++;
                     }
                 }
-                index -= minus;
+                index += plus;
 
-                buttonList[index].SetActive(true);
-                StartCoroutine(ButtonFalse(buttonList[index]));
-                break;
+                break;*/
+
+                characterList[i].getOutButton.SetActive(true);
+
+
+                //buttonList[index].SetActive(true);
+                StartCoroutine(ButtonFalse(characterList[i].getOutButton));
+
             }
         }
     }
@@ -117,9 +126,16 @@ public class WorkCharacterManager : MonoBehaviour
             if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
             {
                 touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
-                ChooseCharacter(characterMover.ChooseCharacter(touchedObject));
+                ChooseCharacter(characterMover.ChooseCharacter(touchedObject),touchedObject);
 
             }
         }
+
+        for(int i = 0; i < buttonList.Count; i++)
+        {
+            buttonList[i].transform.rotation = Quaternion.identity;
+        }
+
+        
     }
 }

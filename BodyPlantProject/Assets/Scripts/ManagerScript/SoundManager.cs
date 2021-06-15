@@ -262,9 +262,8 @@ public class SoundManager : MonoBehaviour
         effectSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool EffectPlaying()
     {
-        
+        return effectSource.isPlaying;
     }
 }

@@ -33,7 +33,7 @@ public class WorkFishingManager : MonoBehaviour
     public GameObject panjung;
     public float a = 0; //Coloring 코루틴에서 while 돌리려고 만든 변수입니다
     //float b = 0; 
-    public bool touchforfish = false;
+    public bool touchforfish = false;   //이거 어딘지 모를 panjungCol에서 바꿔줌 ㅡㅡ
     bool ifSunggong = false;
     public CharacterMover characterMover;
     public Text fishElementText;
@@ -146,7 +146,7 @@ public class WorkFishingManager : MonoBehaviour
     
     void Update()
     {
-        characterMover.FishingUpdate();
+        characterMover.RotationUpdate();
 
         if (touchforfish)
         {
@@ -160,8 +160,10 @@ public class WorkFishingManager : MonoBehaviour
                 touchforfish = false;
                 StopCoroutine(cor);
                 StartCoroutine("SucceedSound");
-                /*ifSunggong = true;
                 fishingBar.SetActive(false);
+
+                /*ifSunggong = true;
+                
                 cor = Coloring();
                 StartCoroutine(cor);*/
             }
@@ -220,7 +222,7 @@ public class WorkFishingManager : MonoBehaviour
             AudioClip[] shipAudio = new AudioClip[2];
             shipAudio[0] = soundManager.shipEffectOne;
             shipAudio[1] = soundManager.shipEffectTwo;
-            int i = UnityEngine.Random.Range(1, 3);
+            int i = UnityEngine.Random.Range(1, 2);
             soundManager.effectSource.clip = shipAudio[i];
             soundManager.effectSource.Play();
         }

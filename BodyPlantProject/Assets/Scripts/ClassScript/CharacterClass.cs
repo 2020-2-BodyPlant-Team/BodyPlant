@@ -21,6 +21,9 @@ public class CharacterClass
     public string workEndTime;              //가장 마지막 일에서 나온 날짜.
     public string loveStartTime;            //애정도가 차오르는 그거.
 
+    [HideInInspector]
+    public GameObject getOutButton;
+
     public int huntTime;
     public int fishTime;
     public int mineTime;
@@ -54,6 +57,7 @@ public class CharacterClass
         loveStartTime = DateTime.Now.ToString();
         loveTime = 0;
         loveNess = 0;
+        getOutButton = null;
     }
 
     
