@@ -94,7 +94,7 @@ public class BookManager : MonoBehaviour
             silhouette[i].transform.localPosition = new Vector3(0, 0, 6052f);
             for(int j = 0; j < silhouette[i].transform.childCount; j++)
             {
-                silhouette[i].transform.GetChild(j).GetComponent<SpriteRenderer>().sortingOrder = 1;
+                silhouette[i].transform.GetChild(j).GetComponent<SpriteRenderer>().sortingOrder = 2;
             }
 
             diaryList[i].transform.GetChild(2).GetComponent<Button>().onClick.AddListener(StickerBtnFunction);
@@ -110,6 +110,7 @@ public class BookManager : MonoBehaviour
             for(int j = 0; j < totalList[i].stickerList.Count; j++)
             {
                 GameObject sticker = Instantiate(stickerPrefab[totalList[i].stickerList[j].stickerPrefabIndex], diaryList[i].transform);
+                sticker.GetComponent<BoxCollider2D>().enabled = false;
                 sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
                 sticker.transform.position = totalList[i].stickerList[j].position;
             }
@@ -133,7 +134,23 @@ public class BookManager : MonoBehaviour
                     {
                         int randomNum = UnityEngine.Random.Range(0, 15);
                         GameObject sticker = Instantiate(stickerPrefab[randomNum]);
-                        sticker.transform.localScale = new Vector3(0.0078125f, 0.0078125f, 0.0052083333333333f);
+
+                        if(randomNum / 5 == 0)
+                        {
+                            totalList[i].fishWorkRatio += 0.5f;
+                        }
+                        else if(randomNum / 5 == 1)
+                        {
+                            totalList[i].huntWorkRatio += 0.5f;
+                        }
+                        else if(randomNum / 5 == 2)
+                        {
+                            totalList[i].mineWorkRatio += 0.5f;
+                        }
+
+                        sticker.transform.SetParent(diaryList[i].transform);
+                        sticker.GetComponent<BoxCollider2D>().enabled = true;
+                        sticker.transform.localScale = new Vector3(100, 100, 1);
                         sticker.transform.position = new Vector3(0, 2.5f, -0.3f);
                         StickerClass stickerClass = new StickerClass();
                         totalList[i].stickerList.Add(stickerClass);
@@ -146,20 +163,7 @@ public class BookManager : MonoBehaviour
                         //스티커 생성시 붙이기 버튼 SetActive
                         diaryList[i].transform.GetChild(2).gameObject.SetActive(true);
 
-                        //스티커에 따라 캐릭터의 능력치 증가
-                        if(randomNum >= 0 && randomNum < 5)
-                        {
-                            totalList[i].fishWorkRatio += 0.2f;
-                        }
-                        if(randomNum >= 5 && randomNum < 10)
-                        {
-                            totalList[i].huntWorkRatio += 0.2f;
-                        }
-                        if(randomNum >= 10 && randomNum < 15)
-                        {
-                            totalList[i].mineWorkRatio += 0.2f;
-                        }
-                        sticker.transform.SetParent(diaryList[i].transform);
+                        //sticker.transform.SetParent(diaryList[i].transform);
                         sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
                         totalList[i].loveNess = 0;
 
@@ -178,7 +182,24 @@ public class BookManager : MonoBehaviour
                         {
                             if(touchedObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
                             {
+                                if(mousePos.x > 2.2)
+                                {
+                                    mousePos.x = 2.2f;
+                                }
+                                else if(mousePos.x < -2.2)
+                                {
+                                    mousePos.x = -2.2f;
+                                }
+                                else if(mousePos.y > 3)
+                                {
+                                    mousePos.y = 3;
+                                }
+                                else if(mousePos.y < -0.4)
+                                {
+                                    mousePos.y = -0.4f;
+                                }
                                 totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                                totalList[i].stickerList[j].position = mousePos;
                                 touchedStickerClass = totalList[i].stickerList[j];
                             }
                         }
@@ -231,6 +252,7 @@ public class BookManager : MonoBehaviour
     {
         touchedStickerClass.isFirstTimeOfInstantiation = false;
         GameObject button = EventSystem.current.currentSelectedGameObject;
+        gameManager.Save();
         button.SetActive(false);        
     }
 
@@ -321,7 +343,10 @@ public class BookManager : MonoBehaviour
             int bodyNumber = 0;
             int armLegNumber = 0;
             int handFootNumber = 0;
-            int earEyeNumber = 0;   //이목구비
+            int earNumber = 0;
+            int moutNumber = 0;
+            int noseNumber = 0;
+            int eyeNumber = 0;
             int hairNumber = 0;
 
             for(int k = 0; k < characterList[i].components.Count; k++)
@@ -356,17 +381,40 @@ public class BookManager : MonoBehaviour
                     inst.transform.localPosition += new Vector3(0, 0, -0.3f - handFootNumber * 0.001f);
                     handFootNumber++;
                 }
-                if (name == "ear" || name == "eye" || name == "mouth" || name == "nose")
+                if(name == "ear")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -0.4f - earEyeNumber * 0.001f);
-                    earEyeNumber++;
+                    inst.transform.localPosition += new Vector3(0, 0, -0.4f - earNumber * 0.001f);
+                    earNumber++;
+                }
+                if (name == "mouth")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -0.5f - moutNumber * 0.001f);
+                    moutNumber++;
+                }
+                if(name == "nose")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -0.5f - noseNumber * 0.001f);
+                    noseNumber++;
+                }
+                if(name == "eye")
+                {
+                    inst.transform.localPosition += new Vector3(0, 0, -0.6f - eyeNumber * 0.001f);
+                    eyeNumber++;
                 }
                 if (name == "hair")
                 {
-                    inst.transform.localPosition += new Vector3(0, 0, -0.5f - hairNumber * 0.001f);
+                    inst.transform.localPosition += new Vector3(0, 0, -0.7f - hairNumber * 0.001f);
                     hairNumber++;
                 }
             } 
+
+            //북씬 들어갔을때, 생성되는 신체 오브젝트들의 박스 콜라이더를 꺼준다.
+            BoxCollider2D[] bcArray;
+            bcArray = parent.GetComponentsInChildren<BoxCollider2D>();
+            for(int j = 0; j < bcArray.Length; j++)
+            {
+                bcArray[j].enabled = false;
+            }
 
             // 다이어리에 생성되는 캐릭터의 x, y 위치 중에서 최댓값과 최솟값 초기값 설정 
             float Xmin = characterList[i].components[0].position.x;
