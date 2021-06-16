@@ -111,7 +111,7 @@ public class WorkHuntManager : MonoBehaviour
 
     IEnumerator DeerMove()
     {
-        float velocity = -0.005f;
+        float velocity = -0.015f;
         while (true)
         {
             yield return null;

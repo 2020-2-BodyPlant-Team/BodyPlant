@@ -61,6 +61,16 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void BGMStop()
+    {
+        bgmSource.Stop();
+    }
+
+    public void BGMPlay()
+    {
+        bgmSource.Play();
+    }
+
     public void MainBGMPlay()
     {
         if(bgmSource.clip == mainBGM)

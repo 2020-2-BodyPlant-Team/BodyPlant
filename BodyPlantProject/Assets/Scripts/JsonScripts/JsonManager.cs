@@ -9,7 +9,7 @@ public class JsonManager
 
     public void DataInitialize()
     {
-        SaveWholeComponent();
+        //SaveWholeComponent();
         SaveDataClass data = new SaveDataClass();
         SaveJson(data);
     }
@@ -51,6 +51,7 @@ public class JsonManager
 
     //이거는 기획자님이 데이터를 만들어주시기 전에 우리가 임의로 사용할 코드입니닫.
     //임의로 10개의 부위데이터를 만드는 코드에요. 평소에는 사용하지 않고 데이터를 제작할 때만 씁니다.
+    /*
     public void SaveWholeComponent()
     {
         string jsonText;
@@ -66,7 +67,7 @@ public class JsonManager
 
 #endif
 #if UNITY_ANDROID
-        savePath = Application.persistentDataPath;
+        //savePath = Application.persistentDataPath;
         
 #endif
         //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
@@ -85,7 +86,7 @@ public class JsonManager
         fileStream.Close();
 
     }
-
+    */
     public WholeComponents LoadComponents()
     {
         TextAsset text = Resources.Load<TextAsset>("JsonData/ComponentsData");

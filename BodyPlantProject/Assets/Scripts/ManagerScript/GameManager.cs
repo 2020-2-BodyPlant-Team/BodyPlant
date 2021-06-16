@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         //제이슨매니저 할당.
         jsonManager = new JsonManager();
         //wholeComponents는 전체 부위인데, 이걸 로딩해준다. 기획자가 만든 데이터 로딩.
-        jsonManager.SaveWholeComponent();
+        //jsonManager.SaveWholeComponent();
         wholeComponents = jsonManager.LoadComponents();
         //load는 세이브데이터 로드다.
         //saveData = new SaveDataClass();
@@ -140,7 +140,16 @@ public class GameManager : MonoBehaviour
     public void SecretRoomSceneLoad()
     {
         SceneManager.LoadScene("SecretRoomScene");
-        //optionManager.OptionButtonActive(false);
+        optionManager.OptionButtonActive(false);
+    }
+
+    //전역변수 workindex사용
+    public void BackToWorkScene()
+    {
+
+        SceneManager.LoadScene(workSceneIndex);
+        optionManager.OptionButtonActive(true);
+
     }
 
     public string GetCompleteWord(string name, string firstVal, string secondVal)

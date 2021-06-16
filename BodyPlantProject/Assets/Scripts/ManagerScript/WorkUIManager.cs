@@ -124,7 +124,7 @@ public class WorkUIManager : MonoBehaviour
         gameManager.Save();
 
         //touchedObject에 들어간 캐릭터를 밑에 씬으로 이동시키고 싶습니다
-        SceneManager.LoadScene(gameManager.workSceneIndex);
+        gameManager.BackToWorkScene();
 
     }
 
@@ -136,6 +136,6 @@ public class WorkUIManager : MonoBehaviour
 
     public void BackBtn()
     {
-        SceneManager.LoadScene(gameManager.workSceneIndex);
+        gameManager.BackToWorkScene();
     }
 }

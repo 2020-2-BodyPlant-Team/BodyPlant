@@ -114,7 +114,8 @@ public class WorkFishingManager : MonoBehaviour
             yield return loopTime;
             ifSunggong = false;
         }
-        soundManager.ThrowEffectPlay();
+        if(!soundManager.EffectPlaying())
+            soundManager.ThrowEffectPlay();
         yield return new WaitForSeconds(0.8f);
         soundManager.JjiEffectPlay();
         fishingBar.SetActive(true);

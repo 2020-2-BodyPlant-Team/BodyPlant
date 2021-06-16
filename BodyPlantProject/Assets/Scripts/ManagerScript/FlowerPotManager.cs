@@ -112,11 +112,15 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab;
                 if (componentsInPot[i].percentage == 1)
                 {
+
                     prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
+
                 }
                 else if(componentsInPot[i].percentage >= 0.5)
                 {
+
                     prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
+ 
                 }
                 else
                 {
@@ -140,7 +144,12 @@ public class FlowerPotManager : MonoBehaviour
                     Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
-                
+                if (componentData.name == "arm" || componentData.name == "leg")
+                {
+                    Debug.Log("암 레그");
+                    obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+                }
+
                 //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
                 //여기서 유의할 점은 나중에 components in pot이 savedata로 다시 들어갈 텐데, 그 때는 gameobject는 저장이 안된다
                 //따라서 savedata를 load할 때마다 gameobject를 프리팹에서 꺼내서 새로 만들어주어야한다.
@@ -154,6 +163,11 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
+                if (componentData.name == "arm" || componentData.name == "leg")
+                {
+                    Debug.Log("암 레그");
+                    obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+                }
                 obj.transform.localPosition = new Vector3(0, 0, -5);
                 //위와 같다. 다만 코루틴 작동을 하지 않는다.
                 componentsInPot[i].realGameobject = obj;
@@ -207,6 +221,10 @@ public class FlowerPotManager : MonoBehaviour
                 componentsInPot[index].isSprotued = true;
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+                if (componentData.name == "arm" || componentData.name == "leg")
+                {
+                    obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+                }
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
                 componentsInPot[index].realGameobject.SetActive(false);
                 componentsInPot[index].realGameobject = obj;
@@ -218,6 +236,10 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
+                if (componentData.name == "arm" || componentData.name == "leg")
+                {
+                    obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+                }
                 componentsInPot[index].realGameobject.SetActive(false);
                 componentsInPot[index].realGameobject = obj;
             }
@@ -280,8 +302,16 @@ public class FlowerPotManager : MonoBehaviour
                 plus = true;
             }
 
-            
-            component.realGameobject.transform.localPosition =  new Vector3(0,1.0f +0.1f*timer, -5);
+            Vector3 pos;
+            if(component.name == "leg" || component.name == "arm")
+            {
+                pos = new Vector3(0,  + 0.1f * timer, -5);
+            }
+            else
+            {
+                pos = new Vector3(0, 1.0f + 0.1f * timer, -5);
+            }
+            component.realGameobject.transform.localPosition = pos;
             yield return null;
         }
     }
@@ -732,6 +762,10 @@ public class FlowerPotManager : MonoBehaviour
             Debug.Log("왜안바뀌는거?");
             GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
             GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+            if (componentData.name == "arm" || componentData.name == "leg")
+            {
+                obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+            }
             obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
             componentsInPot[index].realGameobject.SetActive(false);
             componentsInPot[index].realGameobject = obj;
@@ -746,6 +780,10 @@ public class FlowerPotManager : MonoBehaviour
         {
             GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
             GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
+            if (componentData.name == "arm" || componentData.name == "leg")
+            {
+                obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+            }
             obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
             componentsInPot[index].realGameobject.SetActive(false);
             componentsInPot[index].realGameobject = obj;
@@ -773,6 +811,7 @@ public class FlowerPotManager : MonoBehaviour
     {
 
         //abcd눌렀을 때 식물을 심는ㄴ다.
+        /*
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlantComponent("mouth", DateTime.Now.ToString()) ;
@@ -808,7 +847,7 @@ public class FlowerPotManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             PlantComponent("body", DateTime.Now.ToString());
-        }
+        }*/
 
         //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
         if (Input.GetMouseButtonDown(0))    //터치!

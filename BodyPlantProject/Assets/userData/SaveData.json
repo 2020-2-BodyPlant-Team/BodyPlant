@@ -2,7 +2,7 @@
     "lastPlayTime": "2021-06-15 PM 12:47:52",
     "potList": [
         {
-            "name": "null",
+            "name": "leg",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -11,9 +11,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-06-15 PM 12:53:59",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-06-16 AM 10:22:36",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -33,9 +33,9 @@
             "childChildJointList": [],
             "cover": false,
             "attached": false,
-            "usedElement": 0,
+            "usedElement": 5,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -21516
             },
             "childObject": {
                 "instanceID": 0
@@ -43,7 +43,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "leg",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -52,9 +52,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-06-15 PM 12:53:53",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-06-16 AM 10:10:06",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -76,7 +76,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -21384
             },
             "childObject": {
                 "instanceID": 0
@@ -84,7 +84,7 @@
             "isHarvested": false
         },
         {
-            "name": "null",
+            "name": "leg",
             "position": {
                 "x": 0.0,
                 "y": 0.0
@@ -93,9 +93,9 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-06-15 PM 12:54:17",
-            "isSprotued": false,
-            "percentage": 0.0,
+            "plantedTime": "2021-06-16 AM 10:10:06",
+            "isSprotued": true,
+            "percentage": 1.0,
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
@@ -117,7 +117,7 @@
             "attached": false,
             "usedElement": 0,
             "realGameobject": {
-                "instanceID": 0
+                "instanceID": -21412
             },
             "childObject": {
                 "instanceID": 0
@@ -125,25 +125,193 @@
             "isHarvested": false
         }
     ],
-    "characterList": [
+    "characterList": [],
+    "huntCharacterList": [
+        {
+            "name": "아이고난",
+            "personality": 0,
+            "createdDate": "2021-06-16 AM 10:06:17",
+            "lastEarnedTime": "2021-06-16 AM 10:06:32",
+            "workEndTime": "2021-06-16 AM 10:06:52",
+            "loveStartTime": "2021-06-16 AM 10:06:32",
+            "getOutButton": {
+                "instanceID": -14276
+            },
+            "huntTime": 0,
+            "fishTime": 5,
+            "mineTime": 0,
+            "loveTime": 9,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.00009449999197386205,
+            "xGap": 0.7760000228881836,
+            "yGap": 2.8299999237060549,
+            "components": [
+                {
+                    "name": "body",
+                    "position": {
+                        "x": 0.2252500057220459,
+                        "y": 0.8564999103546143
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:49",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1,
+                        2
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": 1,
+                    "realGameobject": {
+                        "instanceID": -14232
+                    },
+                    "childObject": {
+                        "instanceID": 0
+                    },
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.35225000977516177,
+                        "y": 0.21849989891052247
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:47",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": 4,
+                    "realGameobject": {
+                        "instanceID": -14240
+                    },
+                    "childObject": {
+                        "instanceID": 0
+                    },
+                    "isHarvested": true
+                },
+                {
+                    "name": "leg",
+                    "position": {
+                        "x": -0.1537500023841858,
+                        "y": 0.8774999380111694
+                    },
+                    "secondPosition": {
+                        "x": -0.42375004291534426,
+                        "y": -1.9524999856948853
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:49",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": 4,
+                    "realGameobject": {
+                        "instanceID": -14248
+                    },
+                    "childObject": {
+                        "instanceID": -14256
+                    },
+                    "isHarvested": true
+                }
+            ],
+            "realGameobject": {
+                "instanceID": -14228
+            },
+            "stickerList": []
+        }
+    ],
+    "mineCharacterList": [],
+    "fishCharacterList": [
         {
             "name": "아이고",
             "personality": 2,
             "createdDate": "2021-06-15 PM 12:48:36",
-            "lastEarnedTime": "2021-06-15 PM 12:48:36",
-            "workEndTime": "",
-            "loveStartTime": "2021-06-15 PM 12:48:36",
+            "lastEarnedTime": "2021-06-16 AM 10:08:14",
+            "workEndTime": "2021-06-16 AM 10:08:29",
+            "loveStartTime": "2021-06-16 AM 10:08:14",
             "getOutButton": {
-                "instanceID": 0
+                "instanceID": -15814
             },
             "huntTime": 0,
-            "fishTime": 0,
+            "fishTime": 22,
             "mineTime": 0,
-            "loveTime": 0,
+            "loveTime": 76695,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.0,
+            "loveNess": 0.7669501304626465,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -187,7 +355,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -299912
+                        "instanceID": -15788
                     },
                     "childObject": {
                         "instanceID": 0
@@ -234,7 +402,7 @@
                     "attached": false,
                     "usedElement": 5,
                     "realGameobject": {
-                        "instanceID": -299922
+                        "instanceID": -15798
                     },
                     "childObject": {
                         "instanceID": 0
@@ -281,7 +449,7 @@
                     "attached": false,
                     "usedElement": 4,
                     "realGameobject": {
-                        "instanceID": -299930
+                        "instanceID": -15806
                     },
                     "childObject": {
                         "instanceID": 0
@@ -290,97 +458,12 @@
                 }
             ],
             "realGameobject": {
-                "instanceID": -299908
+                "instanceID": -15784
             },
             "stickerList": []
         }
     ],
-    "huntCharacterList": [],
-    "mineCharacterList": [],
-    "fishCharacterList": [],
     "owningComponentList": [
-        {
-            "name": "body",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "secondPosition": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-06-15 PM 12:53:49",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "secondRotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "parentComponentIndex": -1,
-            "parentJointIndex": 0,
-            "secondSwitch": false,
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "cover": false,
-            "attached": false,
-            "usedElement": 1,
-            "realGameobject": {
-                "instanceID": -300066
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        },
-        {
-            "name": "nose",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "secondPosition": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-06-15 PM 12:53:47",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "secondRotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "parentComponentIndex": -1,
-            "parentJointIndex": 0,
-            "secondSwitch": false,
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "cover": false,
-            "attached": false,
-            "usedElement": 4,
-            "realGameobject": {
-                "instanceID": -300094
-            },
-            "childObject": {
-                "instanceID": 0
-            },
-            "isHarvested": true
-        },
         {
             "name": "leg",
             "position": {
@@ -391,7 +474,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "2021-06-15 PM 12:53:49",
+            "plantedTime": "2021-06-16 AM 10:10:05",
             "isSprotued": true,
             "percentage": 1.0,
             "rotation": {
@@ -413,9 +496,50 @@
             "childChildJointList": [],
             "cover": false,
             "attached": false,
-            "usedElement": 4,
+            "usedElement": 5,
             "realGameobject": {
-                "instanceID": -300154
+                "instanceID": -20518
+            },
+            "childObject": {
+                "instanceID": 0
+            },
+            "isHarvested": true
+        },
+        {
+            "name": "arm",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "secondPosition": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "plantedTime": "2021-06-16 AM 10:21:37",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "secondRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "parentComponentIndex": -1,
+            "parentJointIndex": 0,
+            "secondSwitch": false,
+            "childIndexList": [],
+            "childJointList": [],
+            "childChildIndexList": [],
+            "childChildJointList": [],
+            "cover": false,
+            "attached": false,
+            "usedElement": 5,
+            "realGameobject": {
+                "instanceID": -21182
             },
             "childObject": {
                 "instanceID": 0
@@ -423,12 +547,12 @@
             "isHarvested": true
         }
     ],
-    "coin": 4550,
+    "coin": 4050,
     "boughtNameList": [],
     "boughtDateList": [],
     "huntElement": 100,
-    "mineElement": 81,
-    "fishElement": 96,
+    "mineElement": 76,
+    "fishElement": 88,
     "trainSelled": false,
     "chairSelled": false
 }
