@@ -36,6 +36,8 @@ public class BookManager : MonoBehaviour
     public Camera cam;
     private StickerClass touchedStickerClass;
 
+    public GameObject scrollViewObject;
+
 
 
     // Start is called before the first frame update
@@ -114,7 +116,9 @@ public class BookManager : MonoBehaviour
                 sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
                 sticker.transform.position = totalList[i].stickerList[j].position;
             }
-        }    
+        }
+
+        Btn.scrollView = scrollViewObject;
     }
 
     // Update is called once per frame
@@ -246,6 +250,7 @@ public class BookManager : MonoBehaviour
                 diaryList[i].SetActive(true);
             }
         }
+        scrollViewObject.SetActive(false);
     }
 
     public void StickerBtnFunction()
