@@ -10,6 +10,7 @@ public class AdManager : MonoBehaviour
     private RewardedAd rewardedAd;
     GameManager gameManager;
     SoundManager soundManager;
+    public StoreManager storeManager;
 
     //이게 우리거
     //const string adUnitId = "ca-app-pub-6023793752348178/6634578309";
@@ -24,13 +25,6 @@ public class AdManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         soundManager = SoundManager.inst;
         // Create an empty ad request.
-        
-    }
-
-    public void OnAdButton()
-    {
-
-
 
         // Called when an ad is shown.
         this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
@@ -43,10 +37,18 @@ public class AdManager : MonoBehaviour
         // Load the rewarded ad with the request.
         rewardedAd.LoadAd(request);
 
+
+
+    }
+
+    public void OnAdButton()
+    {
+
         if (this.rewardedAd.IsLoaded())
         {
             this.rewardedAd.Show();
         }
+
 
 
     }
@@ -59,6 +61,7 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         soundManager.BGMPlay();
+        storeManager.BuyUpdate();
     }
 
 
@@ -66,6 +69,7 @@ public class AdManager : MonoBehaviour
     {
         gameManager.saveData.coin += 50;
         gameManager.Save();
+        storeManager.BuyUpdate();
     }
 
 

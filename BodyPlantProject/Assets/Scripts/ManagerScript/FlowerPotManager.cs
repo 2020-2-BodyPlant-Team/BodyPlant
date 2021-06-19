@@ -50,6 +50,7 @@ public class FlowerPotManager : MonoBehaviour
     public GameObject harvestCanvas;        //수확버튼 누르면 뜨는 캔버스
 
     public Button[] elementButtonArray;     //보조성분 버튼. 켜고 꺼줘야 해서.
+    public Text[] elementQuantArray;        //보조성분 몇개있는지.
     public int elementTime;   //보조성분 하나에 몇초가 까지는지.
     
 
@@ -583,6 +584,9 @@ public class FlowerPotManager : MonoBehaviour
                 elementButtonArray[i].interactable = false;
             }
             //0 hunt, 1 mine, 2 fish
+            elementQuantArray[0].text = saveData.huntElement.ToString() ;
+            elementQuantArray[1].text = saveData.mineElement.ToString();
+            elementQuantArray[2].text = saveData.fishElement.ToString();
             if (saveData.huntElement >= 0)
             {
                 elementButtonArray[0].interactable = true;
@@ -741,14 +745,19 @@ public class FlowerPotManager : MonoBehaviour
         if(element == 0)
         {
             saveData.huntElement--;
+            elementQuantArray[0].text = saveData.huntElement.ToString();
+
+
         }
         else if (element == 1)
         {
             saveData.mineElement--;
+            elementQuantArray[1].text = saveData.mineElement.ToString();
         }
         else
         {
             saveData.fishElement--;
+            elementQuantArray[2].text = saveData.fishElement.ToString();
         }
         
         componentsInPot[index].usedElement++;

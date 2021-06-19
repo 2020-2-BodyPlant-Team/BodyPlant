@@ -143,6 +143,18 @@ public class GameManager : MonoBehaviour
         optionManager.OptionButtonActive(false);
     }
 
+    public void BackToStoreScene()
+    {
+        if (fromPotScene)
+        {
+            PotSceneLoad();
+        }
+        else
+        {
+            HouseSceneLoad();
+        }
+    }
+
     //전역변수 workindex사용
     public void BackToWorkScene()
     {

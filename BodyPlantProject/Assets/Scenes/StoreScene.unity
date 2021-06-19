@@ -245,13 +245,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 621100898}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: buySeed5
-        m_Mode: 1
+        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1182,12 +1182,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621100898}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: buySeed6
-        m_Mode: 1
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1315,28 +1315,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmountText: {fileID: 1531363787}
-  seed1Price: {fileID: 211181407}
-  seed2Price: {fileID: 898359686}
-  seed3Price: {fileID: 1157363069}
-  seed4Price: {fileID: 807292744}
-  seed5Price: {fileID: 1075832323}
-  seed6Price: {fileID: 414458517}
-  seed7Price: {fileID: 757662148}
-  seed8Price: {fileID: 150203160}
-  seed9Price: {fileID: 1483981007}
-  seed10Price: {fileID: 2061088726}
+  seedPriceTextArray:
+  - {fileID: 211181407}
+  - {fileID: 898359686}
+  - {fileID: 1157363069}
+  - {fileID: 807292744}
+  - {fileID: 1075832323}
+  - {fileID: 414458517}
+  - {fileID: 757662148}
+  - {fileID: 150203160}
+  - {fileID: 1483981007}
+  - {fileID: 2061088726}
   toyPrice: {fileID: 1050320654}
   beanBagPrice: {fileID: 2125242663}
-  buySeed1Button: {fileID: 1786474275}
-  buySeed2Button: {fileID: 1873401115}
-  buySeed3Button: {fileID: 1875828477}
-  buySeed4Button: {fileID: 1878081160}
-  buySeed5Button: {fileID: 104583691}
-  buySeed6Button: {fileID: 504431575}
-  buySeed7Button: {fileID: 2005759969}
-  buySeed8Button: {fileID: 720530511}
-  buySeed9Button: {fileID: 649306664}
-  buySeed10Button: {fileID: 1241839198}
+  buySeedButtonArray:
+  - {fileID: 1786474275}
+  - {fileID: 1873401115}
+  - {fileID: 1875828477}
+  - {fileID: 1878081160}
+  - {fileID: 104583691}
+  - {fileID: 504431575}
+  - {fileID: 2005759969}
+  - {fileID: 720530511}
+  - {fileID: 649306664}
+  - {fileID: 1241839198}
   buyToyButton: {fileID: 1171299571}
   buyBeanBagButton: {fileID: 294411037}
   catEyeImage: {fileID: 1611967139}
@@ -1481,12 +1483,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621100898}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: buySeed9
-        m_Mode: 1
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1803,12 +1805,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621100898}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: buySeed8
-        m_Mode: 1
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2874,6 +2876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec08fa1af199c479a97eba2030bf66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storeManager: {fileID: 621100898}
 --- !u!4 &980801002
 Transform:
   m_ObjectHideFlags: 0
@@ -4114,12 +4117,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621100898}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: buySeed10
-        m_Mode: 1
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4456,8 +4459,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1298305153}
   m_HandleRect: {fileID: 1733718698}
   m_Direction: 2
-  m_Value: 0.99952567
-  m_Size: 0.28913862
+  m_Value: 0.9995258
+  m_Size: 0.28913864
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6007,9 +6010,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 621100898}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: buySeed1
-        m_Mode: 1
+        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6219,13 +6222,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 621100898}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: buySeed2
-        m_Mode: 1
+        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6352,13 +6355,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 621100898}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: buySeed3
-        m_Mode: 1
+        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6485,13 +6488,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 621100898}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: buySeed4
-        m_Mode: 1
+        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6882,12 +6885,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621100898}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: buySeed7
-        m_Mode: 1
+        m_MethodName: buySeed
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
