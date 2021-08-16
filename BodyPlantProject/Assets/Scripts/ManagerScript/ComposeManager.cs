@@ -91,7 +91,7 @@ public class ComposeManager : MonoBehaviour
         //초기화
 
         contentRect.anchoredPosition = new Vector2(0, 0);   //자꾸 이거 움직임;; 위치 고정 안해주면 지맘대로 위치가 바껴요
-        contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
+        contentRect.sizeDelta = new Vector2(400* harvestedComponent.Count, 300);
         //contentRect 사이즈 조정을 해줘야 좌우로 움직일 수 있다.
         
         
@@ -100,9 +100,13 @@ public class ComposeManager : MonoBehaviour
             ComponentDataClass componentData = FindData(harvestedComponent[i].name);
             GameObject inst = Instantiate(buttonObject, contentRect.transform);
             buttonList.Add(inst);
-            inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(-400*harvestedComponent.Count/2+ i * 400, -74f);
+            inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * 400 + 200, 0);
+            //-400*harvestedComponent.Count/2+ 
+            inst.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             Image image = inst.GetComponent<Image>();
+
             image.sprite = componentData.componentSpriteArray[0];
+            image.SetNativeSize();
             /*
             Text text = inst.GetComponentInChildren<Text>();
             text.text = componentData.name;*/
@@ -376,10 +380,11 @@ public class ComposeManager : MonoBehaviour
         }
         return null;
     }
-
+    int spawnedNumber = 0;
     //버튼을 누를 때 
     public void SpawnComponent(string name,int buttonIndex)
     {
+        spawnedNumber++;
         int changedIndex = buttonIndex;
         if (modifyButtonObject.activeSelf)
         {
@@ -449,11 +454,11 @@ public class ComposeManager : MonoBehaviour
         activedComponent.Add(component);
         //harvestedComponent.Remove(component);
 
-        contentRect.sizeDelta = new Vector2(400 * harvestedComponent.Count, 300);
+        contentRect.sizeDelta = new Vector2(400 * buttonList.Count, 300);
 
         for (int i  = 0; i < buttonList.Count; i++)
         {
-            buttonList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(-400 * harvestedComponent.Count / 2 + i * 400, -74f);
+            buttonList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(i * 400+200, 0);
         }
         saveButton.SetActive(false);
     }

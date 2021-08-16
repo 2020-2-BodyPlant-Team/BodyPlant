@@ -18,42 +18,27 @@ public class StoreManager : MonoBehaviour
 
     int coinAmount;
 
-    int isSeed1Sold;
-    int isSeed2Sold;
-    int isSeed3Sold;
-    int isSeed4Sold;
-    int isSeed5Sold;
-    int isSeed6Sold;
-    int isSeed7Sold;
-    int isSeed8Sold;
-    int isSeed9Sold;
-    int isSeed10Sold;
-    int isToySold;
-    int isBeanBagSold;
-
     public Text coinAmountText;
 
-    public Text[] seedPriceTextArray;
 
-
-    public Text toyPrice;
-    public Text beanBagPrice;
-
-
-    public Button[] buySeedButtonArray;
+    Button[] buySeedButtonArray;
+    public Transform[] seedImageArray;
+    GameObject[] checkObjectArray;
+    public GameObject fullPotObject;
    
 
     string[] namesArray = { "eye", "nose", "mouth", "ear", "hand", "arm", "foot", "leg", "body", "hair" };
     int[] priceArray = { 50, 50, 50, 50, 70, 100, 70, 100, 150, 30 };
 
     public Button buyToyButton;
-    public Button buyBeanBagButton;
+    public GameObject toyCheckObject;
+    public Button buySofaButton;
+    public GameObject sofaCheckObject;
 
     public Image catEyeImage;
     public Image catTailImage;
     public Sprite[] catEyeList;
     public Sprite[] catTailList;
-    public Image[] potImageArray;
     bool[] leftPotArray;
     /*
      0 eye
@@ -139,7 +124,27 @@ public class StoreManager : MonoBehaviour
         leftPotArray = new bool[3];
         leftPot = 0;
 
-        for(int i = 0; i<potList.Length; i++)
+        checkObjectArray = new GameObject[seedImageArray.Length];
+        buySeedButtonArray = new Button[seedImageArray.Length];
+        for(int i = 0; i < seedImageArray.Length; i++)
+        {
+            checkObjectArray[i] = seedImageArray[i].GetChild(1).gameObject;
+            buySeedButtonArray[i] = seedImageArray[i].GetChild(4).GetComponent<Button>();
+            checkObjectArray[i].SetActive(false);
+        }
+
+        if (saveData.trainSelled)
+        {
+            toyCheckObject.SetActive(true);
+            buyToyButton.interactable = false;
+        }
+
+        if (saveData.chairSelled)
+        {
+            sofaCheckObject.SetActive(true);
+            buySofaButton.interactable = false;
+        }
+        for (int i = 0; i<potList.Length; i++)
         {
             leftPotArray[i] = false;
             if(potList[i].name == "null")
@@ -168,13 +173,13 @@ public class StoreManager : MonoBehaviour
         }
         leftPot -= boughtNameList.Count;
 
-        for(int i = 0; i < 3; i++)
-        {
-            if(leftPotArray[i] == false)
-            {
-                potImageArray[i].color = new Color(1, 1, 1, 0.5f);
-            }
-        }
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    if(leftPotArray[i] == false)
+        //    {
+        //        potImageArray[i].color = new Color(1, 1, 1, 0.5f);
+        //    }
+        //}
 
 
 
@@ -200,6 +205,8 @@ public class StoreManager : MonoBehaviour
             {
                 buySeedButtonArray[i].interactable = false;
             }
+            fullPotObject.SetActive(true);
+
         }
         else
         {
@@ -222,15 +229,15 @@ public class StoreManager : MonoBehaviour
             buyToyButton.interactable = false;
 
         if (saveData.coin >= 800 && !saveData.chairSelled)
-            buyBeanBagButton.interactable = true;
+            buySofaButton.interactable = true;
         else
-            buyBeanBagButton.interactable = false;
+            buySofaButton.interactable = false;
     }
 
     public void buySeed(int index)
     {
         saveData.coin -= priceArray[index];
-        seedPriceTextArray[index].text = "구매가 완료되었습니다!";
+        checkObjectArray[index].SetActive(true);
         boughtNameList.Add(namesArray[index]);
         boughtDateList.Add(DateTime.Now.ToString());
         leftPot--;
@@ -247,18 +254,21 @@ public class StoreManager : MonoBehaviour
     {
         saveData.coin -= 700;
         saveData.trainSelled = true;
-        toyPrice.text = "구매가 완료되었습니다!";
+        toyCheckObject.SetActive(true);
         buyToyButton.gameObject.SetActive(false);
         soundManager.ButtonEffectPlay();
-
+        gameManager.Save();
+        BuyUpdate();
     }
     public void buyChair()
     {
         saveData.coin -= 800;
         saveData.chairSelled = true;
-        beanBagPrice.text = "구매가 완료되었습니다!";
-        buyBeanBagButton.gameObject.SetActive(false);
+        sofaCheckObject.SetActive(true);
+        buySofaButton.gameObject.SetActive(false);
         soundManager.ButtonEffectPlay();
+        gameManager.Save();
+        BuyUpdate();
     }
 
     public void exitStore()
@@ -286,13 +296,13 @@ public class StoreManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 3; i++)
-        {
-            if (leftPotArray[i] == false)
-            {
-                potImageArray[i].color = new Color(1, 1, 1, 0.5f);
-            }
-        }
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    if (leftPotArray[i] == false)
+        //    {
+        //        potImageArray[i].color = new Color(1, 1, 1, 0.5f);
+        //    }
+        //}
 
     }
 

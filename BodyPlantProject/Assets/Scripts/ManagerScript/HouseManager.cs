@@ -39,6 +39,9 @@ public class HouseManager : MonoBehaviour
 
     public Text coinText;
 
+    public GameObject trainObject;
+    public GameObject sofaObject;
+
     public void PotSceneLoad()
     {
         gameManager.PotSceneLoad();
@@ -206,6 +209,24 @@ public class HouseManager : MonoBehaviour
         downRect = downParent.GetComponent<RectTransform>();
         leftRect = leftParent.GetComponent<RectTransform>();
         rightRect = rightParent.GetComponent<RectTransform>();
+
+        if (saveData.chairSelled)
+        {
+            sofaObject.SetActive(true);
+        }
+        else
+        {
+            sofaObject.SetActive(false);
+        }
+
+        if (saveData.trainSelled)
+        {
+            trainObject.SetActive(true);
+        }
+        else
+        {
+            trainObject.SetActive(false);
+        }
     }
 
 
