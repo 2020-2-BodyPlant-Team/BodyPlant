@@ -236,6 +236,10 @@ public class StoreManager : MonoBehaviour
 
     public void buySeed(int index)
     {
+        if(saveData.tutorialOrder == 1)
+        {
+            FindObjectOfType<TutorialMngInStore>().isSeedBtnClicked = true;
+        }
         saveData.coin -= priceArray[index];
         checkObjectArray[index].SetActive(true);
         boughtNameList.Add(namesArray[index]);

@@ -87,6 +87,11 @@ public class HouseManager : MonoBehaviour
     {
         gameManager.StoreSceneLoad();
         soundManager.ButtonEffectPlay();
+        if(saveData.tutorialOrder == 0)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
     }
 
     public void ComposeSceneLoad()

@@ -28,7 +28,7 @@ public class SaveDataClass
     public bool trainSelled;
     public bool chairSelled;
 
-    public bool isFirstPlay;
+    public int tutorialOrder;
 
     //public int[] beanRemainingArray;  //잔량이었는데 이거 안한대. 이거때매 기획 바꿀뻔해서 살짝 화날뻔.
 
@@ -54,7 +54,7 @@ public class SaveDataClass
         trainSelled = false;
         chairSelled = false;
 
-        isFirstPlay = true;
+        tutorialOrder = 0;
     }
 }
 
