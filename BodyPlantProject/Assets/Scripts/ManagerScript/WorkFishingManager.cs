@@ -42,6 +42,7 @@ public class WorkFishingManager : MonoBehaviour
     public GiveCoin coinManager;
 
     public WorkCharacterManager workCharacterManager;
+    public Image fillingBar;
 
     IEnumerator cor;    //Coloring 코루틴 일시정지용
 
@@ -105,9 +106,12 @@ public class WorkFishingManager : MonoBehaviour
 
     IEnumerator Coloring()
     {
-        icon.transform.localPosition = new Vector2(-300, icon.transform.localPosition.y);
+        //icon.transform.localPosition = new Vector2(-300, icon.transform.localPosition.y);
+        RectTransform rect = icon.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector3(-423f, -523.2999f, 0);
         touchforfish = false;
-        panjung.GetComponent<Image>().color = new Color(215 / 255f, 57 / 255f, 57 / 255f);
+        panjung.GetComponent<RectTransform>().anchoredPosition = new Vector3(UnityEngine.Random.Range(-30f, 300), -524.54f, 0);
+        //panjung.GetComponent<Image>().color = new Color(215 / 255f, 57 / 255f, 57 / 255f);
         WaitForSeconds loopTime = new WaitForSeconds(UnityEngine.Random.Range(2.5f, 5.0f));
         if (ifSunggong)
         {
@@ -123,16 +127,21 @@ public class WorkFishingManager : MonoBehaviour
         iconAnimator.SetFloat("fishingSpeed", animSpeed);
         iconAnimator.SetBool("isFish", true);
         WaitForSeconds wait = new WaitForSeconds(0.02f);
+
         while (posX <= 351)
         {
             posX = icon.transform.localPosition.x;
-            panjung.GetComponent<Image>().color = Color.Lerp(new Color(215 / 255f, 57 / 255f, 57 / 255f), new Color(72 / 255f, 163 / 255f, 62 / 225f), a);
-            a = (posX + 300) / 485;
-            if (posX >= 345)
-            {
-                panjung.GetComponent<Image>().color = Color.black;
-                yield return wait;
-            }
+            float rectX = rect.anchoredPosition.x;
+            fillingBar.fillAmount = (rectX + 427.3f) / 882.3f;
+                //-427.3 ~455
+                //882.3
+            //panjung.GetComponent<Image>().color = Color.Lerp(new Color(215 / 255f, 57 / 255f, 57 / 255f), new Color(72 / 255f, 163 / 255f, 62 / 225f), a);
+            //a = (posX + 300) / 485;
+            //if (posX >= 345)
+            //{
+            //    panjung.GetComponent<Image>().color = Color.black;
+            //    yield return wait;
+            //}
             if (posX >= 350)
                 break;
             yield return wait;

@@ -45,11 +45,11 @@ public class TutorialMngInPot : MonoBehaviour
         textOrder = 0;
         flowerPotManager = FindObjectOfType<FlowerPotManager>();
 
+        Debug.Log(saveData.tutorialOrder);
         if(saveData.tutorialOrder != 3)
         {
             this.gameObject.SetActive(false);
         }
-
         else
         {
             isTextPanelSetActived = true;
@@ -116,6 +116,8 @@ public class TutorialMngInPot : MonoBehaviour
             FadeOutCat();
 
             potBtn.transform.SetParent(parentObj.transform);
+    //        potBtn.transform.localPosition = new Vector3(potBtn.transform.localPosition.x,
+    //potBtn.transform.localPosition.y, -7f);
             StartCoroutine(FadeInPot(potBtn));
             Debug.Log(flowerPotManager.nowMagnified);
 
@@ -152,6 +154,7 @@ public class TutorialMngInPot : MonoBehaviour
 
             progressBar.transform.SetParent(parentObj.transform);
             potBtn.transform.SetParent(parentObj.transform);
+
             harvestBtn.transform.SetParent(parentObj.transform);
             harvestCanvas.transform.SetParent(parentObj.transform);
             StartCoroutine(FadeInObj(progressBar));
@@ -177,6 +180,7 @@ public class TutorialMngInPot : MonoBehaviour
                             FadeInCat();
                             break;
                         }
+                        yield return null;
                     }
 
                     break;

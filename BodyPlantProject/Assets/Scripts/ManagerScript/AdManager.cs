@@ -48,9 +48,6 @@ public class AdManager : MonoBehaviour
         {
             this.rewardedAd.Show();
         }
-
-
-
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)

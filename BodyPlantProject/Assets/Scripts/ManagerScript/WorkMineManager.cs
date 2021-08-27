@@ -26,6 +26,7 @@ public class WorkMineManager : MonoBehaviour
 
     public GameObject aim;
     public GameObject rock;
+    public RectTransform barMineral;
 
     public void HouseSceneLoad()
     {
@@ -102,6 +103,7 @@ public class WorkMineManager : MonoBehaviour
     public void FillingBar()
     {
         barAmount += 10f;
+        barMineral.anchoredPosition = Vector3.Lerp(new Vector3(0, -340, 0), new Vector3(0, 360, 0), barAmount / maxBar);
         aim.SetActive(false);
         StartCoroutine("MineSound");
     }

@@ -53,7 +53,8 @@ public class FlowerPotManager : MonoBehaviour
     public Button[] elementButtonArray;     //보조성분 버튼. 켜고 꺼줘야 해서.
     public Text[] elementQuantArray;        //보조성분 몇개있는지.
     public int elementTime;   //보조성분 하나에 몇초가 까지는지.
-    
+
+    public GameObject potBlackPanel;
 
 
     // Start is called before the first frame update
@@ -73,6 +74,7 @@ public class FlowerPotManager : MonoBehaviour
         harvestButton.SetActive(false);
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
         elementTime = 10;
+        potBlackPanel.SetActive(false);
         //화분에 있는 부위들을 먼저 가져온다.
         for (int i = 0; i < potNumber; i++)
         {
@@ -171,7 +173,7 @@ public class FlowerPotManager : MonoBehaviour
                     Debug.Log("암 레그");
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
-                obj.transform.localPosition = new Vector3(0, 0, -5);
+                obj.transform.localPosition = new Vector3(0, 0, -0.1f);
                 //위와 같다. 다만 코루틴 작동을 하지 않는다.
                 componentsInPot[i].realGameobject = obj;
                 obj.transform.localPosition = new Vector3(componentData.sproutingPosition.x, componentData.sproutingPosition.y,-5);
@@ -308,11 +310,11 @@ public class FlowerPotManager : MonoBehaviour
             Vector3 pos;
             if(component.name == "leg" || component.name == "arm")
             {
-                pos = new Vector3(0,  + 0.1f * timer, -5);
+                pos = new Vector3(0,  1.0f+ 0.1f * timer, -0.1f);
             }
             else
             {
-                pos = new Vector3(0, 1.0f + 0.1f * timer, -5);
+                pos = new Vector3(0, 1.0f + 0.1f * timer, -0.1f);
             }
             component.realGameobject.transform.localPosition = pos;
             yield return null;
@@ -506,6 +508,7 @@ public class FlowerPotManager : MonoBehaviour
         soundManager.ExpandEffectPlay();
         if (goBack)
         {
+            potBlackPanel.SetActive(false);
             buttonBundle.SetActive(true);
             nowMagnifiedPotIndex = -1;
             nowMagnified = false;
@@ -517,6 +520,7 @@ public class FlowerPotManager : MonoBehaviour
         }
         else
         {
+            potBlackPanel.SetActive(true);
             buttonBundle.SetActive(false);
             magnifierArray[index].SetActive(false);
             //뒤로가기가 아닐때. 화분 확대를 할 때. UI켜주는건 코루틴에서 한다. 다 움직이고 나서 해야되기 때문에

@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour
         saveData = gameManager.saveData;
         nowTexting = false;
         textOrder = 0;
-
+        Debug.Log(saveData.tutorialOrder);
         if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2)
         {
             this.gameObject.SetActive(false);
