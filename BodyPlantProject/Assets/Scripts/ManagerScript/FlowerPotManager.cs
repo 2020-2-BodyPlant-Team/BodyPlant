@@ -696,6 +696,10 @@ public class FlowerPotManager : MonoBehaviour
         soundManager.ButtonEffectPlay();
         gameManager.fromPotScene = true;
         gameManager.ComposeSceneLoad();
+        if(saveData.tutorialOrder == 3)
+        {
+            saveData.tutorialOrder++;
+        }
     }
 
     public void HouseSceneLoad()

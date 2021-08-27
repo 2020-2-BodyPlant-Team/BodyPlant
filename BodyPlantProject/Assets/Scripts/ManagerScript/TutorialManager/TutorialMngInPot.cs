@@ -12,9 +12,9 @@ public class TutorialMngInPot : MonoBehaviour
     public GameObject cat;
     public GameObject composeBtn;  
     public GameObject potBtn;
+    public GameObject potBtnAnother;
+    public GameObject potBtnTheOther;
     public GameObject huntNutrient;
-    public GameObject fishNutrient;
-    public GameObject mineNutrient;
     public GameObject progressBar;
     public GameObject harvestBtn;
     public GameObject harvestCanvas;
@@ -23,7 +23,7 @@ public class TutorialMngInPot : MonoBehaviour
     public GameObject flowerPots;
     public GameObject magnifiedUIParent;
     bool nowTexting;
-    bool isTextPanelSetActived;
+    public bool isTextPanelSetActived;
     public bool isHarvestBtnClicked;
     public int numberOfNutrientClicked;
     public bool isBackBtnClicked;
@@ -52,7 +52,9 @@ public class TutorialMngInPot : MonoBehaviour
         }
         else
         {
-            isTextPanelSetActived = true;
+            potBtn.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            potBtnAnother.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            potBtnTheOther.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(LoadTextOneByOne(turtorialTexts[0].text, binText));  
         }
         
@@ -60,6 +62,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     public IEnumerator LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.1f, bool canClickSkip = true)
     {
+        isTextPanelSetActived = true;
         nowTexting = true;
         float miniTimer = 0f; 
         float currentTargetNumber = 0f; 
@@ -116,8 +119,11 @@ public class TutorialMngInPot : MonoBehaviour
             FadeOutCat();
 
             potBtn.transform.SetParent(parentObj.transform);
+            potBtn.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     //        potBtn.transform.localPosition = new Vector3(potBtn.transform.localPosition.x,
     //potBtn.transform.localPosition.y, -7f);
+            Transform potBtnTransform = potBtn.GetComponent<Transform>();
+            potBtnTransform.position = new Vector3(potBtnTransform.position.x, potBtnTransform.position.y, potBtnTransform.position.z * -0.5f);
             StartCoroutine(FadeInPot(potBtn));
             Debug.Log(flowerPotManager.nowMagnified);
 
@@ -126,6 +132,7 @@ public class TutorialMngInPot : MonoBehaviour
                 yield return null;
                 if(flowerPotManager.nowMagnified)
                 {
+                    potBtnTransform.position = new Vector3(potBtnTransform.position.x, potBtnTransform.position.y, potBtnTransform.position.z / -0.5f);
                     potBtn.transform.SetParent(flowerPots.transform);
                     FadeInCat();
                     break;
@@ -135,7 +142,7 @@ public class TutorialMngInPot : MonoBehaviour
         else if(textOrder == 4)
         {
             huntNutrient.transform.SetParent(parentObj.transform);
-            StartCoroutine(FadeInObj(huntNutrient));
+            StartCoroutine(FadeInObj(huntNutrient, 1f));
 
             while(true)
             {
@@ -154,11 +161,16 @@ public class TutorialMngInPot : MonoBehaviour
 
             progressBar.transform.SetParent(parentObj.transform);
             potBtn.transform.SetParent(parentObj.transform);
+            Transform potBtnTransform = potBtn.GetComponent<Transform>();
+            potBtnTransform.position = new Vector3(potBtnTransform.position.x, potBtnTransform.position.y, potBtnTransform.position.z * -0.5f);
 
             harvestBtn.transform.SetParent(parentObj.transform);
+            RectTransform harvestTransform = harvestBtn.GetComponent<RectTransform>();
+            Debug.Log("adfas");
+            harvestTransform.localPosition = new Vector3(harvestTransform.localPosition.x, harvestTransform.localPosition.y, -479f);
             harvestCanvas.transform.SetParent(parentObj.transform);
-            StartCoroutine(FadeInObj(progressBar));
-            StartCoroutine(FadeInObj(progressBar.transform.GetChild(0).gameObject));
+            StartCoroutine(FadeInObj(progressBar, 1f));
+            StartCoroutine(FadeInObj(progressBar.transform.GetChild(0).gameObject, 1f));
             StartCoroutine(FadeInPot(potBtn));
 
             while(true)
@@ -168,10 +180,12 @@ public class TutorialMngInPot : MonoBehaviour
                 {
                     harvestCanvas.transform.SetParent(magnifiedUIParent.transform);
                     progressBar.transform.SetParent(magnifiedUIParent.transform);
+
+                    potBtnTransform.position = new Vector3(potBtnTransform.position.x, potBtnTransform.position.y, potBtnTransform.position.z / -0.5f);
                     potBtn.transform.SetParent(flowerPots.transform);
                     backBtn.transform.SetParent(parentObj.transform);
                     harvestBtn.transform.SetParent(magnifiedUIParent.transform);
-                    StartCoroutine(FadeInObj(backBtn));
+                    StartCoroutine(FadeInObj(backBtn, 1f));
                     while(true)
                     {
                         if(isBackBtnClicked)
@@ -187,9 +201,9 @@ public class TutorialMngInPot : MonoBehaviour
                 }
             }
         }
-        else if(textOrder == 8)
+        else if(textOrder == 7)
         {
-            composeBtn.transform.SetParent(parentObj.transform);
+            //composeBtn.transform.SetParent(parentObj.transform);
             StartCoroutine(FadeOutOnlyCat());
         }
         
@@ -208,10 +222,10 @@ public class TutorialMngInPot : MonoBehaviour
         //---------------------------------------텍스트 순서 하나 올려주고 그 다음 텍스트 따르르르 시작하게 해줘-------------------------------------------
     }
 
-    IEnumerator FadeInObj(GameObject obj)
+    IEnumerator FadeInObj(GameObject obj, float limit)
     {
-        int i = 0;
-        while (i < 10)
+        float i = 0;
+        while (i < limit * 10)
         {
             i += 1;
             float f = i / 10.0f;
@@ -228,7 +242,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     IEnumerator FadeInPot(GameObject obj)
     {
-        int i = 0;
+        float i = 0;
         while (i < 10)
         {
             i += 1;
@@ -246,7 +260,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     IEnumerator FadeInText(GameObject obj)
     {
-        int i = 0;
+        float i = 0;
         while (i < 10)
         {
             i += 1;
@@ -264,7 +278,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     IEnumerator FadeOutObj(GameObject obj)
     {
-        int i = 10;
+        float i = 10;
         while (i > 0)
         {
             i -= 1;
@@ -282,7 +296,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     IEnumerator FadeOutPot(GameObject obj)
     {
-        int i = 10;
+        float i = 10;
         while (i > 0)
         {
             i -= 1;
@@ -300,7 +314,7 @@ public class TutorialMngInPot : MonoBehaviour
 
     IEnumerator FadeOutText(GameObject obj)
     {
-        int i = 10;
+        float i = 10;
         while (i > 0)
         {
             i -= 1;
@@ -319,18 +333,18 @@ public class TutorialMngInPot : MonoBehaviour
     void FadeInCat()
     {
         StartCoroutine(FadeInText(textPanel.transform.GetChild(0).gameObject));
-        StartCoroutine(FadeInObj(textPanel.gameObject));
-        StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject));
-        StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject));
-        StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject));
+        StartCoroutine(FadeInObj(textPanel.gameObject, 0.4f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject, 1f));
         isTextPanelSetActived = true;
     }
 
     void FadeInOnlyCat()
     {
-        StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject));
-        StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject));
-        StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject, 1f));
     }
 
     void FadeOutCat()
@@ -367,7 +381,11 @@ public class TutorialMngInPot : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         
+        cat.GetComponent<RectTransform>().localScale = new Vector3(-0.8f, 0.8f, 1f);
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 710);
+        
         FadeInOnlyCat();
-        StartCoroutine(FadeInObj(composeBtn));
+        composeBtn.transform.SetParent(parentObj.transform);
+        StartCoroutine(FadeInObj(composeBtn, 1f));
     }
 }
