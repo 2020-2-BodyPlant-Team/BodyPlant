@@ -42,11 +42,7 @@ public class HouseManager : MonoBehaviour
     public GameObject trainObject;
     public GameObject sofaObject;
 
-    public void PotSceneLoad()
-    {
-        gameManager.PotSceneLoad();
-        soundManager.ButtonEffectPlay();
-    }
+    
 
     public GameObject panel;
     public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
@@ -81,6 +77,16 @@ public class HouseManager : MonoBehaviour
         gameManager.WorkFishingSceneLoad();
         soundManager.FishBGMPlay();
         soundManager.ButtonEffectPlay();
+    }
+    public void PotSceneLoad()
+    {
+        gameManager.PotSceneLoad();
+        soundManager.ButtonEffectPlay();
+        if(saveData.tutorialOrder == 2)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
     }
 
     public void StoreSceneLoad()

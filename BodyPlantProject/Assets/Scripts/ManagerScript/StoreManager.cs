@@ -277,6 +277,12 @@ public class StoreManager : MonoBehaviour
 
     public void exitStore()
     {
+        if(saveData.tutorialOrder == 1)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
+        
         soundManager.ButtonEffectPlay();
         gameManager.BackToStoreScene();
 

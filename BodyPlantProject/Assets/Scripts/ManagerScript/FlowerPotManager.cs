@@ -15,6 +15,7 @@ public class FlowerPotManager : MonoBehaviour
     GameManager gameManager;        //게임매니저를 통해 세이브데이터를 참조해야 한다.
     SoundManager soundManager;
     SaveDataClass saveData;         //게임매니저를 통해 가져올 세이브 데이터
+    TutorialMngInPot tutorialMngInPot;
     List<string> boughtNameList;
     List<string> boughtDateList;
     /// <summary>
@@ -41,7 +42,7 @@ public class FlowerPotManager : MonoBehaviour
     int nowMagnifiedPotIndex = -1;               //현재 확대해서 보고있는 화분. 평소에는 -1. 확대했을 때는 index값
 
     public GameObject magnifiedUIObject;     //확대했을 때의 UI를 통쨰로 껐다 켰다 해줘야해요.
-    bool nowMagnified = false;              //현재 확대되어있는 상태인지.
+    public bool nowMagnified = false;              //현재 확대되어있는 상태인지.
     public GameObject buttonBundle;         //버튼모음집 껐다켰따.
 
     public GameObject progressBar;          //확대했을 때 성장도 오브젝트
@@ -62,6 +63,7 @@ public class FlowerPotManager : MonoBehaviour
         //saveData = GameManager.saveData;
         soundManager = SoundManager.inst;
         saveData = gameManager.saveData;
+        tutorialMngInPot = FindObjectOfType<TutorialMngInPot>();
         componentsInPot = saveData.potList;
         wholeComponents = gameManager.wholeComponents;
         originCameraPos = cameraObject.transform.position;
@@ -335,6 +337,12 @@ public class FlowerPotManager : MonoBehaviour
         {
             return;
         }
+
+        if(saveData.tutorialOrder == 3)
+        {
+            tutorialMngInPot.isHarvestBtnClicked = true;
+        }
+
         //수확을 할 때에는 먼저 오브젝트를 없애주고
         Destroy(componentsInPot[index].realGameobject);
         for (int i = 0; i < elementButtonArray.Length; i++)
@@ -536,6 +544,10 @@ public class FlowerPotManager : MonoBehaviour
     {
         soundManager.ButtonEffectPlay();
         CameraMove(nowMagnifiedPotIndex, true);
+        if(saveData.tutorialOrder == 3)
+        {
+            tutorialMngInPot.isBackBtnClicked = true;
+        }
     }
 
     //취소할때도 이거쓴다
@@ -746,7 +758,10 @@ public class FlowerPotManager : MonoBehaviour
         {
             saveData.huntElement--;
             elementQuantArray[0].text = saveData.huntElement.ToString();
-
+            if(saveData.tutorialOrder == 3)
+            {
+                tutorialMngInPot.numberOfNutrientClicked++;
+            }
 
         }
         else if (element == 1)

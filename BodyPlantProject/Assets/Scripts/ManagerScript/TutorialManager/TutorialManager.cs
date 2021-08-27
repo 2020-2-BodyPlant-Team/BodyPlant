@@ -11,10 +11,12 @@ public class TutorialManager : MonoBehaviour
     public GameObject textPanel;
     public GameObject cat;
     public GameObject storeBtn;  
+    public GameObject potBtn;
     bool nowTexting;
     public Text binText;
     int textOrder;
     public List<Text> turtorialTexts;
+    public List<Text> tutorialTextsInOrder2;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +26,21 @@ public class TutorialManager : MonoBehaviour
         nowTexting = false;
         textOrder = 0;
 
-        if(saveData.tutorialOrder != 0)
+        if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2)
         {
             this.gameObject.SetActive(false);
         }
 
         else
         {
-            StartCoroutine(LoadTextOneByOne(turtorialTexts[0].text, binText));
+            if(saveData.tutorialOrder == 0)
+            {
+                StartCoroutine(LoadTextOneByOne(turtorialTexts[0].text, binText));
+            }
+            else if(saveData.tutorialOrder == 2)
+            {
+                StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder2[0].text, binText));
+            }
         }
         
     }
@@ -74,10 +83,21 @@ public class TutorialManager : MonoBehaviour
         yield return null;
         nowTexting = false;
 
-        if(textOrder == 6)
+        if(saveData.tutorialOrder == 0) // 튜토리얼 순서 0 번째일 때
         {
-            StartCoroutine(FadeOut());
+            if(textOrder == 6)
+            {
+                StartCoroutine(FadeOut());
+            }
         }
+        else if(saveData.tutorialOrder == 2) // 튜토리얼 순서 2 번째일 때
+        {
+            if(textOrder == 1)
+            {
+                StartCoroutine(FadeOut());
+            }
+        }
+        
 
         while(true)
         {
@@ -88,15 +108,27 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < 6; i++)
+        if(saveData.tutorialOrder == 0) // 튜토리얼 순서 0 번째일 때
         {
-            if(textOrder == i)
+            for(int i = 0; i < 6; i++)
             {
-                
-                StartCoroutine(LoadTextOneByOne(turtorialTexts[i + 1].text, binText));
-                
+                if(textOrder == i)
+                {
+                    StartCoroutine(LoadTextOneByOne(turtorialTexts[i + 1].text, binText));
+                }
             }
         }
+        else if(saveData.tutorialOrder == 2) // 튜토리얼 순서 2 번째일 때
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                if(textOrder == i)
+                {
+                    StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder2[i + 1].text, binText));
+                }
+            }
+        }
+        
         textOrder++;
     }
 
@@ -122,9 +154,29 @@ public class TutorialManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
         }
+
+        if(saveData.tutorialOrder == 0) // 튜토리얼 순서 0 번째일 때
+        {
+            objPositionInOrder0();
+        }
+        else if(saveData.tutorialOrder == 2) // 튜토리얼 순서 2 번째일 때
+        {
+            objPositionInOrder2();
+        }
+        
+        StartCoroutine(FadeIn());
+    }
+
+    void objPositionInOrder0()
+    {
         cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(-89, -442);
         storeBtn.transform.SetParent(textPanel.transform);
-        StartCoroutine(FadeIn());
+    }
+
+    void objPositionInOrder2()
+    {
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, -437);
+        potBtn.transform.SetParent(textPanel.transform);
     }
 
     IEnumerator FadeIn()

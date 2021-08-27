@@ -37,7 +37,7 @@ public class TutorialMngInStore : MonoBehaviour
         else
         {
             cat.transform.SetParent(textPanel.transform);
-            StartCoroutine(LoadTextOneByOne(turtorialTexts[0], binText));
+            StartCoroutine(LoadTextOneByOne(turtorialTexts[0], binText));  
         }
     }
 
@@ -50,10 +50,8 @@ public class TutorialMngInStore : MonoBehaviour
         string displayedText = "";
         StringBuilder builder = new StringBuilder(displayedText);
 
-        Debug.Log(textOrder);
         while (currentTargetNumber < inputTextString.Length)
         {
-            
             while (currentNumber < currentTargetNumber)
             { 
                 //displayedText += inputTextString.Substring(currentNumber,1);
@@ -81,6 +79,7 @@ public class TutorialMngInStore : MonoBehaviour
         yield return null;
         nowTexting = false;
 
+
         if(textOrder == 6)
         {
             armSeedBtn.transform.SetParent(textPanel.transform);
@@ -103,6 +102,7 @@ public class TutorialMngInStore : MonoBehaviour
             }
         }
 
+        
         for(int i = 0; i < 6; i++)
         {
             if(textOrder == i)
@@ -121,10 +121,12 @@ public class TutorialMngInStore : MonoBehaviour
             }
         }
         
+        
+        
         textOrder++;
         
     }
-
+    
     IEnumerator FadeOutSeedBtn()
     {
         int i = 10;
