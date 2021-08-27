@@ -45,7 +45,8 @@ public class FlowerPotManager : MonoBehaviour
     public bool nowMagnified = false;              //현재 확대되어있는 상태인지.
     public GameObject buttonBundle;         //버튼모음집 껐다켰따.
 
-    public GameObject progressBar;          //확대했을 때 성장도 오브젝트
+    public Image progressBar;          //확대했을 때 성장도 오브젝트
+    public RectTransform growingBar;
     public GameObject harvestButton;        //수확버튼이 수확 가능할 때 떠야한다;
     public Text nameText;
     public GameObject harvestCanvas;        //수확버튼 누르면 뜨는 캔버스
@@ -55,6 +56,12 @@ public class FlowerPotManager : MonoBehaviour
     public int elementTime;   //보조성분 하나에 몇초가 까지는지.
 
     public GameObject potBlackPanel;
+    public GameObject emptyTalk;
+    public GameObject growingTalk;
+    public Text growingTalkText;
+    public GameObject harvestTalk;
+    public Animator heartAnimation;
+    public GameObject heartParent;
 
 
     // Start is called before the first frame update
@@ -146,12 +153,10 @@ public class FlowerPotManager : MonoBehaviour
                     prefab = Resources.Load<GameObject>("Components/Growing1/" + seedName);
                 }
                     //Resources/Components/arm 
-                    Debug.Log(componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 if (componentData.name == "arm" || componentData.name == "leg")
                 {
-                    Debug.Log("암 레그");
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
 
@@ -170,7 +175,6 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
                 if (componentData.name == "arm" || componentData.name == "leg")
                 {
-                    Debug.Log("암 레그");
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
                 obj.transform.localPosition = new Vector3(0, 0, -0.1f);
@@ -251,12 +255,18 @@ public class FlowerPotManager : MonoBehaviour
             //마지막 1초의 순간엔 이게 1을 넘어가버려서, 1로 맞춰준다.
             if (percentage >= 1)
             {
+                emptyTalk.SetActive(false);
+                growingTalk.SetActive(false);
+                harvestTalk.SetActive(true);
                 percentage = 1;
             }
             if (index == nowMagnifiedPotIndex)
             {
                 //만약 현재 확대한 pot하고 코루틴돌아가는 index하고 일치한다면 progressBar를 계속 업데이트 해준다.
-                progressBar.transform.localScale = new Vector3(1, percentage, 1);
+                //progressBar.transform.localScale = new Vector3(1, percentage, 1);
+                progressBar.fillAmount = percentage;
+                growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), percentage);
+
             }
             componentsInPot[index].percentage = percentage;
             
@@ -361,7 +371,12 @@ public class FlowerPotManager : MonoBehaviour
         //왜냐하면 ㅡㅡ componentsInPot[index] = null을하니까 new ComponentClass()가 생겨버리드라 ㅎㅎ 화나게...null이 안들어간다ㅣ...
         componentsInPot[index] = new ComponentClass();
         //지워준 정보도 savedata에 저장을 안해도 자동저장이 된다. saveData에서 참조로 가져온 값이라 된다.
-        progressBar.transform.localScale = new Vector3(1, 0, 1);
+        
+        progressBar.fillAmount = 0;
+        growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), 0);
+        emptyTalk.SetActive(true);
+        growingTalk.SetActive(false);
+        harvestTalk.SetActive(false);
         //로딩바 0으로.
         harvestButton.SetActive(false);
         //버튼은 비활
@@ -607,13 +622,25 @@ public class FlowerPotManager : MonoBehaviour
             {
                 elementButtonArray[0].interactable = true;
             }
+            else
+            {
+                elementButtonArray[0].interactable = false;
+            }
             if (saveData.mineElement >= 0)
             {
                 elementButtonArray[1].interactable = true;
             }
+            else
+            {
+                elementButtonArray[1].interactable = false;
+            }
             if (saveData.fishElement >= 0)
             {
                 elementButtonArray[2].interactable = true;
+            }
+            else
+            {
+                elementButtonArray[2].interactable = false;
             }
 
             potScaleStart = new Vector3(1, 1, 1);
@@ -643,9 +670,14 @@ public class FlowerPotManager : MonoBehaviour
                 {
                     elementButtonArray[i].interactable = false;
                 }
-                progressBar.transform.localScale = new Vector3(1, 0, 1);
+                
+                progressBar.fillAmount = 0;
+                growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), 0);
                 //이름도없어
                 nameText.gameObject.SetActive(false);
+                emptyTalk.SetActive(true);
+                growingTalk.SetActive(false);
+                harvestTalk.SetActive(false);
             }
             else
             {
@@ -661,19 +693,26 @@ public class FlowerPotManager : MonoBehaviour
                     //버튼 활성화
                     Debug.Log("하베스트 버튼");
                     harvestButton.SetActive(true);
+                    emptyTalk.SetActive(false) ;
+                    growingTalk.SetActive(false);
+                    harvestTalk.SetActive(true);
                 }
                 else
                 {
                     //버튼 없애.
-
+                    emptyTalk.SetActive(false);
+                    growingTalk.SetActive(true);
+                    harvestTalk.SetActive(false);
 
                     harvestButton.SetActive(false);
                 }
 
-                progressBar.transform.localScale = new Vector3(1, componentsInPot[index].percentage, 1);
                 
+                progressBar.fillAmount = componentsInPot[index].percentage;
+                growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), componentsInPot[index].percentage);
                 nameText.gameObject.SetActive(true);
                 ComponentDataClass data = FindData(componentsInPot[index].name);
+                growingTalkText.text = gameManager.GetCompleteWord(data.koreanName, "이", "가") + " 자라고 있어요!";
                 nameText.text = data.koreanName;
                 //이름텍스트도 켜주고 이름도 넣어준다.
             }
@@ -782,7 +821,7 @@ public class FlowerPotManager : MonoBehaviour
             saveData.fishElement--;
             elementQuantArray[2].text = saveData.fishElement.ToString();
         }
-        
+        StartCoroutine(HeartAnimCor());
         componentsInPot[index].usedElement++;
 
         //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
@@ -825,7 +864,9 @@ public class FlowerPotManager : MonoBehaviour
         {
             percentage = 1;
         }
-        progressBar.transform.localScale = new Vector3(1, percentage, 1);
+        
+        progressBar.fillAmount = percentage;
+        growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), percentage);
         componentsInPot[index].percentage = percentage;
 
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
@@ -834,8 +875,27 @@ public class FlowerPotManager : MonoBehaviour
         if (nowMagnified && componentsInPot[index].isSprotued)
         {
             harvestButton.SetActive(true);
+            emptyTalk.SetActive(false);
+            growingTalk.SetActive(false);
+            harvestTalk.SetActive(true);
             componentsInPot[index].isHarvested = false;
         }
+    }
+
+    bool animCorRunning = false;
+    IEnumerator HeartAnimCor()
+    {
+        if(animCorRunning == false)
+        {
+            animCorRunning = true;
+            //heartParent.SetActive(true);
+            heartAnimation.SetBool("anim", true);
+            yield return new WaitForSeconds(1.3f);
+            //heartParent.SetActive(false);
+            heartAnimation.SetBool("anim", false);
+            animCorRunning = false;
+        }
+
     }
 
     // Update is called once per frame
