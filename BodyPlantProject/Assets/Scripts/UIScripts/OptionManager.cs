@@ -20,8 +20,8 @@ public class OptionManager : MonoBehaviour
 
     public GameObject optionButtonObject;
     public GameObject optionFade;
-
-
+    public GameObject creditCanvas;
+    public bool optionOn;
 
     // Start is called before the first frame update
     void Start()
@@ -107,15 +107,31 @@ public class OptionManager : MonoBehaviour
         optionFade.SetActive(active);
     }
 
+    public void CreditActive(bool active)
+    {
+        creditCanvas.SetActive(active);
+        optionCanvas.SetActive(!active);
+    }
+
     public void OptionActive()
     {
+        soundManager.ButtonEffectPlay();
+        if (creditCanvas.activeSelf)
+        {
+            return;
+        }
         if (optionCanvas.activeSelf)
         {
             PlayerPrefs.SetFloat("SoundEffect", soundEffectSlider.value);
             PlayerPrefs.SetFloat("BGM", bgmSlider.value);
         }
-        soundManager.ButtonEffectPlay();
+
         optionCanvas.SetActive(!optionCanvas.activeSelf);
+        optionOn = optionCanvas.activeSelf;
+        if(optionOn== false && creditCanvas.activeSelf == true)
+        {
+            optionOn = true;
+        }
 
     }
 

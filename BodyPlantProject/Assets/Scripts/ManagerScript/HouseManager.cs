@@ -249,6 +249,10 @@ public class HouseManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
             FullScreenRemove();
         }
     }

@@ -122,6 +122,10 @@ public class WorkCharacterManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
             if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
             {

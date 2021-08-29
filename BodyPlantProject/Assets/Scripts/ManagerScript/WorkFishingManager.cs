@@ -162,6 +162,10 @@ public class WorkFishingManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (OptionManager.singleTon.optionOn)
+                {
+                    return;
+                }
                 //보조성분 획득할 곳
                 saveData.fishElement++;
                 gameManager.Save();

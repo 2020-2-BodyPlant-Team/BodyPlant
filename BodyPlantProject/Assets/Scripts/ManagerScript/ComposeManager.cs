@@ -527,7 +527,7 @@ public class ComposeManager : MonoBehaviour
         {
             nameAskingObject.SetActive(true);
             nameInput = characterList[modifyingIndex].name;
-            string productedName = gameManager.GetCompleteWord(nameInput, "\"이가", "\"가");
+            string productedName = gameManager.GetCompleteWord(nameInput, "\"이", "\"가");
             nameAskingText.text = "\"" + productedName + " 맞나요?";
         }
         else
@@ -693,7 +693,7 @@ public class ComposeManager : MonoBehaviour
         Debug.Log(characterList[characterIndex].name);
         modifyingIndex = characterIndex;
         modifyMode = false;
-        string productedName = gameManager.GetCompleteWord(characterList[characterIndex].name, "\"이를", "\"를");
+        string productedName = gameManager.GetCompleteWord(characterList[characterIndex].name, "\"을", "\"를");
         modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
         soundManager.CheerEffectPlay();
         modifyPanel.SetActive(true);
@@ -1091,7 +1091,11 @@ public class ComposeManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))    //터치끝났을 때 adjustattach
         {
-            if(!flipMode)
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
+            if (!flipMode)
             {
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
                 if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
@@ -1116,6 +1120,10 @@ public class ComposeManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
             if (modifyMode)
             {
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지

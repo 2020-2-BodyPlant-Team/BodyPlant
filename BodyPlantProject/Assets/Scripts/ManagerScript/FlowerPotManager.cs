@@ -714,7 +714,7 @@ public class FlowerPotManager : MonoBehaviour
                 growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), componentsInPot[index].percentage);
                 nameText.gameObject.SetActive(true);
                 ComponentDataClass data = FindData(componentsInPot[index].name);
-                growingTalkText.text = gameManager.GetCompleteWord(data.koreanName, "이", "가") + " 자라고 있어요!";
+                growingTalkText.text ="\""+ gameManager.GetCompleteWord(data.koreanName, "\"이", "\"가") + " 자라고 있어요!";
                 nameText.text = data.koreanName;
                 //이름텍스트도 켜주고 이름도 넣어준다.
             }
@@ -946,6 +946,10 @@ public class FlowerPotManager : MonoBehaviour
         //수확을 위해 터치했을 때 오브젝트를 판별하는 스크립트
         if (Input.GetMouseButtonDown(0))    //터치!
         {
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
             if (hit = Physics2D.Raycast(mousePos,Vector2.zero))
             {

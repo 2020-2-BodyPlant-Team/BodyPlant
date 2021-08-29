@@ -63,7 +63,7 @@ public class WorkUIManager : MonoBehaviour
                     {
                         isPanel = true;
                         panel.SetActive(true);
-                        string productedName = gameManager.GetCompleteWord(chosenCharacter.name, "\"이를", "\"를");
+                        string productedName = gameManager.GetCompleteWord(chosenCharacter.name, "\"을", "\"를");
                         bringText.text = "\"" + productedName + " 데려갈까요?";
                     }
 

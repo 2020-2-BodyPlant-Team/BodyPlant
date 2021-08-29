@@ -167,6 +167,10 @@ public class WorkHuntManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
             {
