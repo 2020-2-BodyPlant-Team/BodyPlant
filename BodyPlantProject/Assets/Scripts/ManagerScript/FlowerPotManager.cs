@@ -155,7 +155,7 @@ public class FlowerPotManager : MonoBehaviour
                     //Resources/Components/arm 
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
-                if (componentData.name == "arm" || componentData.name == "leg")
+                if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
                 {
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
@@ -173,7 +173,7 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 //먼저 프리팹을 resource폴더에서 읽어오고
                 GameObject obj = Instantiate(prefab, flowerPotArray[i].transform);
-                if (componentData.name == "arm" || componentData.name == "leg")
+                if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
                 {
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
@@ -230,7 +230,7 @@ public class FlowerPotManager : MonoBehaviour
                 componentsInPot[index].isSprotued = true;
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
-                if (componentData.name == "arm" || componentData.name == "leg")
+                if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
                 {
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
@@ -245,7 +245,7 @@ public class FlowerPotManager : MonoBehaviour
                 GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
                 obj.transform.localPosition = componentsInPot[index].realGameobject.transform.localPosition;
-                if (componentData.name == "arm" || componentData.name == "leg")
+                if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
                 {
                     obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                 }
@@ -318,13 +318,13 @@ public class FlowerPotManager : MonoBehaviour
             }
 
             Vector3 pos;
-            if(component.name == "leg" || component.name == "arm")
+            if (component.name == "leg" || component.name == "arm" || component.name == "foot" || component.name == "hair" || component.name == "hand")
             {
-                pos = new Vector3(0,  1.0f+ 0.1f * timer, -0.1f);
+                pos = new Vector3(0, 0.5f + 0.1f * timer, -0.1f);
             }
             else
             {
-                pos = new Vector3(0, 1.0f + 0.1f * timer, -0.1f);
+                pos = new Vector3(0, 0.8f + 0.1f * timer, -0.1f);
             }
             component.realGameobject.transform.localPosition = pos;
             yield return null;
@@ -524,6 +524,7 @@ public class FlowerPotManager : MonoBehaviour
         if (goBack)
         {
             potBlackPanel.SetActive(false);
+            OptionManager.singleTon.OptionFade(false);
             buttonBundle.SetActive(true);
             nowMagnifiedPotIndex = -1;
             nowMagnified = false;
@@ -536,6 +537,7 @@ public class FlowerPotManager : MonoBehaviour
         else
         {
             potBlackPanel.SetActive(true);
+            OptionManager.singleTon.OptionFade(true);
             buttonBundle.SetActive(false);
             magnifierArray[index].SetActive(false);
             //뒤로가기가 아닐때. 화분 확대를 할 때. UI켜주는건 코루틴에서 한다. 다 움직이고 나서 해야되기 때문에
@@ -833,7 +835,7 @@ public class FlowerPotManager : MonoBehaviour
             Debug.Log("왜안바뀌는거?");
             GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
             GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
-            if (componentData.name == "arm" || componentData.name == "leg")
+            if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
             {
                 obj.transform.localEulerAngles = new Vector3(0, 0, 180);
             }
@@ -851,7 +853,7 @@ public class FlowerPotManager : MonoBehaviour
         {
             GameObject prefab = Resources.Load<GameObject>("Components/Growing2/" + componentData.name);
             GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
-            if (componentData.name == "arm" || componentData.name == "leg")
+            if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
             {
                 obj.transform.localEulerAngles = new Vector3(0, 0, 180);
             }

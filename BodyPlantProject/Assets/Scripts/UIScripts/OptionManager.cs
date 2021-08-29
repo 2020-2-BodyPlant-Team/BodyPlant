@@ -19,6 +19,8 @@ public class OptionManager : MonoBehaviour
     public GameObject optionCanvas;
 
     public GameObject optionButtonObject;
+    public GameObject optionFade;
+
 
 
     // Start is called before the first frame update
@@ -98,6 +100,11 @@ public class OptionManager : MonoBehaviour
     public void OptionButtonActive(bool active)
     {
         optionButtonObject.SetActive(active);
+    }
+
+    public void OptionFade(bool active)
+    {
+        optionFade.SetActive(active);
     }
 
     public void OptionActive()

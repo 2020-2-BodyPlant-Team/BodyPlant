@@ -38,7 +38,7 @@ public class WorkCharacterManager : MonoBehaviour
             GameObject obj = characterList[i].realGameobject;
             GameObject buttonObject = Instantiate(buttonPrefab);
             characterList[i].getOutButton = buttonObject;
-            buttonObject.GetComponent<Canvas>().sortingOrder = 3;
+            buttonObject.GetComponent<Canvas>().sortingOrder = 5;
             buttonObject.transform.SetParent(obj.transform);
             buttonList.Add(buttonObject);
             buttonObject.transform.localPosition = Vector3.zero;
