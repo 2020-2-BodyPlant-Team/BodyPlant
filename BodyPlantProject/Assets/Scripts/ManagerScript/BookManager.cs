@@ -21,9 +21,9 @@ public class BookManager : MonoBehaviour
     List<GameObject> buttonList;
     List<GameObject> silhouette;
     List<int> passedTime;
-    int buttonXgap = 300;
+    int buttonXgap = 350;
     int buttonYgap = -415;    
-    Vector2 buttonStartPoint = new Vector2(-300, -100);
+    Vector2 buttonStartPoint = new Vector2(-400, -300);
     public GameObject buttonParent;
     public GameObject diaryParent;
     public RectTransform contentRect;
@@ -75,7 +75,7 @@ public class BookManager : MonoBehaviour
 
         contentRect.anchoredPosition = new Vector2(0, 0);   
         contentRect.sizeDelta = new Vector2(0, ((characterList.Count / 3) + 1) * (-buttonYgap));
-        buttonStartPoint = new Vector2(-300, (contentRect.sizeDelta.y / 2) - 180);
+        buttonStartPoint = new Vector2(-350, (contentRect.sizeDelta.y / 2) - 250);
         
         GookBabMukGoSipDa(diaryList, buttonList, totalList);
 

@@ -147,7 +147,7 @@ public class TutorialMngInPot : MonoBehaviour
             while(true)
             {
                 yield return null;
-                huntNutrient.transform.GetChild(0).GetComponent<Button>().interactable = true;
+                huntNutrient.GetComponent<Button>().interactable = true;
                 if(numberOfNutrientClicked == 3)
                 {
                     huntNutrient.transform.SetParent(magnifiedUIParent.transform);
