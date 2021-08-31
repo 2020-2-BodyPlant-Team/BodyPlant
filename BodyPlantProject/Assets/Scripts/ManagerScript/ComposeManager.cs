@@ -544,7 +544,7 @@ public class ComposeManager : MonoBehaviour
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
         nameInput = nameInputField.text;
-        string productedName = gameManager.GetCompleteWord(nameInput, "\"이가", "\"가");
+        string productedName = gameManager.GetCompleteWord(nameInput, "\"이", "\"가");
         nameAskingText.text = "\"" + productedName + " 맞나요?";
     }
 

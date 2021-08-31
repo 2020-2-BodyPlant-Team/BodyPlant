@@ -38,15 +38,12 @@ public class OptionManager : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("SoundEffect"))
         {
-            PlayerPrefs.SetFloat("SoundEffect",1); ;
-            soundEffectSlider.value = 1;
-            soundEffectToggle.isOn = false;
+            PlayerPrefs.SetFloat("SoundEffect",1);
         }
         if (!PlayerPrefs.HasKey("BGM"))
         {
-            PlayerPrefs.SetFloat("BGM", 1); ;
+            PlayerPrefs.SetFloat("BGM", 1);
         }
-
         bgmSlider.value = PlayerPrefs.GetFloat("BGM");
         if (bgmSlider.value == 0)
         {
@@ -57,6 +54,8 @@ public class OptionManager : MonoBehaviour
             bgmToggle.isOn = false;
         }
 
+        soundManager.bgmSource.volume = bgmSlider.value;
+
         soundEffectSlider.value = PlayerPrefs.GetFloat("SoundEffect");
         if (soundEffectSlider.value == 0)
         {
@@ -66,17 +65,33 @@ public class OptionManager : MonoBehaviour
         {
             soundEffectToggle.isOn = false;
         }
+
+        soundManager.effectSource.volume = soundEffectSlider.value;
+        soundManager.buttonSource.volume = soundEffectSlider.value;
+
     }
 
     public void SoundEffectToggle()
     {
         soundManager.effectSource.mute = soundEffectToggle.isOn;
         soundManager.buttonSource.mute = soundEffectToggle.isOn;
+        if (soundEffectToggle.isOn)
+        {
+            soundEffectSlider.value = 0;
+            SoundEffectSlideValue();
+            PlayerPrefs.SetFloat("SoundEffect", 0);
+        }
 
     }
     public void BgmToggle()
     {
         soundManager.bgmSource.mute = bgmToggle.isOn;
+        if (bgmToggle.isOn)
+        {
+            bgmSlider.value = 0;
+            BgmSlideValue();
+            PlayerPrefs.SetFloat("BGM", 0);
+        }
     }
 
     public void SoundEffectSlideValue()
