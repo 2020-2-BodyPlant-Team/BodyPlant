@@ -12,6 +12,7 @@ public class WorkHuntManager : MonoBehaviour
     public List<CharacterClass> characterList;
     public GiveCoin coinManager;
     public WorkCharacterManager workCharacterManager;
+    public TutorialMngInHunt tutorialManager;
     SoundManager soundManager;
 
     float waitSec;
@@ -37,6 +38,9 @@ public class WorkHuntManager : MonoBehaviour
     float deerMaxX = 8;
     float deerMinX = -8;
     public Text huntElementText;
+    public bool nowTutorial;
+    public bool tutorialDeerOut;
+
 
 
     GameObject touchedObject;
@@ -51,6 +55,10 @@ public class WorkHuntManager : MonoBehaviour
 
     public void BringBtnOnClick()
     {
+        if (nowTutorial)
+        {
+            saveData.tutorialOrder++;
+        }
         gameManager.SecretRoomSceneLoad();
     }
 
@@ -61,6 +69,7 @@ public class WorkHuntManager : MonoBehaviour
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.huntCharacterList;
         soundManager = SoundManager.inst;
+        tutorialDeerOut = false;
 
         if (characterList.Count == 3 || saveData.characterList.Count == 0)
         {
@@ -88,7 +97,11 @@ public class WorkHuntManager : MonoBehaviour
 
         huntElementText.text = saveData.huntElement.ToString();
 
-        StartCoroutine("DeerOut");
+        if (!nowTutorial)
+        {
+            StartCoroutine("DeerOut");
+        }
+
         StartCoroutine(DeerMove());
 
         workCharacterManager.SetCharacterList(characterList);
@@ -103,6 +116,10 @@ public class WorkHuntManager : MonoBehaviour
         yield return new WaitForSeconds(waitSec);
         sideAni.Play("sideDeerMove");
         yield return new WaitForSeconds(2);
+        if (tutorialDeerOut)
+        {
+            tutorialManager.OnDeerBash();
+        }
         isFront = true;
         frontDeer.SetActive(true);
         soundManager.DeeroutEffectPlay();
@@ -128,12 +145,27 @@ public class WorkHuntManager : MonoBehaviour
             }
         }
     }
+
+    public void DeerOnTutorial()
+    {
+        StartCoroutine("DeerOut");
+        tutorialDeerOut = true;
+    }
+
+    public void TutorialEnd()
+    {
+        StartCoroutine("DeerOut");
+    }
     
     void Update()
     {
         if(isFront == true)
         {
-            limitTime -= Time.deltaTime;
+            if (!tutorialDeerOut)
+            {
+                limitTime -= Time.deltaTime;
+            }
+
             if(limitTime < 0)
             {
                 isFront = false;
@@ -152,6 +184,10 @@ public class WorkHuntManager : MonoBehaviour
                         StartCoroutine("DeerTear");
                         count = 0;
                         soundManager.SuccedEffectPlay();
+                        if (nowTutorial)
+                        {
+                            tutorialManager.OnDeerCaught(true);
+                        }
                     }
                     else
                     {
@@ -159,8 +195,16 @@ public class WorkHuntManager : MonoBehaviour
                         frontDeer.SetActive(false);
                         count = 0;
                         soundManager.DeerfailEffectPlay();
+                        if (nowTutorial)
+                        {
+                            tutorialManager.OnDeerCaught(false);
+                        }
                     }
-                    StartCoroutine("DeerOut");
+                    if (!nowTutorial)
+                    {
+                        StartCoroutine("DeerOut");
+                    }
+                    
                 }
             }
         }
