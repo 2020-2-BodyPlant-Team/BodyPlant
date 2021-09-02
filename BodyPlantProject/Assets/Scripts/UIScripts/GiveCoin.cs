@@ -25,8 +25,8 @@ public class GiveCoin : MonoBehaviour
 
     public GameObject[] coinButtonArray;
     public float wholeWorkingTime;
-    float timeCoinRatio = 0.0283f;
-    float maxCoin = 300;
+    float timeCoinRatio = 0.166f;
+    float maxCoin = 200;
     public float nowCoin;
     DateTime startTime;
     public Text coinText;
@@ -89,7 +89,11 @@ public class GiveCoin : MonoBehaviour
 
         startTime = DateTime.Now;
         nowCoin = wholeWorkingTime * timeCoinRatio;
-        if (nowCoin >= 50)
+        if (saveData.trainSelled)
+        {
+            nowCoin *= 1.1f;
+        }
+        if (nowCoin >= 90)
         {
             bool exist = false;
             for (int i = 0; i < coinButtonArray.Length; i++)
@@ -145,12 +149,12 @@ public class GiveCoin : MonoBehaviour
             }
             nowCoin = wholeWorkingTime * timeCoinRatio;
 
-            if (nowWorkIndex == 2 && saveData.trainSelled)
+            if (saveData.trainSelled)
             {
-                nowCoin += trainCoin;
+                nowCoin *= 1.1f;
             }
 
-            if (nowCoin >= 50)
+            if (nowCoin >= 90)
             {
                 bool exist = false;
                 for(int i = 0; i< coinButtonArray.Length; i++)

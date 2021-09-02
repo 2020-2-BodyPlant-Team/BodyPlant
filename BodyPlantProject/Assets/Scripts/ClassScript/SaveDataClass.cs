@@ -29,6 +29,8 @@ public class SaveDataClass
     public bool chairSelled;
 
     public int tutorialOrder;
+    public bool fishTutorial;
+    public bool mineTutorial;
 
     //public int[] beanRemainingArray;  //잔량이었는데 이거 안한대. 이거때매 기획 바꿀뻔해서 살짝 화날뻔.
 
@@ -53,6 +55,8 @@ public class SaveDataClass
         coin = 5000;
         trainSelled = false;
         chairSelled = false;
+        fishTutorial = false;
+        mineTutorial = false;
 
         tutorialOrder = 0;
     }

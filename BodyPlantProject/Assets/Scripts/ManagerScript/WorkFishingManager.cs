@@ -43,6 +43,8 @@ public class WorkFishingManager : MonoBehaviour
 
     public WorkCharacterManager workCharacterManager;
     public Image fillingBar;
+    public bool nowTutorial;
+    public TutorialMngInFishing tutorialManager;
 
     IEnumerator cor;    //Coloring 코루틴 일시정지용
 
@@ -81,8 +83,13 @@ public class WorkFishingManager : MonoBehaviour
         
         fishingBar.SetActive(false);
         iconAnimator = icon.GetComponent<Animator>();
-        cor = Coloring();
-        StartCoroutine(cor);
+
+        if (!nowTutorial)
+        {
+            cor = Coloring();
+            StartCoroutine(cor);
+        }
+
 
         for (int i = 0; i < characterList.Count; i++)
         {
@@ -102,6 +109,12 @@ public class WorkFishingManager : MonoBehaviour
 
         
         InvokeRepeating("ShipSound", 4, 4);
+    }
+
+    public void FishOnTutorial()
+    {
+        cor = Coloring();
+        StartCoroutine(cor);
     }
 
     IEnumerator Coloring()
@@ -149,6 +162,10 @@ public class WorkFishingManager : MonoBehaviour
         iconAnimator.SetBool("isFish", false);
         fishingBar.SetActive(false);
         soundManager.FailEffectPlay();
+        if (nowTutorial)
+        {
+            tutorialManager.OnFishCaught(false);
+        }
         yield return loopTime;
         cor = Coloring();
         StartCoroutine(cor);
@@ -175,7 +192,10 @@ public class WorkFishingManager : MonoBehaviour
                 StopCoroutine(cor);
                 StartCoroutine("SucceedSound");
                 fishingBar.SetActive(false);
-
+                if (nowTutorial)
+                {
+                    tutorialManager.OnFishCaught(true);
+                }
                 /*ifSunggong = true;
                 
                 cor = Coloring();
@@ -188,6 +208,14 @@ public class WorkFishingManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if (OptionManager.singleTon.optionOn)
+                    {
+                        return;
+                    }
+                    if (nowTutorial)
+                    {
+                        tutorialManager.OnFishCaught(false);
+                    }
                     StartCoroutine(NameInputShake());
                     Debug.Log("보조성분 획득 실패");
                     soundManager.FailEffectPlay();

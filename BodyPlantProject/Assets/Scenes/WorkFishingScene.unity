@@ -255,6 +255,8 @@ MonoBehaviour:
   coinManager: {fileID: 1816723305}
   workCharacterManager: {fileID: 1601296776}
   fillingBar: {fileID: 2021495097}
+  nowTutorial: 0
+  tutorialManager: {fileID: 787776967}
 --- !u!4 &230787226
 Transform:
   m_ObjectHideFlags: 0
@@ -691,25 +693,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 787776965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4548b80f6c2895a44a5ecaa91d4f582e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7da7c651f6f98be43ac3f645eabf3a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textPanel: {fileID: 2052764370}
   cat: {fileID: 1456278426}
-  storeBtn: {fileID: 0}
-  potBtn: {fileID: 0}
+  blackPanel: {fileID: 787776965}
+  isTextPanelSetActived: 0
   binText: {fileID: 1669778883}
+  textOrder: 0
   turtorialTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  tutorialTextsInOrder2:
-  - {fileID: 0}
-  - {fileID: 0}
+  - "\uC548\uB155, \uB610 \uBCF4\uB124.\\n\uC5EC\uAE30\uC11C\uB294 \uB09A\uC2DC\uB97C
+    \uD560 \uC218 \uC788\uC5B4."
+  - "\uBC14\uC5D0\uC11C \uC6C0\uC9C1\uC774\uB294 \uAC83\uC774 \uBCF4\uC774\uC9C0?
+    \uADF8\uAC8C \uC911\uAC04\uC5D0 \uB4E4\uC5B4\uC654\uC744 \uB54C\uB97C \uB178\uB824.
+    \uB09A\uC2DC\uB294 \uD0C0\uC774\uBC0D\uC774\uB77C\uACE0"
+  - 
+  - "\uC774\uC81C \uC2A4\uC2A4\uB85C \uD574\uBCF4\uB834"
+  workFishingManager: {fileID: 230787225}
+  onFishCaughtTrue: "\uC798\uD588\uC5B4.\\n\uC80A\uC5C8\uC744 \uC801 \uB0B4\uAC00
+    \uB5A0\uC624\uB974\uB294\uAD70."
+  onFishCaughtFalse: "\uC544\uC9C1\uC740 \uD798\uC774 \uBD80\uC871\uD55C\uAC00\uBCF4\uAD70.\\n\uB2E4\uC74C\uC5D0
+    \uB2E4\uC2DC \uD574\uBCF4\uB834."
 --- !u!114 &787776968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,7 +1396,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 99bbed61e58d85145b036f37481e0aa1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

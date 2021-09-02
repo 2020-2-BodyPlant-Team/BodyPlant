@@ -11,6 +11,8 @@ public class StoreManager : MonoBehaviour
     GameManager gameManager;
     SoundManager soundManager;
     SaveDataClass saveData;
+    List<ComponentDataClass> componentDataList;
+
     List<string> boughtNameList;
     List<string> boughtDateList;
     ComponentClass[] potList;
@@ -19,7 +21,9 @@ public class StoreManager : MonoBehaviour
     int coinAmount;
 
     public Text coinAmountText;
-
+    public Text[] componentCoinText;
+    public Text trainText;
+    public Text chairText;
 
     Button[] buySeedButtonArray;
     public Transform[] seedImageArray;
@@ -27,8 +31,10 @@ public class StoreManager : MonoBehaviour
     public GameObject fullPotObject;
    
 
-    string[] namesArray = { "eye", "nose", "mouth", "ear", "hand", "arm", "foot", "leg", "body", "hair" };
-    int[] priceArray = { 50, 50, 50, 50, 70, 100, 70, 100, 150, 30 };
+    string[] namesArray = { "arm", "leg", "mouth", "nose", "eye", "hair", "foot", "hand", "ear","body" };
+    int[] priceArray;// = { 50, 50, 50, 50, 70, 100, 70, 100, 150, 30 };
+    int chairPrice;
+    int trainPrice;
 
     public Button buyToyButton;
     public GameObject toyCheckObject;
@@ -116,6 +122,7 @@ public class StoreManager : MonoBehaviour
 
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        componentDataList = gameManager.wholeComponents.componentList;
         boughtNameList = saveData.boughtNameList;
         boughtDateList = saveData.boughtDateList;
         soundManager = SoundManager.inst;
@@ -123,15 +130,92 @@ public class StoreManager : MonoBehaviour
         potList = saveData.potList;
         leftPotArray = new bool[3];
         leftPot = 0;
+        priceArray = new int[10];
+
 
         checkObjectArray = new GameObject[seedImageArray.Length];
         buySeedButtonArray = new Button[seedImageArray.Length];
-        for(int i = 0; i < seedImageArray.Length; i++)
+        componentCoinText = new Text[seedImageArray.Length];
+        for (int i = 0; i < seedImageArray.Length; i++)
         {
             checkObjectArray[i] = seedImageArray[i].GetChild(1).gameObject;
+            componentCoinText[i] = seedImageArray[i].GetChild(2).GetComponent<Text>();
             buySeedButtonArray[i] = seedImageArray[i].GetChild(4).GetComponent<Button>();
             checkObjectArray[i].SetActive(false);
         }
+
+        bool puksinAvail = false;
+        List<CharacterClass> characterList = saveData.characterList;
+        for(int i = 0; i < characterList.Count; i++)
+        {
+            if(characterList[i].personality == CharacterClass.Personality.Puksin)
+            {
+                puksinAvail = true;
+                break;
+            }
+        }
+        if (!puksinAvail)
+        {
+            characterList = saveData.fishCharacterList;
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                if (characterList[i].personality == CharacterClass.Personality.Puksin)
+                {
+                    puksinAvail = true;
+                    break;
+                }
+            }
+        }
+        if (!puksinAvail)
+        {
+            characterList = saveData.huntCharacterList;
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                if (characterList[i].personality == CharacterClass.Personality.Puksin)
+                {
+                    puksinAvail = true;
+                    break;
+                }
+            }
+        }
+        if (!puksinAvail)
+        {
+            characterList = saveData.mineCharacterList;
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                if (characterList[i].personality == CharacterClass.Personality.Puksin)
+                {
+                    puksinAvail = true;
+                    break;
+                }
+            }
+        }
+        if (puksinAvail)
+        {
+            for (int i = 0; i < componentDataList.Count; i++)
+            {
+                priceArray[i] = componentDataList[i].discountPrice;
+                componentCoinText[i].text = componentDataList[i].discountPrice.ToString();
+            }
+            chairPrice = 2000;
+            trainPrice = 3000;
+        }
+        else
+        {
+            for (int i = 0; i < componentDataList.Count; i++)
+            {
+                priceArray[i] = componentDataList[i].price;
+                componentCoinText[i].text = componentDataList[i].price.ToString();
+            }
+
+            chairPrice = 1900;
+            trainPrice = 2800;
+        }
+        chairText.text = chairPrice.ToString();
+        trainText.text = trainPrice.ToString();
+
+
+
 
         if (saveData.trainSelled)
         {
@@ -223,12 +307,12 @@ public class StoreManager : MonoBehaviour
             }
         }
 
-        if (saveData.coin >= 700 && !saveData.trainSelled)
+        if (saveData.coin >= trainPrice && !saveData.trainSelled)
             buyToyButton.interactable = true;
         else
             buyToyButton.interactable = false;
 
-        if (saveData.coin >= 800 && !saveData.chairSelled)
+        if (saveData.coin >= chairPrice && !saveData.chairSelled)
             buySofaButton.interactable = true;
         else
             buySofaButton.interactable = false;
@@ -256,7 +340,7 @@ public class StoreManager : MonoBehaviour
 
     public void buyTrain()
     {
-        saveData.coin -= 700;
+        saveData.coin -= trainPrice;
         saveData.trainSelled = true;
         toyCheckObject.SetActive(true);
         buyToyButton.gameObject.SetActive(false);
@@ -266,7 +350,7 @@ public class StoreManager : MonoBehaviour
     }
     public void buyChair()
     {
-        saveData.coin -= 800;
+        saveData.coin -= chairPrice;
         saveData.chairSelled = true;
         sofaCheckObject.SetActive(true);
         buySofaButton.gameObject.SetActive(false);

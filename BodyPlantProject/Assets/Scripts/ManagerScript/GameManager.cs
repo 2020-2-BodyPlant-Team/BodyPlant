@@ -218,14 +218,14 @@ public class GameManager : MonoBehaviour
         float loveRatio = 1.0f;
         if (saveData.chairSelled)
         {
-            loveRatio = 1.05f;
+            loveRatio = 1.03f;
         }
         List<CharacterClass> characterList = saveData.characterList;
         for (int i = 0; i < characterList.Count; i++)
         {
             if (characterList[i].personality == CharacterClass.Personality.Jogon)
             {
-                loveRatio += 0.02f;
+                loveRatio += 0.2f;
             }
         }
 
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
             float ratio = loveRatio;
             if (characterList[i].personality == CharacterClass.Personality.Mongsil)
             {
-                ratio += 0.05f;
+                ratio += 0.5f;
             }
             int time = TimeSubtractionToSeconds(characterList[i].loveStartTime, DateTime.Now.ToString());
             characterList[i].loveTime += time;

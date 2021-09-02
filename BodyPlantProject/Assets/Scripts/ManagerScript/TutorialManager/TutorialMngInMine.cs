@@ -4,28 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
-public class TutorialMngInHunt : MonoBehaviour
+public class TutorialMngInMine : MonoBehaviour
 {
     GameManager gameManager;
     SaveDataClass saveData;
     public GameObject textPanel;
     public GameObject cat;
-    public GameObject bringButton;
     public GameObject blackPanel;
-
-    public GameObject parentObj;
 
     bool nowTexting;
     public bool isTextPanelSetActived;
-    public bool isHarvestBtnClicked;
-    public int numberOfNutrientClicked;
-    public bool isBackBtnClicked;
     public Text binText;
-    public WorkHuntManager workHuntManager;
     public int textOrder;
     public List<string> turtorialTexts;
-    public string onDeerCaughtTrue;
-    public string onDeerCaughtFalse;
 
     // Start is called before the first frame update
     void Start()
@@ -34,30 +25,18 @@ public class TutorialMngInHunt : MonoBehaviour
         saveData = gameManager.saveData;
         nowTexting = false;
         isTextPanelSetActived = false;
-        isHarvestBtnClicked = false;
-        numberOfNutrientClicked = 0;
-        isBackBtnClicked = false;
         textOrder = 0;
 
-        Debug.Log(saveData.tutorialOrder);
-        if (!(saveData.tutorialOrder == 7 || saveData.tutorialOrder == 8))
+        if (saveData.mineTutorial)
         {
-            workHuntManager.nowTutorial = false;
             this.gameObject.SetActive(false);
         }
         else
         {
             OptionManager.singleTon.OptionFade(true);
-            for(int i = 0; i < turtorialTexts.Count; i++)
+            for (int i = 0; i < turtorialTexts.Count; i++)
             {
-               turtorialTexts[i] =  turtorialTexts[i].Replace("\\n", "\n");
-            }
-            onDeerCaughtTrue =  onDeerCaughtTrue.Replace("\\n", "\n");
-            onDeerCaughtFalse=  onDeerCaughtFalse.Replace("\\n", "\n");
-            workHuntManager.nowTutorial = true;
-            if(saveData.tutorialOrder == 8)
-            {
-                textOrder = 2;
+                turtorialTexts[i] = turtorialTexts[i].Replace("\\n", "\n");
             }
             StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder], binText));
         }
@@ -105,11 +84,6 @@ public class TutorialMngInHunt : MonoBehaviour
         nowTexting = false;
 
         //---------------------------------------------------------텍스트 따르르르 쳐지는 부분--------------------------------------------------------------
-        if (textOrder == 1)
-        {
-            bringButton.transform.SetParent(parentObj.transform);
-
-        }
 
 
         while (true) // 화면을 클릭하면 다음 텍스트가 나옴
@@ -117,32 +91,19 @@ public class TutorialMngInHunt : MonoBehaviour
             yield return null;
             if (isTextPanelSetActived && Input.GetMouseButtonDown(0))
             {
-                Debug.Log("clicked");
                 break;
             }
         }
 
-        if(textOrder < 11 && textOrder != 1 && textOrder != 7 && textOrder != 8)
+        if (textOrder < 2)
         {
-            StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder+1], binText));
+            StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder + 1], binText));
         }
         textOrder++;
-        if(textOrder == 8)
+        if (textOrder == 3)
         {
-            workHuntManager.DeerOnTutorial();
-            OptionManager.singleTon.OptionFade(false);
-            FadeOutCat();
-        }
-        if(textOrder == 9)
-        {
-            workHuntManager.tutorialDeerOut = false;
-            OptionManager.singleTon.OptionFade(false);
-            FadeOutCat();
-        }
-        if(textOrder == 12)
-        {
-            workHuntManager.nowTutorial = false;
-            workHuntManager.TutorialEnd();
+            saveData.mineTutorial = true;
+            gameManager.Save();
             FadeOutCat();
         }
 
@@ -154,20 +115,6 @@ public class TutorialMngInHunt : MonoBehaviour
         OptionManager.singleTon.OptionFade(true);
         FadeInCat();
         StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder], binText));
-    }
-
-    public void OnDeerCaught(bool caught)
-    {
-        FadeInCat();
-        OptionManager.singleTon.OptionFade(true);
-        if (caught)
-        {
-            StartCoroutine(LoadTextOneByOne(onDeerCaughtTrue, binText));
-        }
-        else
-        {
-            StartCoroutine(LoadTextOneByOne(onDeerCaughtFalse, binText));
-        }
     }
 
 
@@ -242,7 +189,7 @@ public class TutorialMngInHunt : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
         }
-        if(textOrder == 12)
+        if (textOrder == 3)
         {
             gameObject.SetActive(false);
             OptionManager.singleTon.OptionFade(false);
@@ -289,7 +236,7 @@ public class TutorialMngInHunt : MonoBehaviour
     {
         StartCoroutine(FadeInText(textPanel.transform.GetChild(0).gameObject));
         StartCoroutine(FadeInObj(textPanel.gameObject, 0.4f));
-        StartCoroutine(FadeInObj(blackPanel.gameObject,0.4f));
+        StartCoroutine(FadeInObj(blackPanel.gameObject, 0.4f));
         StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject, 1f));
         StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject, 1f));
         StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject, 1f));

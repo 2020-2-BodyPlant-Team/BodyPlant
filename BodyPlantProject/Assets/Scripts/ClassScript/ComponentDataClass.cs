@@ -14,6 +14,7 @@ public class ComponentDataClass
     public List<Vector2> attachPosition;    //붙이는곳의 위치.
     public List<Vector2> jointPosition;
     public int price;                   //얼마에 사는지
+    public int discountPrice;
     public float sproutSeconds;         //피워나는데 몇초 걸리는지
     public Sprite[] componentSpriteArray;      //스프라이트
     public Vector2 sproutingPosition;   //다 자라났을 떄의 위치.

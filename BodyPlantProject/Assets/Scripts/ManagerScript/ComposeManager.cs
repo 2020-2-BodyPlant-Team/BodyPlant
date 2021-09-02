@@ -716,12 +716,29 @@ public class ComposeManager : MonoBehaviour
             character.components = activedComponent;
             character.name = nameInput;
             character.personality = (CharacterClass.Personality)UnityEngine.Random.Range(0, 4);
+            float rand = UnityEngine.Random.Range(0f, 1f);
+            if (rand < 0.3f)
+            {
+                character.personality = CharacterClass.Personality.Mongsil;
+            }
+            else if (rand < 0.5f)
+            {
+                character.personality = CharacterClass.Personality.Ggumul;
+            }
+            else if (rand < 0.6f)
+            {
+                character.personality = CharacterClass.Personality.Puksin;
+            }
+            else if(rand < 1)
+            {
+                character.personality = CharacterClass.Personality.Jogon;
+            }
 
             if(character.personality == CharacterClass.Personality.Ggumul)
             {
-                character.fishWorkRatio += 0.03f;
-                character.huntWorkRatio += 0.03f;
-                character.mineWorkRatio += 0.03f;
+                character.fishWorkRatio += 0.2f;
+                character.huntWorkRatio += 0.2f;
+                character.mineWorkRatio += 0.2f;
             }
 
             float count = 0;

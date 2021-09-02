@@ -128,10 +128,10 @@ public class WorkHuntManager : MonoBehaviour
 
     IEnumerator DeerMove()
     {
-        float velocity = -0.015f;
+        float velocity = -0.05f;
         while (true)
         {
-            yield return null;
+            yield return new WaitForFixedUpdate();
             deerObject.transform.position = deerObject.transform.position + new Vector3(velocity, 0, 0);
             if(deerObject.transform.position.x > deerMaxX)
             {
