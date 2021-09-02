@@ -13,7 +13,7 @@ public class BookManager : MonoBehaviour
     List<CharacterClass> huntCharacterList;
     List<CharacterClass> mineCharacterList;
     List<CharacterClass> fishCharacterList;
-    List<CharacterClass> totalList;
+    public List<CharacterClass> totalList;
     public GameObject diaryPrefab;
     public GameObject buttonPrefab;
     public List<GameObject> stickerPrefab;
@@ -35,8 +35,8 @@ public class BookManager : MonoBehaviour
     GameObject touchedObject;
     public Camera cam;
     private StickerClass touchedStickerClass;
-
     public GameObject scrollViewObject;
+    TutorialMngInBook tutorialMngInBook;
 
 
 
@@ -49,6 +49,7 @@ public class BookManager : MonoBehaviour
         huntCharacterList = saveData.huntCharacterList;
         mineCharacterList = saveData.mineCharacterList;
         fishCharacterList = saveData.fishCharacterList;
+        tutorialMngInBook = FindObjectOfType<TutorialMngInBook>();
 
 
         totalList = new List<CharacterClass>();
@@ -251,12 +252,17 @@ public class BookManager : MonoBehaviour
             }
         }
         scrollViewObject.SetActive(false);
+        if(saveData.tutorialOrder == 6)
+        {
+            tutorialMngInBook.isPlantBtnClicked = true;
+        }
     }
 
     public void StickerBtnFunction()
     {
         touchedStickerClass.isFirstTimeOfInstantiation = false;
         GameObject button = EventSystem.current.currentSelectedGameObject;
+        tutorialMngInBook.isStickerAttatched = true;
         gameManager.Save();
         button.SetActive(false);        
     }

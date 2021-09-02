@@ -20,7 +20,7 @@ public class Btn : MonoBehaviour
         else
         {
             PopUp.SetActive(false);
-            scrollView.SetActive(true) ;
+            scrollView.SetActive(true);
         }
     }
 }
