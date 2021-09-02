@@ -93,6 +93,13 @@ public class GameManager : MonoBehaviour
         optionManager.OptionButtonActive(true);
     }
 
+    public void DogamSceneLoad()
+    {
+        SceneManager.LoadScene("BookScene");
+        optionManager.OptionButtonActive(false);
+
+    }
+
     public void HouseSceneLoad()
     {
         fromPotScene = false;

@@ -53,7 +53,7 @@ public class FlowerPotManager : MonoBehaviour
 
     public Button[] elementButtonArray;     //보조성분 버튼. 켜고 꺼줘야 해서.
     public Text[] elementQuantArray;        //보조성분 몇개있는지.
-    public int elementTime;   //보조성분 하나에 몇초가 까지는지.
+    public int[] elementTime;   //보조성분 하나에 몇초가 까지는지.
 
     public GameObject potBlackPanel;
     public GameObject emptyTalk;
@@ -80,7 +80,10 @@ public class FlowerPotManager : MonoBehaviour
         magnifiedUIObject.SetActive(false);
         harvestButton.SetActive(false);
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
-        elementTime = 10;
+        elementTime = new int[3];
+        elementTime[0] = 30;
+        elementTime[1] = 25;
+        elementTime[2] = 15;
         potBlackPanel.SetActive(false);
         //화분에 있는 부위들을 먼저 가져온다.
         for (int i = 0; i < potNumber; i++)
@@ -224,7 +227,12 @@ public class FlowerPotManager : MonoBehaviour
 
             yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
 
-            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString()) + elementTime * componentsInPot[index].usedElement;
+            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime,
+                DateTime.Now.ToString());
+            for(int i = 0; i < 3; i++)
+            {
+                 elapsedTime += elementTime[i] * componentsInPot[index].usedElement[i];
+            }
             if (componentData.sproutSeconds < elapsedTime)
             {
                 componentsInPot[index].isSprotued = true;
@@ -620,7 +628,7 @@ public class FlowerPotManager : MonoBehaviour
             elementQuantArray[0].text = saveData.huntElement.ToString() ;
             elementQuantArray[1].text = saveData.mineElement.ToString();
             elementQuantArray[2].text = saveData.fishElement.ToString();
-            if (saveData.huntElement >= 0)
+            if (saveData.huntElement > 0)
             {
                 elementButtonArray[0].interactable = true;
             }
@@ -628,7 +636,7 @@ public class FlowerPotManager : MonoBehaviour
             {
                 elementButtonArray[0].interactable = false;
             }
-            if (saveData.mineElement >= 0)
+            if (saveData.mineElement > 0)
             {
                 elementButtonArray[1].interactable = true;
             }
@@ -636,7 +644,7 @@ public class FlowerPotManager : MonoBehaviour
             {
                 elementButtonArray[1].interactable = false;
             }
-            if (saveData.fishElement >= 0)
+            if (saveData.fishElement > 0)
             {
                 elementButtonArray[2].interactable = true;
             }
@@ -750,6 +758,12 @@ public class FlowerPotManager : MonoBehaviour
         gameManager.HouseSceneLoad();
     }
 
+    public void DogamSceneLoad()
+    {
+        soundManager.ButtonEffectPlay();
+        gameManager.fromPotScene = false;
+        gameManager.DogamSceneLoad();
+    }
 
     public void StoreSceneLoad()
     {
@@ -823,12 +837,55 @@ public class FlowerPotManager : MonoBehaviour
             saveData.fishElement--;
             elementQuantArray[2].text = saveData.fishElement.ToString();
         }
+        if (saveData.huntElement > 0)
+        {
+            elementButtonArray[0].interactable = true;
+        }
+        else
+        {
+            elementButtonArray[0].interactable = false;
+        }
+        if (saveData.mineElement > 0)
+        {
+            elementButtonArray[1].interactable = true;
+        }
+        else
+        {
+            elementButtonArray[1].interactable = false;
+        }
+        if (saveData.fishElement > 0)
+        {
+            elementButtonArray[2].interactable = true;
+        }
+        else
+        {
+            elementButtonArray[2].interactable = false;
+        }
+
         StartCoroutine(HeartAnimCor());
-        componentsInPot[index].usedElement++;
+        componentsInPot[index].usedElement[element]++;
 
         //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
 
-        elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime, DateTime.Now.ToString()) + elementTime * componentsInPot[index].usedElement;
+        if (saveData.tutorialOrder == 3)
+        {
+            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime,
+DateTime.Now.ToString());
+            for (int i = 0; i < 3; i++)
+            {
+                elapsedTime += 8 * elementTime[i] * componentsInPot[index].usedElement[i];
+            }
+        }
+        else
+        {
+            elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime,
+    DateTime.Now.ToString());
+            for (int i = 0; i < 3; i++)
+            {
+                elapsedTime += elementTime[i] * componentsInPot[index].usedElement[i];
+            }
+        }
+        
         if (componentData.sproutSeconds < elapsedTime)
         {
             componentsInPot[index].isSprotued = true;

@@ -589,6 +589,14 @@ public class BookManager : MonoBehaviour
 
     public void HouseSceneLoad()
     {
-        gameManager.HouseSceneLoad();
+        if(gameManager.fromPotScene == true)
+        {
+            gameManager.PotSceneLoad();
+        }
+        else
+        {
+            gameManager.HouseSceneLoad();
+        }
+        
     }    
 }

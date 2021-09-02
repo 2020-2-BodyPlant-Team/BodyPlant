@@ -52,6 +52,7 @@ public class TutorialMngInPot : MonoBehaviour
         }
         else
         {
+            OptionManager.singleTon.OptionFade(true);
             potBtn.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             potBtnAnother.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             potBtnTheOther.gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -204,7 +205,9 @@ public class TutorialMngInPot : MonoBehaviour
         else if(textOrder == 7)
         {
             //composeBtn.transform.SetParent(parentObj.transform);
+            gameManager.Save();
             StartCoroutine(FadeOutOnlyCat());
+            OptionManager.singleTon.OptionFade(false);
         }
         
         //--------------------------------------------------------클릭하고 나서 나오는 행동들-------------------------------------------------------------
