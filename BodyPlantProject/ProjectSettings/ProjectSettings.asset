@@ -238,7 +238,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/CafeAlle/Documents/GitHub/BodyPlant/KeyStore/user.keystore
+  AndroidKeystoreName: C:/GithubDesktop/BodyPlant/KeyStore/user.keystore
   AndroidKeyaliasName: bodyplant
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

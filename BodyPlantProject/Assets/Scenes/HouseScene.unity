@@ -1264,6 +1264,7 @@ GameObject:
   - component: {fileID: 431231994}
   - component: {fileID: 431231993}
   - component: {fileID: 431231992}
+  - component: {fileID: 431231995}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1336,6 +1337,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &431231995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431231991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67af29675b02cb4fa10c4866251432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &458416571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1839,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4582,6 +4595,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4594,6 +4608,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4606,6 +4621,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4618,6 +4634,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4630,6 +4647,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4642,6 +4660,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4654,6 +4673,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4666,6 +4686,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4678,6 +4699,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4690,6 +4712,7 @@ MonoBehaviour:
       jointPosition:
       - {x: 0, y: 0}
       price: 10
+      discountPrice: 0
       sproutSeconds: 10
       componentSpriteArray: []
       sproutingPosition: {x: 0, y: 2}
@@ -4774,6 +4797,8 @@ MonoBehaviour:
     trainSelled: 0
     chairSelled: 0
     tutorialOrder: 0
+    fishTutorial: 0
+    mineTutorial: 0
   fromPotScene: 0
   optionManager: {fileID: 997879040}
   loveRatio: 0.00001
@@ -6259,10 +6284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

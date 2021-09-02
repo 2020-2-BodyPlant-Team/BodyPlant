@@ -143,6 +143,8 @@ public class TutorialMngInHunt : MonoBehaviour
         {
             workHuntManager.nowTutorial = false;
             workHuntManager.TutorialEnd();
+            saveData.tutorialOrder++;
+            gameManager.Save();
             FadeOutCat();
         }
 

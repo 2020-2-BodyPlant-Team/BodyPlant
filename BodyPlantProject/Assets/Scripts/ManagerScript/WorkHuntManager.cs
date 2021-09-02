@@ -58,6 +58,8 @@ public class WorkHuntManager : MonoBehaviour
         if (nowTutorial)
         {
             saveData.tutorialOrder++;
+            gameManager.Save();
+            OptionManager.singleTon.OptionFade(false);
         }
         gameManager.SecretRoomSceneLoad();
     }
