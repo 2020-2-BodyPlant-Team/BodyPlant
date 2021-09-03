@@ -3472,6 +3472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storeManager: {fileID: 621100898}
+  adButton: {fileID: 1221389667}
 --- !u!4 &980801002
 Transform:
   m_ObjectHideFlags: 0

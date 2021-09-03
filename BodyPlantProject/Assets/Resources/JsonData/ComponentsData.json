@@ -155,8 +155,8 @@
                     "y": 0.0
                 }
             ],
-            "price": 200,
-            "discountPrice": 180,
+            "price": 300,
+            "discountPrice": 280,
             "sproutSeconds": 3500.0,
             "componentSpriteArray": [],
             "sproutingPosition": {
@@ -213,8 +213,8 @@
                     "y": 0.021
                 }
             ],
-            "price": 230,
-             "discountPrice": 250,
+            "price": 250,
+             "discountPrice": 230,
             "sproutSeconds": 350.0,
             "componentSpriteArray": [],
             "sproutingPosition": {

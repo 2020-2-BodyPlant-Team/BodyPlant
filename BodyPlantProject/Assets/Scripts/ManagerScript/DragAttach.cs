@@ -13,6 +13,10 @@ public class DragAttach : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (composeManager.tutorialManager.noDrag || composeManager.noDrag)
+        {
+            return;
+        }
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = new Vector3(offset.x, offset.y, transform.position.z);
         mouseStartPoint = Input.mousePosition;
@@ -27,6 +31,10 @@ public class DragAttach : MonoBehaviour
 
     void OnMouseDrag()    //마우스 드래그로 옮겨서 합체할 수 있도록 했습니다
     {
+        if (composeManager.tutorialManager.noDrag || composeManager.noDrag)
+        {
+            return;
+        }
         if (isDrag)
         {
             if (Input.touchCount > 1)

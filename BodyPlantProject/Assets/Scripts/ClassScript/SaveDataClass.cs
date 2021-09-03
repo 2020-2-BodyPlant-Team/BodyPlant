@@ -49,6 +49,12 @@ public class SaveDataClass
         characterList = new List<CharacterClass>();
 
         owningComponentList = new List<ComponentClass>();
+        ComponentClass component = new ComponentClass();
+        component.name = "body";
+        owningComponentList.Add(component);
+        component = new ComponentClass();
+        component.name = "hand";
+        owningComponentList.Add(component);
         fishElement = 100;
         mineElement = 100;
         huntElement = 100;

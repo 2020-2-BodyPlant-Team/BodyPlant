@@ -31,7 +31,7 @@ public class JsonManager
 #endif
 #if UNITY_ANDROID
         savePath = Application.persistentDataPath;
-        
+  
 #endif
         //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
         // 사실 이정도 한두번 쓰는건 상관없긴한데 그냥 써주자. 우리의 컴은 좋으니까..
@@ -113,7 +113,7 @@ public class JsonManager
 
 #if UNITY_ANDROID
         loadPath = Application.persistentDataPath;
-
+        Debug.Log(loadPath);
 
 #endif
         StringBuilder builder = new StringBuilder(loadPath);

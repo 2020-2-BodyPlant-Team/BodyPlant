@@ -120,10 +120,11 @@ public class TutorialManager : MonoBehaviour
         }
         else if(saveData.tutorialOrder == 2) // 튜토리얼 순서 2 번째일 때
         {
-            for(int i = 0; i < 2; i++)
+            for(int i = 0; i < 1; i++)
             {
                 if(textOrder == i)
                 {
+                    Debug.Log(i + 1);
                     StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder2[i + 1].text, binText));
                 }
             }

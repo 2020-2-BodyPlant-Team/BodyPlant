@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using GoogleMobileAds.Api;
 
@@ -11,6 +12,7 @@ public class AdManager : MonoBehaviour
     GameManager gameManager;
     SoundManager soundManager;
     public StoreManager storeManager;
+    public Button adButton;
 
     //이게 우리거
     //const string adUnitId = "ca-app-pub-6023793752348178/6634578309";
@@ -30,6 +32,8 @@ public class AdManager : MonoBehaviour
         this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
         // Called when the user should be rewarded for interacting with the ad.
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+
+        
         // Called when the ad is closed.
         this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
 
@@ -40,13 +44,22 @@ public class AdManager : MonoBehaviour
 
 
     }
-
+    void ShowAd(object sender, EventArgs args)
+    {
+        this.rewardedAd.Show();
+        this.rewardedAd.OnAdLoaded -= ShowAd;
+    }
     public void OnAdButton()
     {
-
+        adButton.interactable = false;
+        
         if (this.rewardedAd.IsLoaded())
         {
             this.rewardedAd.Show();
+        }
+        else
+        {
+            this.rewardedAd.OnAdLoaded += ShowAd;
         }
     }
 
@@ -57,6 +70,9 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
+        adButton.interactable = true;
+        AdRequest request = new AdRequest.Builder().Build();
+        rewardedAd.LoadAd(request);
         soundManager.BGMPlay();
         storeManager.BuyUpdate();
     }
@@ -64,9 +80,22 @@ public class AdManager : MonoBehaviour
 
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        gameManager.saveData.coin += 50;
+        int rand = UnityEngine.Random.Range(0, 3);
+        if(rand == 0)
+        {
+            gameManager.saveData.huntElement += 3;
+        }
+        else if(rand == 1)
+        {
+            gameManager.saveData.mineElement += 3;
+        }
+        else if(rand == 2)
+        {
+            gameManager.saveData.fishElement += 3;
+        }
         gameManager.Save();
-        storeManager.BuyUpdate();
+        //soundManager.BGMPlay();
+        //storeManager.BuyUpdate();
     }
 
 

@@ -229,7 +229,15 @@ public class FlowerPotManager : MonoBehaviour
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime,
                 DateTime.Now.ToString());
-            for(int i = 0; i < 3; i++)
+            if(saveData.tutorialOrder == 3)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    elapsedTime += 8 * elementTime[i] * componentsInPot[index].usedElement[i];
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
             {
                  elapsedTime += elementTime[i] * componentsInPot[index].usedElement[i];
             }

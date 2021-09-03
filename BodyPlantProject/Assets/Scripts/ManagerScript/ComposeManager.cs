@@ -15,6 +15,7 @@ public class ComposeManager : MonoBehaviour
     int addedComponentNumber = 0;
     List<List<GameObject>> attachObjectList;
     WholeComponents wholeComponents;
+    public TutorialMngInCompose tutorialManager;
     public RectTransform contentRect;       //시작값 700. 하나 늘어날떄마다 -400
     public GameObject buttonObject;         //시작값  0,-74f/  하나늘어날때마다 x만 +400
     List<GameObject> buttonList;
@@ -65,7 +66,7 @@ public class ComposeManager : MonoBehaviour
     int hairNumber = 0;
 
     bool notAttached = true;
-
+    public bool noDrag;
     
 
 
@@ -89,6 +90,7 @@ public class ComposeManager : MonoBehaviour
         modifyPanel.SetActive(false);
         modifyingIndex = 0;
         //초기화
+        noDrag = false;
 
         contentRect.anchoredPosition = new Vector2(0, 0);   //자꾸 이거 움직임;; 위치 고정 안해주면 지맘대로 위치가 바껴요
         contentRect.sizeDelta = new Vector2(400* harvestedComponent.Count, 300);
@@ -534,6 +536,13 @@ public class ComposeManager : MonoBehaviour
         {
             namingObject.SetActive(true);
         }
+        if(saveData.tutorialOrder == 4)
+        {
+            tutorialManager.OnSaveButton();
+        }
+        noDrag = true;
+        
+
             
         
     }
@@ -604,6 +613,7 @@ public class ComposeManager : MonoBehaviour
         soundManager.ButtonEffectPlay();
         namingObject.SetActive(true);
         nameAskingObject.SetActive(false);
+        noDrag = false;
     }
 
     public void BackButton()
@@ -863,7 +873,11 @@ public class ComposeManager : MonoBehaviour
         //저장.
 
         activedComponent = new List<ComponentClass>();  //초기화;
-
+        if (saveData.tutorialOrder == 4)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
         gameManager.HouseSceneLoad();
     }
 
@@ -940,6 +954,10 @@ public class ComposeManager : MonoBehaviour
         }
         }
 
+        if(saveData.tutorialOrder == 4)
+        {
+            tutorialManager.Attached();
+        }
         return true;
 
         
