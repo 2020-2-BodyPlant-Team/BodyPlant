@@ -167,6 +167,10 @@ public class BookManager : MonoBehaviour
 
                         //스티커 생성시 붙이기 버튼 SetActive
                         diaryList[i].transform.GetChild(2).gameObject.SetActive(true);
+                        if(saveData.tutorialOrder == 6)
+                        {
+                            diaryList[i].transform.GetChild(2).transform.SetParent(tutorialMngInBook.parentObj.transform);
+                        }
 
                         //sticker.transform.SetParent(diaryList[i].transform);
                         sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();

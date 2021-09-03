@@ -18,12 +18,12 @@ public class BackBtn : MonoBehaviour
 
     public void backBtnClicked()
     {
-        if(tutorialMngInBook.textOrder == 11)
+        if(tutorialMngInBook.textOrder == 10)
         {
             tutorialMngInBook.isBackBtnClicked = true;
         }
 
-        else if(tutorialMngInBook.textOrder == 12)
+        else if(tutorialMngInBook.textOrder == 11)
         {
             tutorialMngInBook.isBackToHouseBtnClicked = true;
             saveData.tutorialOrder++;

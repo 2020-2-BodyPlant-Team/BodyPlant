@@ -13,7 +13,8 @@ public class TutorialMngInBook : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject cat;
     public GameObject content;
-    public GameObject scrollView;
+    public GameObject viewPort;
+    public GameObject attatchBtn;
     public GameObject backBtn;
     public GameObject backBtnToHouse;
     public GameObject parentObj;
@@ -42,9 +43,9 @@ public class TutorialMngInBook : MonoBehaviour
         isBackToHouseBtnClicked = false;
         textOrder = 0;
 
-        backBtn = diaryPageParent.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+        //backBtn = diaryPageParent.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
 
-        Debug.Log(saveData.tutorialOrder);
+        Debug.Log("첫 디버그");
         if(saveData.tutorialOrder != 6)
         {
             this.gameObject.SetActive(false);
@@ -65,7 +66,8 @@ public class TutorialMngInBook : MonoBehaviour
         float currentTargetNumber = 0f; 
         int currentNumber = 0; 
         string displayedText = "";
-        StringBuilder builder = new StringBuilder(displayedText);  
+        StringBuilder builder = new StringBuilder(displayedText);
+        //backBtn = diaryPageParent.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;  
 
         while (currentTargetNumber < inputTextString.Length)
         {
@@ -115,7 +117,7 @@ public class TutorialMngInBook : MonoBehaviour
         {
             FadeOutCat();
 
-            scrollView.transform.SetParent(textPanel.transform);
+            content.transform.SetParent(parentObj.transform);
             StartCoroutine(FadeInObj(content.transform.GetChild(0).GetChild(0).gameObject, 1f));
             StartCoroutine(FadeInObj(content.transform.GetChild(0).GetChild(1).gameObject, 1f));
 
@@ -129,6 +131,11 @@ public class TutorialMngInBook : MonoBehaviour
                 }
                 else
                 {
+                    if(bodyPlant.GetChild(i).gameObject.name == "hair(Clone)")
+                    {
+                        objList.Add(bodyPlant.GetChild(i).gameObject);
+                        break;
+                    }
                     for(int j = 0; j < bodyPlant.GetChild(i).childCount; j++)
                     {
                         objList.Add(bodyPlant.GetChild(i).GetChild(j).gameObject);
@@ -138,7 +145,7 @@ public class TutorialMngInBook : MonoBehaviour
 
             for(int i = 0; i < objList.Count; i++)
             {
-                StartCoroutine(FadeInObj(objList[i], 1f));
+                StartCoroutine(FadeInSpriteRenderer(objList[i]));
             }
 
             while(true)
@@ -146,19 +153,22 @@ public class TutorialMngInBook : MonoBehaviour
                 yield return null;
                 if(isPlantBtnClicked)
                 {
+                    content.transform.SetParent(viewPort.transform);
                     break;
                 }
             }
+
+            FadeInCat();
         }
 
-        else if(textOrder == 3)
+        else if(textOrder == 2)
         {
             FadeOutCat();
 
             while(true)
             {
                 yield return null;
-                if(Input.GetMouseButton(0))
+                if(!isTextPanelSetActived && Input.GetMouseButton(0))
                 {
                     break;
                 }
@@ -167,7 +177,7 @@ public class TutorialMngInBook : MonoBehaviour
             FadeInCat();
         }
 
-        else if(textOrder == 8)
+        else if(textOrder == 7)
         {
             FadeOutCat();
 
@@ -185,25 +195,27 @@ public class TutorialMngInBook : MonoBehaviour
             FadeInCat();
         }
 
-        else if(textOrder == 11)
+        else if(textOrder == 10)
         {
-            StartCoroutine(FadeOutObj(backBtn));
-            backBtn.transform.SetParent(textPanel.transform);
+            StartCoroutine(FadeInObj(backBtn, 1f));
+            backBtn.transform.SetParent(parentObj.transform);
 
             while(true)
             {
                 yield return null;
                 if(isBackBtnClicked)
                 {
+                    Debug.Log("here");
+                    backBtn.SetActive(false);
                     break;
                 }
             }
         }
 
-        else if(textOrder == 12)
+        else if(textOrder == 11)
         {
             StartCoroutine(FadeInObj(backBtnToHouse, 1f));
-            backBtnToHouse.transform.SetParent(textPanel.transform);
+            backBtnToHouse.transform.SetParent(parentObj.transform);
 
             while(isBackToHouseBtnClicked)
             {
@@ -213,7 +225,7 @@ public class TutorialMngInBook : MonoBehaviour
         
         //--------------------------------------------------------클릭하고 나서 나오는 행동들-------------------------------------------------------------
 
-        for(int i = 0; i < 12; i++)
+        for(int i = 0; i < 11; i++)
             {
                 if(textOrder == i)
                 {
@@ -280,9 +292,9 @@ public class TutorialMngInBook : MonoBehaviour
         }
     }
 
-    IEnumerator FadeOutObj(GameObject obj)
+    IEnumerator FadeOutObj(GameObject obj, float limit)
     {
-        float i = 10;
+        float i = limit * 10;
         while (i > 0)
         {
             i -= 1;
@@ -361,10 +373,10 @@ public class TutorialMngInBook : MonoBehaviour
     {
         //isTextPanelSetActived = false;
         StartCoroutine(FadeOutText(textPanel.transform.GetChild(0).gameObject));
-        StartCoroutine(FadeOutObj(textPanel.gameObject));
-        StartCoroutine(FadeOutObj(cat.transform.GetChild(0).gameObject));
-        StartCoroutine(FadeOutObj(cat.transform.GetChild(1).gameObject));
-        StartCoroutine(FadeOutObj(cat.transform.GetChild(2).gameObject));
+        StartCoroutine(FadeOutObj(textPanel.gameObject, 0.4f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(0).gameObject, 1f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(1).gameObject, 1f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(2).gameObject, 1f));
     }
 
     IEnumerator FadeOutOnlyCat()
