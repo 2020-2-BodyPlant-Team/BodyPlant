@@ -6,6 +6,9 @@ using System.Text;
 
 public class PrologueManager : MonoBehaviour
 {
+    SoundManager soundManager;
+    GameManager gameManager;
+    SaveDataClass saveData;
     public GameObject[] littleButtonArray;
     public GameObject[] canvasArray;
     public GameObject[] firstSpriteArray;
@@ -38,6 +41,9 @@ public class PrologueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.singleTon;
+        saveData = gameManager.saveData;
+        soundManager = SoundManager.inst;
         nowLittleButtonIndex = 0;
         buttonActive = new bool[4];
         originPos = new Vector3[4];
@@ -150,6 +156,7 @@ public class PrologueManager : MonoBehaviour
 
     IEnumerator ButtonMoveCoroutine()
     {
+        soundManager.OpenPaperEffectPlay();
         float timer = 0;
         nowImageIndex = 0;
         RectTransform rect = littleButtonArray[nowLittleButtonIndex].GetComponent<RectTransform>();
@@ -196,6 +203,7 @@ public class PrologueManager : MonoBehaviour
     bool returnCoroutineRunning = false;
     IEnumerator ButtonReturnCoroutine()
     {
+        soundManager.OpenPaperEffectPlay();
         returnCoroutineRunning = true;
         magnified = false;
         float timer = 0;
@@ -237,6 +245,17 @@ public class PrologueManager : MonoBehaviour
         if(nowLittleButtonIndex < 4)
         {
             StartCoroutine(LittleCircleCoroutine());
+        }
+
+        if(nowLittleButtonIndex == 4)
+        {
+            yield return new WaitForSeconds(1f);
+            saveData.watchedPrologue = true;
+            gameManager.Save();
+            gameManager.StartSceneLoad();
+            
+
+
         }
         
         returnCoroutineRunning = false;
@@ -318,7 +337,7 @@ public class PrologueManager : MonoBehaviour
                 outBookCanvas.SetActive(false);
                 inbookCanvas.SetActive(true);
                 isInBook = false;
-                
+                soundManager.BookEffectPlay();
                 StartCoroutine(BookCameraWork());
             }
             
@@ -358,6 +377,14 @@ public class PrologueManager : MonoBehaviour
                 else
                 {
                     spriteArray[nowLittleButtonIndex,nowImageIndex].SetActive(true);
+                    if(nowLittleButtonIndex == 0)
+                    {
+                        soundManager.DrawingEffectPlay();
+                    }
+                    if(nowLittleButtonIndex == 1)
+                    {
+
+                    }
                     if (nowLittleButtonIndex == 3 && !nowTexting)
                     {
                         StartCoroutine(LoadTextOneByOne(textString.text, fourthText));

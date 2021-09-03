@@ -9,14 +9,25 @@ public class SoundManager : MonoBehaviour
     public AudioSource bgmSource;
     public AudioSource effectSource;
     public AudioSource buttonSource;
-    
+
+    public AudioClip prologueBGM;
     public AudioClip mainBGM;
     public AudioClip fishBGM;
     public AudioClip mineBGM;
     public AudioClip huntBGM;
+    public AudioClip composeBGM;
+
 
     public AudioClip bookEffect;
+    public AudioClip openPaperEffect;
+    public AudioClip drawingEffect;
+    public AudioClip stepEffect;
     public AudioClip storeEffect;
+    public AudioClip deliveryEffect;
+    public AudioClip crowdEffect;
+    public AudioClip carEffect;
+    public AudioClip myaoEffect;
+
     public AudioClip workEffect;
     public AudioClip houseEffect;
     public AudioClip cheerEffect;
@@ -56,7 +67,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        bgmSource.clip = mainBGM;
+        bgmSource.clip = prologueBGM;
         bgmSource.Play();
 
     }
@@ -78,6 +89,16 @@ public class SoundManager : MonoBehaviour
             return;
         }
         bgmSource.clip = mainBGM;
+        bgmSource.Play();
+    }
+
+    public void ComposeBGMPlay()
+    {
+        if (bgmSource.clip == composeBGM)
+        {
+            return;
+        }
+        bgmSource.clip = composeBGM;
         bgmSource.Play();
     }
 
@@ -129,6 +150,47 @@ public class SoundManager : MonoBehaviour
     public void StoreEffectPlay()
     {
         effectSource.clip = storeEffect;
+        effectSource.Play();
+    }
+    public void OpenPaperEffectPlay()
+    {
+        effectSource.clip = openPaperEffect;
+        effectSource.Play();
+    }
+
+    public void DrawingEffectPlay()
+    {
+        effectSource.clip = drawingEffect;
+        effectSource.Play();
+    }
+
+    public void StepEffectPlay()
+    {
+        effectSource.clip = stepEffect;
+        effectSource.Play();
+    }
+
+    public void DeliveryEffectPlay()
+    {
+        effectSource.clip = deliveryEffect;
+        effectSource.Play();
+    }
+
+    public void CrowdEffectPlay()
+    {
+        effectSource.clip = crowdEffect;
+        effectSource.Play();
+    }
+
+    public void CarEffectPlay()
+    {
+        effectSource.clip = carEffect;
+        effectSource.Play();
+    }
+
+    public void MyaoEffectPlay()
+    {
+        effectSource.clip = myaoEffect;
         effectSource.Play();
     }
 

@@ -54,12 +54,19 @@ public class GameManager : MonoBehaviour
         //Save();  // 이거는 필요할 때만 있는 코드. 디버그용
         //jsonManager.SaveWholeComponent();
         Load();
+
+
         
     }
 
     void Start()
     {
         soundManager = SoundManager.inst;
+        optionManager.OptionButtonActive(false);
+        if (!saveData.watchedPrologue)
+        {
+            PrologueSceneLoad();
+        }
     }
 
 
@@ -85,6 +92,7 @@ public class GameManager : MonoBehaviour
         fromPotScene = false;
         SceneManager.LoadScene("ComposeScene");
         optionManager.OptionButtonActive(false);
+        soundManager.ComposeBGMPlay();
     }
     public void PotSceneLoad()
     {
@@ -93,6 +101,17 @@ public class GameManager : MonoBehaviour
         optionManager.OptionButtonActive(true);
     }
 
+    public void PrologueSceneLoad()
+    {
+        SceneManager.LoadScene("PrologScene");
+        optionManager.OptionButtonActive(false);
+    }
+
+    public void StartSceneLoad()
+    {
+        SceneManager.LoadScene("StartScene");
+        optionManager.OptionButtonActive(false);
+    }
     public void DogamSceneLoad()
     {
         SceneManager.LoadScene("BookScene");

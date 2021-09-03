@@ -32,6 +32,8 @@ public class SaveDataClass
     public bool fishTutorial;
     public bool mineTutorial;
 
+    public bool watchedPrologue;
+
     //public int[] beanRemainingArray;  //잔량이었는데 이거 안한대. 이거때매 기획 바꿀뻔해서 살짝 화날뻔.
 
     public SaveDataClass()
@@ -63,7 +65,7 @@ public class SaveDataClass
         chairSelled = false;
         fishTutorial = false;
         mineTutorial = false;
-
+        watchedPrologue = false;
         tutorialOrder = 0;
     }
 }

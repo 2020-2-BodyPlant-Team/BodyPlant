@@ -49,12 +49,21 @@ MonoBehaviour:
   bgmSource: {fileID: 1739601607469916685}
   effectSource: {fileID: 8256674283935956266}
   buttonSource: {fileID: 1820301417440414628}
+  prologueBGM: {fileID: 8300000, guid: 5217640fbf63a31438b4a6decbac6028, type: 3}
   mainBGM: {fileID: 8300000, guid: 2e88c97a454ec0c4796192a6c24ae675, type: 3}
   fishBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
   mineBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
   huntBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
-  bookEffect: {fileID: 0}
+  composeBGM: {fileID: 8300000, guid: 34b50694ca094b043952a1729200798e, type: 3}
+  bookEffect: {fileID: 8300000, guid: 83b1bbea898803246842da5e93c6371e, type: 3}
+  openPaperEffect: {fileID: 8300000, guid: 69d8fc7394277534bb8da7666038e4dc, type: 3}
+  drawingEffect: {fileID: 8300000, guid: a4c5783e06fcc5f468e78f7229e63776, type: 3}
+  stepEffect: {fileID: 8300000, guid: 00cf8177df4f79841a9c67aff7aa32d6, type: 3}
   storeEffect: {fileID: 8300000, guid: 880c0fdce8ca2d246acb4f864665c90d, type: 3}
+  deliveryEffect: {fileID: 8300000, guid: b96e4d8f0e2fbfd4d96b6370ee6f32db, type: 3}
+  crowdEffect: {fileID: 8300000, guid: 7f8c0528c186ccf49befff306f62285b, type: 3}
+  carEffect: {fileID: 8300000, guid: 68594169b047f7448a03eb1dac46cd19, type: 3}
+  myaoEffect: {fileID: 8300000, guid: b0737d2e8e589eb46b4cf2624dbf8e6e, type: 3}
   workEffect: {fileID: 8300000, guid: 537bf1a7944d4d741b3adbb4604f8df4, type: 3}
   houseEffect: {fileID: 8300000, guid: 0fd95f32597aaed47808cf2b6167eed4, type: 3}
   cheerEffect: {fileID: 8300000, guid: 95f7544f097d3a6479490153efeb76c1, type: 3}
@@ -65,6 +74,20 @@ MonoBehaviour:
   plantEffect: {fileID: 8300000, guid: b8cf373b99931874b8a137683dd0ca51, type: 3}
   expandEffect: {fileID: 8300000, guid: 70b82e83bec6e9f49afd8d724c98234e, type: 3}
   coinEffect: {fileID: 8300000, guid: 91398878e9b29f94db1aa7e456fa99ea, type: 3}
+  succedEffect: {fileID: 8300000, guid: afc0947416e996b439faab9a46ce13dc, type: 3}
+  failEffect: {fileID: 8300000, guid: 710b693cfda9f584a82e336303a0cfe2, type: 3}
+  gangEffect: {fileID: 8300000, guid: 69f95a5a41004c6469b072c1dad7b864, type: 3}
+  stoneEffect: {fileID: 8300000, guid: 95b8b504f56f1a14bb296cf5731cadcf, type: 3}
+  grassEffect: {fileID: 8300000, guid: aff05188fabfd514bbf6b6101f504cf8, type: 3}
+  deerfailEffect: {fileID: 8300000, guid: 277dc5f947ea984409e995c031a1bd99, type: 3}
+  deerhornEffect: {fileID: 8300000, guid: 720b88ed678ad184aaf39864dc398aa9, type: 3}
+  deeroutEffect: {fileID: 8300000, guid: 0f1afaaf8d8bbdd4bad69660c6b20f3e, type: 3}
+  shipEffectOne: {fileID: 8300000, guid: 92ae21ed674dce44d829eea987b1f2f4, type: 3}
+  shipEffectTwo: {fileID: 8300000, guid: 436f66b2d6a177744bd5933520dea457, type: 3}
+  throwEffect: {fileID: 8300000, guid: 153361de788096c4ea35d3c836b8aa1e, type: 3}
+  jjiEffect: {fileID: 8300000, guid: 447e7095b4d28a74e930e19edb423acc, type: 3}
+  rillEffect: {fileID: 8300000, guid: ded9705c688424241b144d679366879c, type: 3}
+  mulEffect: {fileID: 8300000, guid: 020a23b010f724647816c262bb7a9564, type: 3}
 --- !u!82 &1739601607469916685
 AudioSource:
   m_ObjectHideFlags: 0
@@ -79,7 +102,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -268,7 +291,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e0f17328de5004c49a7a2dd4d53746b9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -7105,95 +7105,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: jjiEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 447e7095b4d28a74e930e19edb423acc, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: mulEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 020a23b010f724647816c262bb7a9564, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: failEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 710b693cfda9f584a82e336303a0cfe2, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: gangEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 69f95a5a41004c6469b072c1dad7b864, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: rillEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: ded9705c688424241b144d679366879c, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: grassEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: aff05188fabfd514bbf6b6101f504cf8, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: stoneEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 95b8b504f56f1a14bb296cf5731cadcf, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: storeEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 880c0fdce8ca2d246acb4f864665c90d, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: throwEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 153361de788096c4ea35d3c836b8aa1e, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: succedEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: afc0947416e996b439faab9a46ce13dc, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: deeroutEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 0f1afaaf8d8bbdd4bad69660c6b20f3e, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: shipEffectOne
-      value: 
-      objectReference: {fileID: 8300000, guid: 92ae21ed674dce44d829eea987b1f2f4, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: shipEffectTwo
-      value: 
-      objectReference: {fileID: 8300000, guid: 436f66b2d6a177744bd5933520dea457, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: deerfailEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 277dc5f947ea984409e995c031a1bd99, type: 3}
-    - target: {fileID: 1739601607469916684, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: deerhornEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 720b88ed678ad184aaf39864dc398aa9, type: 3}
-    - target: {fileID: 1739601607469916685, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1739601607469916686, guid: ebba092a3efcf314288a3d1fd0634931,
         type: 3}
       propertyPath: m_Name
       value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1820301417440414628, guid: ebba092a3efcf314288a3d1fd0634931,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebba092a3efcf314288a3d1fd0634931, type: 3}
