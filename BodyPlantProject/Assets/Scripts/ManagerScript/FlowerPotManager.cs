@@ -487,12 +487,18 @@ public class FlowerPotManager : MonoBehaviour
         }
 
 
+
         //먼저 프리팹을 resource폴더에서 읽어오고
         GameObject obj = Instantiate(prefab, flowerPotArray[availablePlace].transform);
         //그 오브젝트를 components in pot 에 넣어준다. 그래야 꺼내서 쓸 수 있다.
         //여기서 유의할 점은 나중에 components in pot이 savedata로 다시 들어갈 텐데, 그 때는 gameobject는 저장이 안된다
         //따라서 savedata를 load할 때마다 gameobject를 프리팹에서 꺼내서 새로 만들어주어야한다.
         componentsInPot[availablePlace].realGameobject = obj;
+
+        if (componentData.name == "arm" || componentData.name == "leg" || componentData.name == "foot" || componentData.name == "hair")
+        {
+            obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+        }
 
         //지금 막 심은거니까 심은시간을 산 시간으로 해준다.
         componentsInPot[availablePlace].plantedTime = boughtTime;

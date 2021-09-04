@@ -918,7 +918,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8a6f655c898682c45a419ef37bb31b11, type: 3}
     m_FontSize: 48
     m_FontStyle: 2
     m_BestFit: 0
@@ -1822,6 +1822,7 @@ MonoBehaviour:
   modifyButtonObject: {fileID: 2134544761}
   modifyPanelText: {fileID: 1884159843}
   characterList: []
+  noDrag: 0
 --- !u!4 &672835489
 Transform:
   m_ObjectHideFlags: 0
@@ -2550,6 +2551,8 @@ MonoBehaviour:
   blackPanel: {fileID: 2052001504}
   parentObject: {fileID: 329430749}
   flipButton: {fileID: 1023756120}
+  nowTexting: 0
+  noDrag: 0
   isTextPanelSetActived: 0
   binText: {fileID: 72777305}
   textOrder: 0
@@ -2915,7 +2918,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8a6f655c898682c45a419ef37bb31b11, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0

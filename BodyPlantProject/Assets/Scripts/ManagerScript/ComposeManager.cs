@@ -549,6 +549,12 @@ public class ComposeManager : MonoBehaviour
 
     public void NameButton()
     {
+        if (nameInputField.text.Length == 0)
+        {
+            soundManager.ErrorEffectPlay();
+            StartCoroutine(NameInputShake());
+            return;
+        }
         soundManager.ButtonEffectPlay();
         namingObject.SetActive(false);
         nameAskingObject.SetActive(true);
@@ -560,6 +566,7 @@ public class ComposeManager : MonoBehaviour
     
     public void NameInputChanging()
     {
+
         if(nameInputField.text.Length > 10)
         {
             nameInputField.text = nameInputField.text.Remove(10);
@@ -582,8 +589,8 @@ public class ComposeManager : MonoBehaviour
 
         float x1 = -50;
         float x2 = -22;
-        float y1 = 36;
-        float y2 = 86;
+        float y1 = -44;
+        float y2 = 36;
 
         inputText.color = new Color(0.8f, 0, 0, 1);
         float timer = 0;
@@ -951,7 +958,7 @@ public class ComposeManager : MonoBehaviour
                         return false;
                     }
                 }
-        }
+            }
         }
 
         if(saveData.tutorialOrder == 4)
@@ -1130,6 +1137,10 @@ public class ComposeManager : MonoBehaviour
             {
                 return;
             }
+            if (noDrag || tutorialManager.noDrag)
+            {
+                return;
+            }
             if (!flipMode)
             {
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
@@ -1156,6 +1167,10 @@ public class ComposeManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (OptionManager.singleTon.optionOn)
+            {
+                return;
+            }
+            if (noDrag || tutorialManager.noDrag)
             {
                 return;
             }
