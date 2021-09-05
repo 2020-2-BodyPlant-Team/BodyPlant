@@ -585,7 +585,7 @@ public class ComposeManager : MonoBehaviour
         Text inputText = nameInputField.textComponent;
         GameObject inputObject = nameInputField.gameObject;
         RectTransform rect = inputObject.GetComponent<RectTransform>();
-        Vector2 originPos = rect.anchoredPosition;
+        Vector2 originPos = new Vector2(-29.3f, -3.999999f);
 
         float x1 = -50;
         float x2 = -22;

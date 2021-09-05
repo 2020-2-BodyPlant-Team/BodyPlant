@@ -29,6 +29,7 @@ public class StoreManager : MonoBehaviour
     public Transform[] seedImageArray;
     GameObject[] checkObjectArray;
     public GameObject fullPotObject;
+    public GameObject noMoneyObject;
    
 
     string[] namesArray = { "arm", "leg", "mouth", "nose", "eye", "hair", "foot", "hand", "ear","body" };
@@ -132,7 +133,7 @@ public class StoreManager : MonoBehaviour
         leftPot = 0;
         priceArray = new int[10];
 
-
+        noMoneyObject.SetActive(false);
         checkObjectArray = new GameObject[seedImageArray.Length];
         buySeedButtonArray = new Button[seedImageArray.Length];
         componentCoinText = new Text[seedImageArray.Length];
@@ -292,20 +293,20 @@ public class StoreManager : MonoBehaviour
             fullPotObject.SetActive(true);
 
         }
-        else
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (saveData.coin >= priceArray[i])
-                {
-                    buySeedButtonArray[i].interactable = true;
-                }
-                else
-                {
-                    buySeedButtonArray[i].interactable = false;
-                }
-            }
-        }
+        //else
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (saveData.coin >= priceArray[i])
+        //        {
+        //            buySeedButtonArray[i].interactable = true;
+        //        }
+        //        else
+        //        {
+        //            buySeedButtonArray[i].interactable = false;
+        //        }
+        //    }
+        //}
 
         if (saveData.coin >= trainPrice && !saveData.trainSelled)
             buyToyButton.interactable = true;
@@ -323,6 +324,15 @@ public class StoreManager : MonoBehaviour
         if(saveData.tutorialOrder == 1)
         {
             FindObjectOfType<TutorialMngInStore>().isSeedBtnClicked = true;
+        }
+        if (saveData.coin < priceArray[index])
+        {
+            noMoneyObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            noMoneyObject.SetActive(false);
         }
         saveData.coin -= priceArray[index];
         checkObjectArray[index].SetActive(true);

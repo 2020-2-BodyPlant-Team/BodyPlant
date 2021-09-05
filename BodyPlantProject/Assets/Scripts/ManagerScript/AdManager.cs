@@ -13,6 +13,13 @@ public class AdManager : MonoBehaviour
     SoundManager soundManager;
     public StoreManager storeManager;
     public Button adButton;
+    public string[] chatTextArray;
+    public GameObject chatObject;
+    public Text chatText;
+    public GameObject[] elementArray;
+    public GameObject elementObject;
+
+
 
     //이게 우리거
     //const string adUnitId = "ca-app-pub-6023793752348178/6634578309";
@@ -40,6 +47,19 @@ public class AdManager : MonoBehaviour
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
         rewardedAd.LoadAd(request);
+
+        chatText.text = chatTextArray[UnityEngine.Random.Range(0, 12)];
+        int rand = UnityEngine.Random.Range(0, 100);
+        if (rand == 1)
+        {
+            chatText.text = chatTextArray[UnityEngine.Random.Range(12, 17)];
+        }
+        chatObject.SetActive(true);
+        for(int i = 0; i < elementArray.Length; i++)
+        {
+            elementArray[i].SetActive(false);
+        }
+        elementObject.SetActive(false);
 
 
 
@@ -81,6 +101,15 @@ public class AdManager : MonoBehaviour
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         int rand = UnityEngine.Random.Range(0, 3);
+        chatObject.SetActive(false);
+        elementObject.SetActive(true);
+        for (int i = 0; i < 3; i++)
+        {
+            elementArray[i].SetActive(false);
+        }
+        elementArray[rand].SetActive(true);
+
+
         if(rand == 0)
         {
             gameManager.saveData.huntElement += 3;

@@ -185,7 +185,7 @@ public class PrologueManager : MonoBehaviour
             }
             else
             {
-                rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], new Vector3(500,0,0), timer);
+                rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], new Vector3(-500,0,0), timer);
             }
             
             littleButtonArray[nowLittleButtonIndex].transform.localScale = new Vector3(1, 1, 1) * (1+timer*2);
@@ -268,8 +268,8 @@ public class PrologueManager : MonoBehaviour
         cameraMoving =true;
         float timer = 0;
         timer = 0;
-        Vector3 origin = new Vector3(500, 0, 0);
-        Vector3 goal = new Vector3(-500, 0, 0);
+        Vector3 origin = new Vector3(-500, 0, 0);
+        Vector3 goal = new Vector3(500, 0, 0);
         while (timer < 1)
         {
             timer += Time.deltaTime * 0.3f;
