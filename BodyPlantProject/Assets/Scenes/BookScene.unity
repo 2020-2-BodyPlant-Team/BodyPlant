@@ -891,10 +891,11 @@ MonoBehaviour:
   - {fileID: 1236546935993795689, guid: b44b190b35eb80e498d4348dbbd2ad1a, type: 3}
   - {fileID: 7986723133697114629, guid: 850020bf0aefbb34bba6e0c1309565c6, type: 3}
   - {fileID: 2276050417167306596, guid: c186d0fe680cb284dbcf613389e840bf, type: 3}
+  diaryList: []
   buttonParent: {fileID: 46061688}
   diaryParent: {fileID: 555904778}
   contentRect: {fileID: 46061689}
-  lovenessMaskList: []
+  lovenessList: []
   cam: {fileID: 1058790595}
   scrollViewObject: {fileID: 968180949}
 --- !u!1 &810952059
@@ -1309,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

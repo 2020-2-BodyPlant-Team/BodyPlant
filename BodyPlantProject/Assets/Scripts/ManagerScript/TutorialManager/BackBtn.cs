@@ -26,6 +26,10 @@ public class BackBtn : MonoBehaviour
         else if(tutorialMngInBook.textOrder == 11)
         {
             tutorialMngInBook.isBackToHouseBtnClicked = true;
+        }
+
+        else if(tutorialMngInBook.textOrder == 12)
+        {
             saveData.tutorialOrder++;
             gameManager.Save();
         }

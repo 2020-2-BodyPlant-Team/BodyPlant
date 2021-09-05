@@ -17,7 +17,7 @@ public class BookManager : MonoBehaviour
     public GameObject diaryPrefab;
     public GameObject buttonPrefab;
     public List<GameObject> stickerPrefab;
-    List<GameObject> diaryList;
+    public List<GameObject> diaryList;
     List<GameObject> buttonList;
     List<GameObject> silhouette;
     List<int> passedTime;
@@ -27,7 +27,7 @@ public class BookManager : MonoBehaviour
     public GameObject buttonParent;
     public GameObject diaryParent;
     public RectTransform contentRect;
-    public List<RectTransform> lovenessMaskList;    //애정도에 마스크 올라갔다 내려갔다 해야되는데 이거임. 차례대로 쓰면 댐.
+    public List<RectTransform> lovenessList;    //애정도에 마스크 올라갔다 내려갔다 해야되는데 이거임. 차례대로 쓰면 댐.
 
     Vector2 lovenessZero = new Vector2(0, 19);
     Vector2 lovenessFull = new Vector2(0, 128);
@@ -72,7 +72,7 @@ public class BookManager : MonoBehaviour
 
         diaryList = new List<GameObject>();
         buttonList = new List<GameObject>();
-        lovenessMaskList = new List<RectTransform>();
+        lovenessList = new List<RectTransform>();
 
         contentRect.anchoredPosition = new Vector2(0, 0);   
         contentRect.sizeDelta = new Vector2(0, ((characterList.Count / 3) + 1) * (-buttonYgap));
@@ -230,7 +230,7 @@ public class BookManager : MonoBehaviour
             for(int i = 0; i < totalList.Count; i++)
             {
                 //diaryList[i].transform.GetChild(1).GetChild(3).GetComponent<Text>().text = characterList[i].loveNess.ToString("N1");
-                lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, totalList[i].loveNess/100.0f);
+                lovenessList[i].GetComponent<Image>().fillAmount = Mathf.Lerp(0, 1, totalList[i].loveNess/100.0f);
             }
             
             timer += Time.deltaTime;
@@ -281,8 +281,8 @@ public class BookManager : MonoBehaviour
 
             diaryList.Add(Instantiate(diaryPrefab, diaryParent.transform));                   
             buttonList.Add(Instantiate(buttonPrefab, buttonParent.transform));
-            lovenessMaskList.Add(diaryList[i].transform.GetChild(1).GetChild(3).GetChild(0).gameObject.GetComponent<RectTransform>());
-            lovenessMaskList[i].anchoredPosition = Vector2.Lerp(lovenessZero, lovenessFull, characterList[i].loveNess/100.0f);
+            lovenessList.Add(diaryList[i].transform.GetChild(1).GetChild(3).gameObject.GetComponent<RectTransform>());
+            lovenessList[i].GetComponent<Image>().fillAmount = Mathf.Lerp(0, 1, characterList[i].loveNess/100.0f);
 
 
             Vector2 buttonPosition = new Vector2((buttonStartPoint.x + (i % 3) * buttonXgap), (buttonStartPoint.y  + (int)(i / 3) * buttonYgap));

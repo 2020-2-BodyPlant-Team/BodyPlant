@@ -164,12 +164,19 @@ public class TutorialMngInBook : MonoBehaviour
         else if(textOrder == 2)
         {
             FadeOutCat();
+            FadeInObj(bookManager.lovenessList[0].gameObject, 1f);
+            parentObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-75f, 0f);
+            bookManager.lovenessList[0].transform.SetParent(parentObj.transform);
+            bookManager.lovenessList[0].transform.GetChild(1).gameObject.SetActive(true);
 
             while(true)
             {
                 yield return null;
                 if(!isTextPanelSetActived && Input.GetMouseButton(0))
                 {
+                    bookManager.lovenessList[0].transform.SetParent(bookManager.diaryList[0].transform.GetChild(1));
+                    bookManager.lovenessList[0].transform.SetSiblingIndex(3);
+                    bookManager.lovenessList[0].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             }
@@ -180,7 +187,9 @@ public class TutorialMngInBook : MonoBehaviour
         else if(textOrder == 7)
         {
             FadeOutCat();
+            StartCoroutine(FadeOutObj(tutorialPanel, 0.45f));
 
+            bookManager.lovenessList[0].transform.SetParent(parentObj.transform);
             bookManager.totalList[0].loveNess = 100;
 
             while(true)
@@ -188,6 +197,7 @@ public class TutorialMngInBook : MonoBehaviour
                 yield return null;
                 if(isStickerAttatched)
                 {
+                    StartCoroutine(FadeInObj(tutorialPanel, 0.45f));
                     break;
                 }
             }
@@ -308,6 +318,7 @@ public class TutorialMngInBook : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
         }
+        Debug.Log("fadeOut" + obj);
         if(obj == cat.transform.GetChild(2).gameObject)
         {
             isTextPanelSetActived = false;

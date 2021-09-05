@@ -97,6 +97,13 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(FadeOut());
             }
         }
+        else if(saveData.tutorialOrder == 5)
+        {
+            if(textOrder == 5)
+            {
+                StartCoroutine(FadeOut());
+            }
+        }
         
 
         while(true)
@@ -164,6 +171,10 @@ public class TutorialManager : MonoBehaviour
         {
             objPositionInOrder2();
         }
+        else if(saveData.tutorialOrder == 5)
+        {
+
+        }
         
         StartCoroutine(FadeIn());
     }
@@ -175,6 +186,12 @@ public class TutorialManager : MonoBehaviour
     }
 
     void objPositionInOrder2()
+    {
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, -437);
+        potBtn.transform.SetParent(textPanel.transform);
+    }
+
+    void objPositionInOrder5()
     {
         cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, -437);
         potBtn.transform.SetParent(textPanel.transform);
