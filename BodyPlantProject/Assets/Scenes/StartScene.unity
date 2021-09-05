@@ -829,7 +829,7 @@ MonoBehaviour:
     watchedPrologue: 0
   fromPotScene: 0
   optionManager: {fileID: 753562598}
-  loveRatio: 0.00001
+  loveRatio: 0.083333336
   workSceneIndex: 0
 --- !u!4 &225302801
 Transform:

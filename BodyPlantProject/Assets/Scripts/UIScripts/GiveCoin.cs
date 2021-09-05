@@ -74,14 +74,17 @@ public class GiveCoin : MonoBehaviour
             if(nowWork == 0)
             {
                 workedTime *= characterList[i].huntWorkRatio;
+                characterList[i].huntTime+= (int)workedTime;
             }
             else if (nowWork == 1)
             {
                 workedTime *= characterList[i].fishWorkRatio;
+                characterList[i].fishTime += (int)workedTime;
             }
             else
             {
                 workedTime *= characterList[i].mineWorkRatio;
+                characterList[i].mineTime += (int)workedTime;
             }
 
             wholeWorkingTime += workedTime;
@@ -114,6 +117,7 @@ public class GiveCoin : MonoBehaviour
         {
             nowCoin = maxCoin;
         }
+        gameManager.Save();
         StartCoroutine(CoinEarnCoroutine());
         coinText.text = saveData.coin.ToString();
 
@@ -131,20 +135,23 @@ public class GiveCoin : MonoBehaviour
                 if (nowWorkIndex == 0)
                 {
                     timePerSecond = characterList[i].huntWorkRatio;
+                    characterList[i].huntTime++;
                 }
                 else if(nowWorkIndex == 1)
                 {
                     timePerSecond = characterList[i].fishWorkRatio;
+                    characterList[i].fishTime++;
                 }
                 else
                 {
                     timePerSecond = characterList[i].mineWorkRatio;
+                    characterList[i].mineTime++;
                 }
                 //기본은 1.5 한마리만 1.5다.
                 characterList[i].workEndTime = DateTime.Now.ToString();
                 wholeWorkingTime += timePerSecond;
                 //1초당 캐릭터리스트.count * 1
-                characterList[i].fishTime++;
+                
                 //
             }
             nowCoin = wholeWorkingTime * timeCoinRatio;

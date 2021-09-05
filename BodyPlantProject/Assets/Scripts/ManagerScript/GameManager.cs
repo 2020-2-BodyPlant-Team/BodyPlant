@@ -266,6 +266,8 @@ public class GameManager : MonoBehaviour
             characterList[i].loveTime += time;
             characterList[i].loveStartTime = DateTime.Now.ToString();
             characterList[i].loveNess += this.loveRatio * ratio * time;
+            Debug.Log(characterList[i].loveNess);
+            Debug.Log(this.loveRatio * ratio * time);
             if (characterList[i].loveNess > 100)
             {
                 characterList[i].loveNess = 100;

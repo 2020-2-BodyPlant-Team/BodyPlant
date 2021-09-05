@@ -21,7 +21,7 @@ public class CharacterClass
     public string workEndTime;              //가장 마지막 일에서 나온 날짜.
     public string loveStartTime;            //애정도가 차오르는 그거.
 
-    [HideInInspector]
+    [System.NonSerialized]
     public GameObject getOutButton;
 
     public int huntTime;
@@ -35,6 +35,7 @@ public class CharacterClass
     public float xGap;
     public float yGap;
     public List<ComponentClass> components; //어떤 부위가 들러붙어있는지
+    [System.NonSerialized]
     public GameObject realGameobject;
     public List<StickerClass> stickerList;
 

@@ -52,7 +52,7 @@ MonoBehaviour:
   prologueBGM: {fileID: 8300000, guid: 5217640fbf63a31438b4a6decbac6028, type: 3}
   mainBGM: {fileID: 8300000, guid: 2e88c97a454ec0c4796192a6c24ae675, type: 3}
   fishBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
-  mineBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
+  mineBGM: {fileID: 8300000, guid: 3081e6a8f95227f47a25328d6651dbd6, type: 3}
   huntBGM: {fileID: 8300000, guid: 45f69fa8a1b4e4943bbb7efa33a49031, type: 3}
   composeBGM: {fileID: 8300000, guid: 34b50694ca094b043952a1729200798e, type: 3}
   bookEffect: {fileID: 8300000, guid: 83b1bbea898803246842da5e93c6371e, type: 3}

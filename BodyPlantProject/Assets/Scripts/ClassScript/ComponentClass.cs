@@ -42,7 +42,9 @@ public class ComponentClass
 
     public int[] usedElement;     //내가 사용한 보조성분.
 
+    [System.NonSerialized]
     public GameObject realGameobject;   //이 컴포넌트가 가진 실제의 게임오브젝트.
+    [System.NonSerialized]
     public GameObject childObject;      //차일드..
 
     public bool isHarvested;            //수확이 되었는지.
