@@ -96,6 +96,7 @@ public class WorkMineManager : MonoBehaviour
             Debug.Log("게이지 만땅");
             barAmount = 0;
             soundManager.SuccedEffectPlay();
+            barMineral.anchoredPosition =new Vector3(0, -340, 0);
         }
         characterMover.RotationUpdate();
     }

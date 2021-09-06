@@ -177,7 +177,11 @@ public class PrologueManager : MonoBehaviour
             littleButtonArray[nowLittleButtonIndex].transform.GetChild(2).gameObject.SetActive(true);
         }
         littleButtonArray[nowLittleButtonIndex].transform.GetChild(child).gameObject.SetActive(false);
-        
+        int time = 2;
+        if(nowLittleButtonIndex == 0)
+        {
+            time = 1;
+        }
         while (timer < 1)
         {
             timer += Time.deltaTime;
@@ -191,7 +195,7 @@ public class PrologueManager : MonoBehaviour
                 rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], new Vector3(-500,0,0), timer);
             }
             
-            littleButtonArray[nowLittleButtonIndex].transform.localScale = new Vector3(1, 1, 1) * (1+timer*2);
+            littleButtonArray[nowLittleButtonIndex].transform.localScale = new Vector3(1, 1, 1) * (1+timer*time);
             yield return null;
         }
 
@@ -221,13 +225,22 @@ public class PrologueManager : MonoBehaviour
 
         //littleButtonArray[nowLittleButtonIndex].transform.GetChild(0).gameObject.SetActive(false);
         littleButtonArray[nowLittleButtonIndex].SetActive(false);
+        Vector3 goalScale;
+        if(nowLittleButtonIndex == 0)
+        {
+            goalScale = Vector3.one * 1f / 2f;
+        }
+        else
+        {
+            goalScale = Vector3.one * 1f / 3f;
+        }
         while (timer < 1)
         {
             timer += Time.deltaTime;
             canvasArray[nowLittleButtonIndex].transform.localEulerAngles = Vector3.Lerp( Vector3.zero, originEulerAngles[nowLittleButtonIndex], timer);
             rect.anchoredPosition = Vector3.Lerp( origin, originPos[nowLittleButtonIndex], timer);
             //canvasArray[nowLittleButtonIndex].transform.localScale = originScale * (1 - timer * 2.0f / 3.0f);
-            canvasArray[nowLittleButtonIndex].transform.localScale = Vector3.Lerp(originScale, Vector3.one * 1f / 3f, timer);
+            canvasArray[nowLittleButtonIndex].transform.localScale = Vector3.Lerp(originScale, goalScale, timer);
             //if(nowLittleButtonIndex == 3)
             //{
             //    fourthText.fontSize = (int)(49 / (timer*2 + 1));
@@ -238,7 +251,7 @@ public class PrologueManager : MonoBehaviour
         canvasArray[nowLittleButtonIndex].SetActive(false);
 
         canvasArray[nowLittleButtonIndex].transform.localEulerAngles = originEulerAngles[nowLittleButtonIndex];
-        canvasArray[nowLittleButtonIndex].transform.localScale = new Vector3(1, 1, 1) * 1.0f/3.0f;
+        canvasArray[nowLittleButtonIndex].transform.localScale = goalScale;
         canvasArray[nowLittleButtonIndex].SetActive(false);
         for (int i = 0; i < nowLittleButtonIndex+1; i++)
         {
@@ -287,39 +300,39 @@ public class PrologueManager : MonoBehaviour
         spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = goal;
 
 
-        while (true)
+        if (nowLittleButtonIndex == 1)
         {
-            if (Input.GetMouseButtonDown(0) )
+            while (true)
             {
-                Debug.Log("인풋");
-                if(nowImageIndex >=4 && nowLittleButtonIndex == 1)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("브레이크");
-                    break;
-                }
-                if(nowImageIndex >=2 && nowLittleButtonIndex == 2)
-                {
-                    break;
-                }
-                
-            }
-            yield return null;
-        }
+                    Debug.Log("인풋");
+                    if (nowImageIndex >= 4 && nowLittleButtonIndex == 1)
+                    {
+                        Debug.Log("브레이크");
+                        break;
+                    }
 
-        origin = new Vector3(500, 0, 0);
-        goal = new Vector3(-500, 0, 0);
-        timer = 0;
-        while (timer < 1)
-        {
-            timer += Time.deltaTime * 0.3f;
-            spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = Vector2.Lerp(origin, goal, timer);
-            yield return null;
+                }
+                yield return null;
+            }
+
+            origin = new Vector3(500, 0, 0);
+            goal = new Vector3(-500, 0, 0);
+            timer = 0;
+            while (timer < 1)
+            {
+                timer += Time.deltaTime * 0.3f;
+                spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = Vector2.Lerp(origin, goal, timer);
+                yield return null;
+            }
+            spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = goal;
+            if (nowLittleButtonIndex == 1 && nowImageIndex == 4)
+            {
+                spriteArray[nowLittleButtonIndex, nowImageIndex].SetActive(true);
+            }
         }
-        spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = goal;
-        if (nowLittleButtonIndex == 1 && nowImageIndex == 4)
-        {
-            spriteArray[nowLittleButtonIndex,nowImageIndex].SetActive(true);
-        }
+        
 
 
         while (true)
@@ -339,7 +352,15 @@ public class PrologueManager : MonoBehaviour
             yield return null;
         }
         timer = 0;
-        origin = new Vector3(-500, 0, 0);
+        if(nowLittleButtonIndex == 1)
+        {
+            origin = new Vector3(-500, 0, 0);
+        }
+        else
+        {
+            origin = new Vector3(500, 0, 0);
+        }
+        
         goal = Vector3.zero;
         while (timer < 1)
         {

@@ -2037,7 +2037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37, y: -250}
+  m_AnchoredPosition: {x: 12, y: -272}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &310001027
@@ -2588,7 +2588,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 540, y: 480}
+  m_SizeDelta: {x: 810, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394905040
 MonoBehaviour:
@@ -5048,8 +5048,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.347}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151, y: 34}
-  m_SizeDelta: {x: 540, y: 480}
+  m_AnchoredPosition: {x: 169, y: 48}
+  m_SizeDelta: {x: 810, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934743473
 MonoBehaviour:
@@ -5485,7 +5485,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 540, y: 480}
+  m_SizeDelta: {x: 810, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010849173
 MonoBehaviour:
@@ -5903,7 +5903,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 151, y: 34}
-  m_SizeDelta: {x: 540, y: 480}
+  m_SizeDelta: {x: 810, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040908314
 MonoBehaviour:
@@ -7432,7 +7432,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 540, y: 480}
+  m_SizeDelta: {x: 810, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486392972
 MonoBehaviour:
@@ -9371,7 +9371,7 @@ MonoBehaviour:
     \uCD95\uD558\uB4DC\uB9BD\uB2C8\uB2E4. \uC0AC\uC740\uD488\uC73C\uB85C \uB2E4\uC774\uC5B4\uB9AC\uB97C
     \uD0DD\uBC30\uB85C \uBCF4\uB0C5\uB2C8\uB2E4. \uC528\uC557\uC744 \uC2EC\uC5B4
     \uBCF4\uC2DC\uACE0 \uC77C\uC9C0\uB97C \uAE30\uB85D\uD574 \uBCF4\uC138\uC694 :
-    ) \uC88B\uC740 \uCE5C\uAD6C\uB97C \uB9CC\uB4E4\uAE38 \uBC14\uB784\uAC8C\uC694.\r\n\r\n\uCD94\uC2E0:
+    )\n\uC88B\uC740 \uCE5C\uAD6C\uB97C \uB9CC\uB4E4\uAE38 \uBC14\uB784\uAC8C\uC694.\r\n\r\n\uCD94\uC2E0:
     \uC124\uBA85\uC11C\uB97C \uC78A\uACE0 \uAC00\uC168\uAE38\uB798 \uB3D9\uBD09\uD569\uB2C8\uB2E4."
 --- !u!222 &2025394309
 CanvasRenderer:

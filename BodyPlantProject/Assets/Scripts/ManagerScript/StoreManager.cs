@@ -198,8 +198,8 @@ public class StoreManager : MonoBehaviour
                 priceArray[i] = componentDataList[i].discountPrice;
                 componentCoinText[i].text = componentDataList[i].discountPrice.ToString();
             }
-            chairPrice = 2000;
-            trainPrice = 3000;
+            chairPrice = 1900;
+            trainPrice = 2800;
         }
         else
         {
@@ -209,8 +209,8 @@ public class StoreManager : MonoBehaviour
                 componentCoinText[i].text = componentDataList[i].price.ToString();
             }
 
-            chairPrice = 1900;
-            trainPrice = 2800;
+            chairPrice = 2000;
+            trainPrice = 3000;
         }
         chairText.text = chairPrice.ToString();
         trainText.text = trainPrice.ToString();
@@ -350,6 +350,15 @@ public class StoreManager : MonoBehaviour
 
     public void buyTrain()
     {
+        if (saveData.coin < trainPrice)
+        {
+            noMoneyObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            noMoneyObject.SetActive(false);
+        }
         saveData.coin -= trainPrice;
         saveData.trainSelled = true;
         toyCheckObject.SetActive(true);
@@ -360,6 +369,15 @@ public class StoreManager : MonoBehaviour
     }
     public void buyChair()
     {
+        if (saveData.coin < chairPrice)
+        {
+            noMoneyObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            noMoneyObject.SetActive(false);
+        }
         saveData.coin -= chairPrice;
         saveData.chairSelled = true;
         sofaCheckObject.SetActive(true);
