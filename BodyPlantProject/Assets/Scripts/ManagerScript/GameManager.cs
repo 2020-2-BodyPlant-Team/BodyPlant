@@ -91,26 +91,23 @@ public class GameManager : MonoBehaviour
     {
         fromPotScene = false;
         SceneManager.LoadScene("ComposeScene");
-        optionManager.OptionButtonActive(false);
+        
         soundManager.ComposeBGMPlay();
     }
     public void PotSceneLoad()
     {
         fromPotScene = true;
         SceneManager.LoadScene("PotScene");
-        optionManager.OptionButtonActive(true);
     }
 
     public void PrologueSceneLoad()
     {
         SceneManager.LoadScene("PrologScene");
-        optionManager.OptionButtonActive(false);
     }
 
     public void StartSceneLoad()
     {
         SceneManager.LoadScene("StartScene");
-        optionManager.OptionButtonActive(false);
     }
     public void DogamSceneLoad()
     {
@@ -125,7 +122,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("HouseScene");
         soundManager.MainBGMPlay();
         soundManager.HouseEffectPlay();
-        optionManager.OptionButtonActive(true);
+
     }
 
     public void WorkMineSceneLoad() //일하기 광산
@@ -153,7 +150,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("StoreScene");
         soundManager.StoreEffectPlay();
-        optionManager.OptionButtonActive(false);
+
     }
 
     public void BookSceneLoad()
@@ -166,7 +163,7 @@ public class GameManager : MonoBehaviour
     public void SecretRoomSceneLoad()
     {
         SceneManager.LoadScene("SecretRoomScene");
-        optionManager.OptionButtonActive(false);
+
     }
 
     public void BackToStoreScene()

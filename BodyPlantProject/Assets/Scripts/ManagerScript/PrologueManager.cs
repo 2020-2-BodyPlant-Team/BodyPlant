@@ -44,6 +44,7 @@ public class PrologueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        OptionManager.singleTon.OptionButtonActive(false);
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         soundManager = SoundManager.inst;
@@ -134,7 +135,7 @@ public class PrologueManager : MonoBehaviour
 
     IEnumerator LittleCircleCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
         float timer = 0;
         int child = 0;
         if (nowLittleButtonIndex == 3)
@@ -146,7 +147,7 @@ public class PrologueManager : MonoBehaviour
         image.gameObject.SetActive(true);
         while (timer < 1)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime*2f;
             image.color = new Color(1, 1, 1, timer);
             yield return null;
         }
@@ -198,9 +199,13 @@ public class PrologueManager : MonoBehaviour
             {
                 rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], Vector3.zero, timer);
             }
-            else
+            else if(nowLittleButtonIndex == 1)
             {
                 rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], new Vector3(-500,0,0), timer);
+            }
+            else
+            {
+                rect.anchoredPosition = Vector3.Lerp(originPos[nowLittleButtonIndex], new Vector3(500, 0, 0), timer);
             }
             
             littleButtonArray[nowLittleButtonIndex].transform.localScale = new Vector3(1, 1, 1) * (1+timer*time);
@@ -245,7 +250,7 @@ public class PrologueManager : MonoBehaviour
         while (timer < 1)
         {
             timer += Time.deltaTime;
-            canvasArray[nowLittleButtonIndex].transform.localEulerAngles = Vector3.Lerp( Vector3.zero, originEulerAngles[nowLittleButtonIndex], timer);
+            canvasArray[nowLittleButtonIndex].transform.localEulerAngles = Vector3.Lerp(Vector3.zero, originEulerAngles[nowLittleButtonIndex], timer);
             rect.anchoredPosition = Vector3.Lerp( origin, originPos[nowLittleButtonIndex], timer);
             //canvasArray[nowLittleButtonIndex].transform.localScale = originScale * (1 - timer * 2.0f / 3.0f);
             canvasArray[nowLittleButtonIndex].transform.localScale = Vector3.Lerp(originScale, goalScale, timer);
@@ -306,6 +311,11 @@ public class PrologueManager : MonoBehaviour
         timer = 0;
         Vector3 origin = new Vector3(-500, 0, 0);
         Vector3 goal = new Vector3(500, 0, 0);
+        if(nowLittleButtonIndex == 2)
+        {
+            origin = new Vector3(500, 0, 0);
+            goal = new Vector3(-500, 0, 0);
+        }
         while (timer < 1)
         {
             timer += Time.deltaTime * 0.3f;
@@ -334,6 +344,7 @@ public class PrologueManager : MonoBehaviour
 
             origin = new Vector3(500, 0, 0);
             goal = new Vector3(-500, 0, 0);
+
             timer = 0;
             while (timer < 1)
             {
@@ -373,7 +384,7 @@ public class PrologueManager : MonoBehaviour
         }
         else
         {
-            origin = new Vector3(500, 0, 0);
+            origin = new Vector3(-500, 0, 0);
         }
         
         goal = Vector3.zero;

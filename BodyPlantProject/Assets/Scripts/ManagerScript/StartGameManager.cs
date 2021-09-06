@@ -10,6 +10,7 @@ public class StartGameManager : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.singleTon;
+        OptionManager.singleTon.OptionButtonActive(false);
     }
 
     public void PrologueSceneLoad()

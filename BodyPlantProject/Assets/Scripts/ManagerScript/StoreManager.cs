@@ -120,7 +120,7 @@ public class StoreManager : MonoBehaviour
 
     void Start()
     {
-
+        OptionManager.singleTon.OptionButtonActive(false);
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         componentDataList = gameManager.wholeComponents.componentList;

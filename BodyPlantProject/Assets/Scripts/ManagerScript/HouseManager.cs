@@ -204,6 +204,7 @@ public class HouseManager : MonoBehaviour
         optionManager = OptionManager.singleTon;
 
         coinText.text = saveData.coin.ToString();
+        optionManager.OptionButtonActive(true);
 
         upPos = new Vector2(0, 600);
         leftPos = new Vector2(-700, 0);

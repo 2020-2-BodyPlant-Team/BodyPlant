@@ -37,8 +37,8 @@ public class WorkUIManager : MonoBehaviour
         soundManager = SoundManager.inst;
         wholeComponents = gameManager.wholeComponents;
         characterList = saveData.characterList;
-
-        for(int i = 0; i < characterList.Count; i++)
+        OptionManager.singleTon.OptionButtonActive(false);
+        for (int i = 0; i < characterList.Count; i++)
         {
             characterMover.SpawnCharacter(characterList[i], i);
         }
