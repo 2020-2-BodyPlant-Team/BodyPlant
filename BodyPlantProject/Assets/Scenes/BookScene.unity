@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -647,8 +647,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495732823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0226, y: 4.24, z: 0}
-  m_LocalScale: {x: 6.048635, y: 2.192951, z: 1}
+  m_LocalPosition: {x: 0.0226, y: 4.0548, z: 0}
+  m_LocalScale: {x: 6.048635, y: 2.5633404, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1406,7 +1406,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uC2A4\uD2F0\uCEE4\uB85C \uB2E4\uC774\uC5B4\uB9AC\uB97C \uAFB8\uBA70\uBD10.\n\uC560\uC815\uB3C4\uB97C
-    \uB2E4 \uCC44\uC6B0\uBA74 \uC2A4\uD2F0\uCEE4\uB97C \uC5BB\uC744 \uC218 \uC788\uC5B4."
+    \uB2E4 \uCC44\uC6B0\uBA74 \uC2A4\uD2F0\uCEE4\uB97C \uC5BB\uC744 \uC218 \uC788\uC5B4.\n(\uC2EC\uC7A5
+    \uBAA8\uC591\uC758 \uD558\uD2B8\uB97C \uD074\uB9AD\uD574\uBCF4\uC790)"
 --- !u!222 &1019770560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2490,7 +2491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

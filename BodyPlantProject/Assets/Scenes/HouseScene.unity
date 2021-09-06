@@ -2981,6 +2981,7 @@ MonoBehaviour:
   optionButtonObject: {fileID: 790754805}
   optionFade: {fileID: 1158150441}
   creditCanvas: {fileID: 2084660824}
+  easterEgg: {fileID: 0}
   optionOn: 0
 --- !u!4 &997879041
 Transform:
@@ -3831,7 +3832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4006,7 +4007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4309,6 +4310,7 @@ MonoBehaviour:
   cat: {fileID: 1987987415}
   storeBtn: {fileID: 347526169838197683}
   potBtn: {fileID: 2372339610216636644}
+  bookBtn: {fileID: 5620611071438177402}
   binText: {fileID: 1785833293}
   turtorialTexts:
   - {fileID: 1874026945}
@@ -4321,6 +4323,13 @@ MonoBehaviour:
   tutorialTextsInOrder2:
   - {fileID: 1699251339}
   - {fileID: 1648429832}
+  tutorialTextsInOrder5:
+  - {fileID: 87261284}
+  - {fileID: 1821589750}
+  - {fileID: 2053837695}
+  - {fileID: 1335742887}
+  - {fileID: 1677694403}
+  - {fileID: 2129523089}
 --- !u!1 &1450575754
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,8 +4948,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -4960,8 +4967,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -4981,8 +4986,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     characterList: []
     huntCharacterList: []
@@ -5493,7 +5496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

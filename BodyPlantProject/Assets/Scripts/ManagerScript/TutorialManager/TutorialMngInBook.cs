@@ -215,7 +215,7 @@ public class TutorialMngInBook : MonoBehaviour
                 yield return null;
                 if(isBackBtnClicked)
                 {
-                    Debug.Log("here");
+                    bookManager.lovenessList[0].gameObject.SetActive(false);
                     backBtn.SetActive(false);
                     break;
                 }

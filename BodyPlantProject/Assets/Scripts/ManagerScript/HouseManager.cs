@@ -108,6 +108,11 @@ public class HouseManager : MonoBehaviour
 
     public void BookSceneLoad()
     {
+        if(saveData.tutorialOrder == 5)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
         gameManager.BookSceneLoad();
         soundManager.ButtonEffectPlay();
     }

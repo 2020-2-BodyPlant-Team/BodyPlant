@@ -12,11 +12,13 @@ public class TutorialManager : MonoBehaviour
     public GameObject cat;
     public GameObject storeBtn;  
     public GameObject potBtn;
+    public GameObject bookBtn;
     bool nowTexting;
     public Text binText;
     int textOrder;
     public List<Text> turtorialTexts;
     public List<Text> tutorialTextsInOrder2;
+    public List<Text> tutorialTextsInOrder5;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class TutorialManager : MonoBehaviour
         nowTexting = false;
         textOrder = 0;
         Debug.Log(saveData.tutorialOrder);
-        if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2)
+        if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2 && saveData.tutorialOrder != 5)
         {
             this.gameObject.SetActive(false);
         }
@@ -40,6 +42,10 @@ public class TutorialManager : MonoBehaviour
             else if(saveData.tutorialOrder == 2)
             {
                 StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder2[0].text, binText));
+            }
+            else if(saveData.tutorialOrder == 5)
+            {
+                StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder5[0].text, binText));
             }
         }
         
@@ -136,6 +142,17 @@ public class TutorialManager : MonoBehaviour
                 }
             }
         }
+        else if(saveData.tutorialOrder == 5)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                if(textOrder == i)
+                {
+                    Debug.Log(i + 1);
+                    StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder5[i + 1].text, binText));
+                }
+            }
+        }
         
         textOrder++;
     }
@@ -173,7 +190,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if(saveData.tutorialOrder == 5)
         {
-
+            objPositionInOrder5();
         }
         
         StartCoroutine(FadeIn());
@@ -193,8 +210,9 @@ public class TutorialManager : MonoBehaviour
 
     void objPositionInOrder5()
     {
-        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, -437);
-        potBtn.transform.SetParent(textPanel.transform);
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(-86, 746);
+        cat.GetComponent<RectTransform>().localScale = new Vector2(-0.8f, 0.8f);
+        bookBtn.transform.SetParent(textPanel.transform);
     }
 
     IEnumerator FadeIn()
