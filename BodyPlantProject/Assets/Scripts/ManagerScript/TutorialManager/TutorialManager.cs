@@ -16,9 +16,11 @@ public class TutorialManager : MonoBehaviour
     public GameObject exitBtn;
     public GameObject forestBtn;
     public GameObject parentObj;
+    public GameObject buttonDown;
     bool nowTexting;
+    public bool isExitBtnClicked;
     public Text binText;
-    int textOrder;
+    public int textOrder;
     public List<Text> turtorialTexts;
     public List<Text> tutorialTextsInOrder2;
     public List<Text> tutorialTextsInOrder5;
@@ -30,6 +32,7 @@ public class TutorialManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         nowTexting = false;
+        isExitBtnClicked = false;
         textOrder = 0;
         Debug.Log(saveData.tutorialOrder);
         if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2 && saveData.tutorialOrder != 5 && saveData.tutorialOrder != 7)
@@ -123,9 +126,29 @@ public class TutorialManager : MonoBehaviour
             if(textOrder == 2)
             {
                 StartCoroutine(FadeOut());
+                while(true)
+                {
+                    yield return null;
+                    if(isExitBtnClicked)
+                    {
+                        exitBtn.transform.SetParent(buttonDown.transform);
+                        FadeInOnlyCat();
+                        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, 368);
+                        cat.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.8f);
+                        break;
+                    }
+                }
             }
             else if(textOrder == 3)
             {
+                while(true)
+                {
+                    yield return null;
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        break;
+                    }
+                }
                 FadeOutCat();
                 FadeInObj(forestBtn, 1f);
                 forestBtn.transform.SetParent(parentObj.transform);
@@ -136,11 +159,17 @@ public class TutorialManager : MonoBehaviour
         while(true)
         {
             yield return null;
-            if(Input.GetMouseButtonDown(0))
+            if(saveData.tutorialOrder == 7 && textOrder == 2)
+            {
+                break;
+            }
+            else if(Input.GetMouseButtonDown(0))
             {
                 break;
             }
         }
+
+
 
         if(saveData.tutorialOrder == 0) // 튜토리얼 순서 0 번째일 때
         {
@@ -183,12 +212,14 @@ public class TutorialManager : MonoBehaviour
                     Debug.Log(i + 1);
                     StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder7[i + 1].text, binText));
                 }
-                if(textOrder == 3)
-                {
-                    cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, 368);
-                    cat.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.8f);
-                }
             }
+
+            // if(textOrder == 3)
+            // {
+            //     FadeOutCat();
+            //     FadeInObj(forestBtn, 1f);
+            //     forestBtn.transform.SetParent(parentObj.transform);
+            // }
         }
         
         textOrder++;
@@ -231,7 +262,10 @@ public class TutorialManager : MonoBehaviour
         }
         else if(saveData.tutorialOrder == 7)
         {
-            objPositionInOrder7();
+            if(textOrder == 2)
+            {
+                objPositionInOrder7();
+            }
         }
     
         StartCoroutine(FadeIn());
@@ -260,7 +294,13 @@ public class TutorialManager : MonoBehaviour
     {
         cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(122, -427);
         cat.GetComponent<RectTransform>().localScale = new Vector2(-0.8f, 0.8f);
-        exitBtn.transform.SetParent(textPanel.transform);
+        exitBtn.transform.SetParent(parentObj.transform);
+    }
+
+    void objPositionInOrder71()
+    {
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, 368);
+        cat.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.8f);
     }
 
     IEnumerator FadeIn()
@@ -294,6 +334,13 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(FadeOutObj(cat.transform.GetChild(0).gameObject, 1f));
         StartCoroutine(FadeOutObj(cat.transform.GetChild(1).gameObject, 1f));
         StartCoroutine(FadeOutObj(cat.transform.GetChild(2).gameObject, 1f));
+    }
+
+    void FadeInOnlyCat()
+    {
+        StartCoroutine(FadeInObj(cat.transform.GetChild(0).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(1).gameObject, 1f));
+        StartCoroutine(FadeInObj(cat.transform.GetChild(2).gameObject, 1f));
     }
 
     IEnumerator FadeOutText(GameObject obj)

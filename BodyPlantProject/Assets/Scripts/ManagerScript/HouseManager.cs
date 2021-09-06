@@ -10,6 +10,7 @@ public class HouseManager : MonoBehaviour
     WholeComponents wholeComponents;
     SoundManager soundManager;
     OptionManager optionManager;
+    TutorialManager tutorialManager;
 
     [SerializeField]
     List<CharacterClass> characterList;
@@ -47,6 +48,13 @@ public class HouseManager : MonoBehaviour
     public GameObject panel;
     public void PanelLoad() //일하기 버튼 팝업 켜고 끄기
     {
+        if(saveData.tutorialOrder == 7)
+        {
+            tutorialManager = FindObjectOfType<TutorialManager>();
+            tutorialManager.isExitBtnClicked = true;
+        }
+        
+        
         soundManager.ButtonEffectPlay();
         if (panel.activeSelf == false)
         {
@@ -67,6 +75,11 @@ public class HouseManager : MonoBehaviour
 
     public void WorkHuntSceneLoad()
     {
+        if(saveData.tutorialOrder == 7)
+        {
+            saveData.tutorialOrder++;
+            gameManager.Save();
+        }
         gameManager.WorkHuntSceneLoad();
         soundManager.HuntBGMPlay();
         soundManager.ButtonEffectPlay();

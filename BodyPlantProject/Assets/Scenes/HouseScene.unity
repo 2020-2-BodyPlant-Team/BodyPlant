@@ -4630,7 +4630,10 @@ MonoBehaviour:
   exitBtn: {fileID: 9021845769819907073}
   forestBtn: {fileID: 1879209427}
   parentObj: {fileID: 1250851087}
+  buttonDown: {fileID: 662505183}
+  isExitBtnClicked: 0
   binText: {fileID: 1785833293}
+  textOrder: 0
   turtorialTexts:
   - {fileID: 1874026945}
   - {fileID: 968169727}
