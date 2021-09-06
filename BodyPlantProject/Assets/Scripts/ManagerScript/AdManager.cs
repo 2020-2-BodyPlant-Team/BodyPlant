@@ -35,6 +35,7 @@ public class AdManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         soundManager = SoundManager.inst;
         // Create an empty ad request.
+        StartCoroutine(MyaoPlay());
 
         // Called when an ad is shown.
         this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
@@ -55,13 +56,22 @@ public class AdManager : MonoBehaviour
         {
             nowString = chatTextArray[UnityEngine.Random.Range(12, chatTextArray.Length)];
         }
-        StartCoroutine(LoadTextOneByOne(nowString, chatText));
+        StartCoroutine(LoadTextOneByOne(nowString, chatText,0.02f));
         chatObject.SetActive(true);
         for(int i = 0; i < elementArray.Length; i++)
         {
             elementArray[i].SetActive(false);
         }
         elementObject.SetActive(false);
+    }
+
+    IEnumerator MyaoPlay()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            soundManager.MyaoEffectPlay();
+        }
     }
 
     public IEnumerator LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.1f, bool canClickSkip = true)
@@ -105,7 +115,7 @@ public class AdManager : MonoBehaviour
     public void OnAdButton()
     {
         adButton.interactable = false;
-        
+        soundManager.MyaoEffectPlay();
         if (this.rewardedAd.IsLoaded())
         {
             this.rewardedAd.Show();

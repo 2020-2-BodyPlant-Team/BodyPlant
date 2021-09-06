@@ -70,7 +70,7 @@ public class FlowerPotManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OptionManager.singleTon.OptionButtonActive(false);
+        OptionManager.singleTon.OptionButtonActive(true);
         gameManager = GameManager.singleTon;    //싱글톤을하면 이런식으로 가져올 수 있다. 편하다.
         //saveData = GameManager.saveData;
         soundManager = SoundManager.inst;
