@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
 //화분을 키우는 스크립트.
 /// <summary>
 /// 화분을 키우는데는 어떻게 하느냐.
@@ -62,11 +63,14 @@ public class FlowerPotManager : MonoBehaviour
     public GameObject harvestTalk;
     public Animator heartAnimation;
     public GameObject heartParent;
+    public Text leftTimeText;
+    public GameObject leftTimeObject;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        OptionManager.singleTon.OptionButtonActive(false);
         gameManager = GameManager.singleTon;    //싱글톤을하면 이런식으로 가져올 수 있다. 편하다.
         //saveData = GameManager.saveData;
         soundManager = SoundManager.inst;
@@ -225,7 +229,7 @@ public class FlowerPotManager : MonoBehaviour
             //포지션을 업데이트 해준다. sproutingPosition이 최종 위치니까, 이거에 percentage를 곱해서 해준다.
             lastPercentage = percentage;
 
-            yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
+
 
             elapsedTime = gameManager.TimeSubtractionToSeconds(componentsInPot[index].plantedTime,
                 DateTime.Now.ToString());
@@ -233,16 +237,16 @@ public class FlowerPotManager : MonoBehaviour
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    elapsedTime += 8 * elementTime[i] * componentsInPot[index].usedElement[i];
+                    elapsedTime += 6 * elementTime[i] * componentsInPot[index].usedElement[i];
                 }
             }
-
             for (int i = 0; i < 3; i++)
             {
                  elapsedTime += elementTime[i] * componentsInPot[index].usedElement[i];
             }
             if (componentData.sproutSeconds < elapsedTime)
             {
+                leftTimeObject.SetActive(false);
                 componentsInPot[index].isSprotued = true;
                 GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
                 GameObject obj = Instantiate(prefab, flowerPotArray[index].transform);
@@ -254,6 +258,15 @@ public class FlowerPotManager : MonoBehaviour
                 componentsInPot[index].realGameobject.SetActive(false);
                 componentsInPot[index].realGameobject = obj;
                 //만약 시간이 지났다면 싹틔워준다.
+            }
+            else
+            {
+                Debug.Log(elapsedTime);
+                if (nowMagnifiedPotIndex ==index)
+                {
+                    TimeGenerator((int)componentData.sproutSeconds - elapsedTime);
+                }
+                
             }
             percentage = elapsedTime / componentData.sproutSeconds;
             if (percentage >= 0.5 && lastPercentage < 0.5 && percentage < 1)
@@ -285,7 +298,7 @@ public class FlowerPotManager : MonoBehaviour
 
             }
             componentsInPot[index].percentage = percentage;
-            
+
             /*if (componentsInPot[index].realGameobject.transform.localPosition.y == 1.2)
             {
                 componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.0f, -5);
@@ -294,7 +307,7 @@ public class FlowerPotManager : MonoBehaviour
             {
                 componentsInPot[index].realGameobject.transform.localPosition = new Vector3(0,1.2f, -5);
             }*/
-            
+            yield return new WaitForSeconds(1); //   1초에 한번씩 업데이트를 해준다.
         }
         //1하고 1.2 왔다리 갔다리
         //이제 업데이트를 다 해주다가 isSprotued==true가 돼서 탈출을 하게 되면, 수확을 해주어야 한다
@@ -696,6 +709,7 @@ public class FlowerPotManager : MonoBehaviour
                 }
                 
                 progressBar.fillAmount = 0;
+                leftTimeObject.SetActive(false);
                 growingBar.anchoredPosition = Vector2.Lerp(new Vector2(0, -332), new Vector2(0, 217), 0);
                 //이름도없어
                 nameText.gameObject.SetActive(false);
@@ -716,6 +730,7 @@ public class FlowerPotManager : MonoBehaviour
                     }
                     //버튼 활성화
                     Debug.Log("하베스트 버튼");
+                    leftTimeObject.SetActive(false);
                     harvestButton.SetActive(true);
                     emptyTalk.SetActive(false) ;
                     growingTalk.SetActive(false);
@@ -724,6 +739,7 @@ public class FlowerPotManager : MonoBehaviour
                 else
                 {
                     //버튼 없애.
+                    leftTimeObject.SetActive(true);
                     emptyTalk.SetActive(false);
                     growingTalk.SetActive(true);
                     harvestTalk.SetActive(false);
@@ -824,7 +840,6 @@ public class FlowerPotManager : MonoBehaviour
     public void ElementButton(int element)
     {
         soundManager.ButtonEffectPlay();
-        float lastPercentage = 0;
         //꽃피지 않을때만 돌아간다.
         float percentage = 0;
         int index = nowMagnifiedPotIndex;
@@ -887,7 +902,7 @@ public class FlowerPotManager : MonoBehaviour
 DateTime.Now.ToString());
             for (int i = 0; i < 3; i++)
             {
-                elapsedTime += 8 * elementTime[i] * componentsInPot[index].usedElement[i];
+                elapsedTime += 6 * elementTime[i] * componentsInPot[index].usedElement[i];
             }
         }
         else
@@ -902,6 +917,7 @@ DateTime.Now.ToString());
         
         if (componentData.sproutSeconds < elapsedTime)
         {
+            leftTimeObject.SetActive(false);
             componentsInPot[index].isSprotued = true;
             Debug.Log("왜안바뀌는거?");
             GameObject prefab = Resources.Load<GameObject>("Components/Complete/" + componentData.name);
@@ -918,6 +934,11 @@ DateTime.Now.ToString());
                 elementButtonArray[i].interactable = false;
             }
             //만약 시간이 지났다면 싹틔워준다.
+        }
+        else
+        {
+            Debug.Log(elapsedTime);
+            TimeGenerator((int)componentData.sproutSeconds - elapsedTime);
         }
         percentage = elapsedTime / componentData.sproutSeconds;
         if (percentage >= 0.5 && percentage < 1)
@@ -969,6 +990,18 @@ DateTime.Now.ToString());
             animCorRunning = false;
         }
 
+    }
+
+    void TimeGenerator(int seconds)
+    {
+        int min = seconds / 60;
+        int sec = seconds % 60;
+        StringBuilder builder = new StringBuilder(min.ToString());
+        builder.Append(":");
+        builder.Append(sec.ToString());
+        leftTimeText.text = builder.ToString();
+
+        
     }
 
     // Update is called once per frame

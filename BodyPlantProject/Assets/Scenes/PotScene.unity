@@ -915,7 +915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &158419712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1968,7 +1968,6 @@ RectTransform:
   - {fileID: 1409114199}
   - {fileID: 1076255559}
   - {fileID: 171610708}
-  - {fileID: 1630352851}
   m_Father: {fileID: 1382008303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2797,12 +2796,13 @@ RectTransform:
   m_Children:
   - {fileID: 2082382228}
   - {fileID: 965758207}
+  - {fileID: 1630352851}
   m_Father: {fileID: 465722163}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 383, y: 0}
+  m_AnchoredPosition: {x: -381, y: 0}
   m_SizeDelta: {x: 75, y: 607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642305060
@@ -2907,6 +2907,8 @@ MonoBehaviour:
   harvestTalk: {fileID: 1409114198}
   heartAnimation: {fileID: 171610709}
   heartParent: {fileID: 171610707}
+  leftTimeText: {fileID: 927679121}
+  leftTimeObject: {fileID: 1630352850}
   panel: {fileID: 2134069733}
 --- !u!4 &644297188
 Transform:
@@ -4603,7 +4605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD130\uCE58\uD574\uC11C \uC218\uD655\uD574\uC8FC\uC138\uC694"
+  m_Text: "\uC190\uC744 \uB20C\uB7EC \uC218\uD655\uD574\uC8FC\uC138\uC694"
 --- !u!222 &1217778969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5555,12 +5557,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 927679120}
-  m_Father: {fileID: 465722163}
-  m_RootOrder: 13
+  m_Father: {fileID: 642305059}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 383, y: -392}
+  m_AnchoredPosition: {x: 0, y: -392}
   m_SizeDelta: {x: 248, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630352852

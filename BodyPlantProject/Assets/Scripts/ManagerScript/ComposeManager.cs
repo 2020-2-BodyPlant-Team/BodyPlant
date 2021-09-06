@@ -92,6 +92,7 @@ public class ComposeManager : MonoBehaviour
         //초기화
         noDrag = false;
 
+        OptionManager.singleTon.OptionButtonActive(false);
         contentRect.anchoredPosition = new Vector2(0, 0);   //자꾸 이거 움직임;; 위치 고정 안해주면 지맘대로 위치가 바껴요
         contentRect.sizeDelta = new Vector2(400* harvestedComponent.Count, 300);
         //contentRect 사이즈 조정을 해줘야 좌우로 움직일 수 있다.
