@@ -21,6 +21,7 @@ public class OptionManager : MonoBehaviour
     public GameObject optionButtonObject;
     public GameObject optionFade;
     public GameObject creditCanvas;
+    public GameObject easterEgg;
     public bool optionOn;
 
     // Start is called before the first frame update
@@ -124,6 +125,8 @@ public class OptionManager : MonoBehaviour
 
     public void CreditActive(bool active)
     {
+        easterClickedTime = 0;
+        easterEgg.SetActive(false);
         creditCanvas.SetActive(active);
         optionCanvas.SetActive(!active);
     }
@@ -150,9 +153,21 @@ public class OptionManager : MonoBehaviour
 
     }
 
+    int easterClickedTime = 0;
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!creditCanvas.activeSelf)
+            {
+                return;
+            }
+            easterClickedTime++;
+            if (easterClickedTime >= 10)
+            {
+                easterEgg.SetActive(true);
+            }
+        }
     }
 }

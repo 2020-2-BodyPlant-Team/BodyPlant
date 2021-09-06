@@ -57,10 +57,10 @@ public class SaveDataClass
         component = new ComponentClass();
         component.name = "hand";
         owningComponentList.Add(component);
-        fishElement = 100;
-        mineElement = 100;
-        huntElement = 100;
-        coin = 5000;
+        fishElement = 0;
+        mineElement = 0;
+        huntElement = 3;
+        coin = 1000;
         trainSelled = false;
         chairSelled = false;
         fishTutorial = false;

@@ -765,8 +765,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -786,8 +784,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     - name: null
       position: {x: 0, y: 0}
@@ -807,8 +803,6 @@ MonoBehaviour:
       cover: 0
       attached: 0
       usedElement: 
-      realGameobject: {fileID: 0}
-      childObject: {fileID: 0}
       isHarvested: 0
     characterList: []
     huntCharacterList: []
@@ -1839,6 +1833,7 @@ MonoBehaviour:
   optionButtonObject: {fileID: 45372952}
   optionFade: {fileID: 1060025804}
   creditCanvas: {fileID: 1102351056}
+  easterEgg: {fileID: 1017551698}
   optionOn: 0
 --- !u!4 &753562599
 Transform:
@@ -2181,6 +2176,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922557890}
   m_CullTransparentMesh: 1
+--- !u!1 &1017551698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017551701}
+  - component: {fileID: 1017551700}
+  - component: {fileID: 1017551699}
+  m_Layer: 5
+  m_Name: EasterEgg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1017551699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017551698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8a6f655c898682c45a419ef37bb31b11, type: 3}
+    m_FontSize: 63
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 63
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC774\uAC83\uAE4C\uC9C0 \uCC3E\uC544\uB0B4\uB2E4\uB2C8.....\ndhkekgk@gmail.com\n\uC120\uCC29\uC21C
+    \uD55C \uBA85 \uBC14\uB098\uB098\uC6B0\uC720 \uB4DC\uB9BD\uB2C8\uB2E4. \uBA54\uC77C\uC8FC\uC138\uC694."
+--- !u!222 &1017551700
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017551698}
+  m_CullTransparentMesh: 1
+--- !u!224 &1017551701
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017551698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1102351057}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1036413818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,6 +2586,7 @@ RectTransform:
   - {fileID: 1827811770}
   - {fileID: 1529765639}
   - {fileID: 880553748}
+  - {fileID: 1017551701}
   m_Father: {fileID: 1586692126}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
