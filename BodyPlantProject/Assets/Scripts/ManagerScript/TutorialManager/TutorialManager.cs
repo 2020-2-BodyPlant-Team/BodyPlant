@@ -13,12 +13,16 @@ public class TutorialManager : MonoBehaviour
     public GameObject storeBtn;  
     public GameObject potBtn;
     public GameObject bookBtn;
+    public GameObject exitBtn;
+    public GameObject forestBtn;
+    public GameObject parentObj;
     bool nowTexting;
     public Text binText;
     int textOrder;
     public List<Text> turtorialTexts;
     public List<Text> tutorialTextsInOrder2;
     public List<Text> tutorialTextsInOrder5;
+    public List<Text> tutorialTextsInOrder7;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,7 @@ public class TutorialManager : MonoBehaviour
         nowTexting = false;
         textOrder = 0;
         Debug.Log(saveData.tutorialOrder);
-        if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2 && saveData.tutorialOrder != 5)
+        if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2 && saveData.tutorialOrder != 5 && saveData.tutorialOrder != 7)
         {
             this.gameObject.SetActive(false);
         }
@@ -46,6 +50,10 @@ public class TutorialManager : MonoBehaviour
             else if(saveData.tutorialOrder == 5)
             {
                 StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder5[0].text, binText));
+            }
+            else if(saveData.tutorialOrder == 7)
+            {
+                StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder7[0].text, binText));
             }
         }
         
@@ -110,6 +118,19 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(FadeOut());
             }
         }
+        else if(saveData.tutorialOrder == 7)
+        {
+            if(textOrder == 2)
+            {
+                StartCoroutine(FadeOut());
+            }
+            else if(textOrder == 3)
+            {
+                FadeOutCat();
+                FadeInObj(forestBtn, 1f);
+                forestBtn.transform.SetParent(parentObj.transform);
+            }
+        }
         
 
         while(true)
@@ -153,6 +174,22 @@ public class TutorialManager : MonoBehaviour
                 }
             }
         }
+        else if(saveData.tutorialOrder == 7)
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                if(textOrder == i)
+                {
+                    Debug.Log(i + 1);
+                    StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder7[i + 1].text, binText));
+                }
+                if(textOrder == 3)
+                {
+                    cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(257, 368);
+                    cat.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.8f);
+                }
+            }
+        }
         
         textOrder++;
     }
@@ -192,7 +229,11 @@ public class TutorialManager : MonoBehaviour
         {
             objPositionInOrder5();
         }
-        
+        else if(saveData.tutorialOrder == 7)
+        {
+            objPositionInOrder7();
+        }
+    
         StartCoroutine(FadeIn());
     }
 
@@ -215,6 +256,13 @@ public class TutorialManager : MonoBehaviour
         bookBtn.transform.SetParent(textPanel.transform);
     }
 
+    void objPositionInOrder7()
+    {
+        cat.GetComponent<RectTransform>().anchoredPosition = new Vector2(122, -427);
+        cat.GetComponent<RectTransform>().localScale = new Vector2(-0.8f, 0.8f);
+        exitBtn.transform.SetParent(textPanel.transform);
+    }
+
     IEnumerator FadeIn()
     {
         int i = 0;
@@ -234,6 +282,74 @@ public class TutorialManager : MonoBehaviour
             cat.transform.GetChild(0).GetComponent<Image>().color = c0;
             cat.transform.GetChild(1).GetComponent<Image>().color = c1;
             cat.transform.GetChild(2).GetComponent<Image>().color = c2;
+
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+
+    void FadeOutCat()
+    {
+        StartCoroutine(FadeOutText(textPanel.transform.GetChild(0).gameObject));
+        StartCoroutine(FadeOutObj(textPanel.gameObject, 0.4f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(0).gameObject, 1f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(1).gameObject, 1f));
+        StartCoroutine(FadeOutObj(cat.transform.GetChild(2).gameObject, 1f));
+    }
+
+    IEnumerator FadeOutText(GameObject obj)
+    {
+        float i = 10;
+        while (i > 0)
+        {
+            i -= 1;
+            float f = i / 10.0f;
+
+            Color c = obj.transform.GetComponent<Text>().color;
+        
+            c.a = f;
+        
+            obj.transform.GetComponent<Text>().color = c;
+
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+
+    IEnumerator FadeOutObj(GameObject obj, float limit)
+    {
+        float i = limit * 10;
+        while (i > 0)
+        {
+            i -= 1;
+            float f = i / 10.0f;
+
+            Color c = obj.transform.GetComponent<Image>().color;
+        
+            c.a = f;
+        
+            obj.transform.GetComponent<Image>().color = c;
+
+            yield return new WaitForSeconds(0.02f);
+        }
+        Debug.Log("fadeOut" + obj);
+        if(obj == cat.transform.GetChild(2).gameObject)
+        {
+            textPanel.SetActive(false);
+        }
+    }
+
+    IEnumerator FadeInObj(GameObject obj, float limit)
+    {
+        float i = 0;
+        while (i < limit * 10)
+        {
+            i += 1;
+            float f = i / 10.0f;
+
+            Color c = obj.transform.GetComponent<Image>().color;
+        
+            c.a = f;
+        
+            obj.transform.GetComponent<Image>().color = c;
 
             yield return new WaitForSeconds(0.02f);
         }
