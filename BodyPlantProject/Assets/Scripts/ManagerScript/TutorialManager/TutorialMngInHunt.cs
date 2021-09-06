@@ -40,7 +40,7 @@ public class TutorialMngInHunt : MonoBehaviour
         textOrder = 0;
 
         Debug.Log(saveData.tutorialOrder);
-        if (!(saveData.tutorialOrder == 7 || saveData.tutorialOrder == 8))
+        if (!(saveData.tutorialOrder == 8 || saveData.tutorialOrder == 9))
         {
             workHuntManager.nowTutorial = false;
             this.gameObject.SetActive(false);
@@ -55,7 +55,7 @@ public class TutorialMngInHunt : MonoBehaviour
             onDeerCaughtTrue =  onDeerCaughtTrue.Replace("\\n", "\n");
             onDeerCaughtFalse=  onDeerCaughtFalse.Replace("\\n", "\n");
             workHuntManager.nowTutorial = true;
-            if(saveData.tutorialOrder == 8)
+            if(saveData.tutorialOrder == 9)
             {
                 textOrder = 2;
             }

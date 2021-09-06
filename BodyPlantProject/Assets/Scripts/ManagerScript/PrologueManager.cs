@@ -160,6 +160,14 @@ public class PrologueManager : MonoBehaviour
     IEnumerator ButtonMoveCoroutine()
     {
         soundManager.OpenPaperEffectPlay();
+        if (nowLittleButtonIndex == 3)
+        {
+            littleButtonArray[nowLittleButtonIndex].transform.GetChild(0).GetComponent<Image>().raycastTarget = false;
+        }
+        else
+        {
+            littleButtonArray[nowLittleButtonIndex].GetComponent<Image>().raycastTarget = false;
+        }
         float timer = 0;
         nowImageIndex = 1;
         RectTransform rect = littleButtonArray[nowLittleButtonIndex].GetComponent<RectTransform>();
@@ -265,6 +273,16 @@ public class PrologueManager : MonoBehaviour
         if(nowLittleButtonIndex < 4)
         {
             StartCoroutine(LittleCircleCoroutine());
+            littleButtonArray[nowLittleButtonIndex - 1].GetComponent<Image>().raycastTarget = false;
+            if(nowLittleButtonIndex == 3)
+            {
+                littleButtonArray[nowLittleButtonIndex].transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
+            }
+            else
+            {
+                littleButtonArray[nowLittleButtonIndex].GetComponent<Image>().raycastTarget = true;
+            }
+            
         }
 
         if(nowLittleButtonIndex == 4)
@@ -273,9 +291,6 @@ public class PrologueManager : MonoBehaviour
             saveData.watchedPrologue = true;
             gameManager.Save();
             gameManager.StartSceneLoad();
-            
-
-
         }
         
         returnCoroutineRunning = false;

@@ -205,11 +205,11 @@ public class HouseManager : MonoBehaviour
 
         coinText.text = saveData.coin.ToString();
 
-        upPos = new Vector2(0, 380);
-        leftPos = new Vector2(-350, 0);
-        rightPos = new Vector2(400, 0);
-        downPos = new Vector2(0, -450);
-        optionUpPosChanged = new Vector2(423, 1175);
+        upPos = new Vector2(0, 600);
+        leftPos = new Vector2(-700, 0);
+        rightPos = new Vector2(800, 0);
+        downPos = new Vector2(0, -900);
+        optionUpPosChanged = new Vector2(423, 1500);
         optionUpPosOrigin = new Vector2(423, 840);
 
         buttonBundleArray = buttonBundle.GetComponentsInChildren<Button>();

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
 using UnityEngine.Events;
 using GoogleMobileAds.Api;
 
@@ -48,22 +49,54 @@ public class AdManager : MonoBehaviour
         // Load the rewarded ad with the request.
         rewardedAd.LoadAd(request);
 
-        chatText.text = chatTextArray[UnityEngine.Random.Range(0, 12)];
+        string nowString = chatTextArray[UnityEngine.Random.Range(0, 12)];
         int rand = UnityEngine.Random.Range(0, 100);
         if (rand == 1)
         {
-            chatText.text = chatTextArray[UnityEngine.Random.Range(12, 17)];
+            nowString = chatTextArray[UnityEngine.Random.Range(12, chatTextArray.Length)];
         }
+        StartCoroutine(LoadTextOneByOne(nowString, chatText));
         chatObject.SetActive(true);
         for(int i = 0; i < elementArray.Length; i++)
         {
             elementArray[i].SetActive(false);
         }
         elementObject.SetActive(false);
+    }
 
+    public IEnumerator LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.1f, bool canClickSkip = true)
+    {
+        float miniTimer = 0f;
+        float currentTargetNumber = 0f;
+        int currentNumber = 0;
+        string displayedText = "";
+        StringBuilder builder = new StringBuilder(displayedText);
+        while (currentTargetNumber < inputTextString.Length)
+        {
 
+            while (currentNumber < currentTargetNumber)
+            {
+                //displayedText += inputTextString.Substring(currentNumber,1);
+                builder.Append(inputTextString.Substring(currentNumber, 1));
+                currentNumber++;
+            }
+            //inputTextUI.text = displayedText;
+            inputTextUI.text = builder.ToString();
+            yield return null;
+
+            miniTimer += Time.deltaTime;
+            currentTargetNumber = miniTimer / eachTime;
+        }
+        while (currentNumber < inputTextString.Length)
+        {
+            builder.Append(inputTextString.Substring(currentNumber, 1));
+            currentNumber++;
+        }
+        inputTextUI.text = builder.ToString();
+        yield return null;
 
     }
+
     void ShowAd(object sender, EventArgs args)
     {
         this.rewardedAd.Show();
