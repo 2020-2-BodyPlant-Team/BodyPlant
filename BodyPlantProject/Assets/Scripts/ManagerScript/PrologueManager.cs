@@ -542,7 +542,7 @@ public class PrologueManager : MonoBehaviour
                     }
                     if (nowLittleButtonIndex == 3 && !nowTexting)
                     {
-                        soundManager.DeliveryEffectPlay();
+                        soundManager.DrawingEffectPlay();
                         StartCoroutine(LoadTextOneByOne(textString.text, fourthText,0.1f));
                     }
                     nowImageIndex++;

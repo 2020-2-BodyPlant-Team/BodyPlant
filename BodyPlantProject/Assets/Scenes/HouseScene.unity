@@ -5586,7 +5586,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uC0AC\uB78C\uB4E4\uC740 \uC624\uB798\uB41C \uAE30\uC5B5\uC744 \uC9C0\uC6CC\uBC84\uB9AC\uB294
-    \n\uBABB\uB41C \uC2B5\uC131\uC774 \uC788\uAC70\uB4E0"
+    \n\uBABB\uB41C \uC2B5\uC131\uC774 \uC788\uAC70\uB4E0."
 --- !u!222 &1677694404
 CanvasRenderer:
   m_ObjectHideFlags: 0

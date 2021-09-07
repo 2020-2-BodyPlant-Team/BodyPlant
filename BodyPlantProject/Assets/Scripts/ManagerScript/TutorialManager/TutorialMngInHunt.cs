@@ -128,13 +128,11 @@ public class TutorialMngInHunt : MonoBehaviour
         if(textOrder == 8)
         {
             workHuntManager.DeerOnTutorial();
-            OptionManager.singleTon.OptionFade(false);
             FadeOutCat();
         }
         if(textOrder == 9)
         {
             workHuntManager.tutorialDeerOut = false;
-            OptionManager.singleTon.OptionFade(false);
             FadeOutCat();
         }
         if(textOrder == 12)
@@ -151,7 +149,6 @@ public class TutorialMngInHunt : MonoBehaviour
 
     public void OnDeerBash()
     {
-        OptionManager.singleTon.OptionFade(true);
         FadeInCat();
         StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder], binText));
     }
@@ -159,7 +156,6 @@ public class TutorialMngInHunt : MonoBehaviour
     public void OnDeerCaught(bool caught)
     {
         FadeInCat();
-        OptionManager.singleTon.OptionFade(true);
         if (caught)
         {
             StartCoroutine(LoadTextOneByOne(onDeerCaughtTrue, binText));
@@ -245,7 +241,6 @@ public class TutorialMngInHunt : MonoBehaviour
         if(textOrder == 12)
         {
             gameObject.SetActive(false);
-            OptionManager.singleTon.OptionFade(false);
         }
     }
 

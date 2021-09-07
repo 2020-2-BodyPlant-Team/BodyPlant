@@ -54,13 +54,10 @@ public class SaveDataClass
         ComponentClass component = new ComponentClass();
         component.name = "body";
         owningComponentList.Add(component);
-        component = new ComponentClass();
-        component.name = "hand";
-        owningComponentList.Add(component);
         fishElement = 0;
         mineElement = 0;
         huntElement = 3;
-        coin = 1000;
+        coin = 1300;
         trainSelled = false;
         chairSelled = false;
         fishTutorial = false;

@@ -36,6 +36,10 @@ public class TutorialMngInStore : MonoBehaviour
 
         else
         {
+            for (int i = 0; i < turtorialTexts.Count; i++)
+            {
+                turtorialTexts[i] = turtorialTexts[i].Replace("\\n", "\n");
+            }
             cat.transform.SetParent(textPanel.transform);
             StartCoroutine(LoadTextOneByOne(turtorialTexts[0], binText));  
         }
