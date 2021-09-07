@@ -172,7 +172,6 @@ public class WorkHuntManager : MonoBehaviour
             {
                 isFront = false;
                 limitTime = 2f;
-                Debug.Log("타이머 끝");
 
                 if (isFront == false)
                 {
@@ -182,7 +181,6 @@ public class WorkHuntManager : MonoBehaviour
                         saveData.huntElement++;
                         gameManager.Save();
                         huntElementText.text = saveData.huntElement.ToString();
-                        Debug.Log("힘겨루기 승리");
                         StartCoroutine("DeerTear");
                         count = 0;
                         soundManager.SuccedEffectPlay();
@@ -193,7 +191,6 @@ public class WorkHuntManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("힘겨루기 패배");
                         frontDeer.SetActive(false);
                         count = 0;
                         soundManager.DeerfailEffectPlay();

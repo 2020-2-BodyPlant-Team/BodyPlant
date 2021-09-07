@@ -113,7 +113,7 @@ public class JsonManager
 
 #if UNITY_ANDROID
         loadPath = Application.persistentDataPath;
-        Debug.Log(loadPath);
+        //Debug.Log(loadPath);
 
 #endif
         StringBuilder builder = new StringBuilder(loadPath);

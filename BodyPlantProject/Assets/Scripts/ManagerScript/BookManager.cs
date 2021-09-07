@@ -88,7 +88,6 @@ public class BookManager : MonoBehaviour
             GameObject black = Instantiate(totalList[i].realGameobject, buttonList[i].transform);
             silhouette.Add(black);          
             SpriteRenderer[] spriteArray = silhouette[i].GetComponentsInChildren<SpriteRenderer>();
-            Debug.Log(spriteArray.Length);
             for(int j = 0; j < spriteArray.Length; j++)
             {
                 spriteArray[j].color = Color.black;
@@ -132,7 +131,6 @@ public class BookManager : MonoBehaviour
             if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
             {
                 touchedObject = hit.collider.gameObject; //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
-                Debug.Log(touchedObject);
                 if(totalList[i].loveNess >= 100)
                 {
                     if(touchedObject.name == "Loveness" && Input.GetKeyDown(KeyCode.Mouse0))
@@ -186,7 +184,7 @@ public class BookManager : MonoBehaviour
                 {
                     if(touchedObject.CompareTag("Sticker") && Input.GetKey(KeyCode.Mouse0))
                     {
-                        Debug.Log(touchedObject);
+    
                         for(int j = 0; j < totalList[i].stickerList.Count; j++)
                         {
                             if(touchedObject == totalList[i].stickerList[j].stickerObject && totalList[i].stickerList[j].isFirstTimeOfInstantiation == true)
@@ -293,7 +291,7 @@ public class BookManager : MonoBehaviour
 
 
             DateTime date = DateTime.Parse(characterList[i].createdDate);
-            Debug.Log(characterList[i].createdDate);
+
             diaryList[i].transform.GetChild(1).GetChild(1).GetComponent<Text>().text = date.ToString("yyyy년 M월 d일");
             
 

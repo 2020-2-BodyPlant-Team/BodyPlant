@@ -34,7 +34,6 @@ public class TutorialManager : MonoBehaviour
         nowTexting = false;
         isExitBtnClicked = false;
         textOrder = 0;
-        Debug.Log(saveData.tutorialOrder);
         if(saveData.tutorialOrder != 0 && saveData.tutorialOrder != 2 && saveData.tutorialOrder != 5 && saveData.tutorialOrder != 7)
         {
             this.gameObject.SetActive(false);

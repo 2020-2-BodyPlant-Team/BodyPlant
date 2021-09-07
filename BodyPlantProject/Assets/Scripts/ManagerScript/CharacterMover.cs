@@ -452,7 +452,6 @@ public class CharacterMover : MonoBehaviour
         }
         if (characterIndex == -1)
         {
-            Debug.Log("좆됐다 캐릭터를 못찾았다");
             return null;
         }
         return characterList[characterIndex];

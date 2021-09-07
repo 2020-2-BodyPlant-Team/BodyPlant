@@ -75,4 +75,46 @@ public class ComponentClass
             usedElement[i] = 0;
         }
     }
+
+    public ComponentClass(ComponentClass component)
+    {
+        name = component.name;            ;
+        position = component.position;
+        secondPosition = component.secondPosition;
+        plantedTime = component.plantedTime;
+        parentJointIndex = component.parentJointIndex;
+        parentComponentIndex = component.parentComponentIndex;
+        secondSwitch = component.secondSwitch;
+        isSprotued = component.isSprotued;
+        isHarvested = component.isHarvested;
+        rotation = component.rotation;
+        secondRotation = component.secondRotation;
+        childIndexList = new List<int>();
+        for(int i = 0; i < component.childIndexList.Count; i++)
+        {
+            childIndexList.Add(component.childIndexList[i]);
+        }
+        childJointList = new List<int>();
+        for (int i = 0; i < component.childJointList.Count; i++)
+        {
+            childJointList.Add(component.childJointList[i]);
+        }
+        childChildIndexList = new List<int>();
+        for (int i = 0; i < component.childChildIndexList.Count; i++)
+        {
+            childChildIndexList.Add(component.childChildIndexList[i]);
+        }
+        childChildJointList = new List<int>();
+        for (int i = 0; i < component.childChildJointList.Count; i++)
+        {
+            childChildJointList.Add(component.childChildJointList[i]);
+        }
+        cover = component.cover;
+        attached = component.attached;
+        usedElement = new int[3];
+        for (int i = 0; i < usedElement.Length; i++)
+        {
+            usedElement[i] = component.usedElement[i];
+        }
+    }
 }

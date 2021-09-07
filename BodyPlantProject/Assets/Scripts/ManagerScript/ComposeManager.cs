@@ -169,7 +169,6 @@ public class ComposeManager : MonoBehaviour
             {
                 nowIndex = childStack.Pop();    //시작할때 팝해야해.
                 nowComponent = character.components[nowIndex];
-                Debug.Log(nowIndex + " 팝하는 인덱스");
                 for (int k = 0; k < nowComponent.childIndexList.Count; k++)
                 {
                     if (boolArray[nowComponent.childIndexList[k]] == false)
@@ -476,7 +475,7 @@ public class ComposeManager : MonoBehaviour
         GameObject obj = Resources.Load<GameObject>("Components/Complete/" + name);
         GameObject inst = Instantiate(obj, parentObject.transform);
         component.realGameobject = inst;
-        activedComponent.Add(component);
+        activedComponent.Add(new ComponentClass(component));
         inst.transform.eulerAngles = component.rotation;
         Vector3 localPos = Vector3.zero;
         localPos.x = component.position.x;

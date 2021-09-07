@@ -39,7 +39,7 @@ public class TutorialMngInHunt : MonoBehaviour
         isBackBtnClicked = false;
         textOrder = 0;
 
-        Debug.Log(saveData.tutorialOrder);
+  
         if (!(saveData.tutorialOrder == 8 || saveData.tutorialOrder == 9))
         {
             workHuntManager.nowTutorial = false;
@@ -117,7 +117,6 @@ public class TutorialMngInHunt : MonoBehaviour
             yield return null;
             if (isTextPanelSetActived && Input.GetMouseButtonDown(0))
             {
-                Debug.Log("clicked");
                 break;
             }
         }
@@ -307,7 +306,7 @@ public class TutorialMngInHunt : MonoBehaviour
 
     void FadeOutCat()
     {
-        Debug.Log("fadeoutcat");
+       
         isTextPanelSetActived = false;
         StartCoroutine(FadeOutText(textPanel.transform.GetChild(0).gameObject));
         StartCoroutine(FadeOutObj(textPanel.gameObject));
