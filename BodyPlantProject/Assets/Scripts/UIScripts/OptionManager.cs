@@ -25,7 +25,7 @@ public class OptionManager : MonoBehaviour
     public bool optionOn;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(singleTon == null)
         {
@@ -37,9 +37,15 @@ public class OptionManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+    }
+
+    void Start()
+    {
+
         if (!PlayerPrefs.HasKey("SoundEffect"))
         {
-            PlayerPrefs.SetFloat("SoundEffect",1);
+            PlayerPrefs.SetFloat("SoundEffect", 1);
         }
         if (!PlayerPrefs.HasKey("BGM"))
         {
@@ -69,7 +75,6 @@ public class OptionManager : MonoBehaviour
 
         soundManager.effectSource.volume = soundEffectSlider.value;
         soundManager.buttonSource.volume = soundEffectSlider.value;
-
     }
 
     public void SoundEffectToggle()

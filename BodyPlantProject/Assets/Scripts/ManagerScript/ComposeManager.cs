@@ -658,7 +658,7 @@ public class ComposeManager : MonoBehaviour
 
     public void ModifyYesButton()
     {
-        soundManager.ButtonEffectPlay();
+        soundManager.CheerEffectPlay();
         cam.gameObject.transform.position = new Vector3(0, 0, -10);
         modifyPanel.SetActive(false);
         modifyButtonObject.SetActive(false);
@@ -712,7 +712,7 @@ public class ComposeManager : MonoBehaviour
         modifyMode = false;
         string productedName = gameManager.GetCompleteWord(characterList[characterIndex].name, "\"을", "\"를");
         modifyPanelText.text = "\"" + productedName + " 데려갈까요?";
-        soundManager.CheerEffectPlay();
+        soundManager.ButtonEffectPlay();
         modifyPanel.SetActive(true);
     }
 

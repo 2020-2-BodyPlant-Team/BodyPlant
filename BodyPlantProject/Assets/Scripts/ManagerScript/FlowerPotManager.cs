@@ -66,6 +66,8 @@ public class FlowerPotManager : MonoBehaviour
     public Text leftTimeText;
     public GameObject leftTimeObject;
 
+    public Text coinText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,7 @@ public class FlowerPotManager : MonoBehaviour
         boughtNameList = saveData.boughtNameList;
         magnifiedUIObject.SetActive(false);
         harvestButton.SetActive(false);
+        coinText.text = saveData.coin.ToString();
         //초깃값을 다 설정해준다. gameManager에 있으니까 설정해준다.
         elementTime = new int[3];
         elementTime[0] = 30;
@@ -261,7 +264,6 @@ public class FlowerPotManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(elapsedTime);
                 if (nowMagnifiedPotIndex ==index)
                 {
                     TimeGenerator((int)componentData.sproutSeconds - elapsedTime);

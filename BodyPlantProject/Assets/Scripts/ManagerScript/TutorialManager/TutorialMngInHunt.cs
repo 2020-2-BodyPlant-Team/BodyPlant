@@ -47,7 +47,6 @@ public class TutorialMngInHunt : MonoBehaviour
         }
         else
         {
-            OptionManager.singleTon.OptionFade(true);
             for(int i = 0; i < turtorialTexts.Count; i++)
             {
                turtorialTexts[i] =  turtorialTexts[i].Replace("\\n", "\n");

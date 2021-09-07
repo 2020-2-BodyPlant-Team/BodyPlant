@@ -25,6 +25,7 @@ public class WorkCharacterManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        OptionManager.singleTon.OptionButtonActive(false);
         restIndex = new List<int>();
         buttonList = new List<GameObject>();
     }

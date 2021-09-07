@@ -51,6 +51,11 @@ public class TutorialManager : MonoBehaviour
             }
             else if(saveData.tutorialOrder == 5)
             {
+                string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"이도", "도");
+                StringBuilder builder = new StringBuilder("\"");
+                builder.Append(batchim);
+                builder.Append(" 좋아 보이는걸");
+                tutorialTextsInOrder5[1].text = builder.ToString();
                 StartCoroutine(LoadTextOneByOne(tutorialTextsInOrder5[0].text, binText));
             }
             else if(saveData.tutorialOrder == 7)

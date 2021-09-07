@@ -44,7 +44,6 @@ public class PrologueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OptionManager.singleTon.OptionButtonActive(false);
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         soundManager = SoundManager.inst;
@@ -331,10 +330,8 @@ public class PrologueManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("인풋");
                     if (nowImageIndex >= 4 && nowLittleButtonIndex == 1)
                     {
-                        Debug.Log("브레이크");
                         break;
                     }
 
@@ -355,6 +352,7 @@ public class PrologueManager : MonoBehaviour
             spriteParentRectArray[nowLittleButtonIndex].anchoredPosition = goal;
             if (nowLittleButtonIndex == 1 && nowImageIndex == 4)
             {
+                soundManager.DrawingEffectPlay();
                 spriteArray[nowLittleButtonIndex, nowImageIndex].SetActive(true);
             }
         }
@@ -516,7 +514,6 @@ public class PrologueManager : MonoBehaviour
                 {
                     if(nowLittleButtonIndex == 1 && nowImageIndex == 4 && !afterCameraOrigin)
                     {
-                        Debug.Log("리턴");
                         return;
                     }
                     spriteArray[nowLittleButtonIndex,nowImageIndex].SetActive(true);
@@ -526,15 +523,40 @@ public class PrologueManager : MonoBehaviour
                     }
                     if(nowLittleButtonIndex == 1)
                     {
-
+                        if(nowImageIndex == 1)
+                        {
+                            soundManager.StepEffectPlay();
+                        }
+                        if(nowImageIndex == 2)
+                        {
+                            soundManager.CarEffectPlay();
+                        }
+                        if(nowImageIndex == 3)
+                        {
+                            soundManager.CrowdEffectPlay();
+                        }
+                    }
+                    if (nowLittleButtonIndex == 2)
+                    {
+                        StartCoroutine(MyaoCor());
                     }
                     if (nowLittleButtonIndex == 3 && !nowTexting)
                     {
+                        soundManager.DeliveryEffectPlay();
                         StartCoroutine(LoadTextOneByOne(textString.text, fourthText,0.1f));
                     }
                     nowImageIndex++;
                 }
             }
         }
+    }
+
+    IEnumerator MyaoCor()
+    {
+        soundManager.CrowdEffectPlay();
+        yield return new WaitForSeconds(2f);
+        soundManager.StoreEffectPlay();
+        yield return new WaitForSeconds(2f);
+        soundManager.MyaoEffectPlay();
     }
 }

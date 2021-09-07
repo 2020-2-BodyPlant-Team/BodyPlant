@@ -116,5 +116,8 @@ public class ComponentClass
         {
             usedElement[i] = component.usedElement[i];
         }
+        realGameobject = component.realGameobject;
+        childObject = component.childObject;
+        isHarvested = component.isHarvested;
     }
 }

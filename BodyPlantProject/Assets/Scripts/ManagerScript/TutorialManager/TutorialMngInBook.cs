@@ -53,6 +53,19 @@ public class TutorialMngInBook : MonoBehaviour
         else
         {
             Debug.Log("entered else");
+
+            string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"을", "를");
+            StringBuilder builder = new StringBuilder("다이어리에 \"");
+            builder.Append(batchim);
+            builder.Append(" 적어줘.");
+            turtorialTexts[0].text = builder.ToString();
+
+            batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"은", "는");
+            builder = new StringBuilder("이제 \"");
+            builder.Append(batchim);
+            builder.Append(" 잊혀지지 않을꺼야.");
+            turtorialTexts[1].text = builder.ToString();
+
             StartCoroutine(LoadTextOneByOne(turtorialTexts[0].text, binText));  
         }
         
