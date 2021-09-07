@@ -23,10 +23,10 @@ public class AdManager : MonoBehaviour
 
 
     //이게 우리거
-    //const string adUnitId = "ca-app-pub-6023793752348178/6634578309";
+    const string adUnitId = "ca-app-pub-6023793752348178/6634578309";
     
     //이건 테스트
-    const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    //const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
     // Start is called before the first frame update
     void Start()
     {
