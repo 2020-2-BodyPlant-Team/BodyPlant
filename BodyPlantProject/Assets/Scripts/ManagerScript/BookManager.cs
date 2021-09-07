@@ -156,7 +156,7 @@ public class BookManager : MonoBehaviour
                         sticker.transform.SetParent(diaryList[i].transform);
                         sticker.GetComponent<BoxCollider2D>().enabled = true;
                         sticker.transform.localScale = new Vector3(100, 100, 1);
-                        sticker.transform.position = new Vector3(0, 2.5f, -0.3f);
+                        sticker.transform.position = new Vector3(1.8f, 2.5f, -0.3f);
                         StickerClass stickerClass = new StickerClass();
                         totalList[i].stickerList.Add(stickerClass);
                         stickerClass.position = sticker.transform.position;

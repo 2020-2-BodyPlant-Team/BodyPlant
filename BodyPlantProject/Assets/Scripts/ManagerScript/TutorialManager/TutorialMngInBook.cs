@@ -193,7 +193,7 @@ public class TutorialMngInBook : MonoBehaviour
             FadeInCat();
         }
 
-        else if(textOrder == 7)
+        else if(textOrder == 8)
         {
             FadeOutCat();
             StartCoroutine(FadeOutObj(tutorialPanel, 0.45f));
@@ -214,7 +214,7 @@ public class TutorialMngInBook : MonoBehaviour
             FadeInCat();
         }
 
-        else if(textOrder == 10)
+        else if(textOrder == 11)
         {
             StartCoroutine(FadeInObj(backBtn, 1f));
             backBtn.transform.SetParent(parentObj.transform);
@@ -231,7 +231,7 @@ public class TutorialMngInBook : MonoBehaviour
             }
         }
 
-        else if(textOrder == 11)
+        else if(textOrder == 12)
         {
             StartCoroutine(FadeInObj(backBtnToHouse, 1f));
             backBtnToHouse.transform.SetParent(parentObj.transform);
@@ -244,7 +244,7 @@ public class TutorialMngInBook : MonoBehaviour
         
         //--------------------------------------------------------클릭하고 나서 나오는 행동들-------------------------------------------------------------
 
-        for(int i = 0; i < 11; i++)
+        for(int i = 0; i < 12; i++)
             {
                 if(textOrder == i)
                 {

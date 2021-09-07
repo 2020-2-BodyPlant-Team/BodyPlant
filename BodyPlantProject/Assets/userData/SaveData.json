@@ -11,7 +11,7 @@
                 "x": 0.0,
                 "y": 0.0
             },
-            "plantedTime": "9/8/2021 1:10:17 AM",
+            "plantedTime": "9/8/2021 1:54:35 AM",
             "isSprotued": false,
             "percentage": 0.0,
             "rotation": {
@@ -126,15 +126,15 @@
             "createdDate": "2021-08-31 PM 1:28:15",
             "lastEarnedTime": "2021-08-31 PM 1:28:15",
             "workEndTime": "",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 647011,
-            "huntWorkRatio": 10.0,
-            "fishWorkRatio": 4.0,
+            "loveTime": 650174,
+            "huntWorkRatio": 11.5,
+            "fishWorkRatio": 5.0,
             "mineWorkRatio": 7.5,
-            "loveNess": 0.00011440000525908545,
+            "loveNess": 0.0001573000190546736,
             "xGap": 0.9079999923706055,
             "yGap": 1.659000039100647,
             "components": [
@@ -743,6 +743,66 @@
                     },
                     "characterName": "안우진",
                     "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 1,
+                    "position": {
+                        "x": 2.5,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -14416
+                    },
+                    "characterName": "안우진",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 8,
+                    "position": {
+                        "x": 2.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -20370
+                    },
+                    "characterName": "안우진",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 9,
+                    "position": {
+                        "x": 1.1382614374160767,
+                        "y": 1.8234282732009888
+                    },
+                    "stickerObject": {
+                        "instanceID": -26336
+                    },
+                    "characterName": "안우진",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 7,
+                    "position": {
+                        "x": 1.5361003875732422,
+                        "y": 2.6412086486816408
+                    },
+                    "stickerObject": {
+                        "instanceID": -44724
+                    },
+                    "characterName": "안우진",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 4,
+                    "position": {
+                        "x": 2.200000047683716,
+                        "y": 1.6466116905212403
+                    },
+                    "stickerObject": {
+                        "instanceID": -50712
+                    },
+                    "characterName": "안우진",
+                    "isFirstTimeOfInstantiation": false
                 }
             ]
         },
@@ -752,15 +812,15 @@
             "createdDate": "2021-06-16 AM 10:06:17",
             "lastEarnedTime": "2021-09-02 PM 8:50:39",
             "workEndTime": "2021-09-02 PM 8:50:49",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 54,
             "mineTime": 0,
-            "loveTime": 827489,
+            "loveTime": 830652,
             "huntWorkRatio": 5.5,
             "fishWorkRatio": 2.0,
             "mineWorkRatio": 4.5,
-            "loveNess": 12.301231384277344,
+            "loveNess": 12.362225532531739,
             "xGap": 0.7760000228881836,
             "yGap": 2.8299999237060549,
             "components": [
@@ -977,15 +1037,15 @@
             "createdDate": "8/16/2021 3:24:56 PM",
             "lastEarnedTime": "2021-09-02 PM 8:50:39",
             "workEndTime": "2021-09-02 PM 8:50:57",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 182,
             "mineTime": 0,
-            "loveTime": 1831084,
+            "loveTime": 1834248,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 22.817947387695314,
+            "loveNess": 22.87896156311035,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -1076,15 +1136,15 @@
             "createdDate": "2021-08-28 AM 8:33:12",
             "lastEarnedTime": "2021-09-02 PM 9:23:44",
             "workEndTime": "2021-09-02 PM 9:25:39",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 133,
             "mineTime": 0,
-            "loveTime": 555923,
+            "loveTime": 559087,
             "huntWorkRatio": 1.0299999713897706,
             "fishWorkRatio": 1.0299999713897706,
             "mineWorkRatio": 1.0299999713897706,
-            "loveNess": 7.003334999084473,
+            "loveNess": 7.048581123352051,
             "xGap": 1.059999942779541,
             "yGap": 4.920000076293945,
             "components": [
@@ -1218,15 +1278,15 @@
             "createdDate": "9/5/2021 3:57:01 PM",
             "lastEarnedTime": "9/5/2021 3:57:01 PM",
             "workEndTime": "",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 206090,
+            "loveTime": 209254,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 2.9471020698547365,
+            "loveNess": 2.9923489093780519,
             "xGap": 0.27000001072883608,
             "yGap": 2.8299999237060549,
             "components": [
@@ -1317,15 +1377,15 @@
             "createdDate": "9/8/2021 12:49:33 AM",
             "lastEarnedTime": "9/8/2021 12:49:33 AM",
             "workEndTime": "",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 1338,
+            "loveTime": 4502,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.019133388996124269,
+            "loveNess": 0.06437873840332031,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -1416,15 +1476,15 @@
             "createdDate": "9/8/2021 12:52:37 AM",
             "lastEarnedTime": "9/8/2021 12:52:37 AM",
             "workEndTime": "",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 1154,
+            "loveTime": 4318,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.02227221429347992,
+            "loveNess": 0.0833367332816124,
             "xGap": 0.5799999833106995,
             "yGap": 2.549999952316284,
             "components": [
@@ -1515,15 +1575,15 @@
             "createdDate": "9/8/2021 1:10:31 AM",
             "lastEarnedTime": "9/8/2021 1:10:31 AM",
             "workEndTime": "",
-            "loveStartTime": "9/8/2021 1:11:51 AM",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
             "huntTime": 0,
             "fishTime": 0,
             "mineTime": 0,
-            "loveTime": 80,
+            "loveTime": 3244,
             "huntWorkRatio": 1.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.0015440006973221899,
+            "loveNess": 0.06260934472084046,
             "xGap": 0.0,
             "yGap": 0.0,
             "components": [
@@ -1577,6 +1637,105 @@
                         "y": 0.0
                     },
                     "plantedTime": "2021-08-31 PM 1:27:49",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": []
+        },
+        {
+            "name": "asdf",
+            "personality": 0,
+            "createdDate": "9/8/2021 1:54:50 AM",
+            "lastEarnedTime": "9/8/2021 1:54:50 AM",
+            "workEndTime": "",
+            "loveStartTime": "9/8/2021 2:04:35 AM",
+            "huntTime": 0,
+            "fishTime": 0,
+            "mineTime": 0,
+            "loveTime": 585,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.01129047479480505,
+            "xGap": 0.0,
+            "yGap": 0.0,
+            "components": [
+                {
+                    "name": "ear",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-31 PM 1:27:48",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-31 PM 1:26:15",
                     "isSprotued": true,
                     "percentage": 1.0,
                     "rotation": {
@@ -3156,41 +3315,6 @@
     ],
     "owningComponentList": [
         {
-            "name": "nose",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "secondPosition": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-08-31 PM 1:26:15",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "secondRotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "parentComponentIndex": -1,
-            "parentJointIndex": 0,
-            "secondSwitch": false,
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "cover": false,
-            "attached": false,
-            "usedElement": [],
-            "isHarvested": true
-        },
-        {
             "name": "mouth",
             "position": {
                 "x": 0.0,
@@ -3201,41 +3325,6 @@
                 "y": 0.0
             },
             "plantedTime": "2021-08-31 PM 1:26:15",
-            "isSprotued": true,
-            "percentage": 1.0,
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "secondRotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "parentComponentIndex": -1,
-            "parentJointIndex": 0,
-            "secondSwitch": false,
-            "childIndexList": [],
-            "childJointList": [],
-            "childChildIndexList": [],
-            "childChildJointList": [],
-            "cover": false,
-            "attached": false,
-            "usedElement": [],
-            "isHarvested": true
-        },
-        {
-            "name": "ear",
-            "position": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "secondPosition": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "plantedTime": "2021-08-31 PM 1:27:48",
             "isSprotued": true,
             "percentage": 1.0,
             "rotation": {
@@ -3746,17 +3835,56 @@
                 0
             ],
             "isHarvested": true
+        },
+        {
+            "name": "arm",
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "secondPosition": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "plantedTime": "9/8/2021 1:54:25 AM",
+            "isSprotued": true,
+            "percentage": 1.0,
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "secondRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "parentComponentIndex": -1,
+            "parentJointIndex": 0,
+            "secondSwitch": false,
+            "childIndexList": [],
+            "childJointList": [],
+            "childChildIndexList": [],
+            "childChildJointList": [],
+            "cover": false,
+            "attached": false,
+            "usedElement": [
+                3,
+                0,
+                0
+            ],
+            "isHarvested": true
         }
     ],
-    "coin": 94040,
+    "coin": 93710,
     "boughtNameList": [],
     "boughtDateList": [],
-    "huntElement": 78,
+    "huntElement": 75,
     "mineElement": 69,
     "fishElement": 42,
     "trainSelled": true,
     "chairSelled": true,
-    "tutorialOrder": 10,
+    "tutorialOrder": 7,
     "fishTutorial": true,
     "mineTutorial": true,
     "watchedPrologue": true

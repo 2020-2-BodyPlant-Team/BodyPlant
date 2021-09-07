@@ -20,17 +20,17 @@ public class BackBtn : MonoBehaviour
     {
         if(tutorialMngInBook != null)
         {
-            if(tutorialMngInBook.textOrder == 10)
+            if(tutorialMngInBook.textOrder == 11)
             {
                 tutorialMngInBook.isBackBtnClicked = true;
             }
 
-            else if(tutorialMngInBook.textOrder == 11)
+            else if(tutorialMngInBook.textOrder == 12)
             {
                 tutorialMngInBook.isBackToHouseBtnClicked = true;
             }
 
-            else if(tutorialMngInBook.textOrder == 12)
+            else if(tutorialMngInBook.textOrder == 13)
             {
                 saveData.tutorialOrder++;
                 gameManager.Save();
