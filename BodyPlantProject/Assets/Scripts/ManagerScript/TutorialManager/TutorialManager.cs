@@ -8,6 +8,7 @@ public class TutorialManager : MonoBehaviour
 {
     GameManager gameManager;
     SaveDataClass saveData;
+    OptionManager optionManager;
     public GameObject textPanel;
     public GameObject cat;
     public GameObject storeBtn;  
@@ -31,6 +32,7 @@ public class TutorialManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        optionManager = OptionManager.singleTon;
         nowTexting = false;
         isExitBtnClicked = false;
         textOrder = 0;
@@ -41,6 +43,7 @@ public class TutorialManager : MonoBehaviour
 
         else
         {
+            optionManager.OptionFade(true);
             if(saveData.tutorialOrder == 0)
             {
                 StartCoroutine(LoadTextOneByOne(turtorialTexts[0].text, binText));
@@ -51,7 +54,7 @@ public class TutorialManager : MonoBehaviour
             }
             else if(saveData.tutorialOrder == 5)
             {
-                string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"이도", "도");
+                string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"도", "\"도");
                 StringBuilder builder = new StringBuilder("\"");
                 builder.Append(batchim);
                 builder.Append(" 좋아 보이는걸");

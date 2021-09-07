@@ -18,20 +18,24 @@ public class BackBtn : MonoBehaviour
 
     public void backBtnClicked()
     {
-        if(tutorialMngInBook.textOrder == 10)
+        if(tutorialMngInBook != null)
         {
-            tutorialMngInBook.isBackBtnClicked = true;
-        }
+            if(tutorialMngInBook.textOrder == 10)
+            {
+                tutorialMngInBook.isBackBtnClicked = true;
+            }
 
-        else if(tutorialMngInBook.textOrder == 11)
-        {
-            tutorialMngInBook.isBackToHouseBtnClicked = true;
-        }
+            else if(tutorialMngInBook.textOrder == 11)
+            {
+                tutorialMngInBook.isBackToHouseBtnClicked = true;
+            }
 
-        else if(tutorialMngInBook.textOrder == 12)
-        {
-            saveData.tutorialOrder++;
-            gameManager.Save();
+            else if(tutorialMngInBook.textOrder == 12)
+            {
+                saveData.tutorialOrder++;
+                gameManager.Save();
+            }
         }
+        
     }
 }

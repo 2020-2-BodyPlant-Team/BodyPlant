@@ -18,6 +18,7 @@ public class BookManager : MonoBehaviour
     public GameObject buttonPrefab;
     public List<GameObject> stickerPrefab;
     public List<GameObject> diaryList;
+    public GameObject canvas2;
     List<GameObject> buttonList;
     List<GameObject> silhouette;
     List<int> passedTime;
@@ -50,6 +51,7 @@ public class BookManager : MonoBehaviour
         mineCharacterList = saveData.mineCharacterList;
         fishCharacterList = saveData.fishCharacterList;
         tutorialMngInBook = FindObjectOfType<TutorialMngInBook>();
+        OptionManager.singleTon.OptionFade(false);
 
 
         totalList = new List<CharacterClass>();
@@ -74,8 +76,8 @@ public class BookManager : MonoBehaviour
         buttonList = new List<GameObject>();
         lovenessList = new List<RectTransform>();
 
-        contentRect.anchoredPosition = new Vector2(0, 0);   
-        contentRect.sizeDelta = new Vector2(0, ((characterList.Count / 3) + 1) * (-buttonYgap));
+        contentRect.anchoredPosition = new Vector2(0, -50);   
+        contentRect.sizeDelta = new Vector2(0, ((totalList.Count / 3) + 1) * (-buttonYgap + 50));
         buttonStartPoint = new Vector2(-350, (contentRect.sizeDelta.y / 2) - 250);
         
         GookBabMukGoSipDa(diaryList, buttonList, totalList);
@@ -254,6 +256,7 @@ public class BookManager : MonoBehaviour
             }
         }
         scrollViewObject.SetActive(false);
+        canvas2.SetActive(false);
         if(saveData.tutorialOrder == 6)
         {
             tutorialMngInBook.isPlantBtnClicked = true;

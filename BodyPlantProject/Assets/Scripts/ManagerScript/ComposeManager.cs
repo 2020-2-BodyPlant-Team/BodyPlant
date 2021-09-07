@@ -72,6 +72,7 @@ public class ComposeManager : MonoBehaviour
 
     private void Start()
     {
+        OptionManager.singleTon.OptionFade(false);
         namingObject.SetActive(false);
         nameAskingObject.SetActive(false);
         gameManager = GameManager.singleTon;

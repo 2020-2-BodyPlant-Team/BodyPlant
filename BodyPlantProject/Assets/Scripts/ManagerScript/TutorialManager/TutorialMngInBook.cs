@@ -45,22 +45,19 @@ public class TutorialMngInBook : MonoBehaviour
 
         //backBtn = diaryPageParent.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
 
-        Debug.Log("첫 디버그");
         if(saveData.tutorialOrder != 6)
         {
             this.gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("entered else");
-
-            string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"을", "를");
+            string batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"을", "\"를");
             StringBuilder builder = new StringBuilder("다이어리에 \"");
             builder.Append(batchim);
             builder.Append(" 적어줘.");
             turtorialTexts[0].text = builder.ToString();
 
-            batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"은", "는");
+            batchim = gameManager.GetCompleteWord(saveData.characterList[0].name, "\"은", "\"는");
             builder = new StringBuilder("이제 \"");
             builder.Append(batchim);
             builder.Append(" 잊혀지지 않을꺼야.");
@@ -119,7 +116,6 @@ public class TutorialMngInBook : MonoBehaviour
             yield return null;
             if(isTextPanelSetActived && Input.GetMouseButtonDown(0))
             {
-                Debug.Log("clicked");
                 break;
             }
         }
@@ -331,7 +327,6 @@ public class TutorialMngInBook : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
         }
-        Debug.Log("fadeOut" + obj);
         if(obj == cat.transform.GetChild(2).gameObject)
         {
             isTextPanelSetActived = false;

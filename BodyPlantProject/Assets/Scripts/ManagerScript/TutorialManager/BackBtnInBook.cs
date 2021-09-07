@@ -5,17 +5,22 @@ using UnityEngine;
 public class BackBtnInBook : MonoBehaviour
 {
     TutorialMngInBook tutorialMngInBook;
+    BookManager bookManager;
     // Start is called before the first frame update
     void Start()
     {
         tutorialMngInBook = FindObjectOfType<TutorialMngInBook>();
+        bookManager = FindObjectOfType<BookManager>();
 
-        tutorialMngInBook.backBtn = gameObject;
+        if(tutorialMngInBook != null)
+        {
+            tutorialMngInBook.backBtn = gameObject;
+        }
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetActiveCanvas2()
     {
-        
+        bookManager.canvas2.SetActive(true);
     }
 }

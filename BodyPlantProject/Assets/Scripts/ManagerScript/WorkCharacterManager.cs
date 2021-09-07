@@ -28,6 +28,7 @@ public class WorkCharacterManager : MonoBehaviour
         OptionManager.singleTon.OptionButtonActive(false);
         restIndex = new List<int>();
         buttonList = new List<GameObject>();
+        OptionManager.singleTon.OptionFade(false);
     }
 
     public void SetCharacterList(List<CharacterClass> list)

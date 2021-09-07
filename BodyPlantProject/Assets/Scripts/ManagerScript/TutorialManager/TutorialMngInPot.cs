@@ -207,7 +207,7 @@ public class TutorialMngInPot : MonoBehaviour
             //composeBtn.transform.SetParent(parentObj.transform);
             gameManager.Save();
             StartCoroutine(FadeOutOnlyCat());
-            OptionManager.singleTon.OptionFade(false);
+    
         }
         
         //--------------------------------------------------------클릭하고 나서 나오는 행동들-------------------------------------------------------------

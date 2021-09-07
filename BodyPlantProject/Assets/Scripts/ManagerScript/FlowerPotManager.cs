@@ -561,7 +561,11 @@ public class FlowerPotManager : MonoBehaviour
         if (goBack)
         {
             potBlackPanel.SetActive(false);
-            OptionManager.singleTon.OptionFade(false);
+            if(saveData.tutorialOrder != 3)
+            {
+                OptionManager.singleTon.OptionFade(false);
+            }
+            
             buttonBundle.SetActive(true);
             nowMagnifiedPotIndex = -1;
             nowMagnified = false;
@@ -605,6 +609,7 @@ public class FlowerPotManager : MonoBehaviour
         if(saveData.tutorialOrder == 3)
         {
             tutorialMngInPot.isBackBtnClicked = true;
+            OptionManager.singleTon.OptionFade(true);
         }
     }
 

@@ -133,6 +133,7 @@ public class StoreManager : MonoBehaviour
         leftPot = 0;
         priceArray = new int[10];
 
+        OptionManager.singleTon.OptionFade(false);
         noMoneyObject.SetActive(false);
         checkObjectArray = new GameObject[seedImageArray.Length];
         buySeedButtonArray = new Button[seedImageArray.Length];
