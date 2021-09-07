@@ -335,7 +335,7 @@ public class StoreManager : MonoBehaviour
         {
             noMoneyObject.SetActive(false);
         }
-        soundManager.CoinEffectPlay();
+        soundManager.StoreEffectPlay();
         saveData.coin -= priceArray[index];
         checkObjectArray[index].SetActive(true);
         boughtNameList.Add(namesArray[index]);
@@ -360,7 +360,7 @@ public class StoreManager : MonoBehaviour
         {
             noMoneyObject.SetActive(false);
         }
-        soundManager.CoinEffectPlay();
+        soundManager.StoreEffectPlay();
         saveData.coin -= trainPrice;
         saveData.trainSelled = true;
         toyCheckObject.SetActive(true);
@@ -379,7 +379,7 @@ public class StoreManager : MonoBehaviour
         {
             noMoneyObject.SetActive(false);
         }
-        soundManager.CoinEffectPlay();
+        soundManager.StoreEffectPlay();
         saveData.coin -= chairPrice;
         saveData.chairSelled = true;
         sofaCheckObject.SetActive(true);

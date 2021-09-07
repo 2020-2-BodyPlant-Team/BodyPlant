@@ -1153,7 +1153,7 @@ RectTransform:
   m_GameObject: {fileID: 396193875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80171996, y: 0.80171996, z: 0.80171996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1608786103}
   - {fileID: 1526100533}
@@ -1165,7 +1165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.24374, y: 562.30164}
+  m_AnchoredPosition: {x: -214, y: 593}
   m_SizeDelta: {x: 332, y: 289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396193877
@@ -3073,7 +3073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 233.95929, y: -268.89368}
+  m_AnchoredPosition: {x: 286, y: -405}
   m_SizeDelta: {x: 854.8873, y: 1528.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872395563
@@ -3779,7 +3779,7 @@ MonoBehaviour:
     \uBD10\uC8FC\uC9C0 \uC54A\uC744\uAC70\uC57C."
   - "\uC815\uC0C1\uD6C8..? \uB300\uB2E8\uD55C \uC0AC\uB78C\uC774\uB77C\uACE0\uB9CC
     \uC54C\uACE0\uC788\uC5B4."
-  - "\uC548\uC6B0\uC9C4..? \uC9C0\uAC01\uC744 \uC798 \uD558\uB294 \uC0AC\uB78C\uC774\uC9C0"
+  - "\uC548\uC6B0\uC9C4..? \uD6CC\uB96D\uD55C \uC11C\uBE0C\uD504\uB85C\uADF8\uB798\uBA38\uC57C."
   - "\uC774\uD558\uC601.....\uC815\uB9D0 \uB300\uB2E8\uD55C \uC0AC\uB78C\uC774\uC57C.
     \uB098\uB97C \uCC3D\uC870\uD55C \uC0AC\uB78C\uC774\uC57C. \uC6B0\uB9AC\uC5C4\uB9C8\uB294
     \uC544\uB2C8\uC57C!"
@@ -3787,6 +3787,7 @@ MonoBehaviour:
   - "\uC774\uC815\uD6C8..? \uB77C\uC774\uC81C\uB974\uD558\uB97C \uC798\uBABB\uBD80\uB978\uAC70
     \uC544\uB2C8\uC57C?"
   - "\uC774\uC720\uC9C4...? \uADF8\uB140\uB294 \uC815\uB9D0 \uC5F4\uC2EC\uD788 \uC0B4\uC544."
+  - "\uD64D\uC601\uD45C...? \uCD5C\uACE0\uC758 \uC694\uB9AC\uC0AC\uC57C."
   chatObject: {fileID: 244403147}
   chatText: {fileID: 1276347334}
   elementArray:
@@ -9064,7 +9065,7 @@ RectTransform:
   m_GameObject: {fileID: 1955072860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80171996, y: 0.80171996, z: 0.80171996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 594733378}
   - {fileID: 1801499040}
@@ -9076,7 +9077,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.24374, y: 250}
+  m_AnchoredPosition: {x: -214.00002, y: 224.99997}
   m_SizeDelta: {x: 332, y: 289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955072862
