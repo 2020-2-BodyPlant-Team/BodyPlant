@@ -108,7 +108,6 @@ public class TutorialMngInFishing : MonoBehaviour
         if (textOrder == 2)
         {
             workFishingManager.FishOnTutorial();
-            OptionManager.singleTon.OptionFade(false);
             FadeOutCat();
         }
 
@@ -122,7 +121,6 @@ public class TutorialMngInFishing : MonoBehaviour
 
     public void OnDeerBash()
     {
-        OptionManager.singleTon.OptionFade(true);
         FadeInCat();
         StartCoroutine(LoadTextOneByOne(turtorialTexts[textOrder], binText));
     }
@@ -130,7 +128,6 @@ public class TutorialMngInFishing : MonoBehaviour
     public void OnFishCaught(bool caught)
     {
         FadeInCat();
-        OptionManager.singleTon.OptionFade(true);
         workFishingManager.nowTutorial = false;
         if (caught)
         {
@@ -219,7 +216,6 @@ public class TutorialMngInFishing : MonoBehaviour
         if (textOrder == 4)
         {
             gameObject.SetActive(false);
-            OptionManager.singleTon.OptionFade(false);
         }
     }
 
