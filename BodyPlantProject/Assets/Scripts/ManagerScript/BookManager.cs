@@ -267,7 +267,10 @@ public class BookManager : MonoBehaviour
     {
         touchedStickerClass.isFirstTimeOfInstantiation = false;
         GameObject button = EventSystem.current.currentSelectedGameObject;
-        tutorialMngInBook.isStickerAttatched = true;
+        if(tutorialMngInBook)
+        {
+            tutorialMngInBook.isStickerAttatched = true;
+        }
         gameManager.Save();
         button.SetActive(false);        
     }

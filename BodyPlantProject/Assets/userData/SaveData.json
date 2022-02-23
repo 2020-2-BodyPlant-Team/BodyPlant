@@ -121,2646 +121,20 @@
     ],
     "characterList": [
         {
-            "name": "아이고난",
-            "personality": 0,
-            "createdDate": "2021-06-16 AM 10:06:17",
-            "lastEarnedTime": "2021-09-02 PM 8:50:39",
-            "workEndTime": "2021-09-02 PM 8:50:49",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 54,
-            "mineTime": 0,
-            "loveTime": 832485,
-            "huntWorkRatio": 5.5,
-            "fishWorkRatio": 2.0,
-            "mineWorkRatio": 4.5,
-            "loveNess": 12.38220500946045,
-            "xGap": 0.7760000228881836,
-            "yGap": 2.8299999237060549,
-            "components": [
-                {
-                    "name": "body",
-                    "position": {
-                        "x": 0.2252500057220459,
-                        "y": 0.8564999103546143
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-06-15 PM 12:53:49",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.35225000977516177,
-                        "y": 0.21849989891052247
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-06-15 PM 12:53:47",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "leg",
-                    "position": {
-                        "x": -0.1537500023841858,
-                        "y": 0.8774999380111694
-                    },
-                    "secondPosition": {
-                        "x": -0.42375004291534426,
-                        "y": -1.9524999856948853
-                    },
-                    "plantedTime": "2021-06-15 PM 12:53:49",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": [
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": -1.6774193048477173,
-                        "y": 0.5806452035903931
-                    },
-                    "stickerObject": {
-                        "instanceID": -72232
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 13,
-                    "position": {
-                        "x": -1.1774193048477173,
-                        "y": 2.161290168762207
-                    },
-                    "stickerObject": {
-                        "instanceID": -73702
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -74664
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 14,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -75514
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": 0.9193546175956726,
-                        "y": 0.7903224229812622
-                    },
-                    "stickerObject": {
-                        "instanceID": -77140
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 3,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": 0
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 11,
-                    "position": {
-                        "x": 1.6935480833053589,
-                        "y": 0.04838705062866211
-                    },
-                    "stickerObject": {
-                        "instanceID": -8502
-                    },
-                    "characterName": "아이고난",
-                    "isFirstTimeOfInstantiation": false
-                }
-            ]
-        },
-        {
-            "name": "정상훈",
-            "personality": 0,
-            "createdDate": "8/16/2021 3:24:56 PM",
-            "lastEarnedTime": "2021-09-02 PM 8:50:39",
-            "workEndTime": "2021-09-02 PM 8:50:57",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 182,
-            "mineTime": 0,
-            "loveTime": 1836081,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 22.898941040039064,
-            "xGap": 0.0,
-            "yGap": 0.0,
-            "components": [
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-16 AM 10:39:43",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-16 AM 10:39:44",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "상훈이 베프",
-            "personality": 1,
-            "createdDate": "2021-08-28 AM 8:33:12",
-            "lastEarnedTime": "2021-09-02 PM 9:23:44",
-            "workEndTime": "2021-09-02 PM 9:25:39",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 133,
-            "mineTime": 0,
-            "loveTime": 560920,
-            "huntWorkRatio": 1.0299999713897706,
-            "fishWorkRatio": 1.0299999713897706,
-            "mineWorkRatio": 1.0299999713897706,
-            "loveNess": 7.067644119262695,
-            "xGap": 1.059999942779541,
-            "yGap": 4.920000076293945,
-            "components": [
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 0.42399999499320986,
-                        "y": 1.9679999351501465
-                    },
-                    "secondPosition": {
-                        "x": -0.15599998831748963,
-                        "y": -0.5820000171661377
-                    },
-                    "plantedTime": "8/27/2021 10:58:17 PM",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        2
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [
-                        1
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -0.0560000017285347,
-                        "y": -0.40199995040893557
-                    },
-                    "secondPosition": {
-                        "x": -0.6359999775886536,
-                        "y": -2.9519999027252199
-                    },
-                    "plantedTime": "2021-08-28 AM 8:18:44",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.42399999499320986,
-                        "y": 1.9679999351501465
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-28 AM 8:18:45",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "영하리",
-            "personality": 3,
-            "createdDate": "9/5/2021 3:57:01 PM",
-            "lastEarnedTime": "9/5/2021 3:57:01 PM",
-            "workEndTime": "",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 211087,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 3.0114121437072756,
-            "xGap": 0.27000001072883608,
-            "yGap": 2.8299999237060549,
-            "components": [
-                {
-                    "name": "leg",
-                    "position": {
-                        "x": 0.09000000357627869,
-                        "y": 0.9433333277702332
-                    },
-                    "secondPosition": {
-                        "x": -0.18000000715255738,
-                        "y": -1.8866665363311768
-                    },
-                    "plantedTime": "2021-08-29 AM 11:25:25",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "hand",
-                    "position": {
-                        "x": 0.09000000357627869,
-                        "y": 0.9433333277702332
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:28:32",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "귀찮아",
-            "personality": 2,
-            "createdDate": "9/8/2021 12:49:33 AM",
-            "lastEarnedTime": "9/8/2021 12:49:33 AM",
-            "workEndTime": "",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 6335,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.08344193547964096,
-            "xGap": 0.0,
-            "yGap": 0.0,
-            "components": [
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:32:47",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "eye",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:28:30",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "ㅁㄴㅇㄹ",
-            "personality": 0,
-            "createdDate": "9/8/2021 12:52:37 AM",
-            "lastEarnedTime": "9/8/2021 12:52:37 AM",
-            "workEndTime": "",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 6151,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.10331643372774124,
-            "xGap": 0.5799999833106995,
-            "yGap": 2.549999952316284,
-            "components": [
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 0.19333332777023316,
-                        "y": 0.8499999642372131
-                    },
-                    "secondPosition": {
-                        "x": -0.3866666555404663,
-                        "y": -1.7000000476837159
-                    },
-                    "plantedTime": "2021-08-31 PM 1:26:15",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.19333332777023316,
-                        "y": 0.8499999642372131
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 PM 2:31:22",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "ㅁㄴㅇㄹ",
-            "personality": 0,
-            "createdDate": "9/8/2021 1:10:31 AM",
-            "lastEarnedTime": "9/8/2021 1:10:31 AM",
-            "workEndTime": "",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 5077,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.0825890451669693,
-            "xGap": 0.0,
-            "yGap": 0.0,
-            "components": [
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 PM 2:31:22",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "hand",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-31 PM 1:27:49",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "asdf",
-            "personality": 0,
-            "createdDate": "9/8/2021 1:54:50 AM",
-            "lastEarnedTime": "9/8/2021 1:54:50 AM",
-            "workEndTime": "",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 0,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 2418,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.03127017244696617,
-            "xGap": 0.0,
-            "yGap": 0.0,
-            "components": [
-                {
-                    "name": "ear",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-31 PM 1:27:48",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-31 PM 1:26:15",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        }
-    ],
-    "huntCharacterList": [
-        {
-            "name": "안우",
-            "personality": 0,
-            "createdDate": "6/18/2021 4:56:19 PM",
-            "lastEarnedTime": "2021-09-02 PM 9:25:21",
-            "workEndTime": "9/8/2021 2:35:20 AM",
-            "loveStartTime": "2021-09-02 PM 9:25:21",
-            "huntTime": 3232487,
-            "fishTime": 56,
-            "mineTime": 0,
-            "loveTime": 6582053,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 69.28225708007813,
-            "xGap": 0.27000001072883608,
-            "yGap": 2.8529999256134035,
-            "components": [
-                {
-                    "name": "eye",
-                    "position": {
-                        "x": -0.07200000435113907,
-                        "y": -0.9509999752044678
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "6/18/2021 4:55:10 PM",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "hand",
-                    "position": {
-                        "x": -0.07200000435113907,
-                        "y": -0.9509999752044678
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "6/16/2021 3:35:22 PM",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "leg",
-                    "position": {
-                        "x": 0.14400000870227815,
-                        "y": 1.9019999504089356
-                    },
-                    "secondPosition": {
-                        "x": -0.12600000202655793,
-                        "y": -0.9279999732971191
-                    },
-                    "plantedTime": "2021-06-16 AM 10:10:06",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": true,
-                    "childIndexList": [],
-                    "childJointList": [],
-                    "childChildIndexList": [
-                        0,
-                        1
-                    ],
-                    "childChildJointList": [
-                        0,
-                        0
-                    ],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "안우진",
-            "personality": 3,
-            "createdDate": "2021-08-31 PM 1:28:15",
-            "lastEarnedTime": "9/8/2021 2:35:08 AM",
-            "workEndTime": "9/8/2021 2:35:20 AM",
-            "loveStartTime": "9/8/2021 2:35:08 AM",
-            "huntTime": 12,
-            "fishTime": 0,
-            "mineTime": 0,
-            "loveTime": 652007,
-            "huntWorkRatio": 11.5,
-            "fishWorkRatio": 5.0,
-            "mineWorkRatio": 7.5,
-            "loveNess": 0.019220499321818353,
-            "xGap": 0.9079999923706055,
-            "yGap": 1.659000039100647,
-            "components": [
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.5199999809265137,
-                        "y": 0.27459996938705447
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:06:12",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 3,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        3
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "hair",
-                    "position": {
-                        "x": -0.33900001645088198,
-                        "y": 0.8925999999046326
-                    },
-                    "secondPosition": {
-                        "x": -0.3880000114440918,
-                        "y": -0.2723999619483948
-                    },
-                    "plantedTime": "2021-08-29 AM 11:25:24",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 3,
-                    "parentJointIndex": 0,
-                    "secondSwitch": true,
-                    "childIndexList": [],
-                    "childJointList": [],
-                    "childChildIndexList": [
-                        3
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "foot",
-                    "position": {
-                        "x": 0.16700001060962678,
-                        "y": -0.7664000391960144
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:25:26",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 3,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        3
-                    ],
-                    "childJointList": [
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "body",
-                    "position": {
-                        "x": 0.04000000283122063,
-                        "y": -0.1284000128507614
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:28:28",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        1,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        1,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": [
-                {
-                    "stickerPrefabIndex": 0,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -67762
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 11,
-                    "position": {
-                        "x": -1.4077669382095338,
-                        "y": 0.9417474269866943
-                    },
-                    "stickerObject": {
-                        "instanceID": -71898
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 14,
-                    "position": {
-                        "x": 1.6601938009262086,
-                        "y": 1.9902914762496949
-                    },
-                    "stickerObject": {
-                        "instanceID": -77094
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": -1.583737850189209,
-                        "y": 2.1298539638519289
-                    },
-                    "stickerObject": {
-                        "instanceID": -94254
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": 0.9939321279525757,
-                        "y": 0.5351942777633667
-                    },
-                    "stickerObject": {
-                        "instanceID": -98242
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 5,
-                    "position": {
-                        "x": -1.6711164712905884,
-                        "y": -0.12014567852020264
-                    },
-                    "stickerObject": {
-                        "instanceID": -102250
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 1,
-                    "position": {
-                        "x": 1.0813103914260865,
-                        "y": 2.7196602821350099
-                    },
-                    "stickerObject": {
-                        "instanceID": -111032
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": 1.8240292072296143,
-                        "y": 0.8410191535949707
-                    },
-                    "stickerObject": {
-                        "instanceID": -115224
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": -0.9065534472465515,
-                        "y": 0.010921955108642578
-                    },
-                    "stickerObject": {
-                        "instanceID": -132666
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 13,
-                    "position": {
-                        "x": -0.8191747665405273,
-                        "y": 1.6711163520812989
-                    },
-                    "stickerObject": {
-                        "instanceID": -136776
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": -0.7099514007568359,
-                        "y": 0.7536405324935913
-                    },
-                    "stickerObject": {
-                        "instanceID": -141120
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 6,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -145332
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": -0.9720873832702637,
-                        "y": 2.326456308364868
-                    },
-                    "stickerObject": {
-                        "instanceID": -149468
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": 0.5133496522903442,
-                        "y": 0.7536405324935913
-                    },
-                    "stickerObject": {
-                        "instanceID": -6082
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 6,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -5508
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 8,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -9776
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 8,
-                    "position": {
-                        "x": 0.14199045300483704,
-                        "y": -0.36043673753738406
-                    },
-                    "stickerObject": {
-                        "instanceID": -34532
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 5,
-                    "position": {
-                        "x": 2.200000047683716,
-                        "y": 3.134708881378174
-                    },
-                    "stickerObject": {
-                        "instanceID": -38762
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": 0.8191747665405273,
-                        "y": -0.3822815418243408
-                    },
-                    "stickerObject": {
-                        "instanceID": -42772
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 1,
-                    "position": {
-                        "x": 0.9065531492233276,
-                        "y": 2.195388078689575
-                    },
-                    "stickerObject": {
-                        "instanceID": -57300
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 8,
-                    "position": {
-                        "x": 0.9720875024795532,
-                        "y": 2.282766819000244
-                    },
-                    "stickerObject": {
-                        "instanceID": -65774
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 14,
-                    "position": {
-                        "x": 0.03681298345327377,
-                        "y": 2.201406478881836
-                    },
-                    "stickerObject": {
-                        "instanceID": -70788
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -99780
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": -2.0615179538726808,
-                        "y": 1.1191093921661378
-                    },
-                    "stickerObject": {
-                        "instanceID": -106692
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": 1.4946012496948243,
-                        "y": 1.2516361474990845
-                    },
-                    "stickerObject": {
-                        "instanceID": -111328
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 10,
-                    "position": {
-                        "x": -0.40494081377983096,
-                        "y": -0.05153834819793701
-                    },
-                    "stickerObject": {
-                        "instanceID": -116100
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 13,
-                    "position": {
-                        "x": 0.7657069563865662,
-                        "y": 0.8319693803787231
-                    },
-                    "stickerObject": {
-                        "instanceID": -120504
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 13,
-                    "position": {
-                        "x": 0.8319702744483948,
-                        "y": 2.7756869792938234
-                    },
-                    "stickerObject": {
-                        "instanceID": -129354
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 4,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -147576
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": -1.9510796070098878,
-                        "y": 0.25768935680389407
-                    },
-                    "stickerObject": {
-                        "instanceID": -174496
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 2,
-                    "position": {
-                        "x": 1.3178997039794922,
-                        "y": -0.4000000059604645
-                    },
-                    "stickerObject": {
-                        "instanceID": -188004
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 6,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -25334
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": -1.381385087966919,
-                        "y": -0.05525529384613037
-                    },
-                    "stickerObject": {
-                        "instanceID": -35226
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": -2.1107563972473146,
-                        "y": 1.801326870918274
-                    },
-                    "stickerObject": {
-                        "instanceID": -40078
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 14,
-                    "position": {
-                        "x": -0.4751964211463928,
-                        "y": 3.0
-                    },
-                    "stickerObject": {
-                        "instanceID": -157734
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 3,
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -187856
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": -1.116159200668335,
-                        "y": 2.5085954666137697
-                    },
-                    "stickerObject": {
-                        "instanceID": -193416
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 1,
-                    "position": {
-                        "x": 2.5,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -14416
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 8,
-                    "position": {
-                        "x": 2.0,
-                        "y": 2.5
-                    },
-                    "stickerObject": {
-                        "instanceID": -20370
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": true
-                },
-                {
-                    "stickerPrefabIndex": 9,
-                    "position": {
-                        "x": 1.1382614374160767,
-                        "y": 1.8234282732009888
-                    },
-                    "stickerObject": {
-                        "instanceID": -26336
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 7,
-                    "position": {
-                        "x": 1.5361003875732422,
-                        "y": 2.6412086486816408
-                    },
-                    "stickerObject": {
-                        "instanceID": -44724
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                },
-                {
-                    "stickerPrefabIndex": 4,
-                    "position": {
-                        "x": 2.200000047683716,
-                        "y": 1.6466116905212403
-                    },
-                    "stickerObject": {
-                        "instanceID": -50712
-                    },
-                    "characterName": "안우진",
-                    "isFirstTimeOfInstantiation": false
-                }
-            ]
-        }
-    ],
-    "mineCharacterList": [
-        {
-            "name": "김현수",
-            "personality": 0,
-            "createdDate": "2021-08-29 AM 11:16:00",
-            "lastEarnedTime": "2021-09-02 PM 9:25:47",
-            "workEndTime": "2021-09-02 PM 9:19:26",
-            "loveStartTime": "2021-08-29 AM 11:16:44",
-            "huntTime": 0,
-            "fishTime": 34,
-            "mineTime": 445695,
-            "loveTime": 22,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.0002314999874215573,
-            "xGap": 1.1600000858306885,
-            "yGap": 4.920000076293945,
-            "components": [
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 0.35818174481391909,
-                        "y": 2.63454532623291
-                    },
-                    "secondPosition": {
-                        "x": -0.221818208694458,
-                        "y": 0.08454540371894837
-                    },
-                    "plantedTime": "8/27/2021 11:03:34 PM",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        5
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [
-                        2,
-                        3,
-                        6
-                    ],
-                    "childChildJointList": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.35818174481391909,
-                        "y": 2.63454532623291
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-28 AM 8:18:44",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        5
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": -0.12181824445724487,
-                        "y": 0.2645454704761505
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-28 AM 8:29:35",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        3,
-                        6
-                    ],
-                    "childJointList": [
-                        1,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -0.1218181848526001,
-                        "y": 0.2645454704761505
-                    },
-                    "secondPosition": {
-                        "x": 0.45818179845809939,
-                        "y": -2.285454511642456
-                    },
-                    "plantedTime": "2021-08-28 AM 8:30:24",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 180.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 180.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        2,
-                        6
-                    ],
-                    "childJointList": [
-                        1,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [
-                        7
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": -0.6018182039260864,
-                        "y": -2.105454444885254
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-28 AM 8:30:24",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 6,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        6
-                    ],
-                    "childJointList": [
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.35818174481391909,
-                        "y": 2.63454532623291
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-28 AM 8:29:35",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        1
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -0.1218181848526001,
-                        "y": 0.2645454704761505
-                    },
-                    "secondPosition": {
-                        "x": -0.7018182277679443,
-                        "y": -2.285454511642456
-                    },
-                    "plantedTime": "2021-08-28 AM 8:32:31",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        2,
-                        3
-                    ],
-                    "childJointList": [
-                        1,
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [
-                        4
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.35818180441856387,
-                        "y": -2.105454444885254
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:06:11",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 3,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        3
-                    ],
-                    "childJointList": [
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
-            "name": "관절맨",
-            "personality": 1,
-            "createdDate": "2021-08-29 AM 11:18:18",
-            "lastEarnedTime": "2021-09-02 PM 9:25:47",
-            "workEndTime": "2021-09-02 PM 9:19:26",
-            "loveStartTime": "2021-08-29 PM 2:28:59",
-            "huntTime": 0,
-            "fishTime": 12,
-            "mineTime": 459065,
-            "loveTime": 24,
-            "huntWorkRatio": 1.0299999713897706,
-            "fishWorkRatio": 1.0299999713897706,
-            "mineWorkRatio": 1.0299999713897706,
-            "loveNess": 0.00024649998522363603,
-            "xGap": 2.0199999809265138,
-            "yGap": 9.65999984741211,
-            "components": [
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 0.6036363840103149,
-                        "y": 2.866363525390625
-                    },
-                    "secondPosition": {
-                        "x": 0.02363640069961548,
-                        "y": 0.3163636326789856
-                    },
-                    "plantedTime": "2021-08-28 AM 8:29:35",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        2,
-                        5
-                    ],
-                    "childJointList": [
-                        1,
-                        0
-                    ],
-                    "childChildIndexList": [
-                        1
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 0.12363636493682862,
-                        "y": 0.49636369943618777
-                    },
-                    "secondPosition": {
-                        "x": -0.4563636779785156,
-                        "y": -2.053636312484741
-                    },
-                    "plantedTime": "2021-08-29 AM 11:06:11",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0
-                    ],
-                    "childJointList": [
-                        1
-                    ],
-                    "childChildIndexList": [
-                        3,
-                        6
-                    ],
-                    "childChildJointList": [
-                        0,
-                        0
-                    ],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": 1.0836362838745118,
-                        "y": 5.236363410949707
-                    },
-                    "secondPosition": {
-                        "x": 0.503636360168457,
-                        "y": 2.686363458633423
-                    },
-                    "plantedTime": "2021-08-29 AM 11:10:25",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": true,
-                    "childIndexList": [],
-                    "childJointList": [],
-                    "childChildIndexList": [
-                        0,
-                        5
-                    ],
-                    "childChildJointList": [
-                        0,
-                        0
-                    ],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "arm",
-                    "position": {
-                        "x": -0.3563636541366577,
-                        "y": -1.873636245727539
-                    },
-                    "secondPosition": {
-                        "x": -0.936363697052002,
-                        "y": -4.423635959625244
-                    },
-                    "plantedTime": "2021-08-28 AM 8:32:53",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 1,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        6
-                    ],
-                    "childJointList": [
-                        1,
-                        0
-                    ],
-                    "childChildIndexList": [
-                        4
-                    ],
-                    "childChildJointList": [
-                        0
-                    ],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "hand",
-                    "position": {
-                        "x": -0.836363673210144,
-                        "y": -4.243636131286621
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:14:09",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 3,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        3
-                    ],
-                    "childJointList": [
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "eye",
-                    "position": {
-                        "x": 0.6036363840103149,
-                        "y": 2.866363525390625
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:14:10",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        1
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "foot",
-                    "position": {
-                        "x": -0.3563636541366577,
-                        "y": -1.873636245727539
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-08-29 AM 11:14:13",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 1,
-                    "parentJointIndex": 1,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        3
-                    ],
-                    "childJointList": [
-                        1,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": true,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        }
-    ],
-    "fishCharacterList": [
-        {
-            "name": "아이고",
-            "personality": 2,
-            "createdDate": "2021-06-15 PM 12:48:36",
-            "lastEarnedTime": "2021-09-02 PM 9:12:37",
-            "workEndTime": "9/8/2021 1:14:00 AM",
-            "loveStartTime": "2021-06-16 AM 10:08:14",
-            "huntTime": 0,
-            "fishTime": 446585,
-            "mineTime": 0,
-            "loveTime": 76695,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 0.7669501304626465,
-            "xGap": 0.0,
-            "yGap": 0.0,
-            "components": [
-                {
-                    "name": "eye",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-06-15 PM 12:47:58",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": -1,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        1,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "nose",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-06-15 PM 12:47:58",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        2
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                },
-                {
-                    "name": "mouth",
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "secondPosition": {
-                        "x": 0.0,
-                        "y": 0.0
-                    },
-                    "plantedTime": "2021-06-15 PM 12:47:58",
-                    "isSprotued": true,
-                    "percentage": 1.0,
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "secondRotation": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "parentComponentIndex": 0,
-                    "parentJointIndex": 0,
-                    "secondSwitch": false,
-                    "childIndexList": [
-                        0,
-                        1
-                    ],
-                    "childJointList": [
-                        0,
-                        0
-                    ],
-                    "childChildIndexList": [],
-                    "childChildJointList": [],
-                    "cover": false,
-                    "attached": false,
-                    "usedElement": [],
-                    "isHarvested": true
-                }
-            ],
-            "stickerList": []
-        },
-        {
             "name": "호루루루룰",
             "personality": 2,
             "createdDate": "6/16/2021 3:42:15 PM",
             "lastEarnedTime": "2021-09-02 PM 9:12:37",
-            "workEndTime": "9/8/2021 1:14:00 AM",
-            "loveStartTime": "2021-08-29 AM 11:16:50",
+            "workEndTime": "9/8/2021 3:21:08 AM",
+            "loveStartTime": "2/24/2022 1:43:28 AM",
             "huntTime": 0,
-            "fishTime": 446551,
+            "fishTime": 1354752,
             "mineTime": 0,
-            "loveTime": 6281478,
+            "loveTime": 20877216,
             "huntWorkRatio": 1.0,
-            "fishWorkRatio": 1.0,
-            "mineWorkRatio": 1.0,
-            "loveNess": 62.814781188964847,
+            "fishWorkRatio": 3.5,
+            "mineWorkRatio": 2.0,
+            "loveNess": 0.0018951974343508483,
             "xGap": 1.0329999923706055,
             "yGap": 5.138999938964844,
             "components": [
@@ -3301,6 +675,1253 @@
                     ],
                     "childJointList": [
                         1
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": [
+                {
+                    "stickerPrefabIndex": 1,
+                    "position": {
+                        "x": -1.778273582458496,
+                        "y": 0.8705353736877441
+                    },
+                    "stickerObject": {
+                        "instanceID": -5006
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 1,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -13658
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 10,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -24420
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 2,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -29176
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 10,
+                    "position": {
+                        "x": -1.2425593137741089,
+                        "y": 1.785714030265808
+                    },
+                    "stickerObject": {
+                        "instanceID": -33210
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 0,
+                    "position": {
+                        "x": 1.1011906862258912,
+                        "y": 1.138392686843872
+                    },
+                    "stickerObject": {
+                        "instanceID": -43690
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 2,
+                    "position": {
+                        "x": -0.9300594925880432,
+                        "y": 0.2232140302658081
+                    },
+                    "stickerObject": {
+                        "instanceID": -47910
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": false
+                }
+            ]
+        },
+        {
+            "name": "김현수",
+            "personality": 0,
+            "createdDate": "2021-08-29 AM 11:16:00",
+            "lastEarnedTime": "2021-09-02 PM 9:25:47",
+            "workEndTime": "9/8/2021 3:21:22 AM",
+            "loveStartTime": "2/24/2022 1:43:28 AM",
+            "huntTime": 0,
+            "fishTime": 34,
+            "mineTime": 899030,
+            "loveTime": 14595746,
+            "huntWorkRatio": 2.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.009103451855480671,
+            "xGap": 1.1600000858306885,
+            "yGap": 4.920000076293945,
+            "components": [
+                {
+                    "name": "arm",
+                    "position": {
+                        "x": 0.35818174481391909,
+                        "y": 2.63454532623291
+                    },
+                    "secondPosition": {
+                        "x": -0.221818208694458,
+                        "y": 0.08454540371894837
+                    },
+                    "plantedTime": "8/27/2021 11:03:34 PM",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1,
+                        5
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [
+                        2,
+                        3,
+                        6
+                    ],
+                    "childChildJointList": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.35818174481391909,
+                        "y": 2.63454532623291
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-28 AM 8:18:44",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        5
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": -0.12181824445724487,
+                        "y": 0.2645454704761505
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-28 AM 8:29:35",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 1,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        3,
+                        6
+                    ],
+                    "childJointList": [
+                        1,
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "arm",
+                    "position": {
+                        "x": -0.1218181848526001,
+                        "y": 0.2645454704761505
+                    },
+                    "secondPosition": {
+                        "x": 0.45818179845809939,
+                        "y": -2.285454511642456
+                    },
+                    "plantedTime": "2021-08-28 AM 8:30:24",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 180.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 180.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 1,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        2,
+                        6
+                    ],
+                    "childJointList": [
+                        1,
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [
+                        7
+                    ],
+                    "childChildJointList": [
+                        0
+                    ],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": -0.6018182039260864,
+                        "y": -2.105454444885254
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-28 AM 8:30:24",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 6,
+                    "parentJointIndex": 1,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        6
+                    ],
+                    "childJointList": [
+                        1
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "mouth",
+                    "position": {
+                        "x": 0.35818174481391909,
+                        "y": 2.63454532623291
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-28 AM 8:29:35",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        1
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "arm",
+                    "position": {
+                        "x": -0.1218181848526001,
+                        "y": 0.2645454704761505
+                    },
+                    "secondPosition": {
+                        "x": -0.7018182277679443,
+                        "y": -2.285454511642456
+                    },
+                    "plantedTime": "2021-08-28 AM 8:32:31",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 1,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        2,
+                        3
+                    ],
+                    "childJointList": [
+                        1,
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [
+                        4
+                    ],
+                    "childChildJointList": [
+                        0
+                    ],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.35818180441856387,
+                        "y": -2.105454444885254
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-29 AM 11:06:11",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 3,
+                    "parentJointIndex": 1,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        3
+                    ],
+                    "childJointList": [
+                        1
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": [
+                {
+                    "stickerPrefabIndex": 6,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -5018
+                    },
+                    "characterName": "김현수",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 9,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -40184
+                    },
+                    "characterName": "김현수",
+                    "isFirstTimeOfInstantiation": true
+                }
+            ]
+        }
+    ],
+    "huntCharacterList": [
+        {
+            "name": "영하리",
+            "personality": 3,
+            "createdDate": "9/5/2021 3:57:01 PM",
+            "lastEarnedTime": "9/8/2021 3:26:25 AM",
+            "workEndTime": "9/8/2021 3:26:26 AM",
+            "loveStartTime": "9/8/2021 3:26:25 AM",
+            "huntTime": 20,
+            "fishTime": 0,
+            "mineTime": 0,
+            "loveTime": 214164,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 3.042839527130127,
+            "xGap": 0.27000001072883608,
+            "yGap": 2.8299999237060549,
+            "components": [
+                {
+                    "name": "leg",
+                    "position": {
+                        "x": 0.09000000357627869,
+                        "y": 0.9433333277702332
+                    },
+                    "secondPosition": {
+                        "x": -0.18000000715255738,
+                        "y": -1.8866665363311768
+                    },
+                    "plantedTime": "2021-08-29 AM 11:25:25",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "hand",
+                    "position": {
+                        "x": 0.09000000357627869,
+                        "y": 0.9433333277702332
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-29 AM 11:28:32",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": []
+        },
+        {
+            "name": "ㅁㄴㅇㄹ",
+            "personality": 0,
+            "createdDate": "9/8/2021 12:52:37 AM",
+            "lastEarnedTime": "9/8/2021 3:26:29 AM",
+            "workEndTime": "",
+            "loveStartTime": "9/8/2021 3:26:29 AM",
+            "huntTime": 11,
+            "fishTime": 0,
+            "mineTime": 0,
+            "loveTime": 9232,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.1364143341779709,
+            "xGap": 0.5799999833106995,
+            "yGap": 2.549999952316284,
+            "components": [
+                {
+                    "name": "arm",
+                    "position": {
+                        "x": 0.19333332777023316,
+                        "y": 0.8499999642372131
+                    },
+                    "secondPosition": {
+                        "x": -0.3866666555404663,
+                        "y": -1.7000000476837159
+                    },
+                    "plantedTime": "2021-08-31 PM 1:26:15",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "mouth",
+                    "position": {
+                        "x": 0.19333332777023316,
+                        "y": 0.8499999642372131
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-29 PM 2:31:22",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": []
+        },
+        {
+            "name": "아이고난",
+            "personality": 0,
+            "createdDate": "2021-06-16 AM 10:06:17",
+            "lastEarnedTime": "9/8/2021 3:26:39 AM",
+            "workEndTime": "2021-09-02 PM 8:50:49",
+            "loveStartTime": "9/8/2021 3:26:39 AM",
+            "huntTime": 5,
+            "fishTime": 54,
+            "mineTime": 0,
+            "loveTime": 835576,
+            "huntWorkRatio": 5.5,
+            "fishWorkRatio": 2.0,
+            "mineWorkRatio": 4.5,
+            "loveNess": 12.41540813446045,
+            "xGap": 0.7760000228881836,
+            "yGap": 2.8299999237060549,
+            "components": [
+                {
+                    "name": "body",
+                    "position": {
+                        "x": 0.2252500057220459,
+                        "y": 0.8564999103546143
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:49",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1,
+                        2
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.35225000977516177,
+                        "y": 0.21849989891052247
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:47",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "leg",
+                    "position": {
+                        "x": -0.1537500023841858,
+                        "y": 0.8774999380111694
+                    },
+                    "secondPosition": {
+                        "x": -0.42375004291534426,
+                        "y": -1.9524999856948853
+                    },
+                    "plantedTime": "2021-06-15 PM 12:53:49",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": [
+                {
+                    "stickerPrefabIndex": 9,
+                    "position": {
+                        "x": -1.6774193048477173,
+                        "y": 0.5806452035903931
+                    },
+                    "stickerObject": {
+                        "instanceID": -72232
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 13,
+                    "position": {
+                        "x": -1.1774193048477173,
+                        "y": 2.161290168762207
+                    },
+                    "stickerObject": {
+                        "instanceID": -73702
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 9,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -74664
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 14,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -75514
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 9,
+                    "position": {
+                        "x": 0.9193546175956726,
+                        "y": 0.7903224229812622
+                    },
+                    "stickerObject": {
+                        "instanceID": -77140
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 3,
+                    "position": {
+                        "x": 0.0,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": 0
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 11,
+                    "position": {
+                        "x": 1.6935480833053589,
+                        "y": 0.04838705062866211
+                    },
+                    "stickerObject": {
+                        "instanceID": -8502
+                    },
+                    "characterName": "아이고난",
+                    "isFirstTimeOfInstantiation": false
+                }
+            ]
+        }
+    ],
+    "mineCharacterList": [],
+    "fishCharacterList": [
+        {
+            "name": "아이고",
+            "personality": 2,
+            "createdDate": "2021-06-15 PM 12:48:36",
+            "lastEarnedTime": "2021-09-02 PM 9:12:37",
+            "workEndTime": "9/8/2021 3:21:14 AM",
+            "loveStartTime": "2021-06-16 AM 10:08:14",
+            "huntTime": 0,
+            "fishTime": 1808904,
+            "mineTime": 0,
+            "loveTime": 76695,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.7669501304626465,
+            "xGap": 0.0,
+            "yGap": 0.0,
+            "components": [
+                {
+                    "name": "eye",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:47:58",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1,
+                        2
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:47:58",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        2
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "mouth",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-06-15 PM 12:47:58",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0,
+                        1
+                    ],
+                    "childJointList": [
+                        0,
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": []
+        },
+        {
+            "name": "asdf",
+            "personality": 0,
+            "createdDate": "9/8/2021 1:54:50 AM",
+            "lastEarnedTime": "9/8/2021 3:20:59 AM",
+            "workEndTime": "9/8/2021 3:21:14 AM",
+            "loveStartTime": "9/8/2021 3:20:59 AM",
+            "huntTime": 0,
+            "fishTime": 25,
+            "mineTime": 0,
+            "loveTime": 5169,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.060705870389938357,
+            "xGap": 0.0,
+            "yGap": 0.0,
+            "components": [
+                {
+                    "name": "ear",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-31 PM 1:27:48",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-31 PM 1:26:15",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                }
+            ],
+            "stickerList": []
+        },
+        {
+            "name": "귀찮아",
+            "personality": 2,
+            "createdDate": "9/8/2021 12:49:33 AM",
+            "lastEarnedTime": "9/8/2021 3:21:13 AM",
+            "workEndTime": "9/8/2021 3:21:14 AM",
+            "loveStartTime": "9/8/2021 3:21:13 AM",
+            "huntTime": 0,
+            "fishTime": 1,
+            "mineTime": 0,
+            "loveTime": 9100,
+            "huntWorkRatio": 1.0,
+            "fishWorkRatio": 1.0,
+            "mineWorkRatio": 1.0,
+            "loveNess": 0.11166593432426453,
+            "xGap": 0.0,
+            "yGap": 0.0,
+            "components": [
+                {
+                    "name": "nose",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-29 AM 11:32:47",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": -1,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        1
+                    ],
+                    "childJointList": [
+                        0
+                    ],
+                    "childChildIndexList": [],
+                    "childChildJointList": [],
+                    "cover": false,
+                    "attached": false,
+                    "usedElement": [],
+                    "isHarvested": true
+                },
+                {
+                    "name": "eye",
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "secondPosition": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "plantedTime": "2021-08-29 AM 11:28:30",
+                    "isSprotued": true,
+                    "percentage": 1.0,
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "secondRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "parentComponentIndex": 0,
+                    "parentJointIndex": 0,
+                    "secondSwitch": false,
+                    "childIndexList": [
+                        0
+                    ],
+                    "childJointList": [
+                        0
                     ],
                     "childChildIndexList": [],
                     "childChildJointList": [],
@@ -3876,7 +2497,7 @@
             "isHarvested": true
         }
     ],
-    "coin": 93710,
+    "coin": 550,
     "boughtNameList": [],
     "boughtDateList": [],
     "huntElement": 76,
