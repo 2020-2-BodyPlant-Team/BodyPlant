@@ -116,7 +116,8 @@ public class BookManager : MonoBehaviour
                 GameObject sticker = Instantiate(stickerPrefab[totalList[i].stickerList[j].stickerPrefabIndex], diaryList[i].transform);
                 sticker.GetComponent<BoxCollider2D>().enabled = false;
                 sticker.transform.GetComponent<RectTransform>().SetAsLastSibling();
-                sticker.transform.position = totalList[i].stickerList[j].position;
+                sticker.transform.position = new Vector3(totalList[i].stickerList[j].position.x, totalList[i].stickerList[j].position.y, -1.565f);
+                //new Vector3(totalList[i].stickerList[j].position.x, totalList[i].stickerList[j].position.y, -300);
             }
         }
 
@@ -156,7 +157,7 @@ public class BookManager : MonoBehaviour
                         sticker.transform.SetParent(diaryList[i].transform);
                         sticker.GetComponent<BoxCollider2D>().enabled = true;
                         sticker.transform.localScale = new Vector3(100, 100, 1);
-                        sticker.transform.position = new Vector3(1.8f, 2.5f, -0.3f);
+                        sticker.transform.localPosition = new Vector3(322, 468, -300f);
                         StickerClass stickerClass = new StickerClass();
                         totalList[i].stickerList.Add(stickerClass);
                         stickerClass.position = sticker.transform.position;
@@ -207,7 +208,7 @@ public class BookManager : MonoBehaviour
                                 {
                                     mousePos.y = -0.4f;
                                 }
-                                totalList[i].stickerList[j].stickerObject.transform.position = mousePos;
+                                totalList[i].stickerList[j].stickerObject.transform.position = new Vector3(mousePos.x, mousePos.y, -1.565f);// mousePos;
                                 totalList[i].stickerList[j].position = mousePos;
                                 touchedStickerClass = totalList[i].stickerList[j];
                             }

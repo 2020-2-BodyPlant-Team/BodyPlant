@@ -126,15 +126,15 @@
             "createdDate": "6/16/2021 3:42:15 PM",
             "lastEarnedTime": "2021-09-02 PM 9:12:37",
             "workEndTime": "9/8/2021 3:21:08 AM",
-            "loveStartTime": "2/24/2022 1:43:28 AM",
+            "loveStartTime": "2/24/2022 11:01:02 AM",
             "huntTime": 0,
             "fishTime": 1354752,
             "mineTime": 0,
-            "loveTime": 20877216,
-            "huntWorkRatio": 1.0,
-            "fishWorkRatio": 3.5,
-            "mineWorkRatio": 2.0,
-            "loveNess": 0.0018951974343508483,
+            "loveTime": 20910670,
+            "huntWorkRatio": 4.0,
+            "fishWorkRatio": 6.0,
+            "mineWorkRatio": 2.5,
+            "loveNess": 0.0,
             "xGap": 1.0329999923706055,
             "yGap": 5.138999938964844,
             "components": [
@@ -768,6 +768,150 @@
                     },
                     "characterName": "호루루루룰",
                     "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 6,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -18624
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 1,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -26780
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 2,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -37936
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 8,
+                    "position": {
+                        "x": 0.8705354332923889,
+                        "y": 1.897321343421936
+                    },
+                    "stickerObject": {
+                        "instanceID": -42140
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 5,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -45894
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 7,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -53212
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 4,
+                    "position": {
+                        "x": 1.7999999523162842,
+                        "y": 2.5
+                    },
+                    "stickerObject": {
+                        "instanceID": -57480
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 11,
+                    "position": {
+                        "x": -0.6473214626312256,
+                        "y": 0.9821426868438721
+                    },
+                    "stickerObject": {
+                        "instanceID": -61348
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": false
+                },
+                {
+                    "stickerPrefabIndex": 8,
+                    "position": {
+                        "x": 0.009374999441206456,
+                        "y": 0.0130208320915699
+                    },
+                    "stickerObject": {
+                        "instanceID": -65016
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 3,
+                    "position": {
+                        "x": 1.6770832538604737,
+                        "y": 2.437499761581421
+                    },
+                    "stickerObject": {
+                        "instanceID": -68904
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 0,
+                    "position": {
+                        "x": 0.8258927464485169,
+                        "y": -0.04464268684387207
+                    },
+                    "stickerObject": {
+                        "instanceID": -76302
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
+                },
+                {
+                    "stickerPrefabIndex": 5,
+                    "position": {
+                        "x": 1.6770832538604737,
+                        "y": 2.437499761581421
+                    },
+                    "stickerObject": {
+                        "instanceID": -80164
+                    },
+                    "characterName": "호루루루룰",
+                    "isFirstTimeOfInstantiation": true
                 }
             ]
         },
@@ -777,15 +921,15 @@
             "createdDate": "2021-08-29 AM 11:16:00",
             "lastEarnedTime": "2021-09-02 PM 9:25:47",
             "workEndTime": "9/8/2021 3:21:22 AM",
-            "loveStartTime": "2/24/2022 1:43:28 AM",
+            "loveStartTime": "2/24/2022 11:01:02 AM",
             "huntTime": 0,
             "fishTime": 34,
             "mineTime": 899030,
-            "loveTime": 14595746,
+            "loveTime": 14629200,
             "huntWorkRatio": 2.0,
             "fishWorkRatio": 1.0,
             "mineWorkRatio": 1.0,
-            "loveNess": 0.009103451855480671,
+            "loveNess": 0.520953357219696,
             "xGap": 1.1600000858306885,
             "yGap": 4.920000076293945,
             "components": [
